@@ -1,7 +1,11 @@
 CACHE MANIFEST
-# Revision 1402380659714
+# Revision 1402383146645
 
 CACHE:
+1/Agent_API.html
+1/Backup_API.html
+2/admin_add_job.html
+2/administration_page.html
 index.html
 gitbook/app.js
 gitbook/fonts/anonymouspro/400.woff

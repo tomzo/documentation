@@ -3,50 +3,54 @@ Help documentation
 
  
 
-Backup API {.collapsible-heading onclick="toggleCollapse($(this));"}
-----------
+Run a Job on a group of Agents {.collapsible-heading onclick="toggleCollapse($(this));"}
+==============================
 
-This API allows you to backup Go server. Please refer to [Backup Go
-Server](one_click_backup.html) to get more information about the backup
-functionality.
+Sometimes there is a particular job that you may wish to run on all
+agents in an environment, or in all agents that match a certain resource
+tag. For example you may want to run a system update on all linux
+agents, or install a new piece of software.
 
-**NOTE:** Only Go administrator users will be able to use this API
+Go will run the Job on all agents that match the environment and
+resources specified in the job.
 
-#### Key {.collapsible-heading onclick="toggleCollapse($(this));"}
+If an agent is missing or lost contact, a job will be scheduled. When
+the agent comes back on line, the job will be re-scheduled.
 
-Parameters
+Jobs are given a unique name based on the name of the job in the
+configuration file and the UUID of the agent on which it runs. So for
+example, if the job is called 'run-upgrades' and you have two agents,
+you would see jobs like
+'run-upgrades-81b23d04-9970-44f5-8973-c70bfd7c9e67' and
+'run-upgrades-9356e9d4-3a90-447d-bb74-2045aa355ef4'.
 
-URL format
+### Configure through the Admin UI {.collapsible-heading onclick="toggleCollapse($(this));"}
 
-HTTP Verb
+To enable run on all agents for a job, navigate to the Job settings page
+in the job configuration
 
-Data
+![](resources/images/cruise/admin/runonall_job.png)
 
-Explanation
+### Configure through the Config XML {.collapsible-heading onclick="toggleCollapse($(this));"}
 
-http://[server]/go/api/admin/start\_backup
-
-POST
-
-no parameters
-
-Go server backup initiates
-
-#### Examples {.collapsible-heading onclick="toggleCollapse($(this));"}
-
--   We use curl, a command line tool for transferring files with URL
-    syntax, in the following examples. Of course, you can use any HTTP
-    client library.
--   We assume that the URL of the Go server is
-    **http://goserver.com:8153/** .
--   We assume security has been switched on, and that there is an admin
-    user named **jez** with the password **badger** .
-
-To initiate the backup
+To specify that a job should run on all agents, add the attribute
 
 ``` {.code}
-curl -u jez:badger -d "" http://goserver.com:8153/go/api/admin/start_backup
+runOnAllAgents="true"
 ```
+
+to the job's definition (see configuration reference for
+[\<job\>](configuration_reference.html#job)
+
+``` {.code}
+<job name="run-upgrades" runOnAllAgents="true">
+    ...
+</job>
+```
+
+### Also See... {.collapsible-heading onclick="toggleCollapse($(this));"}
+
+-   [Re-running job(s)](job_rerun.html)
 
 Your search did not match any help pages.
 

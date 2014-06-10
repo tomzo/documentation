@@ -3,203 +3,70 @@ Help documentation
 
  
 
-Agent API {.collapsible-heading onclick="toggleCollapse($(this));"}
----------
+Go unable to poll for changes {.collapsible-heading onclick="toggleCollapse($(this));"}
+=============================
 
-A collection of APIs to get information and do operations on agents.
-They allow Go administrators to provision and de-provision agents
-without needing to use the web interface.
+Go server polls for changes to all materials of 'Auto Triggered'
+pipelines. By default, polling occurs every minute and ten materials at
+a time. The polling interval and the number of materials to be polled
+simultaneously are configurable.
 
-### List Agents {.collapsible-heading onclick="toggleCollapse($(this));"}
-
-#### Key {.collapsible-heading onclick="toggleCollapse($(this));"}
-
-Parameters
-
-URL format
-
-HTTP Verb
-
-Data
-
-Explanation
-
-http://[server]/go/api/agents
-
-GET
-
-no parameters
-
-List all the agents of the Go Server in JSON format along with the their
-information.
-
-The following information about each of the agents is returned in the
-JSON response:
-
--   uuid
--   buildLocator
--   agent\_name: (Maps to "Agent Name" column of Agents tab)
--   ipAddress: (Maps to "IP Address" column of Agents tab)
--   status: (Maps to "Status" column of Agents tab)
--   sandbox: (Maps to "Sandbox" column of Agents tab)
--   os: (Maps to "OS" column of Agents tab)
--   free\_space: (Maps to "Free Space" column of Agents tab)
--   resources: [] (Maps to "Resources" column of Agents tab)
--   environments: [] (Maps to "Environments" column of Agents tab)
-
-### Enable and Disable Agent {.collapsed-heading onclick="toggleCollapse($(this));"}
-
-#### Key {.collapsible-heading onclick="toggleCollapse($(this));"}
-
-Parameters
-
-URL format
-
-HTTP Verb
-
-Data
-
-Explanation
-
-http://[server]/go/api/agents/[agent-uuid]/enable
-
-POST
-
-no parameters
-
-Enable a disabled agent. Approve a pending agent.
-
-http://[server]/go/api/agents/[agent-uuid]/disable
-
-POST
-
-no parameters
-
-Disable an enabled/pending agent.
-
-### Delete Agent {.collapsed-heading onclick="toggleCollapse($(this));"}
-
-#### Key {.collapsible-heading onclick="toggleCollapse($(this));"}
-
-Parameters
-
-URL format
-
-HTTP Verb
-
-Data
-
-Explanation
-
-http://[server]/go/api/agents/[agent-uuid]/delete
-
-POST
-
-no parameters
-
-Delete a disabled agent. Note that the agent will not be deleted unless
-it is in disabled state and is not building any job
-
-#### Response Codes {.collapsible-heading onclick="toggleCollapse($(this));"}
-
-HTTP response code
-
-Explanation
-
-200
-
-Agent deleted successfully
-
-404
-
-Agent with [uuid] does not exist
-
-406
-
-Agent is not 'Disabled' or is still 'Building' or 'Cancelled'
-
-401
-
-User does not have operate permission to delete agent
-
-500
-
-An internal server error occurred
-
-**A note on deleting agents**
-
-An agent continually contacts the Go server so long as it is running. If
-it is deleted from Go server, the next time it contacts Go server, Go
-will add it back to the list of agents. Normally you do not want this to
-happen. Follow the steps below to achieve this.
-
--   Use the list agents API and keep checking the status of the agent
-    that you want to delete till it shows Idle
--   Use the disable agent API to disable the agent, using the UUID
-    available from the list agent API
--   Stop the Go agent service, manually or through a script. This is to
-    prevent the agent from contacting the server again. You need to do
-    this within 5 seconds of the disable agent API
--   Use the delete agents API to delete the agent
-
-### Examples {.collapsed-heading onclick="toggleCollapse($(this));"}
-
--   We use curl, a command line tool for transferring files with URL
-    syntax, in the following examples. Of course, you can use any HTTP
-    client library.
--   We assume that the URL of the Go server is
-    **http://goserver.com:8153/** .
--   We assume security has been switched on, and that there is a user
-    named **jez** with the password **badger** .
-
-The configuration with agents like this:
+Go uses SCM commands to poll for changes. For example, to check for any
+new changes in SVN repository the following command is used:
 
 ``` {.code}
-        <cruise>
-        ....
-          <agents>
-            <agent hostname="agent-machine1" ipaddress="10.38.10.7" uuid="e4d86ae7-7b7d-4bb9-9b3e-876c06d01605" isDenied="true">
-              <resources>
-                <resource>twist</resource>
-                <resource>windows</resource>
-              </resources>
-            </agent>
-            <agent hostname="agent-machine2" ipaddress="10.2.12.26" uuid="bf0e5682-51ad-4183-8776-b13491cf2f59">
-              <resources>
-                <resource>ec2</resource>
-              </resources>
-            </agent>
-            <agent hostname="agent-machine3" ipaddress="10.2.12.26" uuid="259f7a6b-f386-4d10-bee3-28997678c05c"/>
-            <agent hostname="agent-machine3" ipaddress="10.18.3.152" uuid="098d4904-0533-4160-8c92-077849cd52df" />
-            <agent hostname="agent-machine4" ipaddress="10.18.3.153" uuid="31aea908-717a-435c-ad04-96dcc8d941df" isDisabled="true">
-          </agents>
-        </cruise>
-        
+svn log --non-interactive --xml -v -r HEAD:'revision' 'repository-URL'
 ```
 
-If you want to get all agents' information
+The SCM command used by Go server can hang with no output. Invalid
+configuration, network issues, console input block are some of the
+causes for such a situation. Such scenarios cause pipeline scheduling
+delays and also lead to performance degradation
 
-``` {.code}
-curl -u jez:badger http://goserver.com:8153/go/api/agents
-```
+Such a scenario is notified to the users by a warning in Server Health;
+when clicked shows a message similar to the one below.
 
-If you want to enable agent on 'agent-machine1'
+![](resources/images/cruise/material_update_hung.png)
 
-``` {.code}
-curl -u jez:badger -d "" http://goserver.com:8153/go/api/agents/e4d86ae7-7b7d-4bb9-9b3e-876c06d01605/enable
-```
+### What can I do with the information {.collapsible-heading onclick="toggleCollapse($(this));"}
 
-If you want to disable agent on 'agent-machine2'
+When you see warning messages like the one above
 
-``` {.code}
-curl -u jez:badger -d "" http://goserver.com:8153/go/api/agents/bf0e5682-51ad-4183-8776-b13491cf2f59/disable
-```
+-   Identify the processes running as children of Go Server
+-   Determine the process that's hung. The extra information like URL:
+    "https://test@bitbucket.org/test/git\_repo.git" in the warning
+    information should help you with this.
+-   On linux system, you should see lines like these:
+-   Kill the process and all its children (the whole process tree).
+-   Ensure that the warning message goes away from Server Health.
 
-If you want to delete agent on 'agent-machine4'
+### Configuring warning time {.collapsible-heading onclick="toggleCollapse($(this));"}
 
-``` {.code}
-curl -u jez:badger -d "" http://goserver.com:8153/go/api/agents/31aea908-717a-435c-ad04-96dcc8d941df/delete
-```
+-   Go server waits for 15 minutes (of no output) before it warns user
+    about possible hung material update. User can modify this wait time
+    using a System Property: 'material.update.inactive.timeout'.
+-   On linux installations of Go server, add the following line to
+    /etc/default/go-server.
+
+    ``` {.code}
+    export GO_SERVER_SYSTEM_PROPERTIES='-Dmaterial.update.inactive.timeout=20'
+    ```
+
+    The above configuration sets the time that Go server uses to
+    determine if a material update is possibly hung, to 20 minutes.
+
+-   On Windows, add the following line in the
+    *[wrapper-properties.conf](installing_go_server.html)* file in the
+    config folder of the Go server installation where **x** is 1 more
+    than the highest number in *wrapper-server.conf* and
+    *wrapper-properties.conf* combined.
+
+    ``` {.code}
+    wrapper.java.additional.x='-Dmaterial.update.inactive.timeout=20'
+    ```
+
+    The above configuration sets the time that Go server uses to
+    determine if a material update is possibly hung, to 20 minutes.
 
 Your search did not match any help pages.
 
