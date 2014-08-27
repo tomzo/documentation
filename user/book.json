@@ -3,8 +3,8 @@
 
     "generator": "site",
 
-    "title": "Go Developer Documentation",
-    "description": "Documentation describing the development environment, technology stack and architecture of Go.",
+    "title": "Go User Documentation",
+    "description": "Help documentation for Go.",
 
     "github": null,
     "githubHost": "https://github.com/",
