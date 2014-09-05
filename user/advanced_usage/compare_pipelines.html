@@ -42,7 +42,7 @@
 
 
         
-    <div class="book" data-github="GoCD/design-documentation" data-level="3.11" data-basepath=".." data-revision="1409136595674">
+    <div class="book" data-github="GoCD/design-documentation" data-level="3.11" data-basepath=".." data-revision="1409917603508">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -1534,52 +1534,35 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_27">
+                    <section class="normal" id="section-gitbook_32">
                     
                         <h1 id="compare-builds">Compare Builds</h1>
-<p>Go allows you to compare any two builds of a pipeline and see exactly
-what changes happened between those two instances. The information in
-this view will include:</p>
+<p>Go allows you to compare any two builds of a pipeline and see exactly what changes happened between those two instances. The information in this view will include:</p>
 <ul>
 <li>Code checkins</li>
 <li>Upstream pipelines</li>
 <li>Story/defect numbers (when linked to a tracking tool)</li>
 </ul>
-<h3 id="accessing-pipeline-compare">Accessing Pipeline Compare</h3>
-<p>There are several locations from where the Pipeline Compare feature can
-be invoked. These include:</p>
+<h2 id="accessing-pipeline-compare">Accessing Pipeline Compare</h2>
+<p>There are several locations from where the Pipeline Compare feature can be invoked. These include:</p>
 <ul>
 <li>Pipelines Dashboard page (the &quot;Compare&quot; link in each pipeline)</li>
 <li>Environments page</li>
 <li>Stage Details page</li>
 <li>Stage History widget within the Stage Details page</li>
 </ul>
-<h3 id="understanding-the-pipeline-compare-screen">Understanding the Pipeline Compare Screen</h3>
-<p>The Pipeline Compare screen lets you compare any two instances of a
-pipeline. Every pipeline instance is associated with a set of changes;
-be it a source control modification or an upstream pipeline. Performing
-a compare lets you easily identify exactly what these changes were.</p>
-<p><img src="../resources/images/cruise/compare_changes.png" alt="Pipeline Compare -
-Changes"></p>
+<h2 id="understanding-the-pipeline-compare-screen">Understanding the Pipeline Compare Screen</h2>
+<p>The Pipeline Compare screen lets you compare any two instances of a pipeline. Every pipeline instance is associated with a set of changes; be it a source control modification or an upstream pipeline. Performing a compare lets you easily identify exactly what these changes were.</p>
+<p><img src="../resources/images/cruise/compare_changes.png" alt="PipelineCompare_Changes"></p>
 <ol>
-<li><strong>To/from search box:</strong> You can search for the appropriate pipeline
-instance using any of the following - pipeline label, check-in
-comment, person who checked in, upstream pipeline label and
-revision.</li>
-<li><strong>Upstream dependency changes:</strong> All the changes to upstream
-pipelines within the search range.</li>
-<li><strong>Changes to version control systems:</strong> All check-ins that went into
-dependent VCS materials within the search range.</li>
-<li><strong>Tracking tool integration:</strong> If you&#39;ve configured a <a href="../integration/go_integration.html#tracking_tool">tracking tool
-integration</a> for this pipeline or
-any upstream pipelines, check-in comments containing
-story/defect/ticket numbers would be hyperlinked to the appropriate
-tracking tool.</li>
+<li><strong>To/from search box:</strong> You can search for the appropriate pipeline instance using any of the following - pipeline label, check-in comment, person who checked in, upstream pipeline label and revision.</li>
+<li><strong>Upstream dependency changes:</strong> All the changes to upstream pipelines within the search range.</li>
+<li><strong>Changes to version control systems:</strong> All check-ins that went into dependent VCS materials within the search range.</li>
+<li><strong>Tracking tool integration:</strong> If you&#39;ve configured a <a href="../integration/go_integration.html#integration-with-bug-tracking-and-story-management-tools">tracking tool integration</a> for this pipeline or any upstream pipelines, check-in comments containing story/defect/ticket numbers would be hyperlinked to the appropriate tracking tool.</li>
 </ol>
-<h3 id="using-pipeline-history">Using Pipeline History</h3>
+<h2 id="using-pipeline-history">Using Pipeline History</h2>
 <p>You can also select a pipeline by browsing the pipeline history.</p>
-<p><img src="../resources/images/cruise/compare_timeline.png" alt="Pipeline Compare -
-Timeline"></p>
+<p><img src="../resources/images/cruise/compare_timeline.png" alt="PipelineCompare-Timeline"></p>
 <p>Steps to select a particular instance from the history:</p>
 <ol>
 <li>Click on the search box</li>
@@ -1590,7 +1573,6 @@ Timeline"></p>
 <ul>
 <li><a href="../integration/mingle_card_activity_gadget.html">Mingle card activity gadget</a></li>
 </ul>
-<p>© ThoughtWorks Studios, 2010</p>
 
                     
                     </section>

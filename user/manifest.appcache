@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Revision 1409136595675
+# Revision 1409917603509
 
 CACHE:
 faq/job_rerun.html
@@ -18,32 +18,32 @@ faq/ordering_of_pipelines.html
 faq/rm_deploy_to_environment.html
 faq/rm_what_is_deployed.html
 faq/stage_old_config.html
-faq/tester_what_has_changed.html
 faq/what_is_oauth.html
+faq/tester_what_has_changed.html
 faq/what_is_opensocial.html
 index.html
 advanced_usage/command_repository.html
-advanced_usage/compare_pipelines.html
-advanced_usage/fan_in.html
 advanced_usage/managing_a_build_cloud.html
-advanced_usage/notifications_page.html
-advanced_usage/one_click_backup.html
+advanced_usage/fan_in.html
 advanced_usage/package_material.html
 advanced_usage/properties.html
-advanced_usage/stage_duration_chart.html
-advanced_usage/trigger_with_options.html
+advanced_usage/one_click_backup.html
+advanced_usage/compare_pipelines.html
 api/Properties_API.html
+advanced_usage/trigger_with_options.html
 api/Agent_API.html
-api/Backup_API.html
 api/Configuration_API.html
 api/Feeds_API.html
+api/Backup_API.html
 api/Pipeline_API.html
-api/Artifacts_API.html
 api/Stages_API.html
+advanced_usage/notifications_page.html
+api/Artifacts_API.html
 api/command_repo_api.html
-api/go_api.html
 api/materials_api.html
+api/go_api.html
 api/users_api.html
+advanced_usage/stage_duration_chart.html
 configuration/dev_authorization.html
 configuration/admin_add_job.html
 configuration/admin_add_stage.html
@@ -59,14 +59,14 @@ configuration/admin_use_custom_pipeline_label.html
 configuration/admin_use_parameters_in_configuration.html
 configuration/agent_auto_register.html
 configuration/build_labelling.html
-configuration/configuration_reference.html
 configuration/delegating_group_administration.html
 configuration/delete_artifacts.html
+configuration/configuration_reference.html
 configuration/dev_authentication.html
 configuration/admin_add_material.html
 configuration/dev_choose_when_stage_runs.html
-configuration/dev_clean_up_when_cancel.html
 configuration/dev_conditional_task_execution.html
+configuration/dev_clean_up_when_cancel.html
 configuration/dev_notifications.html
 configuration/dev_upload_test_report.html
 configuration/job_timeout.html
@@ -110,8 +110,8 @@ navigations/agents_page.html
 navigations/environments_page.html
 navigations/job_details_page.html
 navigations/pipeline_activity_page.html
-navigations/server_details_page.html
 navigations/stage_details_page.html
+navigations/server_details_page.html
 navigations/value_stream_map.html
 release_history/whats_new_in_go.html
 gitbook/app.js
@@ -150,8 +150,8 @@ gitbook/jsrepl/sandbox.html
 gitbook/jsrepl/sandbox.js
 gitbook/print.css
 gitbook/style.css
-gitbook/plugins/gitbook-plugin-mathjax/plugin.js
 gitbook/plugins/gitbook-plugin-mixpanel/plugin.js
+gitbook/plugins/gitbook-plugin-mathjax/plugin.js
 
 NETWORK:
 *

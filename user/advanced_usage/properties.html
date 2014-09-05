@@ -42,7 +42,7 @@
 
 
         
-    <div class="book" data-github="GoCD/design-documentation" data-level="3.9" data-basepath=".." data-revision="1409136595674">
+    <div class="book" data-github="GoCD/design-documentation" data-level="3.9" data-basepath=".." data-revision="1409917603508">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -1534,69 +1534,43 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_33">
+                    <section class="normal" id="section-gitbook_30">
                     
                         <h1 id="properties">Properties</h1>
-<h3 id="introduction">Introduction</h3>
-<p>Properties provide a simple way of collecting metrics over time. Go sets
-some standard properties for you. You can also set properties yourself
-using the Go REST APIs (see <a href="../api/Properties_API.html">Properties API</a> for
-more information). Go also allows you to download the history of your
-job in a convenient CSV format, so that you can analyse the results in
-spreadsheets or scripts.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Properties provide a simple way of collecting metrics over time. Go sets some standard properties for you. You can also set properties yourself using the Go REST APIs (see <a href="../api/Properties_API.html">Properties API</a> for more information). Go also allows you to download the history of your job in a convenient CSV format, so that you can analyse the results in spreadsheets or scripts.</p>
 <p><img src="../resources/images/cruise/cruise_properties.png" alt=""></p>
-<h3 id="property-history">Property history</h3>
-<p>Go allows you to download the history of properties that you have
-defined. This history is available as a Comma Separated Values (CSV)
-file. You can import this file into a spreadsheet program to generate
-charts and diagnostics of your project.</p>
+<h2 id="property-history">Property history</h2>
+<p>Go allows you to download the history of properties that you have defined. This history is available as a Comma Separated Values (CSV) file. You can import this file into a spreadsheet program to generate charts and diagnostics of your project.</p>
 <p>You can of course access these resources through standard URLs:</p>
 <ul>
 <li><strong>CSV</strong> --
 <a href="http://[server]/go/properties/[pipelineName]/[pipelineLabel]/[stageName]/[stageCounter]/[job]/[propertyName" target="_blank">http://[server]/go/properties/[pipelineName]/[pipelineLabel]/[stageName]/[stageCounter]/[job]/[propertyName</a>]</li>
 </ul>
-<p>To open the property history in a spreadsheet application, you can click
-on the <strong>Export property history to spreadsheet (csv)</strong> link on the
-Properties tab of the job.</p>
-<p><img src="../resources/images/cruise/properties_export.png" alt="">
-<img src="../resources/images/cruise/properties-chart.png" alt=""></p>
-<h3 id="standard-properties">Standard Properties</h3>
+<p>To open the property history in a spreadsheet application, you can click on the <strong>Export property history to spreadsheet (csv)</strong> link on the Properties tab of the job.</p>
+<p><img src="../resources/images/cruise/properties_export.png" alt=""></p>
+<p><img src="../resources/images/cruise/properties-chart.png" alt=""></p>
+<h2 id="standard-properties">Standard Properties</h2>
 <p>The standard properties defined by Go are:</p>
 <ul>
 <li><strong>cruise_agent</strong> -- the agent that is running the job</li>
 <li><strong>cruise_job_duration</strong> -- total time to run the job</li>
 <li><strong>cruise_job_result</strong> -- one of &quot;passed&quot; or &quot;failed&quot;</li>
-<li><strong>cruise_job_id</strong> -- the name of the folder that the artifacts of
-the job was stored in under the artifact repository on server side
-(on earlier versions of Go).</li>
-<li><strong>cruise_pipeline_label</strong> -- same as the value of the environment
-variable GO_PIPELINE_LABEL</li>
-<li><strong>cruise_pipeline_counter</strong> -- same as the value of the
-environment variable GO_PIPELINE_COUNTER</li>
-<li><strong>cruise_stage_counter</strong> -- same as the value of the environment
-variable GO_STAGE_COUNTER</li>
-<li><strong>cruise_timestamp_01_scheduled</strong> -- time at which the job was
-scheduled</li>
-<li><strong>cruise_timestamp_02_assigned</strong> -- time at which the job was
-assigned to the agent</li>
-<li><strong>cruise_timestamp_03_preparing</strong> -- time at which the job
-entered the &quot;preparing&quot; state</li>
-<li><strong>cruise_timestamp_04_building</strong> -- time at which the job started
-building</li>
-<li><strong>cruise_timestamp_05_completing</strong> -- time at which the job
-entered the completing state</li>
-<li><strong>cruise_timestamp_06_completed</strong> -- time at which the job
-completed</li>
+<li><strong>cruise_job_id</strong> -- the name of the folder that the artifacts of the job was stored in under the artifact repository on server side (on earlier versions of Go).</li>
+<li><strong>cruise_pipeline_label</strong> -- same as the value of the environment variable GO_PIPELINE_LABEL</li>
+<li><strong>cruise_pipeline_counter</strong> -- same as the value of the environment variable GO_PIPELINE_COUNTER</li>
+<li><strong>cruise_stage_counter</strong> -- same as the value of the environment variable GO_STAGE_COUNTER</li>
+<li><strong>cruise_timestamp_01_scheduled</strong> -- time at which the job was scheduled</li>
+<li><strong>cruise_timestamp_02_assigned</strong> -- time at which the job was assigned to the agent</li>
+<li><strong>cruise_timestamp_03_preparing</strong> -- time at which the job entered the &quot;preparing&quot; state</li>
+<li><strong>cruise_timestamp_04_building</strong> -- time at which the job started building</li>
+<li><strong>cruise_timestamp_05_completing</strong> -- time at which the job entered the completing state</li>
+<li><strong>cruise_timestamp_06_completed</strong> -- time at which the job completed</li>
 </ul>
-<h3 id="generating-properties-from-artifacts">Generating Properties from Artifacts</h3>
-<p>Go allows you to generate properties from XML artifacts that you create
-during the build. This can be used to harvest statistics produced by
-coverage tools etc. By storing them as properties it becomes very easy
-to show the history and trends over time of these values.</p>
-<p>Note that the properties are generated on the agent side, so the src
-path is relative to the working directory of the pipeline on the agent.</p>
-<p>For example, to add support for the coverage tool &quot;Emma&quot;, you might do
-this:</p>
+<h2 id="generating-properties-from-artifacts">Generating Properties from Artifacts</h2>
+<p>Go allows you to generate properties from XML artifacts that you create during the build. This can be used to harvest statistics produced by coverage tools etc. By storing them as properties it becomes very easy to show the history and trends over time of these values.</p>
+<p>Note that the properties are generated on the agent side, so the src path is relative to the working directory of the pipeline on the agent.</p>
+<p>For example, to add support for the coverage tool &quot;Emma&quot;, you might do this:</p>
 <pre><code class="lang-{.code}">&lt;job&gt;  
   &lt;properties&gt;  
     &lt;property name=&quot;coverage.class&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&#39;class&#39;)]/@value, &#39;%&#39;)&quot; /&gt;  
@@ -1607,8 +1581,7 @@ this:</p>
 &lt;/job&gt;
 </code></pre>
 <h3 id="tests">Tests</h3>
-<p>If you define a tests artifact that contains the test reports, then Go
-will add some properties associated with the tests.</p>
+<p>If you define a tests artifact that contains the test reports, then Go will add some properties associated with the tests.</p>
 <ul>
 <li><strong>tests_failed_count</strong> -- number of failed tests</li>
 <li><strong>tests_ignored_count</strong> -- number of ignored tests</li>
@@ -1616,7 +1589,6 @@ will add some properties associated with the tests.</p>
 <li><strong>tests_total_count</strong> -- total number of tests</li>
 </ul>
 <p><img src="../resources/images/cruise/properties-tests.png" alt=""></p>
-<p>© ThoughtWorks Studios, 2010</p>
 
                     
                     </section>

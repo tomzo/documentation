@@ -40,7 +40,7 @@
 
 
         
-    <div class="book" data-github="GoCD/design-documentation" data-level="3.24" data-basepath=".." data-revision="1409136595674">
+    <div class="book" data-github="GoCD/design-documentation" data-level="3.24" data-basepath=".." data-revision="1409917603508">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -1535,96 +1535,48 @@
                     <section class="normal" id="section-gitbook_28">
                     
                         <h1 id="fan-in-dependency-management">Fan-in Dependency Management</h1>
-<p>Go supports fan-in dependency resolution for pipelines that are on auto
-trigger. Fan-in material resolution will ensure that a pipeline triggers
-only when all its upstream pipelines have triggered off the same version
-of an ancestor pipeline or material. This will be the case when you have
-multiple components building in separate pipelines which all have the
-same ancestor and you want downstream pipelines to all use the same
-version of the artifact from the ancestor pipeline.</p>
-<p>When you have non trivial pipeline dependency graphs, significant
-differences in pipeline execution times and automatic
-builds/deployments, you may typically run into the following issues</p>
+<p>Go supports fan-in dependency resolution for pipelines that are on auto trigger. Fan-in material resolution will ensure that a pipeline triggers only when all its upstream pipelines have triggered off the same version of an ancestor pipeline or material. This will be the case when you have multiple components building in separate pipelines which all have the same ancestor and you want downstream pipelines to all use the same version of the artifact from the ancestor pipeline.</p>
+<p>When you have non trivial pipeline dependency graphs, significant differences in pipeline execution times and automatic builds/deployments, you may typically run into the following issues</p>
 <ul>
-<li><strong>Wasted builds</strong> : Premature runs which do not have the right
-version of dependent components because one of the dependent
-pipelines was faster than the rest.</li>
-<li><strong>Inconsistent results</strong> : Your deployment that depends on multiple
-components may have incompatible versions of components because the
-build times of these components are different</li>
-<li><strong>Incorrect feedback</strong> : Your deployment to Production should happen
-only when it has successfully passed the UAT, Staging and Pre-Prod
-environments but it was triggered prematurely as soon as UAT went
-green.</li>
-<li><strong>Running code with the wrong tests</strong> : Your commit to SCM contains
-both code and tests written for the code. Your pipelines are modeled
-such that your acceptance or test pipeline runs after the build
-pipeline. Acceptance has to run with the right tests for the code
-but instead it triggers as soon as the commit goes through with the
-previous available version for tests.</li>
+<li><strong>Wasted builds</strong> : Premature runs which do not have the right version of dependent components because one of the dependent pipelines was faster than the rest.</li>
+<li><strong>Inconsistent results</strong> : Your deployment that depends on multiple components may have incompatible versions of components because the build times of these components are different</li>
+<li><strong>Incorrect feedback</strong> : Your deployment to Production should happen only when it has successfully passed the UAT, Staging and Pre-Prod environments but it was triggered prematurely as soon as UAT went green.</li>
+<li><strong>Running code with the wrong tests</strong> : Your commit to SCM contains both code and tests written for the code. Your pipelines are modeled such that your acceptance or test pipeline runs after the build pipeline. Acceptance has to run with the right tests for the code but instead it triggers as soon as the commit goes through with the previous available version for tests.</li>
 </ul>
-<p>Go helps solve all of the above problems</p>
-<p><strong>How to use fan-in</strong> :</p>
+<p>Go helps solve all of the above problems.</p>
+<h2 id="how-to-use-fan-in-">How to use fan-in:</h2>
 <ul>
-<li>In cases where your SCM material is used throughout the process you
-will need to define the same URL for the material throughout. This
-will let Go know that it is a shared material and Go will enforce
-fan-in wherever applicable. For example: code, tests, environment
-configuration are in <a href="http://svn.company.com/code" target="_blank">http://svn.company.com/code</a>,
-<a href="http://svn.company.com/tests" target="_blank">http://svn.company.com/tests</a>, and <a href="http://svn.company.com/config" target="_blank">http://svn.company.com/config</a>
-respectively. In this case ensure for pipelines that need these
-materials, the url is set to the same value. For example the
-pipelines Build, Acceptance and Deploy have the material url
-<a href="http://svn.company.com" target="_blank">http://svn.company.com</a></li>
-<li>Pipelines where fan-in dependency resolution is required will need
-to have trigger type set as auto</li>
+<li>In cases where your SCM material is used throughout the process you will need to define the same URL for the material throughout. This will let Go know that it is a shared material and Go will enforce fan-in wherever applicable. For example: code, tests, environment configuration are in <a href="http://svn.company.com/code" target="_blank">http://svn.company.com/code</a>, <a href="http://svn.company.com/tests" target="_blank">http://svn.company.com/tests</a>, and <a href="http://svn.company.com/config" target="_blank">http://svn.company.com/config</a> respectively. In this case ensure for pipelines that need these materials, the url is set to the same value. For example the pipelines Build, Acceptance and Deploy have the material url <a href="http://svn.company.com" target="_blank">http://svn.company.com</a></li>
+<li>Pipelines where fan-in dependency resolution is required will need to have trigger type set as auto</li>
 </ul>
-<h3 id="example-use-cases-for-fan-in-resolution">Example use cases for fan-in resolution</h3>
-<h4 id="creating-a-gate-to-production">Creating a gate to production</h4>
-<p>I want to push a build into a number of environments in parallel (Manual
-QA, UAT for business sign off and performance testing) so that all these
-activities happen at the same time. So we have a pipeline dependency
-model as shown below</p>
+<h2 id="example-use-cases-for-fan-in-resolution">Example use cases for fan-in resolution</h2>
+<h3 id="creating-a-gate-to-production">Creating a gate to production</h3>
+<p>I want to push a build into a number of environments in parallel (Manual QA, UAT for business sign off and performance testing) so that all these activities happen at the same time. So we have a pipeline dependency model as shown below</p>
 <p><img src="../resources/images/cruise/fanin_1_1.png" alt=""></p>
-<p>For the next step, when deploying to production, we have a pipeline that
-depends on all 3 of the above pipeline so that a build that has
-succeeded in all 3 environments is automatically pushed to production.
-This is shown below.</p>
+<p>For the next step, when deploying to production, we have a pipeline that depends on all 3 of the above pipeline so that a build that has succeeded in all 3 environments is automatically pushed to production. This is shown below.</p>
 <p><img src="../resources/images/cruise/fanin_1_2.png" alt=""></p>
 <p>Sequence of Events and Resolution</p>
 <ul>
 <li>A new build is generated.</li>
 <li>The build is pushed to QA, UAT and performance pipelines.</li>
-<li>Regardless of the time taken in each of these pipelines, Go will
-ensure that production is triggered only after all three pipelines
-go green with the same version of build. Production will use the
-right version of your build artifacts.</li>
+<li>Regardless of the time taken in each of these pipelines, Go will ensure that production is triggered only after all three pipelines go green with the same version of build. Production will use the right version of your build artifacts.</li>
 </ul>
 <p>How to configure:</p>
 <ul>
 <li>Production should have trigger type as auto.</li>
-<li>QA, UAT and Performance should have Build as a material. Trigger
-type for these pipelines can be either manual or auto.</li>
+<li>QA, UAT and Performance should have Build as a material. Trigger type for these pipelines can be either manual or auto.</li>
 </ul>
-<h4 id="picking-the-right-version-of-dependent-components">Picking the right version of dependent components</h4>
-<p>I have three component pipelines (C1, C2, C3) and a package pipeline
-that fetches their artifacts and creates a deploy package. Components C2
-and C3 depend on pipeline C1 and have it as a material. The pipeline for
-C2 builds quickly but C3 takes a while. So we have a pipeline dependency
-model as shown below</p>
+<h3 id="picking-the-right-version-of-dependent-components">Picking the right version of dependent components</h3>
+<p>I have three component pipelines (C1, C2, C3) and a package pipeline that fetches their artifacts and creates a deploy package. Components C2 and C3 depend on pipeline C1 and have it as a material. The pipeline for C2 builds quickly but C3 takes a while. So we have a pipeline dependency model as shown below</p>
 <p><img src="../resources/images/cruise/fanin_2_1.png" alt=""></p>
-<p>The package pipeline should not trigger as soon as C2 is done. It should
-trigger only if both C2 and C3 go green. Additionally Package should use
-the same version of C1 that was used by C2 and C3.</p>
+<p>The package pipeline should not trigger as soon as C2 is done. It should trigger only if both C2 and C3 go green. Additionally Package should use the same version of C1 that was used by C2 and C3.</p>
 <p>Sequence of Events and Resolution</p>
 <ul>
 <li>C1 is triggered on a change.</li>
 <li>C2 and C3 are triggered after C1 is successful.</li>
 <li>C2 builds quickly but C3 is still in Progress.</li>
-<li>Go resolves that C3 and C2 depend on a common ancestor C1. Hence Go
-will wait for C3 to finish.</li>
-<li>If C3 goes green, the Package pipeline will trigger. It will use the
-right versions of C1, C2 and C3.</li>
+<li>Go resolves that C3 and C2 depend on a common ancestor C1. Hence Go will wait for C3 to finish.</li>
+<li>If C3 goes green, the Package pipeline will trigger. It will use the right versions of C1, C2 and C3.</li>
 </ul>
 <p>How to configure:</p>
 <ul>
@@ -1632,66 +1584,42 @@ right versions of C1, C2 and C3.</li>
 <li>Add C2 and C3 as materials for pipeline Package.</li>
 <li>Package should have trigger type as auto</li>
 </ul>
-<h4 id="test-source-code-with-the-right-version-of-tests">Test source code with the right version of tests</h4>
-<p>You check-in code and tests as part of the same commit. The build
-pipeline compiles code and creates an artifact. The Acceptance pipeline
-fetches the build artifact and runs the tests that were written for the
-compiled code. Acceptance has to use the same tests committed with the
-code. So we have a pipeline dependency model as shown below</p>
+<h3 id="test-source-code-with-the-right-version-of-tests">Test source code with the right version of tests</h3>
+<p>You check-in code and tests as part of the same commit. The build pipeline compiles code and creates an artifact. The Acceptance pipeline fetches the build artifact and runs the tests that were written for the compiled code. Acceptance has to use the same tests committed with the code. So we have a pipeline dependency model as shown below</p>
 <p><img src="../resources/images/cruise/fanin_3_1.png" alt=""></p>
 <p>Sequence of Events and Resolution</p>
 <ul>
-<li>On committing the changes, the Build pipeline will trigger with the
-latest revision.</li>
-<li>Although Acceptance also has the same material dependency, Go will
-not trigger it immediately.</li>
+<li>On committing the changes, the Build pipeline will trigger with the latest revision.</li>
+<li>Although Acceptance also has the same material dependency, Go will not trigger it immediately.</li>
 <li>Build pipeline executes successfully.</li>
-<li>Acceptance will now trigger with the same version of the SCM and
-fetch the right build artifact from the Build pipeline.</li>
+<li>Acceptance will now trigger with the same version of the SCM and fetch the right build artifact from the Build pipeline.</li>
 </ul>
 <p>How to configure:</p>
 <ul>
-<li>Add the same SCM material to pipelines Build and Acceptance i.e the
-same URL.</li>
+<li>Add the same SCM material to pipelines Build and Acceptance i.e the same URL.</li>
 <li>Pipelines Build and Acceptance have trigger type as auto.</li>
 </ul>
-<h3 id="limitations">Limitations</h3>
+<h2 id="limitations">Limitations</h2>
 <ul>
-<li><p><strong>Fan-in and blacklist</strong> : If the pipelines contributing to the
-fan-in have blacklist in their material definitions, the target
-pipeline does not adhere to fan-in behavior.
-<img src="../resources/images/ignored_files.png" alt=""></p>
-<p>For example, refer to the scenario above. P1 and P2 are two
-pipelines which use the same mercurial (hg) repository, with two
-folders say &quot;p1&quot; and &quot;p2&quot;. P1 is configured with &quot;p2&quot; folder in the
-blacklist. Likewise P2 is configured with &quot;p1&quot; folder in the
-blacklist.</p>
-<p>The first run of P1 happens when a check-in happens in &quot;p1&quot; folder.
-The first run of P2 happens when there is a check-in to &quot;p2&quot;.</p>
-<p>In this scenario, P3, which is dependant on P1 and P2 does not
-trigger.</p>
+<li><p><strong>Fan-in and blacklist</strong> : If the pipelines contributing to the fan-in have blacklist in their material definitions, the target pipeline does not adhere to fan-in behavior.</p>
+<p><img src="../resources/images/ignored_files.png" alt=""></p>
+<p>For example, refer to the scenario above. P1 and P2 are two pipelines which use the same mercurial (hg) repository, with two folders say &quot;p1&quot; and &quot;p2&quot;. P1 is configured with &quot;p2&quot; folder in the blacklist. Likewise P2 is configured with &quot;p1&quot; folder in the blacklist.</p>
+<p>The first run of P1 happens when a check-in happens in &quot;p1&quot; folder. The first run of P2 happens when there is a check-in to &quot;p2&quot;.</p>
+<p>In this scenario, P3, which is dependant on P1 and P2 does not trigger.</p>
 </li>
 </ul>
-<h3 id="notes">Notes</h3>
+<h2 id="notes">Notes</h2>
 <ul>
-<li><p>Fan-in as a feature is enabled by default. In case you need
-pipelines to trigger with every version regardless of ancestor
-versions you can disable fan-in. To disable fan-in you will need to
-add a system property and restart the Go server. On linux add the
-following line to /etc/default/go-server</p>
+<li><p>Fan-in as a feature is enabled by default. In case you need pipelines to trigger with every version regardless of ancestor versions you can disable fan-in. To disable fan-in you will need to add a system property and restart the Go server. On linux add the following line to /etc/default/go-server</p>
 <pre><code class="lang-{.code}">export GO_SERVER_SYSTEM_PROPERTIES=&#39;-Dresolve.fanin.revisions=N&#39;
 </code></pre>
-<p>On windows, in the config folder of the Go server installation, edit
-the wrapper-server.conf file, and add an additional property with
-the value &#39;-Dresolve.fanin.revisions=N&#39;. For example:</p>
+<p>On windows, in the config folder of the Go server installation, edit the wrapper-server.conf file, and add an additional property with the value &#39;-Dresolve.fanin.revisions=N&#39;. For example:</p>
 <pre><code class="lang-{.code}">wrapper.java.additional.17=&#39;-Dresolve.fanin.revisions=N&#39;
 </code></pre>
 </li>
-<li><p>Go will apply fan-in dependency resolution for pipelines that have
-auto trigger type only.</p>
+<li><p>Go will apply fan-in dependency resolution for pipelines that have auto trigger type only.</p>
 </li>
 </ul>
-<p>© ThoughtWorks Studios, 2010</p>
 
                     
                     </section>

@@ -42,7 +42,7 @@
 
 
         
-    <div class="book" data-github="GoCD/design-documentation" data-level="3.20" data-basepath=".." data-revision="1409136595674">
+    <div class="book" data-github="GoCD/design-documentation" data-level="3.20" data-basepath=".." data-revision="1409917603508">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -1537,16 +1537,9 @@
                     <section class="normal" id="section-gitbook_26">
                     
                         <h1 id="command-repository">Command Repository</h1>
-<h3 id="introduction">Introduction</h3>
-<p>This feature is an enhancement to <a href="http://support.thoughtworks.com/entries/22873043-go-s-custom-command" target="_blank">Custom
-Commands</a>
-in Go. Rather than start from scratch with command name and arguments,
-you now have the option to look up a command from a repository of useful
-commands maintained by the Go team. The lookup provides a starting
-point, you may need to edit the arguments, specify a working directory
-etc. Once saved, the behaviour is the same as a manually entered custom
-command.</p>
-<h3 id="using-the-command-repository">Using the command repository</h3>
+<h2 id="introduction">Introduction</h2>
+<p>This feature is an enhancement to <a href="http://support.thoughtworks.com/entries/22873043-go-s-custom-command" target="_blank">Custom Commands</a> in Go. Rather than start from scratch with command name and arguments, you now have the option to look up a command from a repository of useful commands maintained by the Go team. The lookup provides a starting point, you may need to edit the arguments, specify a working directory etc. Once saved, the behaviour is the same as a manually entered custom command.</p>
+<h2 id="using-the-command-repository">Using the command repository</h2>
 <p>This feature can be used anywhere you need to specify a custom command.</p>
 <ul>
 <li><p>Add a new pipeline</p>
@@ -1558,18 +1551,14 @@ command.</p>
 <li>Add a new task to a job</li>
 <li>Edit a task</li>
 </ul>
+<blockquote>
 <p><strong>Custom commands and agents</strong></p>
-<p>Go does not check if the command that you have specified is available on
-the agents.</p>
-<p>Install the relevant command on all the agents where you want it to run.
-If it is not available on the default path, add it to the path in
-/etc/default/go-agent or equivalent. This requires an agent restart.</p>
-<p>Alternatively, create a symbolic link to the path to the executable from
-/bin or equivalent folder. This doesn&#39;t require an agent restart</p>
-<h4 id="args-style-commands">Args style commands</h4>
-<p>The older <a href="../configuration/configuration_reference.html#exec">args</a> style commands are
-not supported by this feature. Please convert them to the new syntax
-using the config xml editor ( <strong>Admin > Config XML</strong> ). For example:</p>
+<p>Go does not check if the command that you have specified is available on the agents.</p>
+<p>Install the relevant command on all the agents where you want it to run. If it is not available on the default path, add it to the path in /etc/default/go-agent or equivalent. This requires an agent restart.</p>
+<p>Alternatively, create a symbolic link to the path to the executable from /bin or equivalent folder. This doesn&#39;t require an agent restart</p>
+</blockquote>
+<h3 id="args-style-commands">Args style commands</h3>
+<p>The older <a href="../configuration/configuration_reference.html#-exec-">args</a> style commands are not supported by this feature. Please convert them to the new syntax using the config xml editor ( <strong>Admin > Config XML</strong> ). For example:</p>
 <pre><code class="lang-{.code}">&lt;exec command=&quot;touch&quot; args=&quot;a b c&quot;/&gt;
 </code></pre>
 <p>becomes</p>
@@ -1579,77 +1568,43 @@ using the config xml editor ( <strong>Admin > Config XML</strong> ). For example
   &lt;arg&gt;c&lt;/arg&gt;
 &lt;/exec&gt;
 </code></pre>
-<h3 id="bundled-repository">Bundled Repository</h3>
-<p>The default set of commands come from
-<a href="https://github.com/goteam/go-command-repo" target="_blank">https://github.com/goteam/go-command-repo</a>.
-This repository is maintained by the Go team. The Go server installer
-bundles a clone of this Git repository under
-<strong>\<server-install-root\>/db/command_repository/default</strong> . Future Go
-server upgrades will overwrite the contents of this directory with an up
-to date set of commands. Hence, please do not add your commands here.
-Instead, set up a <a href="../advanced_usage/command_repository.html#pvt-repo">private
-repository</a>.</p>
-<h4 id="pulling-updates">Pulling Updates</h4>
-<p>Go team will continue to add (and sometimes update) commands to the
-repository on GitHub. If you want to make these commands available to
-your Go server without waiting for a new release or without upgrading
-your Go server, you could git pull them into
-\<go-server-install-root\>/db/command_repository/default as desired.</p>
-<p><strong>Linux/Unix</strong></p>
-<p>Here is a simple crontab entry that you could add to Go service
-account&#39;s crontab to pull commands once a day.</p>
-<pre><code class="lang-{.code}">@daily cd &lt;go-server-install-root&gt;/db/command_repository/default;git pull &gt;&gt;/var/go/cronrun 2&gt;&amp;1
-</code></pre>
-<p>Caution: Don&#39;t pull as root/administrator. Use the Go service account.</p>
-<p><strong>Windows</strong></p>
-<p>On Windows, you could set up a scheduled task to run this script on a
-schedule.</p>
-<pre><code class="lang-{.code}">echo %date% %time% &gt;&gt;c:\pull-log.txt 2&gt;&amp;1
+<h2 id="bundled-repository">Bundled Repository</h2>
+<p>The default set of commands come from <a href="https://github.com/gocd/go-command-repo" target="_blank">https://github.com/gocd/go-command-repo</a>. This repository is maintained by the Go team. The Go server installer bundles a clone of this Git repository under <code>&lt;server-install-root&gt;/db/command_repository/default</code>. Every upgrade of Go Server will overwrite the contents of this directory with an up to date set of commands. Hence, please do not add your commands here. Instead, set up a <a href="../advanced_usage/command_repository.html#private-repository">private repository</a>.</p>
+<h3 id="pulling-updates">Pulling Updates</h3>
+<p>Go team will continue to add (and sometimes update) commands to the repository on GitHub. If you want to make these commands available to your Go server without waiting for a new release or without upgrading your Go server, you could git pull them into <code>&lt;go-server-install-root&gt;/db/command_repository/default</code> as desired.</p>
+<h4 id="linux-unix">Linux/Unix</h4>
+<p>Here is a simple cron tab entry that you could add to Go service account&#39;s cron tab to pull commands once a day.</p>
+<pre><code>@daily cd &lt; go-server-install-root &gt;/db/command_repository/default;git pull &gt;&gt;/var/go/cronrun 2&gt;&amp;1
+</code></pre><blockquote>
+<p><strong>Caution</strong>: Don&#39;t pull as root/administrator. Use the Go service account.</p>
+</blockquote>
+<h4 id="windows">Windows</h4>
+<p>On Windows, you could set up a scheduled task to run this script on a schedule.</p>
+<pre><code>echo %date% %time% &gt;&gt;c:\pull-log.txt 2&gt;&amp;1
 cd &quot;C:\Program Files (x86)\Go Server\db\command_repository\default&quot;
 git pull &gt;&gt;c:\pull-log.txt 2&gt;&amp;1
-</code></pre>
-<p>Go caches these commands with a refresh interval of 30 minutes so you
-may not see the results of a pull immediately in the lookup unless you
-hit the reload cache button under the command repository section on the
-server configuration admin page or by using the <a href="../api/command_repo_api.html">reload
-API</a>.</p>
+</code></pre><p>Go caches these commands with a refresh interval of 30 minutes so you may not see the results of a pull immediately in the lookup unless you hit the reload cache button under the command repository section on the server configuration admin page or by using the <a href="../api/command_repo_api.html">reload API</a>.</p>
 <h3 id="private-repository">Private Repository</h3>
-<p>If you want to add your own commands for look up, you should set up your
-own Git/Mercurial/Subversion/Perforce/TFS repository that your command
-authors can commit/check-in into.</p>
-<p>Make a clone/working copy available under
-<strong>\<go-server-install-root\>/db/command_repository/\<your-repo-name\></strong>
-. Symbolic links are not supported.</p>
-<p>Switch Go Server to this location</p>
-<p>To do this, go to <strong>Command Repository Management</strong> section of <strong>Server
-Configuration</strong> in <strong>Admin</strong> tab and change the <strong>default</strong> value</p>
+<p>If you want to add your own commands for look up, you should set up your own Git/Mercurial/Subversion/Perforce/TFS repository that your command authors can commit/check-in into.</p>
+<p>Make a clone/working copy available under <code>&lt;go-server-install-root&gt;/db/command_repository/&lt;your-repo-name&gt;</code>. Symbolic links are not supported. Then switch Go Server to this location. To do this, go to <strong>Command Repository Management</strong> section of <strong>Server Configuration</strong> in <strong>Admin</strong> tab and change the <strong>default</strong> value</p>
 <p><img src="../resources/images/cruise/cmd_repo_mgmt.png" alt=""></p>
-<p>From the Go server&#39;s point of view, the command repository is just a
-directory under which it recursively looks for valid command.xml files.
-Note that directory names starting with a dot will be ignored.</p>
-<p>Go will not lookup from the bundled repository if you switch to your own
-repository. You could choose to manually seed your private command
-repository with Go&#39;s bundled set of commands if you want to have them in
-addition to your own commands.</p>
-<h4 id="recommended-process">Recommended process</h4>
-<p>Command author pushes/checks-in command to corporate version control
-system</p>
-<p>Cron job on Go-server pulls/updates local repository/working copy in due
-course</p>
-<p>Go Server caches the commands to improve response time. In case of
-changes in the command repository, new command gets into the cache in
-one of the following ways:</p>
+<p>From the Go server&#39;s point of view, the command repository is just a directory under which it recursively looks for valid command.xml files. Note that directory names starting with a dot will be ignored.</p>
+<p>Go will not lookup from the bundled repository if you switch to your own repository. You could choose to manually seed your private command repository with Go&#39;s bundled set of commands if you want to have them in addition to your own commands.</p>
+<h3 id="recommended-process">Recommended process</h3>
 <ol>
-<li>The default cache invalidation interval of 30 mins kicks in and the
-cache gets refreshed</li>
+<li>Command author pushes/checks-in command to corporate version control system</li>
+<li>Cron job on Go-server pulls/updates local repository/working copy in due course</li>
+<li>Go Server caches the commands to improve response time. In case of changes in the command repository, new command gets into the cache in one of the following ways:<ol>
+<li>The default cache invalidation interval of 30 mins kicks in and the cache gets refreshed</li>
 <li>Go server admin clicks on the <strong>RELOAD CACHE</strong> button</li>
-<li>Go server admin uses the <a href="../api/command_repo_api.html"><strong>reload API</strong></a>
-through a cron job or otherwise to force a cache reload.</li>
+<li>Go server admin uses the <a href="../api/command_repo_api.html"><strong>reload API</strong></a> through a cron job or otherwise to force a cache reload.</li>
 </ol>
-<p>The commands in the command repository are not part of your Go Server
-config. They become part of your Go server config only after you
-(optionally edit and) save them.</p>
-<h3 id="command-syntax-and-lookup-logic">Command syntax and lookup logic</h3>
+</li>
+</ol>
+<blockquote>
+<p>The commands in the command repository are not part of your Go Server config. They become part of your Go server config only after you (optionally edit and) save them.</p>
+</blockquote>
+<h2 id="command-syntax-and-lookup-logic">Command syntax and lookup logic</h2>
 <p><img src="../resources/images/cruise/cmd_repo_curl.png" alt=""></p>
 <p>The above screenshot resulted from the command below:</p>
 <pre><code class="lang-{.code}">&lt;!--
@@ -1668,38 +1623,28 @@ moreinfo: http://curl.haxx.se/docs/manual.html
   &lt;arg&gt;http://targeturl&lt;/arg&gt;
 &lt;/exec&gt;
 </code></pre>
-<p>This is an example of valid command syntax. The command attribute is
-mandatory. No other attributes are valid. Zero or more arg child
-elements can be specified. No other child elements are allowed. One
-command file may only contain one command.</p>
-<p><strong>Please refer the
-<a href="https://github.com/goteam/go-command-repo/blob/master/README.md" target="_blank">README</a>
-for full command and documentation syntax.</strong></p>
-<p>When you lookup a command, the following logic is used to sort the
-resulting suggestions:</p>
+<p>This is an example of valid command syntax. The command attribute is mandatory. No other attributes are valid. Zero or more arg child elements can be specified. No other child elements are allowed. One command file may only contain one command.</p>
+<blockquote>
+<p><strong>Please refer the <a href="https://github.com/gocd/go-command-repo/blob/master/README.md" target="_blank">README</a> for full command and documentation syntax.</strong></p>
+</blockquote>
+<p>When you lookup a command, the following logic is used to sort the resulting suggestions:</p>
 <ol>
-<li>Exact matches of name in command documentation (or filename if name
-missing)</li>
-<li>Partial starts-with matches of name in command documentation (or
-filename if name missing)</li>
+<li>Exact matches of name in command documentation (or filename if name missing)</li>
+<li>Partial starts-with matches of name in command documentation (or filename if name missing)</li>
 <li>Exact matches of keywords in command documentation</li>
 </ol>
 <p>Within each category, the sorting is alphabetical.</p>
-<h3 id="contributing-commands">Contributing Commands</h3>
+<h2 id="contributing-commands">Contributing Commands</h2>
 <p>We welcome commands contributed by users. Simply,</p>
 <ol>
-<li><a href="https://help.github.com/articles/fork-a-repo" target="_blank">fork</a> this <a href="https://github.com/goteam/go-command-repo" target="_blank">GitHub
-repo</a></li>
+<li><a href="https://help.github.com/articles/fork-a-repo" target="_blank">fork</a> this <a href="https://github.com/gocd/go-command-repo" target="_blank">GitHub repo</a></li>
 <li>Clone it locally</li>
 <li>Commit and push your change</li>
-<li>Send us a <a href="https://help.github.com/articles/using-pull-requests" target="_blank">pull
-request</a></li>
+<li>Send us a <a href="https://help.github.com/articles/using-pull-requests" target="_blank">pull request</a></li>
 </ol>
 <p>Accepted commands will be bundled into the next release.</p>
-<h3 id="further-reading">Further Reading</h3>
-<p><a href="http://www.thoughtworks.com/insights/blog/use-gos-new-command-repository-lookup-your-config-scripts" target="_blank">Use it to lookup your config
-scripts</a></p>
-<p>© ThoughtWorks Studios, 2010</p>
+<h2 id="further-reading">Further Reading</h2>
+<p><a href="http://www.thoughtworks.com/insights/blog/use-gos-new-command-repository-lookup-your-config-scripts" target="_blank">Use it to lookup your config scripts</a></p>
 
                     
                     </section>
