@@ -42,7 +42,7 @@
 
 
         
-    <div class="book" data-github="GoCD/design-documentation" data-level="2.3" data-basepath=".." data-revision="1402375988762">
+    <div class="book" data-github="GoCD/design-documentation" data-level="2.3" data-basepath=".." data-revision="1409919090152">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -564,10 +564,10 @@
 </code></pre>
 <h4 id="step-2-bump-up-version-to-schema-version-72">Step 2: Bump up version to schema version 72</h4>
 <ul>
-<li>Edit ./config/config-server/resources/cruise-config.xsd to update the attribute <strong>schemaVersion</strong> value to <strong>72</strong><pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">xsd:attribute</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"schemaVersion"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"xsd:int"</span> <span class="hljs-attribute">use</span>=<span class="hljs-value">"required"</span> <span class="hljs-attribute">fixed</span>=<span class="hljs-value">"72"</span>/&gt;</span>
+<li>Edit <code>./config/config-server/resources/cruise-config.xsd</code> to update the attribute <strong>schemaVersion</strong> value to <strong>72</strong><pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">xsd:attribute</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"schemaVersion"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"xsd:int"</span> <span class="hljs-attribute">use</span>=<span class="hljs-value">"required"</span> <span class="hljs-attribute">fixed</span>=<span class="hljs-value">"72"</span>/&gt;</span>
 </code></pre>
 </li>
-<li>Edit com.thoughtworks.go.util.GoConstants and set <strong>CONFIG_SCHEMA_VERSION=72</strong><pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> CONFIG_SCHEMA_VERSION = <span class="hljs-number">72</span>;
+<li>Edit <code>com.thoughtworks.go.util.GoConstants</code> and set <strong>CONFIG_SCHEMA_VERSION=72</strong><pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> CONFIG_SCHEMA_VERSION = <span class="hljs-number">72</span>;
 </code></pre>
 </li>
 </ul>
@@ -591,7 +591,7 @@
 <span class="hljs-tag">&lt;/<span class="hljs-title">xsl:stylesheet</span>&gt;</span>
 </code></pre>
 <h3 id="2-3-2-testing-the-newly-added-migration">2.3.2 Testing the newly added migration</h3>
-<p>Configuration migration tests can be found in <em>com.thoughtworks.go.config.GoConfigMigrationIntegrationTest</em>. For example, a test to verify schema version 72 is written as follows.</p>
+<p>Configuration migration tests can be found in <code>com.thoughtworks.go.config.GoConfigMigrationIntegrationTest</code>. For example, a test to verify schema version 72 is written as follows.</p>
 <pre><code class="lang-java"><span class="hljs-annotation">@Test</span>
 <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">shouldRemoveLicenseSection_asPartOfMigration72</span>() <span class="hljs-keyword">throws</span> Exception {
     String licenseUser = <span class="hljs-string">"Go UAT ThoughtWorks"</span>;
