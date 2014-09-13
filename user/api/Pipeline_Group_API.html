@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>.. trigger a pipeline with a different revision of material | Go User Documentation</title>
+        <title>Pipeline Group API | Go User Documentation</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../configuration/dev_notifications.html" />
+    <link rel="next" href="../api/Pipeline_API.html" />
     
     
-    <link rel="prev" href="../navigations/Pipelines_Dashboard_page.html" />
+    <link rel="prev" href="../api/go_api.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="5.2" data-basepath=".." data-revision="1410589189494">
+    <div class="book"  data-level="11.1" data-basepath=".." data-revision="1410589189494">
     
 
 <div class="book-summary">
@@ -842,7 +842,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="5.2" data-path="advanced_usage/trigger_with_options.html">
+        <li class="chapter " data-level="5.2" data-path="advanced_usage/trigger_with_options.html">
             
                 
                     <a href="../advanced_usage/trigger_with_options.html">
@@ -1886,7 +1886,7 @@
                 
     
         
-        <li class="chapter " data-level="11.1" data-path="api/Pipeline_Group_API.html">
+        <li class="chapter active" data-level="11.1" data-path="api/Pipeline_Group_API.html">
             
                 
                     <a href="../api/Pipeline_Group_API.html">
@@ -2389,40 +2389,32 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_11">
+                    <section class="normal" id="section-gitbook_12">
                     
-                        <h1 id="trigger-with-a-different-revision-of-material">Trigger with a different revision of material</h1>
-<p>Go supports a Trigger with option that allows you to run the pipeline with a specific revision of the material(s).</p>
-<h2 id="trigger-with-options">Trigger with options</h2>
-<p><img src="../resources/images/cruise/trigger_with_options.png" alt="Trigger with options"></p>
-<h2 id="information">Information</h2>
-<p>The following information are displayed for the last 5 revisions. For an SCM materal, the following information is shown</p>
-<ul>
-<li>Revision hash or pipeline label</li>
-<li>Committer</li>
-<li>Check-in comment for the revision</li>
-<li>Check-in time of the revision</li>
-</ul>
-<p>For a pipeline materal, the pipeline label and the corresponding run time is shown</p>
-<h3 id="choosing-the-revision">Choosing the revision</h3>
-<p>You can choose one of the revisions and then click on Trigger Pipeline button.</p>
-<p>If you want to trigger with a revision other than the 5 that is displayed, you can specify information related to this in the text box provided. You can search for all or part of</p>
-<ul>
-<li>revision hash/pipeline label</li>
-<li>committer name</li>
-<li>check-in comment</li>
-</ul>
-<p>Go will find matches and display the same. One of the matches can be chosen and the build triggered.</p>
-<p><img src="../resources/images/cruise/trigger_with_options_search.png" alt="Trigger with options search"></p>
-<h3 id="environment-and-secure-variables">Environment and secure variables</h3>
-<p>If the pipeline has environment and/or secure variables configured, additional tabs will be displayed to allow you to override these values.</p>
-<p><img src="../resources/images/cruise/trigger_with_options_environment.png" alt="Trigger with options and environment variables"></p>
-<h4 id="also-see">Also see...</h4>
-<ul>
-<li><a href="../faq/deploy_a_specific_build_to_an_environment.html">Deploy a specific build to an environment</a></li>
-<li><a href="../navigations/Pipelines_Dashboard_page.html">Pipeline dashboard</a></li>
-<li><a href="../faq/ordering_of_pipelines.html">Ordering of pipelines</a></li>
-</ul>
+                        <h1 id="pipeline-group-api">Pipeline Group API</h1>
+<h2 id="introduction">Introduction</h2>
+<blockquote>
+<p>The Go API documented here is a work in progress. Future versions may change this API.</p>
+</blockquote>
+<h2 id="config-listing-api">Config listing API</h2>
+<table>
+<thead>
+<tr>
+<th>URL format</th>
+<th>HTTP Verb</th>
+<th>Data</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://[server]/go/api/config/pipeline_groups" target="_blank">http://[server]/go/api/config/pipeline_groups</a></td>
+<td>GET</td>
+<td>no parameters</td>
+<td>List all Pipeline Groups.</td>
+</tr>
+</tbody>
+</table>
 
                     
                     </section>
@@ -2433,10 +2425,10 @@
         </div>
 
         
-        <a href="../navigations/Pipelines_Dashboard_page.html" class="navigation navigation-prev " aria-label="Previous page: .. watch what&#39;s currently building"><i class="fa fa-angle-left"></i></a>
+        <a href="../api/go_api.html" class="navigation navigation-prev " aria-label="Previous page: Go API"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../configuration/dev_notifications.html" class="navigation navigation-next " aria-label="Next page: .. be notified when I break the build"><i class="fa fa-angle-right"></i></a>
+        <a href="../api/Pipeline_API.html" class="navigation navigation-next " aria-label="Next page: Pipeline API"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
