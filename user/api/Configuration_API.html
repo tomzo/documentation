@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="11.7" data-basepath=".." data-revision="1411449378672">
+    <div class="book"  data-level="11.7" data-basepath=".." data-revision="1411466296389">
     
 
 <div class="book-summary">
@@ -2411,10 +2411,92 @@
 </code></pre><p>or</p>
 <pre><code>curl -u admin:badger http://goserver.com:8153/go/api/admin/config/current.xml
 </code></pre><p>can be invoked to fetch current/latest-version of config.</p>
-<h2 id="config-repository">Config repository</h2>
-<h3 id="modification-listing-api">Modification listing API</h3>
-<h3 id="diff-api">Diff API</h3>
-<h2 id="adding-a-new-pipeline">Adding a new pipeline</h2>
+<h2 id="config-repository-modification-listing-api">Config repository Modification listing API</h2>
+<p>This API allows you to list Config repository modifications in JSON format. This API is built primarily to aid rendering of Config repository page. Hence only the information required for that is exposed.</p>
+<table>
+<thead>
+<tr>
+<th>URL format</th>
+<th>HTTP Verb</th>
+<th>Data</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://[server]/go/api/config/revisions" target="_blank">http://[server]/go/api/config/revisions</a></td>
+<td>GET</td>
+<td>no parameters</td>
+<td>List Config Repo modifications.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>We use curl, a command line tool to demonstrate the use of the API, in the following examples. Of course, you can use any HTTP client library.</li>
+<li>We assume that the URL of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
+<li>We assume security has been switched on, and that there is a user named <strong>admin</strong> with the password <strong>badger</strong> .</li>
+</ul>
+<p>The following command produces output specified below:</p>
+<pre><code>curl -u admin:badger http://goserver.com:8153/go/api/config/revisions
+</code></pre><pre><code class="lang-json">[
+  {
+    "<span class="hljs-attribute">md5</span>": <span class="hljs-value"><span class="hljs-string">"26fae11e99091996dc293651dd205221"</span></span>,
+    "<span class="hljs-attribute">commitSHA</span>": <span class="hljs-value"><span class="hljs-string">"238d2081ca5fde32440c4c1da6c6f95267196162"</span></span>,
+    "<span class="hljs-attribute">username</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
+    "<span class="hljs-attribute">goEdition</span>": <span class="hljs-value"><span class="hljs-string">"OpenSource"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-number">1411456839850</span></span>,
+    "<span class="hljs-attribute">schemaVersion</span>": <span class="hljs-value"><span class="hljs-number">74</span></span>,
+    "<span class="hljs-attribute">goVersion</span>": <span class="hljs-value"><span class="hljs-string">"N\/A"</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">md5</span>": <span class="hljs-value"><span class="hljs-string">"24ab103b1f7c730709d0bfa188ce80c8"</span></span>,
+    "<span class="hljs-attribute">commitSHA</span>": <span class="hljs-value"><span class="hljs-string">"59fcc29a3385b17795c7b2ac2c2f6dd7cb9421bd"</span></span>,
+    "<span class="hljs-attribute">username</span>": <span class="hljs-value"><span class="hljs-string">"agent_0794793b-5c1a-443f-b860-df480986586b_192.168.1.12_unknowne4ce8f40e2ca"</span></span>,
+    "<span class="hljs-attribute">goEdition</span>": <span class="hljs-value"><span class="hljs-string">"OpenSource"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-number">1411456761631</span></span>,
+    "<span class="hljs-attribute">schemaVersion</span>": <span class="hljs-value"><span class="hljs-number">74</span></span>,
+    "<span class="hljs-attribute">goVersion</span>": <span class="hljs-value"><span class="hljs-string">"N\/A"</span>
+  </span>}
+]
+</code></pre>
+<h2 id="config-repository-modification-diff-api">Config repository Modification Diff API</h2>
+<p>This API allows you to get diff between 2 modifications in Config Repo in JSON format. This API is built primarily to aid rendering of Config repository page. Hence only the information required for that is exposed.</p>
+<table>
+<thead>
+<tr>
+<th>URL format</th>
+<th>HTTP Verb</th>
+<th>Data</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://[server]/go/api/config/diff/[from-SHA]/[to-SHA" target="_blank">http://[server]/go/api/config/diff/[from-SHA]/[to-SHA</a>]</td>
+<td>GET</td>
+<td>no parameters</td>
+<td>Diff between 2 Config Repo modifications.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>We use curl, a command line tool to demonstrate the use of the API, in the following examples. Of course, you can use any HTTP client library.</li>
+<li>We assume that the URL of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
+<li>We assume security has been switched on, and that there is a user named <strong>admin</strong> with the password <strong>badger</strong> .</li>
+</ul>
+<p>The following command produces output specified below:</p>
+<pre><code>curl -u admin:badger http://goserver.com:8153/go/config/diff/238d2081ca5fde32440c4c1da6c6f95267196162/59fcc29a3385b17795c7b2ac2c2f6dd7cb9421bd
+</code></pre><pre><code>@@ -55,7 +55,7 @@
+   &lt;/pipelines&gt;
+   &lt;agents&gt;
+     &lt;agent hostname=&quot;blrstdcrspair02&quot; ipaddress=&quot;10.4.7.202&quot; uuid=&quot;f6a76eaa-96ac-43a2-8255-7c898236ba22&quot; /&gt;
+-    &lt;agent hostname=&quot;unknowne4ce8f40e2ca&quot; ipaddress=&quot;127.0.0.1&quot; uuid=&quot;0794793b-5c1a-443f-b860-df480986586b&quot; /&gt;
++    &lt;agent hostname=&quot;unknowne4ce8f40e2ca&quot; ipaddress=&quot;192.168.1.12&quot; uuid=&quot;0794793b-5c1a-443f-b860-df480986586b&quot; /&gt;
+   &lt;/agents&gt;
+ &lt;/cruise&gt;
+</code></pre><h2 id="adding-a-new-pipeline">Adding a new pipeline</h2>
 <p>To add a pipeline, you perform a POST to the URL <a href="http://[server]/go/tab/admin/pipelines/[pipeline\_name].json" target="_blank">http://[server]/go/tab/admin/pipelines/[pipeline\_name].json</a> where pipeline_name is the name of the pipeline that you wish to create. Creating a pipeline supports the following parameters:</p>
 <p>For example, suppose you have switched on security and the username and the password are &#39;my_user&#39; and &#39;my_password&#39;. If you want to create a new pipeline named &#39;mypipeline&#39;, which uses an svn repository without username and password, and the location of repository is &#39;<a href="http://http://yoursvnrepository/trunk" target="_blank">http://http://yoursvnrepository/trunk</a>&#39;. The command should be:</p>
 <pre><code>curl -u admin:badger -d &quot;url=http://yoursvnrepository/trunk&quot; http://goserver.com:8153/go/tab/admin/pipelines/mypipeline.json

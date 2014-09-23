@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="11.5" data-basepath=".." data-revision="1411449378672">
+    <div class="book"  data-level="11.5" data-basepath=".." data-revision="1411466296389">
     
 
 <div class="book-summary">
@@ -2559,6 +2559,7 @@
 </code></pre><p>If you want to delete agent on &#39;agent-machine4&#39;:</p>
 <pre><code>curl -u admin:badger -X POST http://goserver.com:8153/go/api/agents/31aea908-717a-435c-ad04-96dcc8d941df/delete
 </code></pre><h2 id="agent-job-run-history">Agent Job Run History</h2>
+<p>This API lists Job instances run by an Agent in JSON format. API gives 10 instances at a time, sorted in reverse order. Supports pagination using offset which tells the API how many instances to skip. This API is built primarily to aid rendering Agent Job run history page. Hence the information required for that is exposed.</p>
 <table>
 <thead>
 <tr>
@@ -2577,6 +2578,148 @@
 </tr>
 </tbody>
 </table>
+<p><strong>Note:</strong> You can get Agent&#39;s UUID from Agent listing API or Job History API.</p>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>We use curl, a command line tool to demonstrate the use of the API, in the following examples. Of course, you can use any HTTP client library.</li>
+<li>We assume that the URL of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
+<li>We assume security has been switched on, and that there is a user named <strong>admin</strong> with the password <strong>badger</strong> .</li>
+</ul>
+<p>Assuming the pipeline configuration looks like:</p>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">"first"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"foo"</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">"foo-${COUNT}"</span> <span class="hljs-attribute">isLocked</span>=<span class="hljs-value">"true"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">hg</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">"http://10.22.12.2:8000"</span> <span class="hljs-attribute">materialName</span>=<span class="hljs-value">"hg_material"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"DEV"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UnitTest"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">"all-UAT"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UATTest"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UAT"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">exec</span> <span class="hljs-attribute">command</span>=<span class="hljs-value">"sleep"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">arg</span>&gt;</span>10000<span class="hljs-tag">&lt;/<span class="hljs-title">arg</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">runif</span> <span class="hljs-attribute">status</span>=<span class="hljs-value">"passed"</span> /&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-title">exec</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"target"</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">"pkg/foo.war"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">pipelines</span>&gt;</span>
+</code></pre>
+<p>The following command produces output specified below:</p>
+<pre><code>curl -u admin:badger http://goserver.com:8153/go/api/agents/0794793b-5c1a-443f-b860-df480986586b/job_run_history/0
+</code></pre><pre><code class="lang-json">{
+  "<span class="hljs-attribute">jobs</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">agent_uuid</span>": <span class="hljs-value"><span class="hljs-string">"0794793b-5c1a-443f-b860-df480986586b"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"UnitTest"</span></span>,
+      "<span class="hljs-attribute">job_state_transitions</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456876262</span></span>,
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">13</span></span>,
+          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Scheduled"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456881401</span></span>,
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">14</span></span>,
+          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Assigned"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456891415</span></span>,
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Preparing"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456892853</span></span>,
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Building"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456893094</span></span>,
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">17</span></span>,
+          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Completing"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456893135</span></span>,
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Completed"</span>
+        </span>}
+      ]</span>,
+      "<span class="hljs-attribute">scheduled_date</span>": <span class="hljs-value"><span class="hljs-number">1411456876262</span></span>,
+      "<span class="hljs-attribute">pipeline_counter</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      "<span class="hljs-attribute">rerun</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+      "<span class="hljs-attribute">pipeline_name</span>": <span class="hljs-value"><span class="hljs-string">"foo"</span></span>,
+      "<span class="hljs-attribute">result</span>": <span class="hljs-value"><span class="hljs-string">"Failed"</span></span>,
+      "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Completed"</span></span>,
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+      "<span class="hljs-attribute">stage_counter</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+      "<span class="hljs-attribute">stage_name</span>": <span class="hljs-value"><span class="hljs-string">"DEV"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">agent_uuid</span>": <span class="hljs-value"><span class="hljs-string">"0794793b-5c1a-443f-b860-df480986586b"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"UnitTest"</span></span>,
+      "<span class="hljs-attribute">job_state_transitions</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456676119</span></span>,
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Scheduled"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456757905</span></span>,
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Assigned"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456761645</span></span>,
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Preparing"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456762696</span></span>,
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Building"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456762889</span></span>,
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Completing"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456762955</span></span>,
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Completed"</span>
+        </span>}
+      ]</span>,
+      "<span class="hljs-attribute">scheduled_date</span>": <span class="hljs-value"><span class="hljs-number">1411456676119</span></span>,
+      "<span class="hljs-attribute">pipeline_counter</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">rerun</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+      "<span class="hljs-attribute">pipeline_name</span>": <span class="hljs-value"><span class="hljs-string">"foo"</span></span>,
+      "<span class="hljs-attribute">result</span>": <span class="hljs-value"><span class="hljs-string">"Passed"</span></span>,
+      "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Completed"</span></span>,
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">stage_counter</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+      "<span class="hljs-attribute">stage_name</span>": <span class="hljs-value"><span class="hljs-string">"DEV"</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">pagination</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">offset</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">page_size</span>": <span class="hljs-value"><span class="hljs-number">10</span>
+  </span>}
+</span>}
+</code></pre>
 
                     
                     </section>
