@@ -31,7 +31,7 @@
 
 
         
-    <div class="book"  data-level="14.3" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="14.3" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2390,69 +2390,34 @@
                     <section class="normal" id="section-gitbook_62">
                     
                         <h1 id="tfs-material-configuration">TFS Material configuration</h1>
-<p>You can use TFS SCM as a material for your pipeline. Go server and agent
-uses <a href="http://www.microsoft.com/en-us/download/details.aspx?id=22616" target="_blank">TFS Java SDK
-v10</a> by
-default. The TFS SDK is packaged with Go; no additional configuration is
-required.</p>
+<p>You can use TFS SCM as a material for your pipeline. Go server and agent uses <a href="http://www.microsoft.com/en-us/download/details.aspx?id=22616" target="_blank">TFS Java SDK v10</a> by default. The TFS SDK is packaged with Go; no additional configuration is required.</p>
 <p>You will need to configure the following to add a TFS material:</p>
 <ul>
-<li>Material Name: An optional name for the material. This name can be
-used to set the TFS revision in the pipeline label.</li>
-<li>URL: Set the url for the TFS collection. Ex:
-<a href="http://41.42.43.44:8080/tfs/DefaultCollection" target="_blank">http://41.42.43.44:8080/tfs/DefaultCollection</a></li>
-<li>Domain: Domain name for TFS authentication credentials. Should be
-domain for the TFS account. Ex: corporate_thoughtworks</li>
-<li>Username: The user has to be a collection administrator for the TFS
-collection used in URL.</li>
+<li>Material Name: An optional name for the material. This name can be used to set the TFS revision in the pipeline label.</li>
+<li>URL: Set the url for the TFS collection. Ex: <a href="http://41.42.43.44:8080/tfs/DefaultCollection" target="_blank">http://41.42.43.44:8080/tfs/DefaultCollection</a></li>
+<li>Domain: Domain name for TFS authentication credentials. Should be domain for the TFS account. Ex: corporate_thoughtworks</li>
+<li>Username: The user has to be a collection administrator for the TFS collection used in URL.</li>
 <li>Password: Provide the password for the TFS account</li>
-<li>Project Path: Enter the project path within the collection. You can
-specify paths of sub folders to create materials for each component.
-Ex: $/test/component or $/my_application</li>
-<li>Check connection: You can use check connection to verify the TFS
-material configuration</li>
+<li>Project Path: Enter the project path within the collection. You can specify paths of sub folders to create materials for each component. Ex: $/test/component or $/my_application</li>
+<li>Check connection: You can use check connection to verify the TFS material configuration</li>
 </ul>
-<p>Notes:</p>
+<h5 id="notes">Notes:</h5>
 <ul>
-<li>Go will map TFS projects to destination folders within the Go agent
-installation directories. You can identify mappings by looking at
-the destination folders.</li>
-<li>In this release, Go does not delete any workspace it has created.
-Workspace names are generated internally.</li>
-<li>If possible, create a new user account on TFS which will be used for
-creating TFS materials in Go. You can use this account to easily
-identify TFS workspaces that Go created on the server and agents.</li>
-<li>If you are using the cross platform command line client, you cannot
-run the Go server and Go agent as a service on the local system
-account. You will need to run the service with a user account which
-has accepted the eula for the client.</li>
-<li>If at any point, you need to change the go server installation to a
-different location or machine, you will need to manually delete the
-old tfs mappings at the old Go server location.</li>
+<li>Go will map TFS projects to destination folders within the Go agent installation directories. You can identify mappings by looking at the destination folders.</li>
+<li>In this release, Go does not delete any workspace it has created. Workspace names are generated internally.</li>
+<li>If possible, create a new user account on TFS which will be used for creating TFS materials in Go. You can use this account to easily identify TFS workspaces that Go created on the server and agents.</li>
+<li>If you are using the cross platform command line client, you cannot run the Go server and Go agent as a service on the local system account. You will need to run the service with a user account which has accepted the eula for the client.</li>
+<li>If at any point, you need to change the go server installation to a different location or machine, you will need to manually delete the old tfs mappings at the old Go server location.</li>
 </ul>
 <h3 id="known-caveats">Known Caveats</h3>
 <ul>
-<li>If TFS server is accessed using HTTPS and the SSL certificate is an
-untrusted certificate then the certificate must be added to the
-trust store of the Java installation used to launch the Go server
-and agents. Untrusted certificate will not be trusted by default Go
-server and agents.</li>
-<li>During the TFS checkout process, if one of the file paths exceeds
-259 characters - checkout will fail.So care should be taken when
-specifying the destination directory so that the path limit is not
-exceeded. Go agent installation directory also plays a part in both
-cases where destination directory is specified and when its not.</li>
-<li>On all the agents prior to checkout from TFS, entire mapped
-directory is cleaned and -all option is used for checkout. As a
-result there is increased load on TFS server and network bandwidth
-consumption is high during the process. This is an issue that will
-be addressed in subsequent releases.</li>
+<li>If TFS server is accessed using HTTPS and the SSL certificate is an untrusted certificate then the certificate must be added to the trust store of the Java installation used to launch the Go server and agents. Untrusted certificate will not be trusted by default Go server and agents.</li>
+<li>During the TFS checkout process, if one of the file paths exceeds 259 characters - checkout will fail.So care should be taken when specifying the destination directory so that the path limit is not exceeded. Go agent installation directory also plays a part in both cases where destination directory is specified and when its not.</li>
+<li>On all the agents prior to checkout from TFS, entire mapped directory is cleaned and -all option is used for checkout. As a result there is increased load on TFS server and network bandwidth consumption is high during the process. This is an issue that will be addressed in subsequent releases.</li>
 <li>Kerberos support for TFS authentication has not been verified.</li>
 <li>TFS 2011 support has not been verified.</li>
-<li>Currently, Go always does a tfs get to retrieve the latest changes
-on the agents.</li>
+<li>Currently, Go always does a tfs get to retrieve the latest changes on the agents.</li>
 </ul>
-<p>© ThoughtWorks Studios, 2010</p>
 
                     
                     </section>

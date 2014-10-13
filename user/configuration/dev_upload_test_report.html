@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="8.24" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="8.24" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2392,21 +2392,11 @@
                     <section class="normal" id="section-gitbook_50">
                     
                         <h1 id="publishing-artifacts">Publishing artifacts</h1>
-<p>When executing a job on an agent there are often artifacts created that
-we need to keep around. For example, JUnit creates xml reports that Go
-is able to parse in order to help you <a href="dev_understand_why_build_broken.html">understand why the build is
-broken</a>. You can use Go with any
-XUnit style xml reports. Or you might create a flash video of your UI
-tests that we want displayed in Go. You can upload any html file from
-your build and view it in Go.</p>
-<p>To publish artifacts you add a an
-<a href="configuration_reference.html#artifact">\<artifact\></a> to the job
-configuration. More information can be found on the <a href="../configuration/managing_artifacts_and_reports.html">Managing artifacts
-and reports</a> page.</p>
-<h3 id="example-usages">Example usages</h3>
-<h4 id="uploading-junit-xml-reports">Uploading JUnit xml reports</h4>
-<p>We are going to assume that the JUnit test reports are being placed in
-the &quot;target/reports&quot; folder.</p>
+<p>When executing a job on an agent there are often artifacts created that we need to keep around. For example, JUnit creates xml reports that Go is able to parse in order to help you <a href="../faq/dev_understand_why_build_broken.html">understand why the build is broken</a>. You can use Go with any XUnit style xml reports. Or you might create a flash video of your UI tests that we want displayed in Go. You can upload any html file from your build and view it in Go.</p>
+<p>To publish artifacts you add a an <a href="configuration_reference.html#-artifact-">&lt; artifact &gt;</a> to the job configuration. More information can be found on the <a href="managing_artifacts_and_reports.html">Managing artifacts and reports</a> page.</p>
+<h2 id="example-usages">Example usages</h2>
+<h3 id="uploading-junit-xml-reports">Uploading JUnit xml reports</h3>
+<p>We are going to assume that the JUnit test reports are being placed in the &quot;target/reports&quot; folder.</p>
 <p>Click on the <strong>Administration</strong> tab</p>
 <p><img src="../resources/images/cruise/topnav_admin.png" alt=""></p>
 <p>Click on your pipeline</p>
@@ -2415,14 +2405,12 @@ the &quot;target/reports&quot; folder.</p>
 <ul>
 <li>Click on the job name to edit job config</li>
 <li><img src="../resources/images/cruise/dev/upload_test_reports/3_click_edit_job.png" alt=""></li>
-<li>Add the source of the test artifact. For tests, choose the type of
-artifact as Test artifact</li>
+<li>Add the source of the test artifact. For tests, choose the type of artifact as Test artifact</li>
 <li><img src="../resources/images/cruise/dev/upload_test_reports/4_add_test_artifacts_tag.png" alt=""></li>
 <li>Click &quot;Save&quot;</li>
 </ul>
-<h4 id="uploading-a-flash-video-and-displaying-it-as-a-sub-tab">Uploading a flash video and displaying it as a sub-tab</h4>
-<p>We are going to assume that the flash file, and the html file
-referencing it, are being created in the &quot;target/reports&quot; folder.</p>
+<h3 id="uploading-a-flash-video-and-displaying-it-as-a-sub-tab">Uploading a flash video and displaying it as a sub-tab</h3>
+<p>We are going to assume that the flash file, and the html file referencing it, are being created in the &quot;target/reports&quot; folder.</p>
 <p>Click on the <a href="../navigations/administration_page.html">Adminstration</a> tab</p>
 <p><img src="../resources/images/cruise/topnav_admin.png" alt=""></p>
 <p>Click on your pipeline</p>
@@ -2431,20 +2419,13 @@ referencing it, are being created in the &quot;target/reports&quot; folder.</p>
 <ul>
 <li>Click on the job name to edit the job config</li>
 <li><img src="../resources/images/cruise/dev/upload_test_reports/3_click_edit_job.png" alt=""></li>
-<li>Navigate to the &quot;Artifacts&quot;. Add the source of the artifact. Choose
-the type of artifact as Build artifact. This will copy all files
-from the &quot;target/reports&quot; folder on the agent to the &quot;Recording&quot;
-folder on Go server</li>
+<li>Navigate to the &quot;Artifacts&quot;. Add the source of the artifact. Choose the type of artifact as Build artifact. This will copy all files from the &quot;target/reports&quot; folder on the agent to the &quot;Recording&quot; folder on Go server</li>
 <li><img src="../resources/images/cruise/dev/upload_test_reports/7_add_artifact_section.png" alt=""></li>
-<li>Navigate to &quot;Custom Tabs&quot;. Add the tab name and the source of the
-html file. This will create a tab called &quot;Recording&quot; that shows the
-html page found at &quot;recording/twist-recording.html&quot; on Go server.</li>
+<li>Navigate to &quot;Custom Tabs&quot;. Add the tab name and the source of the html file. This will create a tab called &quot;Recording&quot; that shows the html page found at &quot;recording/twist-recording.html&quot; on Go server.</li>
 <li><img src="../resources/images/cruise/dev/upload_test_reports/8_add_tab_section.png" alt=""></li>
 <li>Click &quot;Save&quot;</li>
-<li><a href="../faq/dev_see_artifact_as_tab.html">Watch the flash video as a sub-tab on the Job Details
-page</a></li>
+<li><a href="../faq/dev_see_artifact_as_tab.html">Watch the flash video as a sub-tab on the Job Details page</a></li>
 </ul>
-<p>© ThoughtWorks Studios, 2010</p>
 
                     
                     </section>

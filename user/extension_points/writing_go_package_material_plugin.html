@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="12.3" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="12.3" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2392,20 +2392,9 @@
                     <section class="normal" id="section-gitbook_67">
                     
                         <h1 id="writing-a-package-material-plugin">Writing a package material plugin</h1>
-<h3 id="introduction">Introduction</h3>
-<p>A package repository typically holds a set of packages, each of which
-can have multiple versions. Package repository material allows Go to
-trigger a pipeline(s) when a newer version of a package is published. Go
-bundles <a href="yum_repository_poller.html">yum-repo-poller plugin</a> by default,
-this plugin can communicate with a yum repository. The following
-sections talk about how to write a plugin which can communicate with
-other type of repositories.</p>
-<p>The starting point for the plugin author while writing <a href="../advanced_usage/package_material.html">package
-material</a> plugin is to implement the
-PackageMaterialProvider interface. The implementation of
-PackageMaterialProvider interface is responsible for providing a
-configuration provider (say SampleRepositoryConfiguration) and a
-repository poller (say SampleRepositoryPoller) for the package.</p>
+<h2 id="introduction">Introduction</h2>
+<p>A package repository typically holds a set of packages, each of which can have multiple versions. Package repository material allows Go to trigger a pipeline(s) when a newer version of a package is published. Go bundles <a href="yum_repository_poller.html">yum-repo-poller plugin</a> by default, this plugin can communicate with a yum repository. The following sections talk about how to write a plugin which can communicate with other type of repositories.</p>
+<p>The starting point for the plugin author while writing <a href="../advanced_usage/package_material.html">package material</a> plugin is to implement the PackageMaterialProvider interface. The implementation of PackageMaterialProvider interface is responsible for providing a configuration provider (say SampleRepositoryConfiguration) and a repository poller (say SampleRepositoryPoller) for the package.</p>
 <pre><code class="lang-{.code}">    public class SamplePackageRepoMaterial implements PackageMaterialProvider {
         public SampleRepositoryConfiguration getConfig() {
             return new SampleRepositoryConfiguration();
@@ -2416,9 +2405,7 @@ repository poller (say SampleRepositoryPoller) for the package.</p>
         }
     }
 </code></pre>
-<p>Here SampleRepositoryConfiguration is the configuration provider and is
-responsible for dictating what configurations should be captured by Go
-to communicate with the package repository.</p>
+<p>Here SampleRepositoryConfiguration is the configuration provider and is responsible for dictating what configurations should be captured by Go to communicate with the package repository.</p>
 <pre><code class="lang-{.code}">    public class SampleRepositoryConfiguration implements PackageMaterialConfiguration {
         public RepositoryConfiguration getRepositoryConfiguration() {
             ...
@@ -2437,9 +2424,7 @@ to communicate with the package repository.</p>
         }
     }
 </code></pre>
-<p>For a given configuration, repository poller, in this case
-SamplePackageMaterialPoller, should communicate with the package
-repository to fetch the latest package.</p>
+<p>For a given configuration, repository poller, in this case SamplePackageMaterialPoller, should communicate with the package repository to fetch the latest package.</p>
 <pre><code class="lang-{.code}">    public class SamplePackageMaterialPoller implements PackageMaterialPoller {
         public PackageRevision getLatestRevision(PackageConfiguration packageConfiguration, RepositoryConfiguration repositoryConfiguration) {
             ...
@@ -2459,25 +2444,9 @@ repository to fetch the latest package.</p>
     }
 </code></pre>
 <h3 id="configuration-provider">Configuration Provider</h3>
-<p>The configuration provider should implement PackageMaterialConfiguration
-interface. Go will communicate with the implementation of
-PackageMaterialConfiguration to know what configuration should be
-captured, so that the PackageMaterialPoller can later use this
-information to get latest package details. PackageMaterialConfiguration
-is also expected to validate configurations. Every configuration type
-(Example : RepositoryConfiguration and PackageConfiguration) will have a
-set properties. Each
-<a href="../resources/javadoc/com/thoughtworks/go/plugin/api/material/packagerepository/Property.html">property</a>
-has a key, value and a list of options. Options are a way to define
-metadata for the property, For example: Display name of the property can
-be set using the Property.DISPLAY_NAME option.
-PackageMaterialConfiguration forces plugin author to implement following
-methods.</p>
+<p>The configuration provider should implement PackageMaterialConfiguration interface. Go will communicate with the implementation of PackageMaterialConfiguration to know what configuration should be captured, so that the PackageMaterialPoller can later use this information to get latest package details. PackageMaterialConfiguration is also expected to validate configurations. Every configuration type (Example : RepositoryConfiguration and PackageConfiguration) will have a set properties. Each <a href="../resources/javadoc/com/thoughtworks/go/plugin/api/config/Property.html">property</a> has a key, value and a list of options. Options are a way to define metadata for the property, For example: Display name of the property can be set using the Property.DISPLAY_NAME option. PackageMaterialConfiguration forces plugin author to implement following methods.</p>
 <ul>
-<li><p><strong>getRepositoryConfiguration:</strong> This method should return the
-repository level configuration that is needed to be captured while
-configuring a package material in Go. The configuration information
-should be returned as an instance of RepositoryConfiguration.</p>
+<li><p><strong>getRepositoryConfiguration:</strong> This method should return the repository level configuration that is needed to be captured while configuring a package material in Go. The configuration information should be returned as an instance of RepositoryConfiguration.</p>
 <pre><code class="lang-{.code}">    public RepositoryConfiguration getRepositoryConfiguration() {
         RepositoryConfiguration repositoryConfiguration = new RepositoryConfiguration();
         repositoryConfiguration.add(new Property(&quot;REPO_URL&quot;).with(Property.DISPLAY_NAME, &quot;Repository Url&quot;).with(Property.DISPLAY_ORDER, 0));
@@ -2487,10 +2456,7 @@ should be returned as an instance of RepositoryConfiguration.</p>
     }
 </code></pre>
 </li>
-<li><p><strong>getPackageConfiguration:</strong> This method should return the package
-configuration that is needed to be captured while configuring a
-package material in Go. The configuration information should be
-returned as an instance of PackageConfiguration.</p>
+<li><p><strong>getPackageConfiguration:</strong> This method should return the package configuration that is needed to be captured while configuring a package material in Go. The configuration information should be returned as an instance of PackageConfiguration.</p>
 <pre><code class="lang-{.code}">    public PackageConfiguration getPackageConfiguration() {
         PackageConfiguration packageConfiguration = new PackageConfiguration();
         packageConfiguration.add(new Property(&quot;PACKAGE_DETAILS&quot;));
@@ -2498,10 +2464,7 @@ returned as an instance of PackageConfiguration.</p>
     }
 </code></pre>
 </li>
-<li><p><strong>isRepositoryConfigurationValid:</strong> This is a callback from Go to
-validate the user configured repository configuration. If
-ValidationResult contains one or more errors, these would be
-reported by Go.</p>
+<li><p><strong>isRepositoryConfigurationValid:</strong> This is a callback from Go to validate the user configured repository configuration. If ValidationResult contains one or more errors, these would be reported by Go.</p>
 <pre><code class="lang-{.code}">    public ValidationResult isRepositoryConfigurationValid(RepositoryConfiguration repositoryConfiguration) {
         ValidationResult validationResult = new ValidationResult();
         Property url = repositoryConfiguration.get(&quot;REPO_URL&quot;);
@@ -2512,12 +2475,7 @@ reported by Go.</p>
     }
 </code></pre>
 </li>
-<li><p><strong>isPackageConfigurationValid:</strong> This is a callback from Go to
-validate the user configured package configuration. If
-ValidationResult contains one or more errors, these would be
-reported by Go. Both package and repository configuration is
-provided to this method so that any validations which should be
-performed across these configurations can be performed here.</p>
+<li><p><strong>isPackageConfigurationValid:</strong> This is a callback from Go to validate the user configured package configuration. If ValidationResult contains one or more errors, these would be reported by Go. Both package and repository configuration is provided to this method so that any validations which should be performed across these configurations can be performed here.</p>
 <pre><code class="lang-{.code}">    public ValidationResult isPackageConfigurationValid(PackageConfiguration packageConfiguration, RepositoryConfiguration repositoryConfiguration) {
         ValidationResult validationResult = new ValidationResult();
         if ( the configuration is invalid ) {
@@ -2529,34 +2487,16 @@ performed across these configurations can be performed here.</p>
 </li>
 </ul>
 <h3 id="repository-poller">Repository Poller</h3>
-<p>Periodically, Go checks all the configured materials for new updates.
-For a package material, it would invoke the corresponding repository
-poller implemented by the plugin. Repository poller should implement
-PackageMaterialPoller interface. Repository poller is responsible for
-fetching latest available version of the package based on the package
-and repository configuration. Repository poller is also invoked by Go to
-check connection to package and repository. PackageMaterialPoller forces
-plugin author to implement following methods.</p>
+<p>Periodically, Go checks all the configured materials for new updates. For a package material, it would invoke the corresponding repository poller implemented by the plugin. Repository poller should implement PackageMaterialPoller interface. Repository poller is responsible for fetching latest available version of the package based on the package and repository configuration. Repository poller is also invoked by Go to check connection to package and repository. PackageMaterialPoller forces plugin author to implement following methods.</p>
 <ul>
-<li><p><strong>getLatestRevision:</strong> This method is invoked when a new package
-material is introduced in Go. It should return the latest version of
-the package for given package and repository configuration. Package
-version details are returned as an instance of PackageRevision.
-<a href="../resources/javadoc/com/thoughtworks/go/plugin/api/material/packagerepository/PackageRevision.html">Package
-Revision</a>
-has information like revision, timestamp of the package, user who is
-responsible for generating this package, comment and trackbackUrl
-(this url can point to CI system which generated this package).</p>
+<li><p><strong>getLatestRevision:</strong> This method is invoked when a new package material is introduced in Go. It should return the latest version of the package for given package and repository configuration. Package version details are returned as an instance of PackageRevision. <a href="../resources/javadoc/com/thoughtworks/go/plugin/api/material/packagerepository/PackageRevision.html">Package Revision</a> has information like revision, timestamp of the package, user who is responsible for generating this package, comment and trackbackUrl (this url can point to CI system which generated this package).</p>
 <pre><code class="lang-{.code}">    public PackageRevision getLatestRevision(PackageConfiguration packageConfiguration, RepositoryConfiguration repositoryConfiguration) {
         latestPackageDetails = fetchLatestPackageDetailsFor(packageConfiguration, repositoryConfiguration);
         return new PackageRevision(latestPackageDetails.revision, latestPackageDetails.timestamp, latestPackageDetails.user, latestPackageDetails.comment, latestPackageDetails.trackbackUrl);
     }
 </code></pre>
 </li>
-<li><p><strong>latestModificationSince:</strong> On subsequent material updates, Go
-would invoke this method with the last known revision for the
-package. This method should return a version of the package which is
-later than the one known by Go.</p>
+<li><p><strong>latestModificationSince:</strong> On subsequent material updates, Go would invoke this method with the last known revision for the package. This method should return a version of the package which is later than the one known by Go.</p>
 <pre><code class="lang-{.code}">    public PackageRevision latestModificationSince(PackageConfiguration packageConfiguration, RepositoryConfiguration repositoryConfiguration, PackageRevision previouslyKnownRevision) {
         latestPackageDetails = fetchLatestPackageDetailsFor(packageConfiguration, repositoryConfiguration);
         if (latestPackageDetails is later than previouslyKnownRevision)
@@ -2566,8 +2506,7 @@ later than the one known by Go.</p>
     }
 </code></pre>
 </li>
-<li><p><strong>checkConnectionToRepository:</strong> This method is expected to check if
-connection can be established for given repository configuration.</p>
+<li><p><strong>checkConnectionToRepository:</strong> This method is expected to check if connection can be established for given repository configuration.</p>
 <pre><code class="lang-{.code}">    public Result checkConnectionToRepository(RepositoryConfiguration repositoryConfiguration) {
         if (connectionCanBeEstablishedFor(repositoryConfiguration)) {
             return new Result().withSuccessMessages(&quot;Successfully accessed repository&quot;);
@@ -2577,9 +2516,7 @@ connection can be established for given repository configuration.</p>
     }
 </code></pre>
 </li>
-<li><p><strong>checkConnectionToPackage:</strong> This method is expected to check if
-connection can be established for given package and repository
-configuration.</p>
+<li><p><strong>checkConnectionToPackage:</strong> This method is expected to check if connection can be established for given package and repository configuration.</p>
 <pre><code class="lang-{.code}">    public Result checkConnectionToRepository(PackageConfiguration packageConfiguration, RepositoryConfiguration repositoryConfiguration) {
         if (connectionCanBeEstablishedFor(packageConfiguration, repositoryConfiguration)) {
             return new Result().withSuccessMessages(Successfully accessed package);
@@ -2590,7 +2527,6 @@ configuration.</p>
 </code></pre>
 </li>
 </ul>
-<p>© ThoughtWorks Studios, 2010</p>
 
                     
                     </section>

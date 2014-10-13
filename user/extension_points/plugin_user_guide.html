@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="3.23" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="3.23" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2392,62 +2392,27 @@
                     <section class="normal" id="section-gitbook_66">
                     
                         <h1 id="plugin-user-guide">Plugin User Guide</h1>
-<h3 id="introduction">Introduction</h3>
-<p>Plugins allow users to extend the functionality of Go. Each plugin is
-assigned an identifier which is determined by the <strong>id</strong> attribute
-provided in <a href="go_plugins_basics.html#plugin_metadata">plugin metadata</a>
-file packaged along with the plugin jar. If the metadata file is not
-packaged, plugin jar file name will be taken as plugin id. Plugins are
-classified into two categories - Bundled and External. During startup,
-Go server would try to load all the plugins. On successful load, the
-plugin will be converted into an OSGi bundle and extracted into
-<strong>\<server installation directory\>/plugins_work</strong> directory.
-<strong>Plugins</strong> tab, under Go server Administration, would list all the
-loaded plugins.</p>
-<h3 id="bundled-versus-external">Bundled versus External</h3>
+<h2 id="introduction">Introduction</h2>
+<p>Plugins allow users to extend the functionality of Go. Each plugin is assigned an identifier which is determined by the <strong>id</strong> attribute provided in <a href="go_plugins_basics.html#plugin-metadata">plugin metadata</a> file packaged along with the plugin jar. If the metadata file is not packaged, plugin jar file name will be taken as plugin id. Plugins are classified into two categories - Bundled and External. During startup, Go server would try to load all the plugins. On successful load, the plugin will be converted into an OSGi bundle and extracted into <strong>&lt; server installation directory &gt;/plugins_work</strong> directory. <strong>Plugins</strong> tab, under Go server Administration, would list all the loaded plugins.</p>
+<h2 id="bundled-versus-external">Bundled versus External</h2>
 <ul>
-<li><p><strong>Bundled Plugins:</strong> As the name suggests, bundled plugins are
-bundled/packaged along with Go server. These are developed and
-supported by Thoughtworks Go development team. Bundled plugins are
-located under <strong>\<server installation directory\>/plugins/bundled</strong>
-directory. After an upgrade, when Go server starts up for the first
-time, all bundled plugins would be refreshed with the latest
-packaged versions.</p>
+<li><p><strong>Bundled Plugins:</strong> As the name suggests, bundled plugins are bundled/packaged along with Go server. These are developed and supported by Thoughtworks Go development team. Bundled plugins are located under <strong>&lt; server installation directory &gt;/plugins/bundled</strong> directory. After an upgrade, when Go server starts up for the first time, all bundled plugins would be refreshed with the latest packaged versions.</p>
 </li>
-<li><p><strong>External Plugins:</strong> All user authored plugins are treated as
-external plugins. Unlike bundled plugins, external plugins are not
-bundled/refreshed/removed/modified during a Go server upgrade.
-External plugins are loaded from <strong>\<server installation
-directory\>/plugins/external</strong> directory. <a href="http://thoughtworksinc.github.io/go-external-plugins/" target="_blank">Listing of external
-plugins</a></p>
+<li><p><strong>External Plugins:</strong> All user authored plugins are treated as external plugins. Unlike bundled plugins, external plugins are not bundled/refreshed/removed/modified during a Go server upgrade. External plugins are loaded from <strong> &lt; server installation directory &gt;/plugins/external</strong> directory. <a href="http://thoughtworksinc.github.io/go-external-plugins/" target="_blank">Listing of external plugins</a></p>
 </li>
 </ul>
-<h3 id="installing-and-uninstalling-of-plugins">Installing and Uninstalling of plugins</h3>
-<p>You need access to the Go server machine to be able to install/uninstall
-a plugin. To install a plugin, drop the plugin jar under the external
-plugin directory ( <strong>\<server installation
-directory\>/plugins/external</strong> ) and restart Go server. To uninstall a
-plugin, remove the plugin jar from the external plugin directory (
-<strong>\<server installation directory\>/plugins/external</strong> ) and restart Go
-server.</p>
-<h3 id="plugins-tab">Plugins Tab</h3>
-<p>Plugins tab can be found under Go server Administration. Plugins tab
-shows all the plugins that have been loaded currently along with its
-details and status. If a plugin is marked invalid or incompatible, the
-reasons for the same would be reported here.</p>
+<h2 id="installing-and-uninstalling-of-plugins">Installing and Uninstalling of plugins</h2>
+<p>You need access to the Go server machine to be able to install/uninstall a plugin. To install a plugin, drop the plugin jar under the external plugin directory ( <strong>&lt; server installation directory &gt;/plugins/external</strong> ) and restart Go server. To uninstall a plugin, remove the plugin jar from the external plugin directory ( <strong>&lt; server installation directory &gt;/plugins/external</strong> ) and restart Go server.</p>
+<h2 id="plugins-tab">Plugins Tab</h2>
+<p>Plugins tab can be found under Go server Administration. Plugins tab shows all the plugins that have been loaded currently along with its details and status. If a plugin is marked invalid or incompatible, the reasons for the same would be reported here.</p>
 <p><img src="../resources/images/cruise/package-repo/plugin-tab.png" alt=""></p>
 <h3 id="notes">Notes</h3>
 <ul>
-<li>Add/delete/upgrade of a plugin will take effect only after a Go
-server restart.</li>
-<li>Two plugins cannot have same <strong>id</strong> irrespective of whether it is a
-bundled or an external plugin.</li>
-<li>If two external plugins with same <strong>id</strong> are available, only one of
-them will be loaded successfully in no specific order.</li>
-<li>If a bundled and an external plugin with same <strong>id</strong> are available,
-only bundled plugin wll be loaded.</li>
+<li>Add/delete/upgrade of a plugin will take effect only after a Go server restart.</li>
+<li>Two plugins cannot have same <strong>id</strong> irrespective of whether it is a bundled or an external plugin.</li>
+<li>If two external plugins with same <strong>id</strong> are available, only one of them will be loaded successfully in no specific order.</li>
+<li>If a bundled and an external plugin with same <strong>id</strong> are available, only bundled plugin wll be loaded.</li>
 </ul>
-<p>© ThoughtWorks Studios, 2010</p>
 
                     
                     </section>

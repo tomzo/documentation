@@ -31,7 +31,7 @@
 
 
         
-    <div class="book"  data-level="2.8" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="2.8" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2387,20 +2387,20 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_98">
+                    <section class="normal" id="section-gitbook_93">
                     
                         <h1 id="performance-tuning">Performance Tuning</h1>
 <h2 id="capacity-planning">Capacity Planning</h2>
 <p>This section provides recommendations to evaluate server hardware and memory requirements for your Go server. It also highlights some configurations which need to be taken care of when scaling Go.</p>
 <h3 id="minimum-server-requirements">Minimum server requirements</h3>
-<p>The minimum requirements for a Go server can be found <a href="../installation/system_requirements.html">here</a></p>
+<p>The minimum requirements for a Go server can be found <a href="system_requirements.html">here</a></p>
 <h3 id="scaling-go">Scaling Go</h3>
 <p>As the number of pipelines, agents and concurrent users increase in your setup, Go server may have to be scaled up by adding more memory and cores.</p>
 <p>If you have questions or have custom requirements, please contact support@thoughtworks.com to help with capacity planning for Go server</p>
 <h3 id="things-to-remember">Things to Remember</h3>
 <p>Do not run any other CPU intensive applications on the same box as the Go Server.</p>
 <p>When the Go server is being scaled up to run with larger number of pipeline, agents and materials, ensure that the JVM has been allocated appropriate heap sizes. The default values for the Go server are -Xms512m (minimum) and -Xmx1024m (maximum). These values can be increased by setting the environment variables SERVER_MEM (for minimum) and SERVER_MAX_MEM (for maximum).</p>
-<p>On linux, these can be added/updated in /etc/default/go-server. On Windows, copy the following lines in <em><a href="../installation/installing_go_server.html">wrapper-properties.conf</a></em> and change it to desired value.</p>
+<p>On linux, these can be added/updated in /etc/default/go-server. On Windows, copy the following lines in <em><a href="installing_go_server.html">wrapper-properties.conf</a></em> and change it to desired value.</p>
 <pre><code class="lang-{.code}">wrapper.java.additional.1=-Xms512m
 wrapper.java.additional.2=-Xmx1024m
 </code></pre>
@@ -2466,8 +2466,8 @@ wrapper.java.additional.2=-Xmx1024m
 <ol>
 <li>By default, Go server looks for the yourkit profiler agent yjpagent.dll in the location C:\yjpagent.dll. Therefore, copy the file yjpagent.dll (which is the yourkit profiler agent) from &#39;{yourkit_profiler_directory}\bin\win32&#39; to C:\yjpagent.dll. Copy the file from &#39;{yourkit_profiler_directory}\bin\win64&#39; if you are using 64 bit JVM.</li>
 <li>To change the above mentioned default location: define environment variable YOURKIT_PATH with value equal to location of yjpagent.dll.</li>
-<li><p>If you are running the Go server as a service, you will need to perform an additional step. In the config folder of the Go server installation, edit the <em><a href="../installation/installing_go_server.html">wrapper-properties.conf</a></em> file, and add an additional property with the following value</p>
-<pre><code class="lang-{.code}">&quot;-agentpath:&lt;Path to yjpagent.dll&gt;=port=6133,builtinprobes=none&quot;
+<li><p>If you are running the Go server as a service, you will need to perform an additional step. In the config folder of the Go server installation, edit the <em><a href="installing_go_server.html">wrapper-properties.conf</a></em> file, and add an additional property with the following value</p>
+<pre><code class="lang-{.code}">&quot;-agentpath: &lt; Path to yjpagent.dll &gt;=port=6133,builtinprobes=none&quot;
 </code></pre>
 <p>For example, if there are 16 properties already defined, add this 17th property as shown below</p>
 <pre><code class="lang-{.code}">wrapper.java.additional.17=&quot;-agentpath:C:\yjpagent.dll=port=6133,builtinprobes=none&quot;

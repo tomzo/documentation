@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="8.15" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="8.15" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2392,151 +2392,125 @@
                     <section class="normal" id="section-gitbook_78">
                     
                         <h1 id="using-environment-variables-in-go">Using Environment Variables in Go</h1>
-<h3 id="standard-go-environment-variables">Standard Go environment variables</h3>
-<p>Environment Variable</p>
-<p>Description</p>
-<p>Example contents</p>
-<p>GO_SERVER_URL</p>
-<p>Base URL for the Go server (including the context root)</p>
-<pre><code class="lang-{.code}">https://127.0.0.1:8154/go
-</code></pre>
-<p>GO_ENVIRONMENT_NAME</p>
-<p>The name of the current environment. This is only set if the environment
-is specified. Otherwise the variable is not set.</p>
-<pre><code class="lang-{.code}">Development
-</code></pre>
-<p>GO_PIPELINE_NAME</p>
-<p>Name of the current pipeline being run</p>
-<pre><code class="lang-{.code}">main
-</code></pre>
-<p>GO_PIPELINE_COUNTER</p>
-<p>How many times the current pipeline has been run.</p>
-<pre><code class="lang-{.code}">2345
-</code></pre>
-<p>GO_PIPELINE_LABEL</p>
-<p>Label for the current pipeline. By default, this is set to the pipeline
-count (this can be set to a <a href="../configuration/build_labelling.html">custom pipeline
-label</a>)</p>
-<pre><code class="lang-{.code}">1.1.2345
-</code></pre>
-<p>GO_STAGE_NAME</p>
-<p>Name of the current stage being run</p>
-<pre><code class="lang-{.code}">dev
-</code></pre>
-<p>GO_STAGE_COUNTER</p>
-<p>How many times the current stage has been run</p>
-<pre><code class="lang-{.code}">1
-</code></pre>
-<p>GO_JOB_NAME</p>
-<p>Name of the current job being run</p>
-<pre><code class="lang-{.code}">linux-firefox
-</code></pre>
-<p>GO_TRIGGER_USER</p>
-<p>Username of the user that triggered the build. This will have one of
-three possible values</p>
-<ul>
-<li>anonymous - if there is no security</li>
-<li>username of the user, who triggered the build</li>
-<li>changes, if SCM changes auto-triggered the build</li>
-<li>timer, if the pipeline is triggered at a scheduled time</li>
-</ul>
-<pre><code class="lang-{.code}">changes
-</code></pre>
-<p>GO_DEPENDENCY_LABEL_${pipeline name}</p>
-<p>The label of the upstream pipeline (when using <a href="../configuration/managing_dependencies.html">dependent
-pipelines</a>)</p>
-<pre><code class="lang-{.code}">1.0.3456
-</code></pre>
-<p>GO_DEPENDENCY_LOCATOR_${pipeline name}</p>
-<p>The locator of the upstream pipeline (when using <a href="../configuration/managing_dependencies.html">dependent
-pipelines</a>), which can be used to create the
-URL for RESTful API calls</p>
-<pre><code class="lang-{.code}">upstream/1.0.3456/dev/1
-</code></pre>
-<p>GO_REVISION</p>
-<p>The current source control revision being run (when using only one
-material)</p>
-<pre><code class="lang-{.code}">123
-</code></pre>
-<p>GO_REVISION_ ${material name or dest}</p>
-<p>If you are using more than one material in your pipeline, the revision
-for each material is available. The environment variable is named with
-the material&#39;s &quot;materialName&quot; attribute. If &quot;materialName&quot; is not
-defined, then &quot;dest&quot; directory is used. Non alphanumeric characters are
-replaced with underscores (&quot;_&quot;).</p>
-<pre><code class="lang-{.code}">123
-</code></pre>
-<p>GO_TO_REVISION</p>
-<p>If the pipeline was triggered with a series of source control
-revisions(say 121 to 123), then this environment variable has the value
-of the latest revision (when using only one material). This is always
-same as GO_REVISION.</p>
-<pre><code class="lang-{.code}">123
-</code></pre>
-<p>GO_TO_REVISION_ ${material name or dest}</p>
-<p>If you are using more than one material in your pipeline, the &#39;to&#39;
-revision for each material is available. The environment variable is
-named with the material&#39;s &quot;materialName&quot; attribute. If &quot;materialName&quot; is
-not defined, then &quot;dest&quot; directory is used. Non alphanumeric characters
-are replaced with underscores (&quot;_&quot;).</p>
-<pre><code class="lang-{.code}">123
-</code></pre>
-<p>GO_FROM_REVISION</p>
-<p>If the pipeline was triggered with a series of source control
-revisions(say 121 to 123), then this environment variable has the value
-of the oldest revision (when using only one material)</p>
-<pre><code class="lang-{.code}">121
-</code></pre>
-<p>GO_FROM_REVISION_ ${material name or dest}</p>
-<p>If you are using more than one material in your pipeline, the &#39;from&#39;
-revision for each material is available. The environment variable is
-named with the material&#39;s &quot;materialName&quot; attribute. If &quot;materialName&quot; is
-not defined, then &quot;dest&quot; directory is used. Non alphanumeric characters
-are replaced with underscores (&quot;_&quot;).</p>
-<pre><code class="lang-{.code}">121
-</code></pre>
-<h3 id="use-current-revision-in-a-build">Use current revision in a build</h3>
-<p>It is often useful to use the current version control revision number in
-your build. For example, you might want to use the svn version number in
-the name of your binary for tracing purposes. Go makes much of this
-information available to your build scripts as environment variables.</p>
-<h4 id="example-usages">Example usages</h4>
-<h4 id="one-material">One material</h4>
-<p>For this example, we are going to assume we are using a single
-<a href="http://subversion.tigris.org/" target="_blank">Subversion</a> repository for our source
-control system and we have a job set up to call the ant target &quot;dist&quot;.</p>
+<h2 id="standard-go-environment-variables">Standard Go environment variables</h2>
+<table>
+<thead>
+<tr>
+<th>Environment Variable</th>
+<th>Description</th>
+<th>Example contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GO_SERVER_URL</td>
+<td>Base URL for the Go server (including the context root)</td>
+<td><code>https://127.0.0.1:8154/go</code></td>
+</tr>
+<tr>
+<td>GO_ENVIRONMENT_NAME</td>
+<td>The name of the current environment. This is only set if the environment is specified. Otherwise the variable is not set.</td>
+<td><code>Development</code></td>
+</tr>
+<tr>
+<td>GO_PIPELINE_NAME</td>
+<td>Name of the current pipeline being run</td>
+<td><code>main</code></td>
+</tr>
+<tr>
+<td>GO_PIPELINE_COUNTER</td>
+<td>How many times the current pipeline has been run.</td>
+<td><code>2345</code></td>
+</tr>
+<tr>
+<td>GO_PIPELINE_LABEL</td>
+<td>Label for the current pipeline. By default, this is set to the pipeline count (this can be set to a <a href="../configuration/build_labelling.html">custom pipeline label</a>)</td>
+<td><code>1.1.2345</code></td>
+</tr>
+<tr>
+<td>GO_STAGE_NAME</td>
+<td>Name of the current stage being run</td>
+<td><code>dev</code></td>
+</tr>
+<tr>
+<td>GO_STAGE_COUNTER</td>
+<td>How many times the current stage has been run</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>GO_JOB_NAME</td>
+<td>Name of the current job being run</td>
+<td><code>linux-firefox</code></td>
+</tr>
+<tr>
+<td>GO_TRIGGER_USER</td>
+<td>Username of the user that triggered the build. This will have one of three possible values<ul><li>anonymous - if there is no security</li><li>username of the user, who triggered the build</li><li>changes, if SCM changes auto-triggered the build</li><li>timer, if the pipeline is triggered at a scheduled time</li></ul></td>
+<td><code>changes</code></td>
+</tr>
+<tr>
+<td>GO_DEPENDENCY_LABEL_${pipeline name}</td>
+<td>The label of the upstream pipeline (when using <a href="../configuration/managing_dependencies.html">dependent pipelines</a>)</td>
+<td><code>1.0.3456</code></td>
+</tr>
+<tr>
+<td>GO_DEPENDENCY_LOCATOR_${pipeline name}</td>
+<td>The locator of the upstream pipeline (when using <a href="../configuration/managing_dependencies.html">dependent pipelines</a>), which can be used to create the URL for RESTful API calls</td>
+<td><code>upstream/1.0.3456/dev/1</code></td>
+</tr>
+<tr>
+<td>GO_REVISION</td>
+<td>The current source control revision being run (when using only one material)</td>
+<td><code>123</code></td>
+</tr>
+<tr>
+<td>GO_REVISION_${material name or dest}</td>
+<td>If you are using more than one material in your pipeline, the revision for each material is available. The environment variable is named with the material&#39;s &quot;materialName&quot; attribute. If &quot;materialName&quot; is not defined, then &quot;dest&quot; directory is used. Non alphanumeric characters are replaced with underscores (&quot;_&quot;).</td>
+<td><code>123</code></td>
+</tr>
+<tr>
+<td>GO_TO_REVISION</td>
+<td>If the pipeline was triggered with a series of source control revisions(say 121 to 123), then this environment variable has the value of the latest revision (when using only one material). This is always same as GO_REVISION.</td>
+<td><code>123</code></td>
+</tr>
+<tr>
+<td>GO_TO_REVISION_${material name or dest}</td>
+<td>If you are using more than one material in your pipeline, the &#39;to&#39; revision for each material is available. The environment variable is named with the material&#39;s &quot;materialName&quot; attribute. If &quot;materialName&quot; is not defined, then &quot;dest&quot; directory is used. Non alphanumeric characters are replaced with underscores (&quot;_&quot;).</td>
+<td><code>123</code></td>
+</tr>
+<tr>
+<td>GO_FROM_REVISION</td>
+<td>If the pipeline was triggered with a series of source control revisions(say 121 to 123), then this environment variable has the value of the oldest revision (when using only one material)</td>
+<td><code>121</code></td>
+</tr>
+<tr>
+<td>GO_FROM_REVISION_${material name or dest}</td>
+<td>If you are using more than one material in your pipeline, the &#39;from&#39; revision for each material is available. The environment variable is named with the material&#39;s &quot;materialName&quot; attribute. If &quot;materialName&quot; is not defined, then &quot;dest&quot; directory is used. Non alphanumeric characters are replaced with underscores (&quot;_&quot;).</td>
+<td><code>121</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="use-current-revision-in-a-build">Use current revision in a build</h2>
+<p>It is often useful to use the current version control revision number in your build. For example, you might want to use the svn version number in the name of your binary for tracing purposes. Go makes much of this information available to your build scripts as environment variables.</p>
+<h3 id="example-usages">Example usages</h3>
+<h3 id="one-material">One material</h3>
+<p>For this example, we are going to assume we are using a single <a href="http://subversion.tigris.org/" target="_blank">Subversion</a> repository for our source control system and we have a job set up to call the ant target &quot;dist&quot;.</p>
 <ul>
 <li>Add the following target to your ant build.xml</li>
-<li>Now, when Go runs the &#39;my-app&#39; pipeline on revision 123, the file
-deploy-123.txt will be created, with the following content:</li>
+<li>Now, when Go runs the &#39;my-app&#39; pipeline on revision 123, the file deploy-123.txt will be created, with the following content:</li>
 </ul>
 <h4 id="multiple-materials">Multiple materials</h4>
-<p>For this example we are going to assume we are using a
-<a href="http://subversion.tigris.org/" target="_blank">Subversion</a> repository containing the
-code and a <a href="http://www.selenic.com/mercurial/wiki/" target="_blank">Mercurial</a>
-repository containing configuration scripts.</p>
+<p>For this example we are going to assume we are using a <a href="http://subversion.tigris.org/" target="_blank">Subversion</a> repository containing the code and a <a href="http://www.selenic.com/mercurial/wiki/" target="_blank">Mercurial</a> repository containing configuration scripts.</p>
 <ul>
 <li>Ensure the pipeline materials look like this</li>
 <li>Add the following target to your ant build.xml</li>
-<li>Now, when Go runs the &#39;my-app&#39; pipeline with the code at revision
-&#39;123&#39; and the configuration at revision
-&#39;59cab75ccf231b9e338c96cff0f4adad5cb7d335&#39;, the file deploy-123.txt
-will be created with the following content:</li>
+<li>Now, when Go runs the &#39;my-app&#39; pipeline with the code at revision &#39;123&#39; and the configuration at revision &#39;59cab75ccf231b9e338c96cff0f4adad5cb7d335&#39;, the file deploy-123.txt will be created with the following content:</li>
 </ul>
-<h3 id="pass-environment-variables-to-a-job">Pass environment variables to a job</h3>
-<p>You can specify variables for Environments, Pipelines, Stages and Jobs.
-If a variable is specified more than once, the most specific scope is
-used. For example if you specify variable FOO=&#39;foo&#39; for an environment,
-and FOO=&#39;bar&#39; for a Job, then the variable will have the value &#39;bar&#39;
-when the job runs.</p>
-<h4 id="setting-variables-on-an-environment">Setting variables on an environment</h4>
-<p>You can add variables to an environment by editing the configuration of
-the environment. Click on the name of the environment to edit
-configuration.</p>
+<h2 id="pass-environment-variables-to-a-job">Pass environment variables to a job</h2>
+<p>You can specify variables for Environments, Pipelines, Stages and Jobs. If a variable is specified more than once, the most specific scope is used. For example if you specify variable FOO=&#39;foo&#39; for an environment, and FOO=&#39;bar&#39; for a Job, then the variable will have the value &#39;bar&#39; when the job runs.</p>
+<h2 id="setting-variables-on-an-environment">Setting variables on an environment</h2>
+<p>You can add variables to an environment by editing the configuration of the environment. Click on the name of the environment to edit configuration.</p>
 <p><img src="../resources/images/cruise/admin/env_variables_environment.png" alt=""></p>
-<p>You specify variables on an environment in the Config XML by adding an
-<a href="configuration_reference.html#environmentvariables">\<environmentvariables\></a>
-section to the environment definition.</p>
+<p>You specify variables on an environment in the Config XML by adding an <a href="configuration_reference.html#environmentvariables">\<environmentvariables\></a> section to the environment definition.</p>
 <pre><code class="lang-{.code}">&lt;environment name=&quot;UAT&quot;&gt;
     &lt;environmentvariables&gt;
         &lt;variable name=&quot;FOO&quot;&gt;
@@ -2559,9 +2533,7 @@ section to the environment definition.</p>
 </code></pre>
 <p>You can add variables for a job by editing the job configuration.</p>
 <p><img src="../resources/images/cruise/admin/env_variables_job.png" alt=""></p>
-<p>You specify variables on an job in the Config XML by adding an
-<a href="configuration_reference.html#environmentvariables">\<environmentvariables\></a>
-section to the job definition.</p>
+<p>You specify variables on an job in the Config XML by adding an <a href="configuration_reference.html#environmentvariables">\<environmentvariables\></a> section to the job definition.</p>
 <pre><code class="lang-{.code}">&lt;job name=&quot;my-job&quot;&gt;
     &lt;environmentvariables&gt;
        &lt;variable name=&quot;FOO&quot;&gt;
@@ -2581,10 +2553,8 @@ section to the job definition.</p>
     ...
 &lt;/job&gt;
 </code></pre>
-<h3 id="using-environment-variables-in-task">Using environment variables in task</h3>
-<p>You can access these environment variables to construct versioned
-artifacts or to store properties on the current build. For example the
-following snippet of an ant file shows how to access Go variables:</p>
+<h2 id="using-environment-variables-in-task">Using environment variables in task</h2>
+<p>You can access these environment variables to construct versioned artifacts or to store properties on the current build. For example the following snippet of an ant file shows how to access Go variables:</p>
 <pre><code class="lang-{.code}">&lt;property environment=&quot;go&quot; /&gt;
 &lt;target name=&quot;all&quot;&gt;
     &lt;echo message=&quot;Building all!&quot; /&gt;
@@ -2598,10 +2568,7 @@ following snippet of an ant file shows how to access Go variables:</p>
     &lt;echo message=&quot;GO_REVISION: ${go.GO_REVISION}&quot; /&gt;
 &lt;/target&gt;
 </code></pre>
-<p>CRUISE_XXX variables are deprecated since Go 2.0. Please use GO_XXX
-instead of CRUISE_XXX (For example: GO_SERVER_URL instead of
-CRUISE_SERVER_URL).</p>
-<p>© ThoughtWorks Studios, 2010</p>
+<p>CRUISE_XXX variables are deprecated since Go 2.0. Please use GO_XXX instead of CRUISE_XXX (For example: GO_SERVER_URL instead of CRUISE_SERVER_URL).</p>
 
                     
                     </section>

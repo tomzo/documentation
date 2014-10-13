@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="5.3" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="5.3" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2392,27 +2392,19 @@
                     <section class="normal" id="section-gitbook_49">
                     
                         <h1 id="notifications">Notifications</h1>
-<p>It is often useful to receive an email when certain status changes occur
-in a stage. For example, a developer might want to know when their own
-check-in has broken the build. Alternatively, a manager might want an
-email whenever a project is deployed into production. Both of these
-scenarios can be covered by Notification Filters</p>
-<p>Notifications will only work if <a href="../configuration/dev_authentication.html">Security</a> is
-enabled and <a href="../configuration/admin_mailhost_info.html">mailhost information</a> is correct.</p>
-<h3 id="example-usage">Example usage</h3>
+<p>It is often useful to receive an email when certain status changes occur in a stage. For example, a developer might want to know when their own check-in has broken the build. Alternatively, a manager might want an email whenever a project is deployed into production. Both of these scenarios can be covered by Notification Filters</p>
+<p>Notifications will only work if <a href="dev_authentication.html">Security</a> is enabled and <a href="admin_mailhost_info.html">mailhost information</a> is correct.</p>
+<h2 id="example-usage">Example usage</h2>
 <p>Usage: As a developer, I want to be notified when I break the build.</p>
 <p>Click on the <strong>Preferences</strong> tab</p>
 <p><img src="../resources/images/cruise/topnav_preferences.png" alt=""></p>
-<p>Click &quot;Edit&quot; and enter my email address, and make sure &quot;Enable email
-notification&quot; is checked</p>
-<p>When I check in, my source control log in will be either &quot;ChrisT&quot; or
-&quot;CT&quot;, so enter both of those into the &quot;My check-in aliases&quot; box</p>
+<p>Click &quot;Edit&quot; and enter my email address, and make sure &quot;Enable email notification&quot; is checked</p>
+<p>When I check in, my source control log in will be either &quot;ChrisT&quot; or &quot;CT&quot;, so enter both of those into the &quot;My check-in aliases&quot; box</p>
 <p><img src="../resources/images/cruise/dev/notifications/3_email_and_matcher.png" alt=""></p>
 <p>Click &quot;Save&quot; to store these values</p>
-<p>Add a filter for the first &quot;dev&quot; stage to notify me when a check-in of
-mine breaks the build</p>
+<p>Add a filter for the first &quot;dev&quot; stage to notify me when a check-in of mine breaks the build</p>
 <p><img src="../resources/images/cruise/dev/notifications/4_add_filter.png" alt=""></p>
-<h4 id="events">Events</h4>
+<h3 id="events">Events</h3>
 <p>You can set up notifications for different events</p>
 <ul>
 <li>All - all the runs for the stage</li>
@@ -2430,12 +2422,9 @@ mine breaks the build</p>
 <li>Previous build Pass, current build Pass: Event: Pass</li>
 </ul>
 <p><img src="../resources/images/cruise/dev/notifications/5_added_filter.png" alt=""></p>
-<p>I&#39;ll be emailed whenever the &quot;twist&quot; stage of &quot;acceptance&quot; pipeline
-breaks due to my check-in</p>
-<p>I&#39;ll be emailed whenever the &quot;auto-upgrade&quot; stage of
-&quot;auto-deploy-testing-ubuntu9.10&quot; pipeline fails due to my check-in</p>
+<p>I&#39;ll be emailed whenever the &quot;twist&quot; stage of &quot;acceptance&quot; pipeline breaks due to my check-in</p>
+<p>I&#39;ll be emailed whenever the &quot;auto-upgrade&quot; stage of &quot;auto-deploy-testing-ubuntu9.10&quot; pipeline fails due to my check-in</p>
 <p>I&#39;ll be emailed for all events for the &quot;dev&quot; stage of cruise pipeline</p>
-<p>© ThoughtWorks Studios, 2010</p>
 
                     
                     </section>

@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="5.6" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="5.6" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2392,29 +2392,18 @@
                     <section class="normal" id="section-gitbook_75">
                     
                         <h1 id="saving-properties-about-a-build">Saving properties about a build</h1>
-<p>When building your code, there can be quite a bit of extra information
-that you are interested in. For example, you might run
-<a href="http://emma.sourceforge.net/" target="_blank">EMMA</a> on your code in order to log code
-coverage. With properties, you can save this information, and even look
-at the history of a property (by way of an exported spreadsheet).</p>
+<p>When building your code, there can be quite a bit of extra information that you are interested in. For example, you might run <a href="http://emma.sourceforge.net/" target="_blank">EMMA</a> on your code in order to log code coverage. With properties, you can save this information, and even look at the history of a property (by way of an exported spreadsheet).</p>
 <h3 id="example-usage">Example usage</h3>
-<p>Usage: As a developer, I want to save the average <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">cyclomatic
-complexity</a> of a
-function (pulled from
-<a href="http://www.kclee.de/clemens/java/javancss/" target="_blank">JavaNCSS</a>).</p>
-<p>For this example, we&#39;re going to take the information out of
-&quot;target/javancss/javancss_metrics_util.xml&quot;</p>
+<p>Usage: As a developer, I want to save the average <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">cyclomatic complexity</a> of a function (pulled from <a href="http://www.kclee.de/clemens/java/javancss/" target="_blank">JavaNCSS</a>).</p>
+<p>For this example, we&#39;re going to take the information out of &quot;target/javancss/javancss_metrics_util.xml&quot;</p>
 <ul>
-<li>On the <a href="../navigations/administration_page.html">Administration Tab</a>, edit the job
-that should generate the properties</li>
+<li>On the <a href="../navigations/administration_page.html">Administration Tab</a>, edit the job that should generate the properties</li>
 <li>Ensure the following &quot;properties&quot; block is in the job configuration</li>
 <li><img src="../resources/images/cruise/dev/save_properties/2_properties_config.png" alt=""></li>
-<li>Now, after that job has run, you should have extra properties
-information on the <a href="../navigations/job_details_page.html">Job Details</a> page</li>
+<li>Now, after that job has run, you should have extra properties information on the <a href="../navigations/job_details_page.html">Job Details</a> page</li>
 <li><img src="../resources/images/cruise/dev/save_properties/3_view_property.png" alt=""></li>
 <li>You can export the property history as a CSV file</li>
 </ul>
-<p>© ThoughtWorks Studios, 2010</p>
 
                     
                     </section>

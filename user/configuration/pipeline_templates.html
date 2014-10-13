@@ -31,7 +31,7 @@
 
 
         
-    <div class="book"  data-level="8.1" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="8.1" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2389,72 +2389,43 @@
                 
                     <section class="normal" id="section-gitbook_59">
                     
-                        <h2 id="pipeline-templates">Pipeline Templates</h2>
-<p>Templating helps to create reusable workflows in order to make tasks
-like creating and maintaining branches, and managing large number of
-pipelines easier.</p>
-<h4 id="creating-pipeline-templates">Creating Pipeline Templates</h4>
-<p>Pipeline Templates can be managed from the Templates tab on the
-Administration Page.</p>
+                        <h1 id="pipeline-templates">Pipeline Templates</h1>
+<p>Templating helps to create reusable workflows in order to make tasks like creating and maintaining branches, and managing large number of pipelines easier.</p>
+<h2 id="creating-pipeline-templates">Creating Pipeline Templates</h2>
+<p>Pipeline Templates can be managed from the Templates tab on the Administration Page.</p>
 <p><img src="../resources/images/cruise/admin/pipeline_templates.png" alt=""></p>
-<p>Clicking on the &quot;Add New Template&quot; brings up the following form which
-allows you to create a fresh template, or extract it from an existing
-pipeline. Once saved, the pipeline indicated will also start using this
-newly created template.</p>
+<p>Clicking on the &quot;Add New Template&quot; brings up the following form which allows you to create a fresh template, or extract it from an existing pipeline. Once saved, the pipeline indicated will also start using this newly created template.</p>
 <p><img src="../resources/images/cruise/admin/add_new_template.png" alt=""></p>
-<p>A template can also be extracted from a pipeline using the &quot;Extract
-Template&quot; link. This can be found on the &quot;Pipelines&quot; tab in the
-Administration page.</p>
+<p>A template can also be extracted from a pipeline using the &quot;Extract Template&quot; link. This can be found on the &quot;Pipelines&quot; tab in the Administration page.</p>
 <p><img src="../resources/images/cruise/admin/extract_template_from_pipeline.png" alt=""></p>
-<h4 id="example">Example</h4>
-<p>As an example, assume that there is a pipeline group called &quot;my-app&quot; and
-it contains a pipeline called &quot;app-trunk&quot; which builds the application
-from trunk. Now, if we need to create another pipeline called
-&quot;app-1.0-branch&quot; which builds 1.0 version of the application, we can use
-Pipeline Templates as follows</p>
-<h5 id="using-administration-ui">Using Administration UI</h5>
+<h3 id="example">Example</h3>
+<p>As an example, assume that there is a pipeline group called &quot;my-app&quot; and it contains a pipeline called &quot;app-trunk&quot; which builds the application from trunk. Now, if we need to create another pipeline called &quot;app-1.0-branch&quot; which builds 1.0 version of the application, we can use Pipeline Templates as follows</p>
+<h2 id="using-administration-ui">Using Administration UI</h2>
 <ul>
-<li>Create a template &quot;my-app-build&quot; by extracting it from the pipeline
-&quot;app-trunk&quot;, as shown in the previous section.</li>
-<li>Create a new pipeline &quot;app-1.0-branch&quot; which defines SCM material
-with the branch url and uses the template &quot;my-app-build&quot;.</li>
+<li>Create a template &quot;my-app-build&quot; by extracting it from the pipeline &quot;app-trunk&quot;, as shown in the previous section.</li>
+<li>Create a new pipeline &quot;app-1.0-branch&quot; which defines SCM material with the branch url and uses the template &quot;my-app-build&quot;.</li>
 </ul>
-<h5 id="using-xml">Using XML</h5>
-<h4 id="editing-pipeline-templates">Editing Pipeline Templates</h4>
-<p>Go Administrators can now enable any Go user to edit a template by
-<a href="dev_authorization.html#template-admin">making them a template
-administrator</a>.</p>
-<p>Template administrators can view and edit the templates to which they
-have permissions, on the template tab of the admin page. Template
-Administrators, will however not be able to add, delete or change
-permissions for a template. They will also be able to see the number of
-pipelines in which the template is being used, but not the details of
-those pipelines.</p>
+<h2 id="using-xml">Using XML</h2>
+<h3 id="editing-pipeline-templates">Editing Pipeline Templates</h3>
+<p>Go Administrators can now enable any Go user to edit a template by <a href="dev_authorization.html#template-admin">making them a template administrator</a>.</p>
+<p>Template administrators can view and edit the templates to which they have permissions, on the template tab of the admin page. Template Administrators, will however not be able to add, delete or change permissions for a template. They will also be able to see the number of pipelines in which the template is being used, but not the details of those pipelines.</p>
 <p><img src="../resources/images/cruise/admin/template/template_admin_edit_template.png" alt=""></p>
 <h4 id="viewing-pipeline-templates">Viewing Pipeline Templates</h4>
-<p>Pipeline Templates can now be viewed by Administrators and Pipeline
-Group Administrators while editing or creating a Pipeline.</p>
+<p>Pipeline Templates can now be viewed by Administrators and Pipeline Group Administrators while editing or creating a Pipeline.</p>
 <p><img src="../resources/images/cruise/template_view_on_pipeline_tab.png" alt=""></p>
 <p>Clicking on the icon indicated by arrow will display the following:</p>
 <p><img src="../resources/images/cruise/view_template_popup.png" alt=""></p>
-<p>The pop-up shows the extract of the template &quot;Services-Template&quot;
-configured for the pipeline &quot;Service_1&quot;.</p>
+<p>The pop-up shows the extract of the template &quot;Services-Template&quot; configured for the pipeline &quot;Service_1&quot;.</p>
 <ol>
-<li>Shows the details of the job &quot;compile-job&quot; configured for the stage
-&quot;compile&quot;.</li>
-<li>Indicates that the working directory set for the task is
-&quot;go/service_1&quot;, which is followed by the &quot;$&quot; symbol and then the
-command.</li>
-<li>If any &quot;On Cancel Task&quot; has been configured, it will be indicated
-like this.</li>
+<li>Shows the details of the job &quot;compile-job&quot; configured for the stage &quot;compile&quot;.</li>
+<li>Indicates that the working directory set for the task is &quot;go/service_1&quot;, which is followed by the &quot;$&quot; symbol and then the command.</li>
+<li>If any &quot;On Cancel Task&quot; has been configured, it will be indicated like this.</li>
 <li>Shows the &quot;Run If Condition&quot; for this task.</li>
 </ol>
-<h5 id="see-also">See also...</h5>
+<h4 id="see-also">See also...</h4>
 <ul>
-<li><a href="configuration_reference.html#templates">Templates - Configuration
-Reference</a></li>
+<li><a href="configuration_reference.html#templates">Templates - Configuration Reference</a></li>
 </ul>
-<p>© ThoughtWorks Studios, 2010</p>
 
                     
                     </section>

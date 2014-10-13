@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="8.17" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="8.17" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2392,26 +2392,16 @@
                     <section class="normal" id="section-gitbook_46">
                     
                         <h1 id="choose-when-a-stage-runs">Choose when a stage runs</h1>
-<p>Often there are steps in your <a href="../introduction/concepts_in_go.html">pipeline</a> that you
-do not want to happen automatically. For example, you might want to keep
-binaries from being created for every pipeline (to prevent <a href="admin_out_of_disk_space.html">running out
-of disk space</a>) or want to choose when
-your code is <a href="rm_deploy_to_environment.html">deployed to production</a>.
-Stages in Go can be marked as &#39;manual&#39; just for this purpose.</p>
+<p>Often there are steps in your <a href="../introduction/concepts_in_go.html">pipeline</a> that you do not want to happen automatically. For example, you might want to keep binaries from being created for every pipeline (to prevent <a href="admin_out_of_disk_space.html">running out of disk space</a>) or want to choose when your code is <a href="../faq/rm_deploy_to_environment.html">deployed to production</a>. Stages in Go can be marked as &#39;manual&#39; just for this purpose.</p>
 <p>You can create a manual pipeline by setting the first stage to manual.</p>
-<h3 id="example-usage">Example usage</h3>
-<p>Usage: We need a manual &#39;dist&#39; stage that will create the binaries used
-by later stages.</p>
+<h2 id="example-usage">Example usage</h2>
+<p>Usage: We need a manual &#39;dist&#39; stage that will create the binaries used by later stages.</p>
 <ul>
-<li><a href="admin_add_stage.html">Add a new stage</a> named &#39;dist&#39; after a build
-stage</li>
+<li><a href="admin_add_stage.html">Add a new stage</a> named &#39;dist&#39; after a build stage</li>
 <li>Set the Stage type to manual</li>
 <li><img src="../resources/images/cruise/dev/choose_when_stage_runs/1_add_approval_tag.png" alt=""></li>
-<li>Now, when the build stage &#39;build&#39; is completed, you can manually
-cause Go to create the binary from the <a href="../navigations/pipeline_activity_page.html">Pipeline
-activity</a> page</li>
+<li>Now, when the build stage &#39;build&#39; is completed, you can manually cause Go to create the binary from the <a href="../navigations/pipeline_activity_page.html">Pipeline activity</a> page</li>
 </ul>
-<p>© ThoughtWorks Studios, 2010</p>
 
                     
                     </section>

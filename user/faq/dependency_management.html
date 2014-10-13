@@ -31,7 +31,7 @@
 
 
         
-    <div class="book"  data-level="6.3" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="6.3" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2390,22 +2390,10 @@
                     <section class="normal" id="section-gitbook_73">
                     
                         <h1 id="dependency-management">Dependency Management</h1>
-<p>When you have non-trivial dependency pipeline chains, you may have
-concerns about how dependent pipelines and materials interact. For
-example, code and tests are checked in as part of the same commit. But
-code is built and tested in sequence, so the same material version has
-to be used for pipelines that build and test your code. This section
-covers some Dependency Management concepts and how Go handles certain
-complex scenarios.</p>
-<h3 id="propagate-material-revision-throughout-the-dependency-chain">Propagate material revision throughout the dependency chain</h3>
-<p>If you have frequent material updates coupled with long running
-dependent pipelines sharing that same material, you may encounter
-situations where the revision that triggered the dependency chain is no
-longer the latest revision. Go keeps track of what revision triggered a
-dependency chain and ensures that the same version propagates throughout
-all members of that chain. This helps ensure that all artifacts
-generated as part of that build share a common revision.</p>
-<h4 id="example">Example</h4>
+<p>When you have non-trivial dependency pipeline chains, you may have concerns about how dependent pipelines and materials interact. For example, code and tests are checked in as part of the same commit. But code is built and tested in sequence, so the same material version has to be used for pipelines that build and test your code. This section covers some Dependency Management concepts and how Go handles certain complex scenarios.</p>
+<h2 id="propagate-material-revision-throughout-the-dependency-chain">Propagate material revision throughout the dependency chain</h2>
+<p>If you have frequent material updates coupled with long running dependent pipelines sharing that same material, you may encounter situations where the revision that triggered the dependency chain is no longer the latest revision. Go keeps track of what revision triggered a dependency chain and ensures that the same version propagates throughout all members of that chain. This helps ensure that all artifacts generated as part of that build share a common revision.</p>
+<h3 id="example">Example</h3>
 <p>Consider the following dependency chain:</p>
 <p><img src="../resources/images/cruise/tester/dependency_management/revision_propagation.png" alt=""></p>
 <h4 id="legend">Legend</h4>
@@ -2420,16 +2408,9 @@ generated as part of that build share a common revision.</p>
 <li>Code is checked in to SCM (rev1)</li>
 <li>Development build (A) is triggered by the check-in</li>
 <li>There is another check-in to SCM (rev2)</li>
-<li>Development build completes (with rev1) and triggers acceptance
-tests (B)</li>
-<li>Here&#39;s where dependency management comes in. Go is smart enough
-detect that rev1 originally triggered the build and ensures that the
-acceptance tests check-out that revision (rev1) and not the latest
-revision (rev2). In this situation, Go ensures that the appropriate
-version of acceptance tests are run against the appropriate version
-of the development build.</li>
+<li>Development build completes (with rev1) and triggers acceptance tests (B)</li>
+<li>Here&#39;s where dependency management comes in. Go is smart enough detect that rev1 originally triggered the build and ensures that the acceptance tests check-out that revision (rev1) and not the latest revision (rev2). In this situation, Go ensures that the appropriate version of acceptance tests are run against the appropriate version of the development build.</li>
 </ul>
-<p>© ThoughtWorks Studios, 2010</p>
 
                     
                     </section>

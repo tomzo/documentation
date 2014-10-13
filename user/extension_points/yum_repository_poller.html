@@ -29,7 +29,7 @@
 
 
         
-    <div class="book"  data-level="13.1" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="13.1" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2388,42 +2388,18 @@
                     <section class="normal" id="section-gitbook_69">
                     
                         <h1 id="yum-repository-poller">Yum Repository Poller</h1>
-<p><strong>Note:</strong> This plugin is available for Go servers running on Linux nodes
-having repoquery installed (part of the
-<a href="http://linux.die.net/man/1/yum-utils" target="_blank">yum-utils</a> package.
-<a href="http://manpages.ubuntu.com/manpages/raring/man1/yum-utils.1.html" target="_blank">Ubuntu</a>,
-<a href="http://rpmfind.net//linux/RPM/centos/6.4/i386/Packages/yum-utils-1.1.30-14.el6.noarch.html" target="_blank">CentOS</a>
-)</p>
-<h3 id="introduction">Introduction</h3>
-<p>The Yum respository poller is a bundled <a href="../advanced_usage/package_material.html">package
-material</a> plugin capable of polling yum
-repositories for rpm packages. Go server interacts with this plugin via
-package material plugin interfaces. The plugin makes use of a command
-similar to the following to poll the server. So it does not depend on
-the files that yum depends on e.g. files under /etc/yum.repos.d</p>
+<p><strong>Note:</strong> This plugin is available for Go servers running on Linux nodes having repoquery installed (part of the <a href="http://linux.die.net/man/1/yum-utils" target="_blank">yum-utils</a> package. <a href="http://manpages.ubuntu.com/manpages/raring/man1/yum-utils.1.html" target="_blank">Ubuntu</a>, <a href="http://rpmfind.net//linux/RPM/centos/6.4/i386/Packages/yum-utils-1.1.30-14.el6.noarch.html" target="_blank">CentOS</a>)</p>
+<h2 id="introduction">Introduction</h2>
+<p>The Yum respository poller is a bundled <a href="../advanced_usage/package_material.html">package material</a> plugin capable of polling yum repositories for rpm packages. Go server interacts with this plugin via package material plugin interfaces. The plugin makes use of a command similar to the following to poll the server. So it does not depend on the files that yum depends on e.g. files under /etc/yum.repos.d</p>
 <pre><code class="lang-{.code}">repoquery --repofrompath=uuid,$REPO_URL --repoid=uuid -q $PACKAGE_SPEC -qf &quot;%{LOCATION}...&quot;
 </code></pre>
-<p>A given instance of polling is considered successful if repoquery
-returns a single package as output.</p>
+<p>A given instance of polling is considered successful if repoquery returns a single package as output.</p>
 <h3 id="turn-your-maven-nexus-repo-into-a-yum-repo">Turn your Maven Nexus Repo into a Yum repo</h3>
-<p>Using the <a href="https://github.com/sonatype/nexus-yum-plugin" target="_blank">Yum plugin for
-Nexus</a>, it is possible to
-automatically create and publish Java artifacts as rpms using the
-<a href="http://mojo.codehaus.org/rpm-maven-plugin/index.html" target="_blank">rpm-maven-plugin</a>
-and consume them on the deployment side using rpm or yum. There is a <a href="http://www.youtube.com/watch?v=hFRd_8mbIXI" target="_blank">Go
-webinar</a> that describes this
-set up.</p>
+<p>Using the <a href="https://github.com/sonatype/nexus-yum-plugin" target="_blank">Yum plugin for Nexus</a>, it is possible to automatically create and publish Java artifacts as rpms using the <a href="http://mojo.codehaus.org/rpm-maven-plugin/index.html" target="_blank">rpm-maven-plugin</a> and consume them on the deployment side using rpm or yum. There is a <a href="http://www.youtube.com/watch?v=hFRd_8mbIXI" target="_blank">Go webinar</a> that describes this set up.</p>
 <h3 id="repository-definition">Repository definition</h3>
-<p>Repo URL must be a valid http, https or file URL. This plugin looks for
-the presence of
-<strong>$REPO_URL/repodata/<a href="http://createrepo.baseurl.org/wiki" target="_blank">repomd.xml</a></strong>
-to ascertain validity. Basic authentication (user:password@domain/path)
-is supported for http and https repositories.</p>
+<p>Repo URL must be a valid http, https or file URL. This plugin looks for the presence of <strong>$REPO_URL/repodata/<a href="http://createrepo.baseurl.org/wiki" target="_blank">repomd.xml</a></strong> to ascertain validity. Basic authentication (user:password@domain/path) is supported for http and https repositories.</p>
 <h3 id="package-definition">Package definition</h3>
-<p>In case of this plugin, the package definition is completely determined
-by the package spec. The package spec may be in any of the following
-formats. Please refer the <a href="http://linux.die.net/man/1/repoquery" target="_blank">repoquery man
-page</a> for details.</p>
+<p>In case of this plugin, the package definition is completely determined by the package spec. The package spec may be in any of the following formats. Please refer the <a href="http://linux.die.net/man/1/repoquery" target="_blank">repoquery man page</a> for details.</p>
 <pre><code class="lang-{.code}">                name
                 name.arch
                 name-ver
@@ -2432,47 +2408,26 @@ page</a> for details.</p>
                 name-epoch:ver-rel.arch
                 epoch:name-ver-rel.arch
 </code></pre>
-<p><a href="http://linux.die.net/man/7/glob" target="_blank">Shell glob patterns</a> may also be used.
-For example, say we have a component under development getting ready for
-release of version 1.2.0. We cut a branch for the release and bump up
-the version on trunk/master to 1.3.0. Thus, a package generated by
-trunk/master may look like mycomp-1.3.0-b72349-noarch.rpm while that
-generated by branch may look like mycomp-1.2.0-b72344-noarch.rpm. Now if
-we have a deployment pipeline that is only interested in 1.2 series
-packages, the package spec needs to be mycomp-1.2.* rather than just
-mycomp</p>
+<p><a href="http://linux.die.net/man/7/glob" target="_blank">Shell glob patterns</a> may also be used. For example, say we have a component under development getting ready for release of version 1.2.0. We cut a branch for the release and bump up the version on trunk/master to 1.3.0. Thus, a package generated by trunk/master may look like mycomp-1.3.0-b72349-noarch.rpm while that generated by branch may look like mycomp-1.2.0-b72344-noarch.rpm. Now if we have a deployment pipeline that is only interested in 1.2 series packages, the package spec needs to be mycomp-1.2.* rather than just mycomp</p>
 <h3 id="package-metadata">Package Metadata</h3>
-<p>The following <a href="http://www.rpm.org/max-rpm-snapshot/s1-rpm-inside-tags.html" target="_blank">rpm
-metadata</a>
-is accessed by the plugin</p>
+<p>The following <a href="http://www.rpm.org/max-rpm-snapshot/s1-rpm-inside-tags.html" target="_blank">rpm metadata</a> is accessed by the plugin</p>
 <ol>
-<li>BuildTime (required, automatically set by rpmbuild) - Used by the
-plugin to validate if the package is newer than what was last seen
-by Go. Go displays this field as <em>Modified On</em>.</li>
-<li>Packager - Go displays this field as <em>Modified By</em>. If not provided,
-it is shown as anonymous</li>
-<li>URL - Displayed as a <em>Trackback URL</em> by Go. <strong>Use this as a means to
-trace back to the job that published the package</strong> (within Go or
-outside) to the yum repository.</li>
+<li>BuildTime (required, automatically set by rpmbuild) - Used by the plugin to validate if the package is newer than what was last seen by Go. Go displays this field as <em>Modified On</em>.</li>
+<li>Packager - Go displays this field as <em>Modified By</em>. If not provided, it is shown as anonymous</li>
+<li>URL - Displayed as a <em>Trackback URL</em> by Go. <strong>Use this as a means to trace back to the job that published the package</strong> (within Go or outside) to the yum repository.</li>
 <li>BuildHost - Displayed by Go as <em>Comment: Built on $BUILDHOST</em></li>
 </ol>
 <h3 id="published-environment-variables">Published Environment Variables</h3>
-<p>The following information is made available as environment variables for
-tasks:</p>
+<p>The following information is made available as environment variables for tasks:</p>
 <ol>
 <li>GO_PACKAGE_\<REPO-NAME\>_\<PACKAGE-NAME\>_LABEL</li>
 <li>GO_REPO_\<REPO-NAME\>_\<PACKAGE-NAME\>_REPO_URL</li>
 <li>GO_PACKAGE_\<REPO-NAME\>_\<PACKAGE-NAME\>_PACKAGE_SPEC</li>
 <li>GO_PACKAGE_\<REPO-NAME\>_\<PACKAGE-NAME\>_LOCATION</li>
 </ol>
-<p>Individual plugins may provide additional info via additional
-environment variables.</p>
+<p>Individual plugins may provide additional info via additional environment variables.</p>
 <h3 id="downloading-rpms">Downloading RPMs</h3>
-<p>Let&#39;s say we set up a repository named ORA pointing to
-<a href="http://public-yum.oracle.com/repo/OracleLinux/OL6/latest/x86\_64" target="_blank">http://public-yum.oracle.com/repo/OracleLinux/OL6/latest/x86\_64</a> and
-define a package gcc with a spec of gcc-4.* and set it up as material
-for a pipeline. To download the package locally on the agent, we could
-write a task like this:</p>
+<p>Let&#39;s say we set up a repository named ORA pointing to <a href="http://public-yum.oracle.com/repo/OracleLinux/OL6/latest/x86\_64" target="_blank">http://public-yum.oracle.com/repo/OracleLinux/OL6/latest/x86\_64</a> and define a package gcc with a spec of gcc-4.* and set it up as material for a pipeline. To download the package locally on the agent, we could write a task like this:</p>
 <pre><code class="lang-{.code}">                [go] Start to execute task: &lt;exec command=&quot;/bin/bash&quot; &gt;
                 &lt;arg&gt;-c&lt;/arg&gt;
                 &lt;arg&gt;curl -o /tmp/gcc.rpm $GO_PACKAGE_ORA_GCC_LOCATION&lt;/arg&gt;
@@ -2499,51 +2454,28 @@ server</p>
                 &lt;/exec&gt;
 </code></pre>
 <h3 id="installing-rpms">Installing RPMs</h3>
-<p>For self contained packages (no external dependencies other than what is
-already installed on the target node), it is just enough to do:</p>
+<p>For self contained packages (no external dependencies other than what is already installed on the target node), it is just enough to do:</p>
 <pre><code class="lang-{.code}">                rpm -U /path/to/downloaded/pkg.rpm
 </code></pre>
 <p>On the other hand, if the package isn&#39;t self-contained, we&#39;d run:</p>
 <pre><code class="lang-{.code}">                yum install $GO_PACKAGE_ORA_GCC_LABEL
 </code></pre>
-<p>This would require that /etc/yum.repos.d contain the repository
-definitions.</p>
+<p>This would require that /etc/yum.repos.d contain the repository definitions.</p>
 <h3 id="creating-and-publishing-rpms">Creating and Publishing RPMs</h3>
-<p>Although the support for package as material in Go isn&#39;t concerned with
-how the packages are created and published, here is a short set of
-pointers to information on the web.</p>
+<p>Although the support for package as material in Go isn&#39;t concerned with how the packages are created and published, here is a short set of pointers to information on the web.</p>
 <ul>
-<li><a href="http://www.ibm.com/developerworks/library/l-rpm1/#first_rpm" target="_blank">Building an RPM using rpmbuild and SPEC
-file</a></li>
+<li><a href="http://www.ibm.com/developerworks/library/l-rpm1/#first_rpm" target="_blank">Building an RPM using rpmbuild and SPEC file</a></li>
 <li><a href="https://github.com/jordansissel/fpm/wiki" target="_blank">Building using fpm</a></li>
-<li><a href="http://www.howtoforge.com/creating_a_local_yum_repository_centos" target="_blank">Tutorial</a>
-to set up a local yum repository using
-<a href="http://linux.die.net/man/8/createrepo" target="_blank">createrepo</a>. Publishing to a
-yum repo simply involves uploading/copying over a new package
-revision at the correct location and running createrepo --update</li>
+<li><a href="http://www.howtoforge.com/creating_a_local_yum_repository_centos" target="_blank">Tutorial</a> to set up a local yum repository using <a href="http://linux.die.net/man/8/createrepo" target="_blank">createrepo</a>. Publishing to a yum repo simply involves uploading/copying over a new package revision at the correct location and running createrepo --update</li>
 </ul>
 <h3 id="notes">Notes</h3>
 <ol>
-<li>This plugin will detect at max one package revision per minute (the
-default interval at which Go materials poll). If multiple versions
-of a package get published to a repo in the time interval between
-two polls, Go will only register the latest version in that
-interval.</li>
-<li>This plugin makes use of buildtime in rpm metadata to determine if a
-poll has returned a new result. If for some reason (e.g. timezone
-misconfiguration), the buildtime of pkg-1.1 is less than that of
-pkg-1.0, then the plugin will not register pkg-1.1 as a newer
-package.</li>
-<li>The only way to update an rpm is to change the version or release.
-<a href="http://unix.stackexchange.com/questions/71288/does-yum-use-package-buildtime-to-decide-if-a-package-is-newer" target="_blank">Republishing</a>
-a different file with the same name and different buildtime won&#39;t
-do.</li>
+<li>This plugin will detect at max one package revision per minute (the default interval at which Go materials poll). If multiple versions of a package get published to a repo in the time interval between two polls, Go will only register the latest version in that interval.</li>
+<li>This plugin makes use of buildtime in rpm metadata to determine if a poll has returned a new result. If for some reason (e.g. timezone misconfiguration), the buildtime of pkg-1.1 is less than that of pkg-1.0, then the plugin will not register pkg-1.1 as a newer package.</li>
+<li>The only way to update an rpm is to change the version or release. <a href="http://unix.stackexchange.com/questions/71288/does-yum-use-package-buildtime-to-decide-if-a-package-is-newer" target="_blank">Republishing</a> a different file with the same name and different buildtime won&#39;t do.</li>
 <li>Package groups are not supported.</li>
-<li>The <a href="https://github.com/gocd/go-command-repo/tree/master/package/rpm" target="_blank">Go command
-repository</a>
-has a bunch of commands related to rpm packages.</li>
+<li>The <a href="https://github.com/gocd/go-command-repo/tree/master/package/rpm" target="_blank">Go command repository</a> has a bunch of commands related to rpm packages.</li>
 </ol>
-<p>© ThoughtWorks Studios, 2010</p>
 
                     
                     </section>

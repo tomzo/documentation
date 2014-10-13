@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="3.21" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="3.21" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2392,38 +2392,22 @@
                     <section class="normal" id="section-gitbook_72">
                     
                         <h1 id="concurrent-modifications-to-gos-configuration">Concurrent Modifications to Go&#39;s Configuration</h1>
-<p>Go handles concurrent modifications to its configuration. Multiple
-modifications are merged and saved successfully. Modifications to the
-same area of configuration would result in a conflict.</p>
-<p>Note: Configuration file is maintained in git version control system. Go
-leverages git’s merge feature to merge changes from multiple users. As
-expected, concurrent changes to the same section by users would result
-in a conflict.</p>
-<h3 id="successful-merge">Successful Merge</h3>
-<p>In case of a successful merge, user would see a success message as
-below:</p>
+<p>Go handles concurrent modifications to its configuration. Multiple modifications are merged and saved successfully. Modifications to the same area of configuration would result in a conflict.</p>
+<p>Note: Configuration file is maintained in git version control system. Go leverages git’s merge feature to merge changes from multiple users. As expected, concurrent changes to the same section by users would result in a conflict.</p>
+<h2 id="successful-merge">Successful Merge</h2>
+<p>In case of a successful merge, user would see a success message as below:</p>
 <p><img src="../resources/images/cruise/admin/successful_config_merge.png" alt=""></p>
-<h3 id="merge-conflicts">Merge Conflicts</h3>
+<h2 id="merge-conflicts">Merge Conflicts</h2>
 <h3 id="handling-conflict-while-using-config-xml-tab-go-administrator">Handling conflict while using Config XML tab (Go Administrator)</h3>
-<p>In case of a conflict, Go provides an interface with the latest version
-of config along with the changes made by the user. As an example, if the
-same job was re-named by two users concurrently, the changes from first
-user would be successfully saved while the second user would see a page
-similar to the one displayed in the image below.</p>
-<p>User needs to re-apply their changes displayed on the left-hand pane, to
-the editable version on the right and save again.</p>
+<p>In case of a conflict, Go provides an interface with the latest version of config along with the changes made by the user. As an example, if the same job was re-named by two users concurrently, the changes from first user would be successfully saved while the second user would see a page similar to the one displayed in the image below.</p>
+<p>User needs to re-apply their changes displayed on the left-hand pane, to the editable version on the right and save again.</p>
 <p><img src="../resources/images/cruise/admin/config_xml_merge_conflict.png" alt=""></p>
 <h3 id="handling-conflict-while-using-config-xml-tab-pipeline-group-administrator">Handling conflict while using Config XML tab (Pipeline group administrator)</h3>
 <p><img src="../resources/images/cruise/admin/group_admin_merge_conflict.png" alt=""></p>
 <h3 id="handling-conflict-while-updating-configuration-via-other-admin-tabs">Handling conflict while updating configuration via other Admin tabs</h3>
-<p>If two users make similar changes to a pipeline using the ‘Edit
-Pipeline’ UI, the second user would see the error as displayed below.</p>
-<p>User should backup the required changes from the page. Clicking on
-‘RELOAD’ button, would discard user’s changes and reload the page with
-latest version of the pipeline configuration. User should re-apply
-his/her changes from backup and save again.</p>
+<p>If two users make similar changes to a pipeline using the ‘Edit Pipeline’ UI, the second user would see the error as displayed below.</p>
+<p>User should backup the required changes from the page. Clicking on ‘RELOAD’ button, would discard user’s changes and reload the page with latest version of the pipeline configuration. User should re-apply his/her changes from backup and save again.</p>
 <p><img src="../resources/images/cruise/admin/clicky_admin_merge_conflict.png" alt=""></p>
-<p>© ThoughtWorks Studios, 2010</p>
 
                     
                     </section>

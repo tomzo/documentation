@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="12.5" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="12.5" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2392,71 +2392,39 @@
                     <section class="normal" id="section-gitbook_64">
                     
                         <h1 id="angular-js-templates-in-go-plugins">Angular JS templates in Go plugins</h1>
-<h3 id="overview">Overview</h3>
-<p>Go uses <a href="http://docs.angularjs.org/guide/templates" target="_blank">Angular JS</a> as its
-templating engine for plugin UI. This means that plugin authors can use
-Angular templates to specify how the UI of their plugins looks. Caveat:
-Some plugin endpoints, like the Package Repository plugin, do not use
-this for their view.</p>
-<p>Because of how Angular is used inside Go, the full power of Angular is
-not yet exposed to the plugin author. Here are a couple of other
-relevant links from the Angular JS site, related to templates:</p>
+<h2 id="overview">Overview</h2>
+<p>Go uses <a href="http://docs.angularjs.org/guide/templates" target="_blank">Angular JS</a> as its templating engine for plugin UI. This means that plugin authors can use Angular templates to specify how the UI of their plugins looks. Caveat: Some plugin endpoints, like the Package Repository plugin, do not use this for their view.</p>
+<p>Because of how Angular is used inside Go, the full power of Angular is not yet exposed to the plugin author. Here are a couple of other relevant links from the Angular JS site, related to templates:</p>
 <ul>
 <li><a href="http://docs.angularjs.org/tutorial/step_08" target="_blank">Templates</a></li>
 <li><a href="http://docs.angularjs.org/guide/expression" target="_blank">Expressions</a></li>
 </ul>
-<h3 id="creating-a-template-for-a-go-plugin---configuration-ui">Creating a template for a Go plugin - Configuration UI</h3>
-<h4 id="importance-of-the-configuration-key">Importance of the configuration key</h4>
-<p>When an Angular template is used in a Go plugin, to define the
-configuration UI, the configuration key which is stored in the
-configuration XML is used everywhere and is expected to be consistent.
-Since Angular works off of JSON, Go will make sure that the key in the
-JSON provided to the Angular template is the same as the key in the
-configuration XML.</p>
-<p>Suppose the key of the configuration property stored in the XML is
-&quot;foobar&quot;, with value, &quot;5&quot;, then Go will make sure that the value is
-available to the template as &quot;foobar&quot; when used in an Angular-specific
-HTML attribute like &quot;ng-model&quot;.</p>
+<h2 id="creating-a-template-for-a-go-plugin---configuration-ui">Creating a template for a Go plugin - Configuration UI</h2>
+<h3 id="importance-of-the-configuration-key">Importance of the configuration key</h3>
+<p>When an Angular template is used in a Go plugin, to define the configuration UI, the configuration key which is stored in the configuration XML is used everywhere and is expected to be consistent. Since Angular works off of JSON, Go will make sure that the key in the JSON provided to the Angular template is the same as the key in the configuration XML.</p>
+<p>Suppose the key of the configuration property stored in the XML is &quot;foobar&quot;, with value, &quot;5&quot;, then Go will make sure that the value is available to the template as &quot;foobar&quot; when used in an Angular-specific HTML attribute like &quot;ng-model&quot;.</p>
 <p><img src="../resources/images/cruise/plugin_angular.png" alt=""></p>
-<p>So, the name &quot;foobar&quot; needs to be the same across the configuration XML,
-the Angular template as well as in any code that the plugin has.</p>
-<h4 id="using-angular-expressions-in-the-template">Using Angular expressions in the template</h4>
-<p>To use an Angular expression (of the form &quot;{{ expression }}&quot;) inside a
-template, you need to use this form:</p>
+<p>So, the name &quot;foobar&quot; needs to be the same across the configuration XML, the Angular template as well as in any code that the plugin has.</p>
+<h3 id="using-angular-expressions-in-the-template">Using Angular expressions in the template</h3>
+<p>To use an Angular expression (of the form &quot;{{ expression }}&quot;) inside a template, you need to use this form:</p>
 <pre><code class="lang-{.code}">{{ GOINPUTNAME[foobar] }}
 </code></pre>
-<p>This is needed because Go can potentially use the same form multiple
-times in a single page (for instance, in a task creation UI, the plugin
-task can be used as a normal task, as well as an on-cancel task). This
-causes Angular to confuse the two forms. When an Angular app in written
-by hand, an author can change the name of the form input element, so
-that the two forms and their inputs can be considered different. Since
-Go takes care of this for you, in this case, you need to surround the
-key with &quot;GOINPUTNAME[&quot; and &quot;]&quot;. Go will look for &quot;GOINPUTNAME&quot; and
-replace it with the form-specific ID, so that both forms work properly
-and independently of each other.</p>
-<p>So, to create a template where anything you enter in a textbox is shown
-in the dialog box, you can use something like this:</p>
+<p>This is needed because Go can potentially use the same form multiple times in a single page (for instance, in a task creation UI, the plugin task can be used as a normal task, as well as an on-cancel task). This causes Angular to confuse the two forms. When an Angular app in written by hand, an author can change the name of the form input element, so that the two forms and their inputs can be considered different. Since Go takes care of this for you, in this case, you need to surround the key with &quot;GOINPUTNAME[&quot; and &quot;]&quot;. Go will look for &quot;GOINPUTNAME&quot; and replace it with the form-specific ID, so that both forms work properly and independently of each other.</p>
+<p>So, to create a template where anything you enter in a textbox is shown in the dialog box, you can use something like this:</p>
 <pre><code class="lang-{.code}">&lt;div&gt;
   {{ GOINPUTNAME[foobar] }}
   &lt;input type=&quot;text&quot; ng-model=&quot;foobar&quot;&gt;
 &lt;/div&gt;
 </code></pre>
-<h4 id="showing-validation-errors-in-the-ui">Showing validation errors in the UI</h4>
-<p>Similar to the errors available in Angular (described
-<a href="http://docs.angularjs.org/api/ng/directive/input" target="_blank">here</a> and
-<a href="http://docs.angularjs.org/guide/forms" target="_blank">here</a>), the server-side
-validation errors populated by the plugin are available as:</p>
+<h3 id="showing-validation-errors-in-the-ui">Showing validation errors in the UI</h3>
+<p>Similar to the errors available in Angular (described <a href="http://docs.angularjs.org/api/ng/directive/input" target="_blank">here</a> and <a href="http://docs.angularjs.org/guide/forms" target="_blank">here</a>), the server-side validation errors populated by the plugin are available as:</p>
 <pre><code class="lang-{.code}">{{ GOINPUTNAME[foobar].$error.server }}
 </code></pre>
 <p>Usually, it is used like this:</p>
 <pre><code class="lang-{.code}">&lt;input type=&#39;text&#39; ng-model=&#39;foobar&#39;&gt;
 &lt;span class=&quot;form_error&quot; ng-show=&quot;GOINPUTNAME[foobar].$error.server&quot;&gt;{{ GOINPUTNAME[foobar].$error.server }}&lt;/span&gt;
 </code></pre>
-<p>When a plugin, during validation, adds an error to the ValidationResult
-object, that error message becomes available here and is shown in the
-span.</p>
-<p>© ThoughtWorks Studios, 2010</p>
+<p>When a plugin, during validation, adds an error to the ValidationResult object, that error message becomes available here and is shown in the span.</p>
 
                     
                     </section>

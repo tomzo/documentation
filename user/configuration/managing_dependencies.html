@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="8.19" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="8.19" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2392,29 +2392,19 @@
                     <section class="normal" id="section-gitbook_53">
                     
                         <h1 id="managing-dependencies">Managing dependencies</h1>
-<p>Sometimes you need more complex triggers than a simple pipeline of
-stages and jobs. In particular, you may want a pipeline to trigger based
-on the result of a stage in another pipeline. This is possible by adding
-pipelines as materials.</p>
-<h3 id="creating-a-dependency">Creating a dependency</h3>
-<p>Say we have two pipelines - <strong>upstream_pipeline</strong> and
-<strong>downstream_pipeline</strong> . We want downstream_pipeline to automatically
-trigger following the successful completion of the stage AutoStage1 in
-pipeline upstream_pipeline. Here&#39;s how we&#39;d achieve this:</p>
+<p>Sometimes you need more complex triggers than a simple pipeline of stages and jobs. In particular, you may want a pipeline to trigger based on the result of a stage in another pipeline. This is possible by adding pipelines as materials.</p>
+<h2 id="creating-a-dependency">Creating a dependency</h2>
+<p>Say we have two pipelines - <strong>upstream_pipeline</strong> and <strong>downstream_pipeline</strong> . We want downstream_pipeline to automatically trigger following the successful completion of the stage AutoStage1 in pipeline upstream_pipeline. Here&#39;s how we&#39;d achieve this:</p>
 <ul>
 <li>Navigate to the <strong>Admin</strong> section.</li>
-<li>On the Pipelines screen, locate the <strong>downstream_pipeline</strong>
-pipeline and <strong>Edit</strong> it.</li>
+<li>On the Pipelines screen, locate the <strong>downstream_pipeline</strong>    pipeline and <strong>Edit</strong> it.</li>
 <li>Click on the <strong>Materials</strong> tab.</li>
-<li>Add a new pipeline dependency material by clicking <strong>Add Material</strong>
-and then selecting <strong>Pipeline</strong> .</li>
+<li>Add a new pipeline dependency material by clicking <strong>Add Material</strong> and then selecting <strong>Pipeline</strong> .</li>
 <li>You&#39;ll be presented with an <strong>Add Material</strong> popup (see screenshot)</li>
-<li>Enter <strong>upstream_pipeline [AutoStage1]</strong> in the <strong>Pipeline
-[stage]</strong> field (it can also auto-complete)</li>
+<li>Enter <strong>upstream_pipeline [AutoStage1]</strong> in the <strong>Pipeline [stage]</strong> field (it can also auto-complete)</li>
 </ul>
 <p><img src="../resources/images/cruise/admin/pipeline/pipeline_add_material.png" alt=""></p>
-<p>Power users can also configure this via the <strong>Config XML</strong> tab on the
-Admin section:</p>
+<p>Power users can also configure this via the <strong>Config XML</strong> tab on the Admin section:</p>
 <pre><code class="lang-{.code}">&lt;pipeline name=&quot;downstream_pipeline&quot;&gt;  
   &lt;materials&gt;  
     &lt;pipeline pipelineName=&quot;upstream_pipeline&quot; stageName=&quot;AutoStage1&quot;/&gt;  
@@ -2422,47 +2412,19 @@ Admin section:</p>
   ...
 &lt;/pipeline&gt;
 </code></pre>
-<p>Now, when the stage &quot;AutoStage1&quot; of &quot;upstream_pipeline&quot; completes, the
-pipeline &quot;downstream_pipeline&quot; will start building. The Pipeline
-Dependency visualization shows you all the downstream instances that
-were triggered off the upstream instance (label 14) currently being
-viewed.</p>
+<p>Now, when the stage &quot;AutoStage1&quot; of &quot;upstream_pipeline&quot; completes, the pipeline &quot;downstream_pipeline&quot; will start building. The Pipeline Dependency visualization shows you all the downstream instances that were triggered off the upstream instance (label 14) currently being viewed.</p>
 <p><img src="../resources/images/cruise/dependent_build.png" alt=""></p>
-<p>If you want to view the materials that are associated with
-&quot;downstream_pipeline&quot;, the pipeline details page for that specific
-instance of the downstream pipeline will show you all this information.</p>
+<p>If you want to view the materials that are associated with &quot;downstream_pipeline&quot;, the pipeline details page for that specific instance of the downstream pipeline will show you all this information.</p>
 <p><img src="../resources/images/cruise/downstream_pipeline.png" alt=""></p>
 <h3 id="fetching-artifacts-from-an-upstream-pipeline">Fetching artifacts from an upstream pipeline</h3>
-<p>Go can automatically fetch artifacts from a previous stage of the
-current pipeline or from any ancestor pipeline it depends on. This is
-useful when a pipeline depends on binaries that are produced earlier in
-the pipeline.</p>
-<p>Note that you can not specify two (or more) dependencies for the same
-upstream pipeline.</p>
-<p>For example, in the following configuration, when the stage &quot;AutoStage1&quot;
-of pipeline &quot;upstream_pipeline&quot; passes, the pipeline
-&quot;downstream_pipeline&quot; starts, and the artifacts are fetched from the
-upstream pipeline in the stage &#39;Stage&#39; of &quot;downstream_pipeline&quot;. You
-can see the exact pipeline and stage that triggered this in the sub-tab
-&#39;Materials&#39; on the stage details page.</p>
-<p>You can do this via the admin screens for the respective pipelines.
-You&#39;ll need to first define the artifact in the &quot;upstream_pipeline&quot; at
-the job level:</p>
+<p>Go can automatically fetch artifacts from a previous stage of the current pipeline or from any ancestor pipeline it depends on. This is useful when a pipeline depends on binaries that are produced earlier in the pipeline.</p>
+<p>Note that you can not specify two (or more) dependencies for the same upstream pipeline.</p>
+<p>For example, in the following configuration, when the stage &quot;AutoStage1&quot; of pipeline &quot;upstream_pipeline&quot; passes, the pipeline &quot;downstream_pipeline&quot; starts, and the artifacts are fetched from the upstream pipeline in the stage &#39;Stage&#39; of &quot;downstream_pipeline&quot;. You can see the exact pipeline and stage that triggered this in the sub-tab &#39;Materials&#39; on the stage details page.</p>
+<p>You can do this via the admin screens for the respective pipelines. You&#39;ll need to first define the artifact in the &quot;upstream_pipeline&quot; at the job level:</p>
 <p><img src="../resources/images/cruise/admin/pipeline/job_artifacts.png" alt=""></p>
-<p>Then, you&#39;ll want to retrieve (fetch) that artifact from within the
-&quot;downstream_pipeline.&quot; You can do this by creating a &quot;Fetch Artifact&quot;
-task within a job in that pipeline. Since you have already defined
-&quot;upstream_pipeline&quot; as a dependency material, artifacts from that
-pipeline are accessible in this pipeline.</p>
+<p>Then, you&#39;ll want to retrieve (fetch) that artifact from within the &quot;downstream_pipeline.&quot; You can do this by creating a &quot;Fetch Artifact&quot; task within a job in that pipeline. Since you have already defined &quot;upstream_pipeline&quot; as a dependency material, artifacts from that pipeline are accessible in this pipeline.</p>
 <p><img src="../resources/images/cruise/admin/pipeline/task_fetch_artifact.png" alt=""></p>
-<p>A fetch task can also be instructed to retrieve (fetch) an artifact from
-an ancestor pipeline. For example, lets assume that the
-&quot;upstream_pipeline&quot; used in this example, depends on another pipeline
-&quot;topmost_pipeline&quot;. Then you can define a a &quot;Fetch Artifact&quot; task to
-fetch artifacts from &quot;topmost_pipeline&quot; by defining the hierarchy of
-these pipelines as follows. You have to specify the hierarchy by
-separting the pipelines with a /. For example:
-topmost_pipeline/upstream_pipeline.</p>
+<p>A fetch task can also be instructed to retrieve (fetch) an artifact from an ancestor pipeline. For example, lets assume that the &quot;upstream_pipeline&quot; used in this example, depends on another pipeline &quot;topmost_pipeline&quot;. Then you can define a a &quot;Fetch Artifact&quot; task to fetch artifacts from &quot;topmost_pipeline&quot; by defining the hierarchy of these pipelines as follows. You have to specify the hierarchy by separting the pipelines with a /. For example: topmost_pipeline/upstream_pipeline.</p>
 <p><img src="../resources/images/cruise/admin/pipeline/task_fetch_artifact_ancestor.png" alt=""></p>
 <p>For power users, here&#39;s how you can configure this via Config XML:</p>
 <pre><code class="lang-{.code}">&lt;pipeline name=&quot;topmost_pipeline&quot;&gt;  
@@ -2523,7 +2485,6 @@ topmost_pipeline/upstream_pipeline.</p>
   ...
 &lt;/pipeline&gt;
 </code></pre>
-<p>© ThoughtWorks Studios, 2010</p>
 
                     
                     </section>

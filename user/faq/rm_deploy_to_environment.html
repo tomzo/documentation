@@ -31,7 +31,7 @@
 
 
         
-    <div class="book"  data-level="7.1" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="7.1" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2387,75 +2387,48 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_88">
+                    <section class="normal" id="section-gitbook_83">
                     
                         <h1 id="releasing-into-an-environment">Releasing into an environment</h1>
-<p>One of the most useful aspects of having your build mapped as a
-pipeline, is being able to know exactly what is in a particular
-environment. For example, you might have a User Acceptance Testing
-environment into which you want Go to automatically deploy your binary.
-Due to process restriction within your company, you might want to
-manually install a binary yourself, but have Go still retain the
-information of what is currently released.</p>
-<h3 id="example-usages">Example usages</h3>
-<h4 id="automatically-deploy-to-uat">Automatically deploy to UAT</h4>
-<p>For this example, we&#39;ll assume that there is already an ant task defined
-in your build that will take a binary and deploy it to your environment.
-A seperate task will verify the install was successful. If it is not, a
-task will run to rollback the deployment. We will also assume that
-earlier in the pipeline there is a <strong>dist</strong> stage with a
-<strong>create-installers</strong> job that will have already created the binary for
-us to use.</p>
+<p>One of the most useful aspects of having your build mapped as a pipeline, is being able to know exactly what is in a particular environment. For example, you might have a User Acceptance Testing environment into which you want Go to automatically deploy your binary. Due to process restriction within your company, you might want to manually install a binary yourself, but have Go still retain the information of what is currently released.</p>
+<h2 id="example-usages">Example usages</h2>
+<h3 id="automatically-deploy-to-uat">Automatically deploy to UAT</h3>
+<p>For this example, we&#39;ll assume that there is already an ant task defined in your build that will take a binary and deploy it to your environment. A seperate task will verify the install was successful. If it is not, a task will run to rollback the deployment. We will also assume that earlier in the pipeline there is a <strong>dist</strong> stage with a <strong>create-installers</strong> job that will have already created the binary for us to use.</p>
 <ul>
-<li><a href="admin_add_stage.html">Add a new stage</a> named <strong>UAT</strong> with a job
-named <strong>deploy</strong></li>
-<li><a href="dev_choose_when_stage_runs.html">Ensure that the <strong>UAT</strong> stage is
-manual</a></li>
-<li>Ensure the following task block is in the <strong>deploy</strong> job
-configuration</li>
+<li><a href="../configuration/admin_add_stage.html">Add a new stage</a> named <strong>UAT</strong> with a job named <strong>deploy</strong></li>
+<li><a href="../configuration/dev_choose_when_stage_runs.html">Ensure that the <strong>UAT</strong> stage is manual</a></li>
+<li>Ensure the following task block is in the <strong>deploy</strong> job configuration</li>
 </ul>
 <p>When you are ready to deploy something into the UAT environment...</p>
 <ul>
-<li>Navigate to the <a href="../navigations/pipeline_activity_page.html">pipeline activity</a>
-page</li>
+<li>Navigate to the <a href="../navigations/pipeline_activity_page.html">pipeline activity</a> page</li>
 <li>Find the check-in you want to deploy</li>
 <li>Click on the manual transition into the <strong>UAT</strong> stage</li>
 <li><img src="../resources/images/cruise/release_manager/release_to_production/1_click_manual_to_uat.png" alt=""></li>
-<li>When the deploy is successful, the stage will be green and the UAT
-environment will contain the selected check-in</li>
+<li>When the deploy is successful, the stage will be green and the UAT environment will contain the selected check-in</li>
 <li><img src="../resources/images/cruise/release_manager/release_to_production/2_successful_to_uat.png" alt=""></li>
-<li>When the deploy fails for some reason, the stage will be red and the
-UAT environment will contain the original check-in</li>
+<li>When the deploy fails for some reason, the stage will be red and the UAT environment will contain the original check-in</li>
 </ul>
-<h4 id="manually-deploy-to-production">Manually deploy to production</h4>
-<p>For this example, we&#39;ll assume that there is a known way to rollback to
-a previous installation. We will also assume that earlier in the
-pipeline there is a <strong>dist</strong> stage with a <strong>create-installers</strong> job that
-will have already created the binary for us to use.</p>
+<h3 id="manually-deploy-to-production">Manually deploy to production</h3>
+<p>For this example, we&#39;ll assume that there is a known way to rollback to a previous installation. We will also assume that earlier in the pipeline there is a <strong>dist</strong> stage with a <strong>create-installers</strong> job that will have already created the binary for us to use.</p>
 <ul>
-<li><a href="admin_add_stage.html">Add a new stage</a> named <strong>production</strong> with a
-job named <strong>deploy</strong></li>
-<li><a href="dev_choose_when_stage_runs.html">Ensure that the <strong>production</strong> stage is
-manual</a></li>
+<li><a href="../configuration/admin_add_stage.html">Add a new stage</a> named <strong>production</strong> with a job named <strong>deploy</strong></li>
+<li><a href="../configuration/dev_choose_when_stage_runs.html">Ensure that the <strong>production</strong> stage is manual</a></li>
 <li>Ensure there is no task block in the <strong>deploy</strong> job configuration</li>
 </ul>
 <p>When you are ready to deploy something into the production
 environment...</p>
 <ul>
-<li>Navigate to the <a href="../navigations/pipeline_activity_page.html">pipeline activity</a>
-page</li>
+<li>Navigate to the <a href="../navigations/pipeline_activity_page.html">pipeline activity</a> page</li>
 <li>Find the check-in you want to deploy</li>
 <li>Click on the details link of the <strong>dist</strong> stage</li>
 <li><img src="../resources/images/cruise/release_manager/release_to_production/4_click_stage_details.png" alt=""></li>
 <li>Download the installer binary in the artifacts tab</li>
 <li><img src="../resources/images/cruise/release_manager/release_to_production/5_download_artifact.png" alt=""></li>
 <li>Manually install the binary into production</li>
-<li>If there are issues, manually rollback to the last known good
-installation</li>
-<li>If everything seems to be working correctly, click on the manual
-transition into the <strong>production</strong> stage</li>
+<li>If there are issues, manually rollback to the last known good installation</li>
+<li>If everything seems to be working correctly, click on the manual transition into the <strong>production</strong> stage</li>
 </ul>
-<p>© ThoughtWorks Studios, 2010</p>
 
                     
                     </section>

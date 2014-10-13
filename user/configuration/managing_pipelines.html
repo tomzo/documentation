@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="3.2" data-basepath=".." data-revision="1411466296389">
+    <div class="book"  data-level="3.2" data-basepath=".." data-revision="1413194816148">
     
 
 <div class="book-summary">
@@ -2392,224 +2392,186 @@
                     <section class="normal" id="section-gitbook_55">
                     
                         <h1 id="managing-pipelines">Managing pipelines</h1>
-<p>Go can be configured using <a href="../navigations/administration_page.html">Administration</a>
-Tab. You can perform operations like add/edit Pipelines, Stages, Jobs,
-Tasks, Templates and Pipeline group. You can also configure Go by
-editing the full XML file if you wish, by clicking on the <strong>Config XML</strong>
-section of the <a href="../navigations/administration_page.html">Administration</a> tab. Go will
-check the syntax of the configuration before it saves it again</p>
-<h3 id="creating-a-new-pipeline">Creating a new pipeline</h3>
-<p>To create a new pipeline, go to the <strong>Pipelines</strong> sub-tab of the
-<a href="../navigations/administration_page.html">Administration</a> tab and click on the <a href="quick_pipeline_setup.html">&quot;Create
-a new pipeline within this group&quot;</a> link as
-shown in the screen shot below.</p>
+<p>Go can be configured using <a href="../navigations/administration_page.html">Administration</a> Tab. You can perform operations like add/edit Pipelines, Stages, Jobs, Tasks, Templates and Pipeline group. You can also configure Go by editing the full XML file if you wish, by clicking on the <strong>Config XML</strong> section of the <a href="../navigations/administration_page.html">Administration</a> tab. Go will check the syntax of the configuration before it saves it again</p>
+<h2 id="creating-a-new-pipeline">Creating a new pipeline</h2>
+<p>To create a new pipeline, go to the <strong>Pipelines</strong> sub-tab of the <a href="../navigations/administration_page.html">Administration</a> tab and click on the <a href="quick_pipeline_setup.html">&quot;Create a new pipeline within this group&quot;</a> link as shown in the screen shot below.</p>
 <p><img src="../resources/images/cruise/admin/create_new_pipeline_link.png" alt=""></p>
-<h3 id="add-a-new-material-to-an-existing-pipeline">Add a new material to an existing pipeline</h3>
+<h2 id="add-a-new-material-to-an-existing-pipeline">Add a new material to an existing pipeline</h2>
 <p>Now that you have a pipeline, lets add another material to it.</p>
 <ul>
-<li>Navigate to the new pipeline you created by clicking on the <strong>Edit</strong>
-link under the Actions against it. You can also click on the name of
-the pipeline.</li>
-<li><img src="../resources/images/cruise/admin/add_stage/edit_pipeline_link.png" alt=""></li>
+<li>Navigate to the new pipeline you created by clicking on the <strong>Edit</strong> link under the Actions against it. You can also click on the name of the pipeline.</li>
+</ul>
+<p><img src="../resources/images/cruise/admin/add_stage/edit_pipeline_link.png" alt=""></p>
+<ul>
 <li>Click on the Materials tab.</li>
-<li><img src="../resources/images/cruise/admin/pipeline_general_options.png" alt=""></li>
-<li>You will notice an existing material . Click on the &quot;Add new
-material&quot; link.</li>
-<li><img src="../resources/images/cruise/add_new_material.png" alt=""></li>
+</ul>
+<p><img src="../resources/images/cruise/admin/pipeline_general_options.png" alt=""></p>
+<ul>
+<li>You will notice an existing material . Click on the &quot;Add new material&quot; link.</li>
+</ul>
+<p><img src="../resources/images/cruise/add_new_material.png" alt=""></p>
+<ul>
 <li>You will get the following message</li>
-<li><img src="../resources/images/cruise/define_destination_folder.png" alt=""></li>
+</ul>
+<p><img src="../resources/images/cruise/define_destination_folder.png" alt=""></p>
+<ul>
 <li>Edit the existing material and specify the destination directory</li>
-<li><img src="../resources/images/cruise/edit_material.png" alt=""></li>
+</ul>
+<p><img src="../resources/images/cruise/edit_material.png" alt=""></p>
+<ul>
 <li>Click &quot;Save&quot;.</li>
 </ul>
-<h3 id="blacklist">Blacklist</h3>
-<p>Often you do want to specify a set of files that Go should ignore when
-it checks for changes. Repository changesets which contain only these
-files will not automatically trigger a pipeline. These are detailed in
-the <a href="configuration_reference.html#ignore">ignore</a> section of the
-<a href="configuration_reference.html">configuration reference.</a></p>
+<h2 id="blacklist">Blacklist</h2>
+<p>Often you do want to specify a set of files that Go should ignore when it checks for changes. Repository changesets which contain only these files will not automatically trigger a pipeline. These are detailed in the <a href="configuration_reference.html#-ignore-">ignore</a> section of the <a href="configuration_reference.html">configuration reference</a>.</p>
 <ul>
 <li>Enter the items to blacklist using ant-style syntax below</li>
-<li><img src="../resources/images/cruise/edit_material_blacklist.png" alt=""></li>
+</ul>
+<p><img src="../resources/images/cruise/edit_material_blacklist.png" alt=""></p>
+<ul>
 <li>Click &quot;Save&quot;.</li>
 </ul>
-<h3 id="add-a-new-stage-to-an-existing-pipeline">Add a new stage to an existing pipeline</h3>
-<p>Now that you have a pipeline with a single stage, lets add more stages
-to it.</p>
+<h2 id="add-a-new-stage-to-an-existing-pipeline">Add a new stage to an existing pipeline</h2>
+<p>Now that you have a pipeline with a single stage, lets add more stages to it.</p>
 <ul>
-<li>Navigate to the new pipeline you created by clicking on the <strong>Edit</strong>
-link under the Actions against it. You can also click on the name of
-the pipeline.</li>
-<li><img src="../resources/images/cruise/admin/add_stage/edit_pipeline_link.png" alt=""></li>
+<li>Navigate to the new pipeline you created by clicking on the <strong>Edit</strong> link under the Actions against it. You can also click on the name of the pipeline.</li>
+</ul>
+<p><img src="../resources/images/cruise/admin/add_stage/edit_pipeline_link.png" alt=""></p>
+<ul>
 <li>Click on the Stages tab.</li>
-<li><img src="../resources/images/cruise/admin/pipeline_general_options.png" alt=""></li>
-<li>You will notice that a defaultStage exists. Click on the &quot;Add new
-stage&quot; link.</li>
-<li><img src="../resources/images/cruise/admin/add_stage/stages_listing_with_add_stage_highlight.png" alt=""></li>
-<li>Fill stage name and trigger type.</li>
-<li>Fill in the details for the first job and first task belonging to
-this job. You can <a href="admin_add_job.html">add more jobs</a> and <a href="admin_add_task.html">add more
-tasks</a> to the jobs.</li>
-<li>Click on help icon next to the fields to get additional details
-about the fields you are editing.</li>
-<li><img src="../resources/images/cruise/admin/add_stage/add_stage_window.png" alt=""></li>
+</ul>
+<p><img src="../resources/images/cruise/admin/pipeline_general_options.png" alt=""></p>
+<ul>
+<li>You will notice that a defaultStage exists. Click on the &quot;Add new stage&quot; link.</li>
+</ul>
+<p><img src="../resources/images/cruise/admin/add_stage/stages_listing_with_add_stage_highlight.png" alt=""></p>
+<ul>
+<li><p>Fill stage name and trigger type.</p>
+</li>
+<li><p>Fill in the details for the first job and first task belonging to this job. You can <a href="admin_add_job.html">add more jobs</a> and <a href="admin_add_task.html">add more tasks</a> to the jobs.</p>
+</li>
+<li><p>Click on help icon next to the fields to get additional details about the fields you are editing.</p>
+</li>
+</ul>
+<p><img src="../resources/images/cruise/admin/add_stage/add_stage_window.png" alt=""></p>
+<ul>
 <li>Click &quot;Save&quot;.</li>
 </ul>
-<h3 id="add-a-new-job-to-an-existing-stage">Add a new job to an existing stage</h3>
-<p>Now that we have a pipeline with stage(s), we can add more jobs to any
-of the existing stages. You can now use the tree navigation on the left
-side of the screen to edit a stage or a job under a pipeline.</p>
+<h2 id="add-a-new-job-to-an-existing-stage">Add a new job to an existing stage</h2>
+<p>Now that we have a pipeline with stage(s), we can add more jobs to any of the existing stages. You can now use the tree navigation on the left side of the screen to edit a stage or a job under a pipeline.</p>
 <ul>
-<li>Click on the stage name that you want to edit on the tree as shown
-below. The &quot;defaultStage&quot; is being edited.</li>
-<li><img src="../resources/images/cruise/admin/add_job/edit_stage_link_on_tree.png" alt=""></li>
-<li>Click on the Jobs tab</li>
-<li>Click on &quot;Add new job&quot;</li>
-<li><img src="../resources/images/cruise/admin/add_job/add_new_job_link.png" alt=""></li>
+<li>Click on the stage name that you want to edit on the tree as shown below. The &quot;defaultStage&quot; is being edited.</li>
+</ul>
+<p><img src="../resources/images/cruise/admin/add_job/edit_stage_link_on_tree.png" alt=""></p>
+<ul>
+<li><p>Click on the Jobs tab</p>
+</li>
+<li><p>Click on &quot;Add new job&quot;</p>
+</li>
+</ul>
+<p><img src="../resources/images/cruise/admin/add_job/add_new_job_link.png" alt=""></p>
+<ul>
 <li>Fill job name and job details</li>
-<li><img src="../resources/images/cruise/admin/add_job/add_new_job_window.png" alt=""></li>
-<li>Fill in the details for the initial task belonging to this job. You
-can edit this job later to <a href="admin_add_task.html">add more tasks</a></li>
-<li>You can choose the type of the task as required.</li>
-<li>For task types Ant, Nant and Rake, the build file and target will
-default as per the tool used. For example, Ant task, would look for
-build.xml in the working directory, and use the default task if
-nothing is mentioned.</li>
-<li>Click on help icon next to the fields to get additional details
-about the fields you are editing.</li>
-<li>Click &quot;Save&quot;</li>
 </ul>
-<h3 id="add-a-new-task-to-an-existing-job">Add a new task to an existing Job</h3>
-<p>Now that we have a pipeline with stage(s) containing job(s) we can add
-tasks to any of the existing jobs. You can now use the tree navigation
-on the left side of the screen to edit a a job under a stage.</p>
+<p><img src="../resources/images/cruise/admin/add_job/add_new_job_window.png" alt=""></p>
 <ul>
-<li>Click on the job name that you want to edit on the tree as shown
-below. The &quot;defaultJob&quot; is being edited.</li>
-<li><img src="../resources/images/cruise/admin/add_task/edit_job_link_on_tree.png" alt=""></li>
-<li>Click on &quot;Add new task&quot;. You can choose the task type from Ant,
-Nant, Rake and Fetch Artifact. Or you can choose &quot;More...&quot; to choose
-a command from <a href="../advanced_usage/command_repository.html">command repository</a> or
-specify your own command</li>
-<li><img src="../resources/images/cruise/admin/add_task/add_new_task_link.png" alt=""></li>
-<li>Fill the basic settings for the task</li>
-<li>Click on help icon next to the fields to get additional details
-about the fields you are editing.</li>
-<li>Click &quot;Save&quot;</li>
-<li><img src="../resources/images/cruise/admin/add_task/add_new_task_window.png" alt=""></li>
-<li>Advanced Options section allows you to specify a Task in which you
-can provide the actions (typically clean up) that needs to be taken
-when users chooses to cancel the stage.</li>
+<li><p>Fill in the details for the initial task belonging to this job. You can edit this job later to <a href="admin_add_task.html">add more tasks</a></p>
+</li>
+<li><p>You can choose the type of the task as required.</p>
+</li>
+<li><p>For task types Ant, Nant and Rake, the build file and target will default as per the tool used. For example, Ant task, would look for build.xml in the working directory, and use the default task if nothing is mentioned.</p>
+</li>
+<li><p>Click on help icon next to the fields to get additional details about the fields you are editing.</p>
+</li>
+<li><p>Click &quot;Save&quot;</p>
+</li>
 </ul>
-<h3 id="clone-an-existing-pipeline">Clone an existing pipeline</h3>
-<p>Clone pipeline functionality helps you create a new pipeline from an
-existing pipeline by giving it a new name. Typically when setting up a
-pipeline for a new branch, it is very useful to take an existing
-pipeline and clone it.</p>
-<p>If the user is a pipeline group admin, she can clone the new pipeline
-into a group that she has access to. If the user is an admin she can
-clone the pipeline into any group or give a new group name, in which
-case the group gets created.</p>
+<h2 id="add-a-new-task-to-an-existing-job">Add a new task to an existing Job</h2>
+<p>Now that we have a pipeline with stage(s) containing job(s) we can add tasks to any of the existing jobs. You can now use the tree navigation on the left side of the screen to edit a a job under a stage.</p>
 <ul>
-<li>Navigate to the Admin tab</li>
-<li>Locate the pipeline that needs to be cloned</li>
-<li>In that row, click on the &quot;Clone&quot; icon.</li>
-<li><img src="../resources/images/cruise/admin/pipeline/clone_icon.png" alt=""></li>
+<li>Click on the job name that you want to edit on the tree as shown below. The &quot;defaultJob&quot; is being edited.</li>
+</ul>
+<p><img src="../resources/images/cruise/admin/add_task/edit_job_link_on_tree.png" alt=""></p>
+<ul>
+<li>Click on &quot;Add new task&quot;. You can choose the task type from Ant, Nant, Rake and Fetch Artifact. Or you can choose &quot;More...&quot; to choose a command from <a href="../advanced_usage/command_repository.html">command repository</a> or specify your own command</li>
+</ul>
+<p><img src="../resources/images/cruise/admin/add_task/add_new_task_link.png" alt=""></p>
+<ul>
+<li><p>Fill the basic settings for the task</p>
+</li>
+<li><p>Click on help icon next to the fields to get additional details about the fields you are editing.</p>
+</li>
+<li><p>Click &quot;Save&quot;</p>
+</li>
+</ul>
+<p><img src="../resources/images/cruise/admin/add_task/add_new_task_window.png" alt=""></p>
+<ul>
+<li>Advanced Options section allows you to specify a Task in which you can provide the actions (typically clean up) that needs to be taken when users chooses to cancel the stage.</li>
+</ul>
+<h2 id="clone-an-existing-pipeline">Clone an existing pipeline</h2>
+<p>Clone pipeline functionality helps you create a new pipeline from an existing pipeline by giving it a new name. Typically when setting up a pipeline for a new branch, it is very useful to take an existing pipeline and clone it.</p>
+<p>If the user is a pipeline group admin, she can clone the new pipeline into a group that she has access to. If the user is an admin she can clone the pipeline into any group or give a new group name, in which case the group gets created.</p>
+<ul>
+<li><p>Navigate to the Admin tab</p>
+</li>
+<li><p>Locate the pipeline that needs to be cloned</p>
+</li>
+<li><p>In that row, click on the &quot;Clone&quot; icon.</p>
+</li>
+</ul>
+<p><img src="../resources/images/cruise/admin/pipeline/clone_icon.png" alt=""></p>
+<ul>
 <li>Fill in the name of the new pipeline</li>
-<li><img src="../resources/images/cruise/admin/pipeline/clone_pipeline.png" alt=""></li>
-<li>Select a pipeline group. If you are an admin, you will be able to
-enter the name of the pipeline group using the auto suggest or enter
-a new group name</li>
-<li>Click &quot;Save&quot;</li>
 </ul>
-<h3 id="pipeline-templates">Pipeline Templates</h3>
-<p>Templating helps to create reusable workflows in order to make tasks
-like creating and maintaining branches, and managing large number of
-pipelines easier.</p>
-<h4 id="creating-pipeline-templates">Creating Pipeline Templates</h4>
-<p>Pipeline Templates can be managed from the Templates tab on the
-Administration Page.</p>
-<p><img src="../resources/images/cruise/admin/pipeline_templates.png" alt=""></p>
-<p>Clicking on the &quot;Add New Template&quot; brings up the following form which
-allows you to create a fresh template, or extract it from an existing
-pipeline. Once saved, the pipeline indicated will also start using this
-newly created template.</p>
-<p><img src="../resources/images/cruise/admin/add_new_template.png" alt=""></p>
-<p>A template can also be extracted from a pipeline using the &quot;Extract
-Template&quot; link. This can be found on the &quot;Pipelines&quot; tab in the
-Administration page.</p>
-<p><img src="../resources/images/cruise/admin/extract_template_from_pipeline.png" alt=""></p>
-<h4 id="example">Example</h4>
-<p>As an example, assume that there is a pipeline group called &quot;my-app&quot; and
-it contains a pipeline called &quot;app-trunk&quot; which builds the application
-from trunk. Now, if we need to create another pipeline called
-&quot;app-1.0-branch&quot; which builds 1.0 version of the application, we can use
-Pipeline Templates as follows</p>
-<h5 id="using-administration-ui">Using Administration UI</h5>
+<p><img src="../resources/images/cruise/admin/pipeline/clone_pipeline.png" alt=""></p>
 <ul>
-<li>Create a template &quot;my-app-build&quot; by extracting it from the pipeline
-&quot;app-trunk&quot;, as shown in the previous section.</li>
-<li>Create a new pipeline &quot;app-1.0-branch&quot; which defines SCM material
-with the branch url and uses the template &quot;my-app-build&quot;.</li>
+<li><p>Select a pipeline group. If you are an admin, you will be able to enter the name of the pipeline group using the auto suggest or enter a new group name</p>
+</li>
+<li><p>Click &quot;Save&quot;</p>
+</li>
 </ul>
-<h5 id="using-xml">Using XML</h5>
-<h4 id="editing-pipeline-templates">Editing Pipeline Templates</h4>
-<p>Go Administrators can now enable any Go user to edit a template by
-<a href="dev_authorization.html#template-admin">making them a template
-administrator</a>.</p>
-<p>Template administrators can view and edit the templates to which they
-have permissions, on the template tab of the admin page. Template
-Administrators, will however not be able to add, delete or change
-permissions for a template. They will also be able to see the number of
-pipelines in which the template is being used, but not the details of
-those pipelines.</p>
+<h2 id="pipeline-templates">Pipeline Templates</h2>
+<p>Templating helps to create reusable workflows in order to make tasks like creating and maintaining branches, and managing large number of pipelines easier.</p>
+<h3 id="creating-pipeline-templates">Creating Pipeline Templates</h3>
+<p>Pipeline Templates can be managed from the Templates tab on the Administration Page.</p>
+<p><img src="../resources/images/cruise/admin/pipeline_templates.png" alt=""></p>
+<p>Clicking on the &quot;Add New Template&quot; brings up the following form which allows you to create a fresh template, or extract it from an existing pipeline. Once saved, the pipeline indicated will also start using this newly created template.</p>
+<p><img src="../resources/images/cruise/admin/add_new_template.png" alt=""></p>
+<p>A template can also be extracted from a pipeline using the &quot;Extract Template&quot; link. This can be found on the &quot;Pipelines&quot; tab in the Administration page.</p>
+<p><img src="../resources/images/cruise/admin/extract_template_from_pipeline.png" alt=""></p>
+<h3 id="example">Example</h3>
+<p>As an example, assume that there is a pipeline group called &quot;my-app&quot; and it contains a pipeline called &quot;app-trunk&quot; which builds the application from trunk. Now, if we need to create another pipeline called &quot;app-1.0-branch&quot; which builds 1.0 version of the application, we can use Pipeline Templates as follows</p>
+<h4 id="using-administration-ui">Using Administration UI</h4>
+<ul>
+<li>Create a template &quot;my-app-build&quot; by extracting it from the pipeline &quot;app-trunk&quot;, as shown in the previous section.</li>
+<li>Create a new pipeline &quot;app-1.0-branch&quot; which defines SCM material with the branch url and uses the template &quot;my-app-build&quot;.</li>
+</ul>
+<h4 id="using-xml">Using XML</h4>
+<h3 id="editing-pipeline-templates">Editing Pipeline Templates</h3>
+<p>Go Administrators can now enable any Go user to edit a template by <a href="dev_authorization.html#specifying-permissions-for-templates">making them a template administrator</a>.</p>
+<p>Template administrators can view and edit the templates to which they have permissions, on the template tab of the admin page. Template Administrators, will however not be able to add, delete or change permissions for a template. They will also be able to see the number of pipelines in which the template is being used, but not the details of those pipelines.</p>
 <p><img src="../resources/images/cruise/admin/template/template_admin_edit_template.png" alt=""></p>
-<h4 id="viewing-pipeline-templates">Viewing Pipeline Templates</h4>
-<p>Pipeline Templates can now be viewed by Administrators and Pipeline
-Group Administrators while editing or creating a Pipeline.</p>
+<h3 id="viewing-pipeline-templates">Viewing Pipeline Templates</h3>
+<p>Pipeline Templates can now be viewed by Administrators and Pipeline Group Administrators while editing or creating a Pipeline.</p>
 <p><img src="../resources/images/cruise/template_view_on_pipeline_tab.png" alt=""></p>
 <p>Clicking on the icon indicated by arrow will display the following:</p>
 <p><img src="../resources/images/cruise/view_template_popup.png" alt=""></p>
-<p>The pop-up shows the extract of the template &quot;Services-Template&quot;
-configured for the pipeline &quot;Service_1&quot;.</p>
+<p>The pop-up shows the extract of the template &quot;Services-Template&quot; configured for the pipeline &quot;Service_1&quot;.</p>
 <ol>
-<li>Shows the details of the job &quot;compile-job&quot; configured for the stage
-&quot;compile&quot;.</li>
-<li>Indicates that the working directory set for the task is
-&quot;go/service_1&quot;, which is followed by the &quot;$&quot; symbol and then the
-command.</li>
-<li>If any &quot;On Cancel Task&quot; has been configured, it will be indicated
-like this.</li>
+<li>Shows the details of the job &quot;compile-job&quot; configured for the stage &quot;compile&quot;.</li>
+<li>Indicates that the working directory set for the task is &quot;go/service_1&quot;, which is followed by the &quot;$&quot; symbol and then the command.</li>
+<li>If any &quot;On Cancel Task&quot; has been configured, it will be indicated like this.</li>
 <li>Shows the &quot;Run If Condition&quot; for this task.</li>
 </ol>
-<h5 id="see-also">See also...</h5>
+<h4 id="see-also">See also...</h4>
 <ul>
-<li><a href="configuration_reference.html#templates">Templates - Configuration
-Reference</a></li>
+<li><a href="configuration_reference.html#templates">Templates - Configuration Reference</a></li>
 </ul>
-<h3 id="stage-approvals-in-action">Stage approvals in action</h3>
-<p>By default, when one stage completes successfully, the next stage is
-automatically triggered by Go. However sometimes you don&#39;t want the next
-stage to be triggered automatically. This might be the case if you have
-a stage that deploys your application to a testing, staging or
-production environment. Another case can be when you don&#39;t want your
-pipeline to be automatically triggered by changes in version control. In
-these situations, you want the stage triggered by manual intervention.
-This can be done through manual
-<a href="configuration_reference.html#approval">approvals</a>.</p>
-<p>If you add a manual approval to the first stage in a pipeline, it will
-prevent the pipeline from being triggered from version control. Instead,
-it will only pick up changes when you trigger the pipeline manually
-(this is sometimes known as &quot;forcing the build&quot;).</p>
-<p>From Cruise 1.1 (legacy version of Go), you can control who can trigger
-manual approvals. See the section on <a href="dev_authorization.html#approvals">Adding authorization to
-approvals</a> for more details.</p>
-<h3 id="managing-pipeline-groups">Managing pipeline groups</h3>
-<p>Starting with Cruise 1.3 (legacy version of Go), there is support for
-collecting multiple pipelines into a single named group. See the section
-on <a href="dev_authorization.html#pipeline-groups">Specifying who can view and operate pipeline
-groups</a> for more details.</p>
-<p>© ThoughtWorks Studios, 2010</p>
+<h2 id="stage-approvals-in-action">Stage approvals in action</h2>
+<p>By default, when one stage completes successfully, the next stage is automatically triggered by Go. However sometimes you don&#39;t want the next stage to be triggered automatically. This might be the case if you have a stage that deploys your application to a testing, staging or production environment. Another case can be when you don&#39;t want your pipeline to be automatically triggered by changes in version control. In these situations, you want the stage triggered by manual intervention. This can be done through manual <a href="configuration_reference.html#approval">approvals</a>.</p>
+<p>If you add a manual approval to the first stage in a pipeline, it will prevent the pipeline from being triggered from version control. Instead, it will only pick up changes when you trigger the pipeline manually (this is sometimes known as &quot;forcing the build&quot;).</p>
+<p>From Cruise 1.1 (legacy version of Go), you can control who can trigger manual approvals. See the section on <a href="dev_authorization.html#adding-authorization-to-approvals">Adding authorization to approvals</a> for more details.</p>
+<h2 id="managing-pipeline-groups">Managing pipeline groups</h2>
+<p>Starting with Cruise 1.3 (legacy version of Go), there is support for collecting multiple pipelines into a single named group. See the section on <a href="dev_authorization.html#specifying-permissions-for-pipeline-groups">Specifying who can view and operate pipeline groups</a> for more details.</p>
 
                     
                     </section>
