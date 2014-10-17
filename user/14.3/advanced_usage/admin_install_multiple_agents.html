@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Save Properties for a Build | Go User Documentation</title>
+        <title>Multiple Agents on One Machine | Go User Documentation</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../faq/dev_use_current_revision_in_build.html" />
+    <link rel="next" href="../advanced_usage/dev_clean_up_when_cancel.html" />
     
     
-    <link rel="prev" href="../faq/dev_see_artifact_as_tab.html" />
+    <link rel="prev" href="../advanced_usage/admin_run_on_all_agents.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="10.6" data-basepath=".." data-revision="1413549839891">
+    <div class="book"  data-level="5.3" data-basepath=".." data-revision="1413549839891">
     
 
 <div class="book-summary">
@@ -1018,7 +1018,7 @@
         </li>
     
         
-        <li class="chapter " data-level="5.3" data-path="advanced_usage/admin_install_multiple_agents.html">
+        <li class="chapter active" data-level="5.3" data-path="advanced_usage/admin_install_multiple_agents.html">
             
                 
                     <a href="../advanced_usage/admin_install_multiple_agents.html">
@@ -1736,7 +1736,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="10.6" data-path="faq/dev_save_properties.html">
+        <li class="chapter " data-level="10.6" data-path="faq/dev_save_properties.html">
             
                 
                     <a href="../faq/dev_save_properties.html">
@@ -2101,24 +2101,51 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_7">
+                    <section class="normal" id="section-gitbook_24">
                     
-                        <h1 id="saving-properties-about-a-build">Saving properties about a build</h1>
-<p>When building your code, there can be quite a bit of extra information that you are interested in. For example, you might run <a href="http://emma.sourceforge.net/" target="_blank">EMMA</a> on your code in order to log code coverage. With properties, you can save this information, and even look at the history of a property (by way of an exported spreadsheet).</p>
-<h3 id="example-usage">Example usage</h3>
-<p>Usage: As a developer, I want to save the average <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">cyclomatic complexity</a> of a function (pulled from <a href="http://www.kclee.de/clemens/java/javancss/" target="_blank">JavaNCSS</a>).</p>
-<p>For this example, we&#39;re going to take the information out of &quot;target/javancss/javancss_metrics_util.xml&quot;</p>
+                        <h1 id="install-multiple-agents-on-the-same-machine">Install multiple agents on the same machine</h1>
+<p>In order to fully utilize your hardware, it is often useful to install multiple agents on a single machine.</p>
+<p>Currently Go installers do not support this out of the box. The following sections describe how this can be done manually</p>
+<h2 id="windows">Windows</h2>
+<p>On Windows, multiple Go agents can be run in two ways - as Windows service or as a Windows command</p>
+<h3 id="running-as-windows-service">Running as Windows service</h3>
 <ul>
-<li>On the <a href="../navigations/administration_page.html">Administration Tab</a>, edit the job that should generate the properties</li>
-<li>Ensure the following &quot;properties&quot; block is in the job configuration</li>
+<li><a href="../installation/installing_go_agent.html">Install your first agent with the installer to the default location</a></li>
+<li>Copy the installation folder (&quot;C:\Program Files\Go Agent&quot;) to &quot;C:\Program Files\Go Agent 2&quot;</li>
+<li>Delete the file C:\Program Files\Go Agent 2\config\guid.txt</li>
+<li>Delete the file C:\Program Files\Go Agent 2\.agent-bootstrapper.running</li>
+<li>Edit <strong>wrapper-agent.conf</strong> file to customise information related to <strong>Go Agent 2</strong>
+Just after the line #include ../conf/wrapper-licenses.conf, add<ul>
+<li>set.GO_AGENT_DIR=C:\Program Files\Go Agent 2</li>
+<li>set.GO_AGENT_JAVA_HOME=%GO_AGENT_DIR%\jre</li>
 </ul>
-<p><img src="../resources/images/2_properties_config.png" alt=""></p>
-<ul>
-<li>Now, after that job has run, you should have extra properties information on the <a href="../navigations/job_details_page.html">Job Details</a> page</li>
+</li>
+<li>Run the following command<pre><code>sc create GoAgent2 binPath= &quot;\&quot;C:\Program Files\Go Agent2\cruisewrapper.exe\&quot; -s \&quot;C:\Program Files\Go Agent2\config\wrapper-agent.conf\&quot;&quot;
+</code></pre></li>
+<li>Start &quot;GoAgent2&quot; service</li>
 </ul>
-<p><img src="../resources/images/3_view_property.png" alt=""></p>
+<h3 id="running-as-windows-command">Running as Windows command</h3>
 <ul>
-<li>You can export the property history as a CSV file</li>
+<li>Follow the instructions to <a href="../installation/run_go_without_install.html">run Go without installation on Windows</a></li>
+<li>Do the same steps on a different folder to set up another agent</li>
+</ul>
+<blockquote>
+<p>You should use a VNC application (such as <a href="http://www.tightvnc.com" target="_blank">TightVNC</a>) to keep windows user logged in. If the user logs out or the computer restarts, the agents will shutdown.</p>
+</blockquote>
+<h2 id="mac-osx">Mac OSX</h2>
+<ul>
+<li><a href="../installation/installing_go_agent.html">Install your first agent with the installer</a></li>
+<li>Run Terminal.app</li>
+<li>Make an empty folder called go-agent-2</li>
+<li>In this folder, run<pre><code>java -jar &quot;/Applications/Go Agent.app/agent-bootstrapper.jar&quot; 127.0.0.1 &amp;
+</code></pre></li>
+</ul>
+<h2 id="linux-and-other-unix">Linux (and other UNIX)</h2>
+<ul>
+<li><a href="../installation/installing_go_agent.html">Install your first agent with the installer</a></li>
+<li>Make an empty folder called /var/lib/go-agent-2</li>
+<li>In this folder, run<pre><code>java -jar /usr/share/go-agent/agent-bootstrapper.jar 127.0.0.1 &amp;
+</code></pre></li>
 </ul>
 
                     
@@ -2130,10 +2157,10 @@
         </div>
 
         
-        <a href="../faq/dev_see_artifact_as_tab.html" class="navigation navigation-prev " aria-label="Previous page: See artifacts as sub-tabs"><i class="fa fa-angle-left"></i></a>
+        <a href="../advanced_usage/admin_run_on_all_agents.html" class="navigation navigation-prev " aria-label="Previous page: Run a Job on Group of Agents"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../faq/dev_use_current_revision_in_build.html" class="navigation navigation-next " aria-label="Next page: Using Environment variables"><i class="fa fa-angle-right"></i></a>
+        <a href="../advanced_usage/dev_clean_up_when_cancel.html" class="navigation navigation-next " aria-label="Next page: Clean on Task Cancel"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
