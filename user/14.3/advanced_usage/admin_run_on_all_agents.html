@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Save Properties for a Build | Go User Documentation</title>
+        <title>Run a Job on Group of Agents | Go User Documentation</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../faq/dev_use_current_revision_in_build.html" />
+    <link rel="next" href="../advanced_usage/admin_install_multiple_agents.html" />
     
     
-    <link rel="prev" href="../faq/dev_see_artifact_as_tab.html" />
+    <link rel="prev" href="../advanced_usage/agent_auto_register.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="10.6" data-basepath=".." data-revision="1413549839891">
+    <div class="book"  data-level="5.2" data-basepath=".." data-revision="1413549839891">
     
 
 <div class="book-summary">
@@ -1002,7 +1002,7 @@
         </li>
     
         
-        <li class="chapter " data-level="5.2" data-path="advanced_usage/admin_run_on_all_agents.html">
+        <li class="chapter active" data-level="5.2" data-path="advanced_usage/admin_run_on_all_agents.html">
             
                 
                     <a href="../advanced_usage/admin_run_on_all_agents.html">
@@ -1736,7 +1736,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="10.6" data-path="faq/dev_save_properties.html">
+        <li class="chapter " data-level="10.6" data-path="faq/dev_save_properties.html">
             
                 
                     <a href="../faq/dev_save_properties.html">
@@ -2101,24 +2101,28 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_7">
+                    <section class="normal" id="section-gitbook_29">
                     
-                        <h1 id="saving-properties-about-a-build">Saving properties about a build</h1>
-<p>When building your code, there can be quite a bit of extra information that you are interested in. For example, you might run <a href="http://emma.sourceforge.net/" target="_blank">EMMA</a> on your code in order to log code coverage. With properties, you can save this information, and even look at the history of a property (by way of an exported spreadsheet).</p>
-<h3 id="example-usage">Example usage</h3>
-<p>Usage: As a developer, I want to save the average <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">cyclomatic complexity</a> of a function (pulled from <a href="http://www.kclee.de/clemens/java/javancss/" target="_blank">JavaNCSS</a>).</p>
-<p>For this example, we&#39;re going to take the information out of &quot;target/javancss/javancss_metrics_util.xml&quot;</p>
+                        <h1 id="run-a-job-on-a-group-of-agents">Run a Job on a group of Agents</h1>
+<p>Sometimes there is a particular job that you may wish to run on all agents in an environment, or in all agents that match a certain resource tag. For example you may want to run a system update on all linux agents, or install a new piece of software.</p>
+<p>Go will run the Job on all agents that match the environment and resources specified in the job.</p>
+<p>If an agent is missing or lost contact, a job will be scheduled. When the agent comes back on line, the job will be re-scheduled.</p>
+<p>Jobs are given a unique name based on the name of the job in the configuration file and the UUID of the agent on which it runs. So for example, if the job is called &#39;run-upgrades&#39; and you have two agents, you would see jobs like &#39;run-upgrades-81b23d04-9970-44f5-8973-c70bfd7c9e67&#39; and &#39;run-upgrades-9356e9d4-3a90-447d-bb74-2045aa355ef4&#39;.</p>
+<h2 id="configure-through-the-admin-ui">Configure through the Admin UI</h2>
+<p>To enable run on all agents for a job, navigate to the Job settings page in the job configuration</p>
+<p><img src="../resources/images/runonall_job.png" alt=""></p>
+<h2 id="configure-through-the-config-xml">Configure through the Config XML</h2>
+<p>To specify that a job should run on all agents, add the attribute</p>
+<pre><code class="lang-{.code}">runOnAllAgents=&quot;true&quot;
+</code></pre>
+<p>to the job&#39;s definition (see configuration reference for <a href="../configuration/configuration_reference.html#job">&lt; job &gt;</a>)</p>
+<pre><code class="lang-{.code}">&lt;job name=&quot;run-upgrades&quot; runOnAllAgents=&quot;true&quot;&gt;
+    ...
+&lt;/job&gt;
+</code></pre>
+<h4 id="also-see">Also See...</h4>
 <ul>
-<li>On the <a href="../navigations/administration_page.html">Administration Tab</a>, edit the job that should generate the properties</li>
-<li>Ensure the following &quot;properties&quot; block is in the job configuration</li>
-</ul>
-<p><img src="../resources/images/2_properties_config.png" alt=""></p>
-<ul>
-<li>Now, after that job has run, you should have extra properties information on the <a href="../navigations/job_details_page.html">Job Details</a> page</li>
-</ul>
-<p><img src="../resources/images/3_view_property.png" alt=""></p>
-<ul>
-<li>You can export the property history as a CSV file</li>
+<li><a href="../faq/job_rerun.html">Re-running job(s)</a></li>
 </ul>
 
                     
@@ -2130,10 +2134,10 @@
         </div>
 
         
-        <a href="../faq/dev_see_artifact_as_tab.html" class="navigation navigation-prev " aria-label="Previous page: See artifacts as sub-tabs"><i class="fa fa-angle-left"></i></a>
+        <a href="../advanced_usage/agent_auto_register.html" class="navigation navigation-prev " aria-label="Previous page: Auto Register a Remote Agent"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../faq/dev_use_current_revision_in_build.html" class="navigation navigation-next " aria-label="Next page: Using Environment variables"><i class="fa fa-angle-right"></i></a>
+        <a href="../advanced_usage/admin_install_multiple_agents.html" class="navigation navigation-next " aria-label="Next page: Multiple Agents on One Machine"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

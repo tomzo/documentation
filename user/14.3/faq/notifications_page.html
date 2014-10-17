@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Save Properties for a Build | Go User Documentation</title>
+        <title>Email Notifications | Go User Documentation</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../faq/dev_use_current_revision_in_build.html" />
+    <link rel="next" href="../faq/admin_out_of_disk_space.html" />
     
     
-    <link rel="prev" href="../faq/dev_see_artifact_as_tab.html" />
+    <link rel="prev" href="../faq/artifact_integrity.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="10.6" data-basepath=".." data-revision="1413549839891">
+    <div class="book"  data-level="10.20" data-basepath=".." data-revision="1413549839891">
     
 
 <div class="book-summary">
@@ -1736,7 +1736,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="10.6" data-path="faq/dev_save_properties.html">
+        <li class="chapter " data-level="10.6" data-path="faq/dev_save_properties.html">
             
                 
                     <a href="../faq/dev_save_properties.html">
@@ -1960,7 +1960,7 @@
         </li>
     
         
-        <li class="chapter " data-level="10.20" data-path="faq/notifications_page.html">
+        <li class="chapter active" data-level="10.20" data-path="faq/notifications_page.html">
             
                 
                     <a href="../faq/notifications_page.html">
@@ -2101,25 +2101,17 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_7">
+                    <section class="normal" id="section-gitbook_13">
                     
-                        <h1 id="saving-properties-about-a-build">Saving properties about a build</h1>
-<p>When building your code, there can be quite a bit of extra information that you are interested in. For example, you might run <a href="http://emma.sourceforge.net/" target="_blank">EMMA</a> on your code in order to log code coverage. With properties, you can save this information, and even look at the history of a property (by way of an exported spreadsheet).</p>
-<h3 id="example-usage">Example usage</h3>
-<p>Usage: As a developer, I want to save the average <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">cyclomatic complexity</a> of a function (pulled from <a href="http://www.kclee.de/clemens/java/javancss/" target="_blank">JavaNCSS</a>).</p>
-<p>For this example, we&#39;re going to take the information out of &quot;target/javancss/javancss_metrics_util.xml&quot;</p>
-<ul>
-<li>On the <a href="../navigations/administration_page.html">Administration Tab</a>, edit the job that should generate the properties</li>
-<li>Ensure the following &quot;properties&quot; block is in the job configuration</li>
-</ul>
-<p><img src="../resources/images/2_properties_config.png" alt=""></p>
-<ul>
-<li>Now, after that job has run, you should have extra properties information on the <a href="../navigations/job_details_page.html">Job Details</a> page</li>
-</ul>
-<p><img src="../resources/images/3_view_property.png" alt=""></p>
-<ul>
-<li>You can export the property history as a CSV file</li>
-</ul>
+                        <h1 id="notifications">Notifications</h1>
+<p>The Notifications page is to customize the email notifications for the current logged in user.</p>
+<p><img src="../resources/images/my_cruise_page.png" alt="Notifications Page"></p>
+<h4 id="key">Key</h4>
+<ol>
+<li>The email address to which email notification from Go will be sent.</li>
+<li>Tick to enable email notification for the current logged in user.</li>
+<li>&#39;My check-in aliases&#39; is a comma separated list of aliases used for check in.</li>
+</ol>
 
                     
                     </section>
@@ -2130,10 +2122,10 @@
         </div>
 
         
-        <a href="../faq/dev_see_artifact_as_tab.html" class="navigation navigation-prev " aria-label="Previous page: See artifacts as sub-tabs"><i class="fa fa-angle-left"></i></a>
+        <a href="../faq/artifact_integrity.html" class="navigation navigation-prev " aria-label="Previous page: Artifact integrity verification"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../faq/dev_use_current_revision_in_build.html" class="navigation navigation-next " aria-label="Next page: Using Environment variables"><i class="fa fa-angle-right"></i></a>
+        <a href="../faq/admin_out_of_disk_space.html" class="navigation navigation-next " aria-label="Next page: Running out of Disk Space"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

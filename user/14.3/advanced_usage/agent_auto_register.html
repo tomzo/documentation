@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Save Properties for a Build | Go User Documentation</title>
+        <title>Auto Register a Remote Agent | Go User Documentation</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,8 @@
     
     
     
-    <link rel="next" href="../faq/dev_use_current_revision_in_build.html" />
+    <link rel="next" href="../advanced_usage/admin_run_on_all_agents.html" />
     
-    
-    <link rel="prev" href="../faq/dev_see_artifact_as_tab.html" />
     
 
         
@@ -33,7 +31,7 @@
 
 
         
-    <div class="book"  data-level="10.6" data-basepath=".." data-revision="1413549839891">
+    <div class="book"  data-level="5.1" data-basepath=".." data-revision="1413549839891">
     
 
 <div class="book-summary">
@@ -986,7 +984,7 @@
                 
     
         
-        <li class="chapter " data-level="5.1" data-path="advanced_usage/agent_auto_register.html">
+        <li class="chapter active" data-level="5.1" data-path="advanced_usage/agent_auto_register.html">
             
                 
                     <a href="../advanced_usage/agent_auto_register.html">
@@ -1736,7 +1734,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="10.6" data-path="faq/dev_save_properties.html">
+        <li class="chapter " data-level="10.6" data-path="faq/dev_save_properties.html">
             
                 
                     <a href="../faq/dev_save_properties.html">
@@ -2101,24 +2099,23 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_7">
+                    <section class="normal" id="section-gitbook_25">
                     
-                        <h1 id="saving-properties-about-a-build">Saving properties about a build</h1>
-<p>When building your code, there can be quite a bit of extra information that you are interested in. For example, you might run <a href="http://emma.sourceforge.net/" target="_blank">EMMA</a> on your code in order to log code coverage. With properties, you can save this information, and even look at the history of a property (by way of an exported spreadsheet).</p>
-<h3 id="example-usage">Example usage</h3>
-<p>Usage: As a developer, I want to save the average <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">cyclomatic complexity</a> of a function (pulled from <a href="http://www.kclee.de/clemens/java/javancss/" target="_blank">JavaNCSS</a>).</p>
-<p>For this example, we&#39;re going to take the information out of &quot;target/javancss/javancss_metrics_util.xml&quot;</p>
+                        <h1 id="auto-registration-of-remote-agents">Auto registration of remote agents</h1>
+<p>As a Go administrator, you can auto approve remote agents by using a shared key between the Go Agent and Go Server.</p>
 <ul>
-<li>On the <a href="../navigations/administration_page.html">Administration Tab</a>, edit the job that should generate the properties</li>
-<li>Ensure the following &quot;properties&quot; block is in the job configuration</li>
+<li>Add an attribute named &quot;agentAutoRegisterKey&quot;, for e.g., agentAutoRegisterKey=&quot;388b633a88de126531afa41eff9aa69e&quot;, in the server configuration fragment.</li>
 </ul>
-<p><img src="../resources/images/2_properties_config.png" alt=""></p>
+<p><img src="../resources/images/agent_auto_registration.png" alt=""></p>
 <ul>
-<li>Now, after that job has run, you should have extra properties information on the <a href="../navigations/job_details_page.html">Job Details</a> page</li>
-</ul>
-<p><img src="../resources/images/3_view_property.png" alt=""></p>
-<ul>
-<li>You can export the property history as a CSV file</li>
+<li><p>On the remote Go Agent machine, create a file named &quot;autoregister.properties&quot; under the &lt; agent_installation_directory &gt;/config directory and add the following contents:</p>
+<pre><code class="lang-{.code}">agent.auto.register.key=388b633a88de126531afa41eff9aa69e
+agent.auto.register.resources=ant,java
+agent.auto.register.environments=QA
+</code></pre>
+</li>
+<li><p>Now, bringing up the remote agent should automatically register with the Go Server without the administrator having to &#39;Enable&#39; the newly added agent.</p>
+</li>
 </ul>
 
                     
@@ -2130,10 +2127,8 @@
         </div>
 
         
-        <a href="../faq/dev_see_artifact_as_tab.html" class="navigation navigation-prev " aria-label="Previous page: See artifacts as sub-tabs"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../faq/dev_use_current_revision_in_build.html" class="navigation navigation-next " aria-label="Next page: Using Environment variables"><i class="fa fa-angle-right"></i></a>
+        <a href="../advanced_usage/admin_run_on_all_agents.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Run a Job on Group of Agents"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Save Properties for a Build | Go User Documentation</title>
+        <title>Running out of Disk Space | Go User Documentation</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../faq/dev_use_current_revision_in_build.html" />
+    <link rel="next" href="../release_history/whats_new_in_go.html" />
     
     
-    <link rel="prev" href="../faq/dev_see_artifact_as_tab.html" />
+    <link rel="prev" href="../faq/notifications_page.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="10.6" data-basepath=".." data-revision="1413549839891">
+    <div class="book"  data-level="10.21" data-basepath=".." data-revision="1413549839891">
     
 
 <div class="book-summary">
@@ -1736,7 +1736,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="10.6" data-path="faq/dev_save_properties.html">
+        <li class="chapter " data-level="10.6" data-path="faq/dev_save_properties.html">
             
                 
                     <a href="../faq/dev_save_properties.html">
@@ -1976,7 +1976,7 @@
         </li>
     
         
-        <li class="chapter " data-level="10.21" data-path="faq/admin_out_of_disk_space.html">
+        <li class="chapter active" data-level="10.21" data-path="faq/admin_out_of_disk_space.html">
             
                 
                     <a href="../faq/admin_out_of_disk_space.html">
@@ -2101,25 +2101,80 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_7">
+                    <section class="normal" id="section-gitbook_2">
                     
-                        <h1 id="saving-properties-about-a-build">Saving properties about a build</h1>
-<p>When building your code, there can be quite a bit of extra information that you are interested in. For example, you might run <a href="http://emma.sourceforge.net/" target="_blank">EMMA</a> on your code in order to log code coverage. With properties, you can save this information, and even look at the history of a property (by way of an exported spreadsheet).</p>
-<h3 id="example-usage">Example usage</h3>
-<p>Usage: As a developer, I want to save the average <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">cyclomatic complexity</a> of a function (pulled from <a href="http://www.kclee.de/clemens/java/javancss/" target="_blank">JavaNCSS</a>).</p>
-<p>For this example, we&#39;re going to take the information out of &quot;target/javancss/javancss_metrics_util.xml&quot;</p>
+                        <h1 id="running-out-of-disk-space">Running out of disk space</h1>
+<p>After you&#39;ve had Go running for a while, you may notice the following warning box when browsing Go:</p>
+<p><img src="../resources/images/1_low_disk_space_on_artifacts.png" alt=""></p>
+<p>If you don&#39;t do anything about it, you&#39;ll end up seeing the following error:</p>
+<p><img src="../resources/images/2_out_of_disk_space_on_artifacts.png" alt=""></p>
+<p>Go will stop scheduling new pipelines until you make more room, either by compressing large files, attaching a larger hard drive, or by deleting unused artifacts. You could also let Go manage artifact disk space by enabling auto purge of old artifacts.</p>
+<h2 id="auto-delete-artifacts">Auto delete artifacts</h2>
+<h3 id="introduction">Introduction</h3>
+<p>Go can be configured to automatically delete artifacts if the available disk space on the server is low. Go will purge artifacts when available disk space is lower than the given value. Artifacts will be purged upto the point when available disk space is greater than a defined value.</p>
+<h3 id="configuration">Configuration</h3>
+<h4 id="specify-artifact-purge-start-and-end-limits">Specify artifact purge start and end limits</h4>
+<blockquote>
+<p>You must be logged in as an admin user to configure this step.</p>
+</blockquote>
+<ol>
+<li>Navigate to the Admin section on the Go dashboard.</li>
+<li>Navigate to the Pipeline Management sub-section</li>
+<li>Specify when Go should begin to purge artifacts in the first edit box.</li>
+<li>Specify when Go should stop purging artifacts in the second edit box.</li>
+</ol>
+<h4 id="never-delete-artifacts-for-a-stage">Never delete artifacts for a stage</h4>
+<blockquote>
+<p>You must be logged in as an admin user to configure this step.</p>
+</blockquote>
+<p>You can disallow deletion of artifacts from a particular stage so that those artifacts are excluded during deletion. This option can be set in the stage editor for a pipeline. This option can be set for stages that are important so that artifacts for the stage are preserved.</p>
+<ol>
+<li>Navigate to the admin section on the Go dashboard.</li>
+<li>Navigate to the pipelines section and choose a pipeline to edit</li>
+<li>Navigate to the stage settings for the stage</li>
+</ol>
+<p><img src="../resources/images/artifact_disable_stage.png" alt="Disable artifact cleanup"></p>
+<ol>
+<li>Check the box &#39;Never Cleanup Aartifacts&#39;</li>
+</ol>
+<h3 id="also-see">Also see...</h3>
 <ul>
-<li>On the <a href="../navigations/administration_page.html">Administration Tab</a>, edit the job that should generate the properties</li>
-<li>Ensure the following &quot;properties&quot; block is in the job configuration</li>
+<li><a href="../configuration/managing_artifacts_and_reports.html">Managing artifacts and reports</a></li>
+<li><a href="../advanced_usage/dev_clean_up_when_cancel.html">Clean up after cancelling a task</a></li>
 </ul>
-<p><img src="../resources/images/2_properties_config.png" alt=""></p>
+<h2 id="compress-large-log-files">Compress large log files</h2>
+<p>In many cases, the easiest thing to do is compress some of the larger artifacts that you won&#39;t frequently have need for. For example, if you have a large log file named &#39;test.log&#39; and you&#39;re running Go server on a unix machine, the following script will gzip those files that haven&#39;t been modified in the last 10 days</p>
+<pre><code>find /var/lib/go-server/logs/pipelines -name test.log -mtime +10 -type f -exec gzip -v &#39;{}&#39; \;
+</code></pre><p>Now, if you add this to a system <a href="http://en.wikipedia.org/wiki/Cron" target="_blank">crontab</a>, your server can compress large artifacts automatically.</p>
+<h2 id="move-the-artifact-repository-to-a-new-larger-drive">Move the artifact repository to a new (larger) drive</h2>
+<p>If compressing large artifacts is not giving you enough free space, another thing you can do is attach a larger disk drive to store artifacts. After the drive is attached to the system, we can easily change the location Go uses for it&#39;s artifact repository.</p>
 <ul>
-<li>Now, after that job has run, you should have extra properties information on the <a href="../navigations/job_details_page.html">Job Details</a> page</li>
+<li>Find the location of the Go configuration file</li>
+<li>Navigate to the <a href="../navigations/administration_page.html">Admin</a> section
+<img src="../resources/images/topnav_admin.png" alt=""></li>
+<li>Click on the &quot;Config XML&quot; tab</li>
+<li>The location of the configuration file is listed here
+<img src="../resources/images/4_find_config_location.png" alt=""></li>
+<li>Install the new drive</li>
+<li>Shut down Go server</li>
+<li>Copy all files from the original artifact repository location to the new drive</li>
+<li>Change the artifact repository location in the configuration file<pre><code>&lt;server artifactsDir=&quot;/path/to/new/artifacts&quot;&gt;
+...
+&lt;/server&gt;
+</code></pre></li>
+<li>Start up Go server and verify you still have access to old artifacts</li>
 </ul>
-<p><img src="../resources/images/3_view_property.png" alt=""></p>
+<h2 id="delete-unused-artifacts">Delete unused artifacts</h2>
+<p>Another option for making more room is to remove unused (or easily recreatable) artifacts. You may also have old pipelines that you no longer need.</p>
+<p>The directory structure of the artifact repository makes selecting which artifacts are safe to delete easier. The format is:</p>
+<pre><code>[artifacts-dir]/pipelines/[pipelineName]/[pipelineLabel]/[stageName]/[stageCounter]/[jobName]
+</code></pre><blockquote>
+<p>Keep in mind that there are two files that Go needs in order to display the <a href="../navigations/job_details_page.html">Job</a> or <a href="../navigations/stage_details_page.html">Stage</a> details pages</p>
 <ul>
-<li>You can export the property history as a CSV file</li>
+<li>cruise-output/console.log</li>
+<li>cruise-output/log.xml</li>
 </ul>
+</blockquote>
 
                     
                     </section>
@@ -2130,10 +2185,10 @@
         </div>
 
         
-        <a href="../faq/dev_see_artifact_as_tab.html" class="navigation navigation-prev " aria-label="Previous page: See artifacts as sub-tabs"><i class="fa fa-angle-left"></i></a>
+        <a href="../faq/notifications_page.html" class="navigation navigation-prev " aria-label="Previous page: Email Notifications"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../faq/dev_use_current_revision_in_build.html" class="navigation navigation-next " aria-label="Next page: Using Environment variables"><i class="fa fa-angle-right"></i></a>
+        <a href="../release_history/whats_new_in_go.html" class="navigation navigation-next " aria-label="Next page: RELEASE HISTORY"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
