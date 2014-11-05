@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Run a Job on Group of Agents | Go User Documentation</title>
+        <title>Spawn multiple instances of a Job | Go User Documentation</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="5.2" data-basepath=".." data-revision="1414407672991">
+    <div class="book"  data-level="5.2" data-basepath=".." data-revision="1415165412069">
     
 
 <div class="book-summary">
@@ -1034,15 +1034,15 @@
         </li>
     
         
-        <li class="chapter active" data-level="5.2" data-path="advanced_usage/admin_run_on_all_agents.html">
+        <li class="chapter active" data-level="5.2" data-path="advanced_usage/admin_spawn_multiple_jobs.html">
             
                 
-                    <a href="../advanced_usage/admin_run_on_all_agents.html">
+                    <a href="../advanced_usage/admin_spawn_multiple_jobs.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.2.</b>
                         
-                         Run a Job on Group of Agents
+                         Spawn multiple instances of a Job
                     </a>
                 
             
@@ -2205,22 +2205,38 @@
                 
                     <section class="normal" id="section-gitbook_30">
                     
-                        <h1 id="run-a-job-on-a-group-of-agents">Run a Job on a group of Agents</h1>
+                        <h2 id="run-a-job-on-a-group-of-agents">Run a Job on a group of Agents</h2>
 <p>Sometimes there is a particular job that you may wish to run on all agents in an environment, or in all agents that match a certain resource tag. For example you may want to run a system update on all linux agents, or install a new piece of software.</p>
 <p>Go will run the Job on all agents that match the environment and resources specified in the job.</p>
 <p>If an agent is missing or lost contact, a job will be scheduled. When the agent comes back on line, the job will be re-scheduled.</p>
-<p>Jobs are given a unique name based on the name of the job in the configuration file and the UUID of the agent on which it runs. So for example, if the job is called &#39;run-upgrades&#39; and you have two agents, you would see jobs like &#39;run-upgrades-81b23d04-9970-44f5-8973-c70bfd7c9e67&#39; and &#39;run-upgrades-9356e9d4-3a90-447d-bb74-2045aa355ef4&#39;.</p>
-<h2 id="configure-through-the-admin-ui">Configure through the Admin UI</h2>
+<p>Jobs are given a unique name based on the name of the job in the configuration file. So for example, if the job is called &#39;deploy&#39; and you have two agents, you would see jobs like &#39;deploy-runOnAll-1&#39; and &#39;deploy-runOnAll-2&#39;.</p>
+<h3 id="configure-through-the-admin-ui">Configure through the Admin UI</h3>
 <p>To enable run on all agents for a job, navigate to the Job settings page in the job configuration</p>
 <p><img src="../resources/images/runonall_job.png" alt=""></p>
-<h2 id="configure-through-the-config-xml">Configure through the Config XML</h2>
+<h3 id="configure-through-the-config-xml">Configure through the Config XML</h3>
 <p>To specify that a job should run on all agents, add the attribute</p>
 <pre><code class="lang-{.code}">runOnAllAgents=&quot;true&quot;
 </code></pre>
-<p>to the job&#39;s definition (see configuration reference for <a href="../configuration/configuration_reference.html#job">&lt; job &gt;</a>)</p>
-<pre><code class="lang-{.code}">&lt;job name=&quot;run-upgrades&quot; runOnAllAgents=&quot;true&quot;&gt;
+<p>to the job&#39;s definition (see configuration reference for <a href="../configuration/configuration_reference.html#job"><code>&lt;job&gt;</code></a>)</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"deploy"</span> <span class="hljs-attribute">runOnAllAgents</span>=<span class="hljs-value">"true"</span>&gt;</span>
     ...
-&lt;/job&gt;
+<span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
+</code></pre>
+<h2 id="run-x-instances-of-a-job">Run &#39;X&#39; instances of a Job</h2>
+<p>If you want to run multiple instances of the same job configuration you do not have to maintain multiple copies of same job config. You can specify how many instances of job you need &amp; Go will take care of spawing the required number of job instances during scheduling.</p>
+<p>This feature is particularly usefull for test parallelization. It enables Go users to integrate with other test parallelization tools like <a href="test-load-balancer.github.io">TLB</a> etc. to achieve distributed test execution with minimal configuration.</p>
+<p>Jobs are given a unique name based on the name of the job in the configuration file. Example, if the job is called &#39;test&#39; and you have set runInstanceCount to 2, you would see jobs like &#39;test-runInstance-1&#39; and &#39;test-runInstance-2&#39;. Go provides index of job (GO_JOB_RUN_INDEX) &amp; total count of jobs (GO_JOB_RUN_COUNT) as environment variables to each Job.</p>
+<h3 id="configure-through-the-admin-ui">Configure through the Admin UI</h3>
+<p>To run &#39;x&#39; instances of a job, navigate to the Job settings page in the job configuration</p>
+<p><img src="../resources/images/runxinstance_job.png" alt=""></p>
+<h3 id="configure-through-the-config-xml">Configure through the Config XML</h3>
+<p>To specify that &#39;x&#39; instances of a job should run, add the attribute</p>
+<pre><code class="lang-{.code}">runInstanceCount=&quot;5&quot;
+</code></pre>
+<p>to the job&#39;s definition (see configuration reference for <a href="../configuration/configuration_reference.html#job"><code>&lt;job&gt;</code></a>)</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"test"</span> <span class="hljs-attribute">runInstanceCount</span>=<span class="hljs-value">"5"</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
 </code></pre>
 <h4 id="also-see">Also See...</h4>
 <ul>
