@@ -32,7 +32,7 @@
 
 
         
-    <div class="book" data-level="4.30" data-basepath=".." data-revision="1415175405415">
+    <div class="book" data-level="4.30" data-basepath=".." data-revision="1415256544579">
     
 
 <div class="book-summary">
@@ -1611,10 +1611,10 @@
         </li>
     
         
-        <li class="chapter " data-level="8.3" data-path="resources/javadoc/index.html">
+        <li class="chapter " data-level="8.3" data-path="extension_points/go_plugin_api.html">
             
                 
-                    <a href="../resources/javadoc/index.html">
+                    <a href="../extension_points/go_plugin_api.html">
                         <i class="fa fa-check"></i>
                         
                             <b>8.3.</b>
@@ -2208,26 +2208,34 @@
 <p>It is often useful to receive an email when certain status changes occur in a stage. For example, a developer might want to know when their own check-in has broken the build. Alternatively, a manager might want an email whenever a project is deployed into production. Both of these scenarios can be covered by Notification Filters</p>
 <p>Notifications will only work if <a href="dev_authentication.html">Security</a> is enabled and <a href="admin_mailhost_info.html">mailhost information</a> is correct.</p>
 <h2 id="example-usage">Example usage</h2>
-<p>Usage: As a developer, I want to be notified when I break the build.</p>
-<p>Click on the <strong>Preferences</strong> tab</p>
-<p><img src="../resources/images/topnav_preferences.png" alt=""></p>
-<p>Click &quot;Edit&quot; and enter my email address, and make sure &quot;Enable email notification&quot; is checked</p>
-<p>When I check in, my source control log in will be either &quot;ChrisT&quot; or &quot;CT&quot;, so enter both of those into the &quot;My check-in aliases&quot; box</p>
+<p><strong>Usage: As a developer, I want to be notified when I break a build on &quot;acceptance&quot; pipeline.</strong></p>
+<ul>
+<li><p>Click on the <strong>Preferences</strong> tab</p>
+<p>  <img src="../resources/images/topnav_preferences.png" alt=""></p>
+</li>
+<li><p>Click &quot;Edit&quot; and enter the email address, and make sure &quot;Enable email notification&quot; is checked</p>
+</li>
+<li>When I check in, my source control log in will be either &quot;User&quot; or &quot;username&quot;, so enter both of those into the &quot;My check-in aliases&quot; box</li>
+</ul>
 <p><img src="../resources/images/3_email_and_matcher.png" alt=""></p>
-<p>Click &quot;Save&quot; to store these values</p>
-<p>Add a filter for the first &quot;dev&quot; stage to notify me when a check-in of mine breaks the build</p>
+<ul>
+<li><p>Click &quot;Save&quot; to store these values</p>
+</li>
+<li><p>Add a filter for the &quot;twist-plugins&quot; stage of &quot;acceptance&quot; pipeline to notify me when a check-in of mine breaks the build</p>
+</li>
+</ul>
 <p><img src="../resources/images/4_add_filter.png" alt=""></p>
 <h3 id="events">Events</h3>
 <p>You can set up notifications for different events</p>
 <ul>
 <li>All - all the runs for the stage</li>
 <li>Passes - the passed runs for the stage</li>
-<li>Fails - the stage runs that failed</li>
+<li>Fails - the stage run that failed</li>
 <li>Breaks - the stage run that broke the build</li>
 <li>Fixed - the stage run that fixed the previous failure</li>
 <li>Cancelled - the stage run that was cancelled</li>
 </ul>
-<p>Illustration</p>
+<p><strong>Illustrations</strong></p>
 <ul>
 <li>Previous build Pass, current build Fail: Event: Break</li>
 <li>Previous build Fail, current build Fail: Event: Fail</li>
@@ -2235,9 +2243,17 @@
 <li>Previous build Pass, current build Pass: Event: Pass</li>
 </ul>
 <p><img src="../resources/images/5_added_filter.png" alt=""></p>
-<p>I&#39;ll be emailed whenever the &quot;twist&quot; stage of &quot;acceptance&quot; pipeline breaks due to my check-in</p>
-<p>I&#39;ll be emailed whenever the &quot;auto-upgrade&quot; stage of &quot;auto-deploy-testing-ubuntu9.10&quot; pipeline fails due to my check-in</p>
-<p>I&#39;ll be emailed for all events for the &quot;dev&quot; stage of cruise pipeline</p>
+<blockquote>
+<p>I&#39;ll be emailed whenever the &quot;twist-plugins&quot; stage of &quot;acceptance&quot; pipeline breaks due to my check-in</p>
+<p>I&#39;ll be emailed whenever the &quot;build&quot; stage of &quot;plugins&quot; pipeline fails due to my check-in</p>
+<p>I&#39;ll be emailed whenever the &quot;upload-installers&quot; stage of &quot;distributions-all&quot; pipeline passes for any check-in</p>
+<p>I&#39;ll be emailed on all events for any stage of &quot;regression&quot; pipeline for my check-in</p>
+</blockquote>
+<p>Users can also select to get notifications for a particular (or all) event on any satge of any pipeline.</p>
+<p><img src="../resources/images/6_added_filter_any_pipeline.png" alt=""></p>
+<blockquote>
+<p>I&#39;ll be emailed whenever any stage of any pipeline fails due to my check-in</p>
+</blockquote>
 
                     
                     </section>

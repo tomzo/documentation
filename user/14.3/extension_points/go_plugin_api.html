@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Backup API | Go User Documentation</title>
+        <title>Go Plugin API | Go User Documentation</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.2.0">
@@ -17,10 +17,10 @@
         
     
     
-    <link rel="next" href="../api/properties_api.html" />
+    <link rel="next" href="../extension_points/writing_go_package_material_plugin.html" />
     
     
-    <link rel="prev" href="../api/users_api.html" />
+    <link rel="prev" href="../extension_points/go_plugins_basics.html" />
     
 
         
@@ -32,7 +32,7 @@
 
 
         
-    <div class="book" data-level="7.11" data-basepath=".." data-revision="1415256544579">
+    <div class="book" data-level="8.3" data-basepath=".." data-revision="1415256544579">
     
 
 <div class="book-summary">
@@ -1493,7 +1493,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="7.11" data-path="api/backup_api.html">
+        <li class="chapter " data-level="7.11" data-path="api/backup_api.html">
             
                 
                     <a href="../api/backup_api.html">
@@ -1611,7 +1611,7 @@
         </li>
     
         
-        <li class="chapter " data-level="8.3" data-path="extension_points/go_plugin_api.html">
+        <li class="chapter active" data-level="8.3" data-path="extension_points/go_plugin_api.html">
             
                 
                     <a href="../extension_points/go_plugin_api.html">
@@ -2202,41 +2202,11 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_39">
+                    <section class="normal" id="section-gitbook_89">
                     
-                        <h1 id="backup-api">Backup API</h1>
-<p>This API allows you to backup Go server. Please refer to <a href="../advanced_usage/one_click_backup.html">Backup Go Server</a> to get more information about the backup functionality.</p>
-<blockquote>
-<p><strong>NOTE:</strong> Only Go administrator users will be able to use this API</p>
-</blockquote>
-<h2 id="trigger-backup">Trigger Backup</h2>
-<table>
-<thead>
-<tr>
-<th>URL format</th>
-<th>HTTP Verb</th>
-<th>Data</th>
-<th>Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://[server]/go/api/admin/start_backup" target="_blank">http://[server]/go/api/admin/start_backup</a></td>
-<td>POST</td>
-<td>no parameters</td>
-<td>Go server backup initiates</td>
-</tr>
-</tbody>
-</table>
-<h2 id="examples">Examples</h2>
-<ul>
-<li>We use curl, a command line tool for transferring files with URL syntax, in the following examples. Of course, you can use any HTTP client library.</li>
-<li>We assume that the URL of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
-<li>We assume security has been switched on, and that there is an admin user named <strong>admin</strong> with the password <strong>badger</strong> .</li>
-</ul>
-<p>To initiate the backup</p>
-<pre><code>curl -u admin:badger -X POST http://goserver.com:8153/go/api/admin/start_backup
-</code></pre>
+                        <h1 id="go-plugin-api">Go Plugin API</h1>
+<p>The Go plugin API could be found <a href="http://www.go.cd/documentation/user/current/resources/javadoc/index.html" target="_blank">here</a>.</p>
+
                     
                     </section>
                 
@@ -2246,10 +2216,10 @@
         </div>
 
         
-        <a href="../api/users_api.html" class="navigation navigation-prev " aria-label="Previous page: Users API"><i class="fa fa-angle-left"></i></a>
+        <a href="../extension_points/go_plugins_basics.html" class="navigation navigation-prev " aria-label="Previous page: Plugins in Go"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../api/properties_api.html" class="navigation navigation-next " aria-label="Next page: Properties API"><i class="fa fa-angle-right"></i></a>
+        <a href="../extension_points/writing_go_package_material_plugin.html" class="navigation navigation-next " aria-label="Next page: Writing a package material plugin"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
