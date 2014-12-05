@@ -33,7 +33,7 @@
 
 
         
-    <div class="book" data-level="4.33" data-basepath=".." data-revision="1417066256278">
+    <div class="book" data-level="4.33" data-basepath=".." data-revision="1417760635808">
     
 
 <div class="book-summary">
@@ -2479,6 +2479,11 @@
 <td>serverId</td>
 <td>Yes (auto-generated)</td>
 <td>This value uniquely identifies a Go server installation. It may be used by features that require unique names/identifiers across different Go server installations. This attribute need not be specified for a new server. In case no value is given, server auto-generates a random UUID an assigns it as serverId. This value should never be changed for an existing server. Administrator should clear this attribute before copying configuration to a different installation.</td>
+</tr>
+<tr>
+<td>agentAutoRegisterKey</td>
+<td>No</td>
+<td>The key specified here is used by agents for <a href="../advanced_usage/agent_auto_register.html">auto-registration</a>.</td>
 </tr>
 </tbody>
 </table>
