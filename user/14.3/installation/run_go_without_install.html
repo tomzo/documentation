@@ -33,7 +33,7 @@
 
 
         
-    <div class="book" data-level="3.4" data-basepath=".." data-revision="1417066256278">
+    <div class="book" data-level="3.4" data-basepath=".." data-revision="1417760635808">
     
 
 <div class="book-summary">
@@ -2233,23 +2233,39 @@
 <h2 id="run-go-server">Run Go server</h2>
 <ul>
 <li>Download the zip installer for Go server</li>
-<li>Unzip the installer on a folder of your choice. It creates a subfolder with the name go-server-\<version\></li>
-<li>Set JAVA_HOME to the installation path of java on the system</li>
+<li>Unzip the installer in a folder of your choice. It creates a subfolder with the name <em>go-server-&lt; version &gt;</em></li>
+<li>Set java in path<ul>
+<li>If you are on a Windows system, set <em>GO_SERVER_JAVA_HOME</em> to the installation path of java on the system</li>
+<li>If you are on a Unix system, set <em>JAVA_HOME</em> to the installation path of java on the system</li>
+</ul>
+</li>
 <li>Open a command prompt and go to the folder</li>
+<li>Start the server<ul>
 <li>If you are on a Windows system, run <strong>start-server.bat</strong></li>
-<li>If you are on a unix system, run <strong>server.sh</strong> . (Ensure that server.sh is executable)</li>
+<li>If you are on a Unix system, run <strong>server.sh</strong> . (Ensure that <em>server.sh</em> is executable)</li>
+</ul>
+</li>
 </ul>
 <p>If you are on a system which does not support either command, alter the existing scripts suitably and use it</p>
 <h2 id="run-go-agent">Run Go agent</h2>
 <ul>
 <li>Download the zip installer for Go agent</li>
-<li>Unzip the installer on a folder of your choice. It creates a subfolder with the name go-agent-\<version\></li>
-<li>Set JAVA_HOME to the installation path of java on the system</li>
-<li>Open a command prompt and go to the folder</li>
-<li>If you are on a Windows system, run <strong>start-agent.bat</strong></li>
-<li>If you are on a unix system, run <strong>agent.sh</strong> . (Ensure that agent.sh is executable)</li>
-<li>Go agent, by default, will attempt to connect to the Go server running on the same system. If you want it to connect to a different Go server, set the environment variable GO_SERVER or edit the startup scripts suitably</li>
+<li>Unzip the installer in a folder of your choice. It creates a subfolder with the name go-agent-&lt; version &gt;</li>
+<li>Set java in path<ul>
+<li>If you are on a Windows system, set <em>GO_AGENT_JAVA_HOME</em> to the installation path of java on the system</li>
+<li>If you are on a Unix system, set <em>JAVA_HOME</em> to the installation path of java on the system</li>
 </ul>
+</li>
+<li>Open a command prompt and go to the folder</li>
+<li>Start the agent<ul>
+<li>If you are on a Windows system, run <strong>start-agent.bat</strong></li>
+<li>If you are on a Unix system, run <strong>agent.sh</strong> . (Ensure that <em>agent.sh</em> is executable)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>  Go agent, by default, will attempt to connect to the Go server running on the same system. If you want it to connect to a different Go server, set the environment variable GO_SERVER or edit the startup scripts suitably</p>
+</blockquote>
 <p>If you are on a system which does not support either command, alter the existing script suitably and use it.</p>
 
                     
