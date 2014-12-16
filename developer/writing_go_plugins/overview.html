@@ -33,7 +33,7 @@
 
 
         
-    <div class="book" data-level="6" data-basepath=".." data-revision="1418729184938">
+    <div class="book" data-level="6" data-basepath=".." data-revision="1418743229360">
     
 
 <div class="book-summary">
@@ -2465,10 +2465,16 @@
 <li><p><a href="http://www.go.cd/documentation/user/current/extension_points/plugin_user_guide.html" target="_blank">Go Plugin User Guide</a></p>
 </li>
 </ul>
-<h2 id="java-interfaceclass-based-plugin-api-and-json-message-based-plugin-api">Java interface/class based plugin API and JSON message based plugin API</h2>
-<p>link to json message based plugin api here</p>
-<h2 id="json-message-based-plugin-apijson_message_based_plugin_apimd"><a href="json_message_based_plugin_api.html">JSON message based plugin API</a></h2>
-<h2 id="go-plugin-apigo_plugin_apimd"><a href="go_plugin_api.html">Go Plugin API</a></h2>
+<h2 id="writing-plugins-for-go">Writing plugins for Go</h2>
+<p>Traditionally, writing a plugin for Go involved implementing some pre-defined java interfaces which exist for the each extension point. We call them Java interface/class based plugin API. 
+With time, we noticed many shortcomings in this approach, one of them being the interfaces went out of date even if a new field was added. This broke all existing plugins without providing enough time for the plugin authors to make appropriate changes to their respective plugins and make a release. 
+This raised a need for an alternate approach to write plugins. With version 14.4.0 Go introduced support for JSON message based plugin API. This still deals with a few java classes, but the dynamic part which is the details being sent back and forth between Go and plugin is in the form of JSON data. 
+In order to support existing plugins and provide enough time to the plugin authors to migrate these to use the newer APIs, Go still works with old java interface based plugin API. However, this support will be removed eventually and hence all plugin authors are adviced to write new plugins using JSON based API, and also migrate their existing plugins to the same.</p>
+<p>JSON message based plugin API has been described in further details <a href="json_message_based_plugin_api.html">here</a>.</p>
+<h2 id="plugin-api-jar">Plugin API Jar</h2>
+<p>-<a href="https://bintray.com/artifact/download/gocd/gocd/go-plugin-api-14.4.0.jar" target="_blank">14.4.0</a></p>
+<h2 id="plugin-api-javadoc">Plugin API Javadoc</h2>
+<p>-<a href="http://www.go.cd/documentation/developer/resources/14.4.0/javadoc/index.html" target="_blank">14.4.0</a></p>
 <h2 id="package-repository-plugin">Package Repository Plugin</h2>
 <ul>
 <li><p><a href="http://www.go.cd/documentation/user/current/extension_points/package_repository_extension.html" target="_blank">Package Repository Extension</a></p>
