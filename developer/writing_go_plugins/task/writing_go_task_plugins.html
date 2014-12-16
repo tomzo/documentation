@@ -33,7 +33,7 @@
 
 
         
-    <div class="book" data-level="6.6" data-basepath="../.." data-revision="1418729184938">
+    <div class="book" data-level="6.6" data-basepath="../.." data-revision="1418743229360">
     
 
 <div class="book-summary">
@@ -2464,20 +2464,20 @@ plugin, for Go.</p>
 <p>Creating a task plugin involves implementing a few interfaces, which are described below. If you need to know the basics of writing a plugin in Go, read <a href="go_plugins_basics.html">this</a>. The concepts and processes mentioned there apply to the task plugin end-point as well. On that page, you can also find the go-plugin-api.jar file which contains the interfaces mentioned below.</p>
 <h4 id="task">Task</h4>
 <p>The Task interface is the starting point of the task plugin end-point. It is the top-level interface that needs to be implemented. However, to implement the methods in it, you will need to be aware of a few other interfaces and classes.</p>
-<p><img src="../resources/images/Task.png" alt=""></p>
+<p><img src="../images/Task.png" alt=""></p>
 <h4 id="taskconfig">TaskConfig</h4>
 <p>TaskConfig is a class, which is used by the plugin to define the set of configuration properties accepted and expected by it.</p>
-<p><img src="../resources/images/TaskConfig.png" alt=""></p>
+<p><img src="../images/TaskConfig.png" alt=""></p>
 <p>As shown above, it has an addProperty method, which is usually used to add information about a configuration property. You can also provide a default value for a property. It will be used if the user does not provide any value for it. It can be setup this way (inside the config() method of your plugin&#39;s task implementation):</p>
 <pre><code class="lang-{.code}">config.addProperty(&quot;MyProperty).withDefault(&quot;DEFAULT VALUE&quot;);
 </code></pre>
 <h4 id="taskview">TaskView</h4>
 <p>The TaskView implementation provided by the plugin defines the UI part of the configuration. The template() method returns a string, which is written in HTML with Angular.js-specific elements. Every configuration property specified by the TaskConfig mentioned earlier, will be available as a variable, which can be used in the template.</p>
-<p><img src="../resources/images/TaskView.png" alt=""></p>
+<p><img src="../images/TaskView.png" alt=""></p>
 <p>You can read more about Go&#39;s use of Angular.js templates <a href="angular-js-templates-in-go-plugins.html">here</a>.</p>
 <h4 id="taskexecutor">TaskExecutor</h4>
 <p>The TaskExecutor implementation provided by the plugin (and its execute() method, actually) is the one that gets called, on an agent, when the plugin task needs to be executed.</p>
-<p><img src="../resources/images/TaskExecutor.png" alt=""></p>
+<p><img src="../images/TaskExecutor.png" alt=""></p>
 <p>The execute() method gets called with two arguments:</p>
 <ul>
 <li>TaskConfig: This TaskConfig object is related to the one specified in the config() method in the Task Interface, but differs in that it contains the value of the property, specified by the user, as well.</li>
@@ -2485,7 +2485,7 @@ plugin, for Go.</p>
 </ul>
 <h4 id="taskexecutioncontext">TaskExecutionContext</h4>
 <p>The TaskExecutionContext is provided by Go, when the execute() method of TaskExecutor is called on the agent, when a task needs to be run.</p>
-<p><img src="../resources/images/TaskExecutionContext.png" alt=""></p>
+<p><img src="../images/TaskExecutionContext.png" alt=""></p>
 <h3 id="writing-a-simple-task-plugin">Writing a simple task plugin</h3>
 <p>You can find the source of the sample Curl plugin mentioned earlier, <a href="../go_plugins_basics.html#building_a_plugin">at this location</a>.</p>
 <p>Let&#39;s see what it takes to implement a simple task plugin, one which takes a message from the user, and when executed, echoes that message back. We need to start with a Task interface implementation, with the config() method specifying the &quot;message&quot; field and the view() method specifying a UI for it. Do not forget to annotate the class with @Extension annotation, as specified in the <a href="../go_plugins_basics.html">Go plugin basics page</a>.</p>
@@ -2544,7 +2544,7 @@ public class EchoTask implements Task {
 }
 </code></pre>
 <p>Now, the dropdown and configuration UI look like this:</p>
-<p><img src="../resources/images/EchoTask.png" alt=""></p>
+<p><img src="../images/EchoTask.png" alt=""></p>
 <p>The output of the task, when it runs, looks like this:</p>
 <pre><code class="lang-{.code}">[go] Start to execute task: Plugin with ID: echo.task.plugin.
 Message is: Test
