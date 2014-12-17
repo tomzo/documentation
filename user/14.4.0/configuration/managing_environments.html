@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="4.5" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="4.5" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,11 +2176,11 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_60">
+                    <section class="normal" id="section-gitbook_61">
                     
-                        <h1 id="managing-environments">Managing environments</h1>
+                        <h1 id="managing-environments"><a name="managing-environments" class="plugin-anchor" href="#managing-environments"><span class="fa fa-link"></span></a>Managing environments</h1>
 <p>Go is configured using an XML configuration file. This file can be edited through the Go server dashboard. Go allows you to edit sections of the configuration independently and will check the syntax of the configuration before it saves it again. You can also edit the full XML file if you wish, by clicking on the Config XML section of the Administration tab.</p>
-<h2 id="creating-a-new-environment">Creating a new environment</h2>
+<h2 id="creating-a-new-environment"><a name="creating-a-new-environment" class="plugin-anchor" href="#creating-a-new-environment"><span class="fa fa-link"></span></a>Creating a new environment</h2>
 <p>An Environment is a grouping of pipelines and agents. By assigning an agent to an environment, it will be used to run only those jobs that belong to the pipelines of that environment. An agent can belong to more than one environment. This means, for instance, the same agent can be used to deploy something into an UAT or a Performance testing environment. A pipeline can, however, only be assigned to a single environment. Generally, these pipelines represent the tasks that need to happen in a given environment. For example deploying a 3-tier application into an UAT environment with 6 machines and running smoke tests on the setup.</p>
 <p>However, once an agent is associated with one or more environments, it is no longer capable of picking up jobs on pipelines that do not belong to environments. Pipelines outside of environments will only be assigned to agents in the default pool (not associated with any environment).</p>
 <p>You can create an environment in the admin UI through the following steps. This example creates a production environment, adding the deployment pipeline and the agent installed on the production server.</p>
@@ -2208,11 +2212,11 @@
 <li>Click on finish</li>
 </ul>
 <p>Setting up an environment through the xml can be found in the <a href="configuration_reference.html#environments">configuration reference</a></p>
-<h2 id="add-a-new-agent-to-an-existing-environment">Add a new agent to an existing environment</h2>
-<p>You can do this very easily in the Agents tab. Just select the agents you want to add to your environment and click on the Environments button. All existing environments will appear in alphabetical order. Select one of three states for all environments you want to add and then click the “Apply” button.</p>
+<h2 id="add-a-new-agent-to-an-existing-environment"><a name="add-a-new-agent-to-an-existing-environment" class="plugin-anchor" href="#add-a-new-agent-to-an-existing-environment"><span class="fa fa-link"></span></a>Add a new agent to an existing environment</h2>
+<p>You can do this very easily in the Agents tab. Just select the agents you want to add to your environment and click on the Environments button. All existing environments will appear in alphabetical order. Select one of three states for all environments you want to add and then click the &#x201C;Apply&#x201D; button.</p>
 <ul>
 <li>An environment <strong>with a check</strong> will add the environment to all selected agents.</li>
-<li>An environment <strong>with a forward slash</strong> means some of your selected agents are associated to it. No change will occur after clicking “Apply”.</li>
+<li>An environment <strong>with a forward slash</strong> means some of your selected agents are associated to it. No change will occur after clicking &#x201C;Apply&#x201D;.</li>
 <li>An environment <strong>without a check</strong> will remove the environment from all selected agents.</li>
 </ul>
 <p><img src="../resources/images/associate_agent_environment.png" alt=""></p>

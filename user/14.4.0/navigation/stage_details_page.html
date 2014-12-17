@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="2.5" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="2.5" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2174,10 +2178,10 @@
                 
                     <section class="normal" id="section-gitbook_119">
                     
-                        <h1 id="stage-details">Stage Details</h1>
+                        <h1 id="stage-details"><a name="stage-details" class="plugin-anchor" href="#stage-details"><span class="fa fa-link"></span></a>Stage Details</h1>
 <p>The Stage Details page shows the details of a specific stage.</p>
 <p><img src="../resources/images/stage_details.png" alt="Stage Details Page"></p>
-<h3 id="key">Key</h3>
+<h3 id="key"><a name="key" class="plugin-anchor" href="#key"><span class="fa fa-link"></span></a>Key</h3>
 <ol>
 <li>Details of a specific stage run: run number, status, when it was triggered, who triggered it, duration of the stage</li>
 <li>Name of the stage</li>
@@ -2192,9 +2196,9 @@
 <li>RSS feed for the stage in Atom format</li>
 <li>Name of the stage</li>
 </ol>
-<h2 id="failed-build-history">Failed Build History</h2>
-<p>Results of test runs from jobs within a stage are aggregated up to the stage level. Failures are listed under the relevant pipeline instance label . Tests listed are ones that are failing in the stage instance currently being viewed. The tests are grouped by pipeline instance in which they started to fail (and are still failing). This gives you information about which users&#39; checkins are responsible for test failures. On clicking the CHANGES link next to the Pipeline Label, the popup shows you the modifications to materials that have been built in this instance of the pipeline. All the stage instances till the time this stage was last seen green are listed in the failed build history. The pipelines are sorted by <a href="../faq/ordering_of_pipelines.html">natural ordering</a>.</p>
-<h3 id="test-failures-in-the-current-stage">Test Failures in the current stage</h3>
+<h2 id="failed-build-history"><a name="failed-build-history" class="plugin-anchor" href="#failed-build-history"><span class="fa fa-link"></span></a>Failed Build History</h2>
+<p>Results of test runs from jobs within a stage are aggregated up to the stage level. Failures are listed under the relevant pipeline instance label . Tests listed are ones that are failing in the stage instance currently being viewed. The tests are grouped by pipeline instance in which they started to fail (and are still failing). This gives you information about which users&apos; checkins are responsible for test failures. On clicking the CHANGES link next to the Pipeline Label, the popup shows you the modifications to materials that have been built in this instance of the pipeline. All the stage instances till the time this stage was last seen green are listed in the failed build history. The pipelines are sorted by <a href="../faq/ordering_of_pipelines.html">natural ordering</a>.</p>
+<h3 id="test-failures-in-the-current-stage"><a name="test-failures-in-the-current-stage" class="plugin-anchor" href="#test-failures-in-the-current-stage"><span class="fa fa-link"></span></a>Test Failures in the current stage</h3>
 <p>Other information that the Failed Build History section on the Stage Details page shows: (Image need annotation)</p>
 <ol>
 <li>Total number of tests run</li>
@@ -2208,25 +2212,25 @@
 <li>Shows modifications which caused the stage instance to be triggered.</li>
 <li>Shows the failure message and stack trace for the test failure/error for that job.</li>
 </ol>
-<h3 id="example-1">Example 1</h3>
-<p>You are viewing stage &#39;Dev&#39; of pipeline label &#39;60&#39;. The pipeline has been failing since label &#39;59&#39;. There are currently 4 failing tests. This is how they are listed.</p>
+<h3 id="example-1"><a name="example-1" class="plugin-anchor" href="#example-1"><span class="fa fa-link"></span></a>Example 1</h3>
+<p>You are viewing stage &apos;Dev&apos; of pipeline label &apos;60&apos;. The pipeline has been failing since label &apos;59&apos;. There are currently 4 failing tests. This is how they are listed.</p>
 <ul>
 <li>60 has 3 failing test all of which started failing in 60</li>
-<li>59 and 58 are listed because the &#39;dev&#39; stage failed but none of the currently failing tests started failing because of the changes in 59 or 58. This could be because the tests that were failing in 59 got fixed by the checkins in 60. But these check-ins broke other tests. Or this could be because none of the test ran in 59 and 58, an error occured before the tests started running.</li>
+<li>59 and 58 are listed because the &apos;dev&apos; stage failed but none of the currently failing tests started failing because of the changes in 59 or 58. This could be because the tests that were failing in 59 got fixed by the checkins in 60. But these check-ins broke other tests. Or this could be because none of the test ran in 59 and 58, an error occured before the tests started running.</li>
 <li>The pipeline instances are listed in <a href="../faq/ordering_of_pipelines.html">natural order</a>. In this case the schedule and natural order are the same.</li>
 </ul>
-<h3 id="example-2">Example 2</h3>
-<p>You are viewing stage &#39;Dev&#39; of pipeline label &#39;59&#39;. The pipeline has been failing since label &#39;65&#39;. There are currently 6 failing tests. This is how they are listed.</p>
+<h3 id="example-2"><a name="example-2" class="plugin-anchor" href="#example-2"><span class="fa fa-link"></span></a>Example 2</h3>
+<p>You are viewing stage &apos;Dev&apos; of pipeline label &apos;59&apos;. The pipeline has been failing since label &apos;65&apos;. There are currently 6 failing tests. This is how they are listed.</p>
 <ul>
 <li>The natural order of pipelines is 61, 60, 65, 59, 58, 57, 56, 55. This is the order in which they are listed.</li>
-<li>65&#39;s changes caused 2 failing test which are still failing in 61 (instance being viewed).</li>
+<li>65&apos;s changes caused 2 failing test which are still failing in 61 (instance being viewed).</li>
 <li>60 had 1 new failing test which is still failing in 61.</li>
 <li>61 has 3 newly failing tests.</li>
 <li>None of the currently failing tests started failing in 59, 58. 57, 56 or 55.</li>
 </ul>
 <p>If there are no tests configured in the stage or Go is still computing results, this is the message that is displayed.
 <img src="../resources/images/no_tests_configured.png" alt=""></p>
-<h4 id="also-see">Also See...</h4>
+<h4 id="also-see"><a name="also-see" class="plugin-anchor" href="#also-see"><span class="fa fa-link"></span></a>Also See...</h4>
 <ul>
 <li><a href="job_details_page.html">Job details</a></li>
 <li><a href="../faq/job_rerun.html">Re-running job(s)</a></li>

@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="9.1" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="9.1" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2174,14 +2178,14 @@
                 
                     <section class="normal" id="section-gitbook_86">
                     
-                        <h1 id="ordering-of-pipelines">Ordering of pipelines</h1>
+                        <h1 id="ordering-of-pipelines"><a name="ordering-of-pipelines" class="plugin-anchor" href="#ordering-of-pipelines"><span class="fa fa-link"></span></a>Ordering of pipelines</h1>
 <p>In Go, we use two distinct types of ordering of pipelines:</p>
 <ul>
 <li>Schedule order: Chronological order in which pipelines are scheduled.</li>
 <li>Natural order: Chronological order of pipelines based on material modifications</li>
 </ul>
 <p>In most cases the schedule order and natural order match. The user checks in and builds incrementally so the order in which builds are scheduled is the same as the relative order in which changes are checked in. Now with the &quot;Trigger with options&quot; functionality, it is possible to trigger a pipeline with older materials. In this case, the changes to the material as reported by the repository and the order of pipelines containing these changes are not the same</p>
-<h2 id="example">Example</h2>
+<h2 id="example"><a name="example" class="plugin-anchor" href="#example"><span class="fa fa-link"></span></a>Example</h2>
 <pre><code class="lang-{.code}">Order of check-ins retrieved from Hg log:
 
 changeset:   10689:6dbb27e86dc9

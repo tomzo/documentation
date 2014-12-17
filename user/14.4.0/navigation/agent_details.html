@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="2.3" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="2.3" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,15 +2176,15 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_116">
+                    <section class="normal" id="section-gitbook_115">
                     
-                        <h1 id="details-of-a-single-agent">Details of a single agent</h1>
+                        <h1 id="details-of-a-single-agent"><a name="details-of-a-single-agent" class="plugin-anchor" href="#details-of-a-single-agent"><span class="fa fa-link"></span></a>Details of a single agent</h1>
 <p>Go now provides a page that shows the details of a single agent. This page provides details about the agent configuration and the history of all the jobs that ran on that agent.</p>
-<h2 id="agent-details-tab">Agent Details tab</h2>
+<h2 id="agent-details-tab"><a name="agent-details-tab" class="plugin-anchor" href="#agent-details-tab"><span class="fa fa-link"></span></a>Agent Details tab</h2>
 <p>This tab shows the configuration and runtime information of an agent. For example, this tab shows the free space available on the agent, the IP Adress and the OS of the agent.</p>
 <p>In terms of configuration, this tab shows the resources of the agent and the environment it belongs to. A sample Details tab looks as below:</p>
 <p><img src="../resources/images/agent_details.png" alt=""></p>
-<h2 id="job-run-history-tab">Job Run History tab</h2>
+<h2 id="job-run-history-tab"><a name="job-run-history-tab" class="plugin-anchor" href="#job-run-history-tab"><span class="fa fa-link"></span></a>Job Run History tab</h2>
 <p>You must be logged in as an admin user to configure this step.</p>
 <p>This tab shows a table of all the completed jobs that ran on this agent. A sample page is shown below</p>
 <p><img src="../resources/images/agent_job_history.png" alt=""></p>
@@ -2194,7 +2198,7 @@
 <li>Duration: The duration that the Job took to finish - from scheduled till completed.</li>
 </ol>
 <p>The job listing table can be sorted on any column, except for the Duration column.</p>
-<h3 id="using-agent-details-to-debug-agent-issues">Using Agent details to debug agent issues</h3>
+<h3 id="using-agent-details-to-debug-agent-issues"><a name="using-agent-details-to-debug-agent-issues" class="plugin-anchor" href="#using-agent-details-to-debug-agent-issues"><span class="fa fa-link"></span></a>Using Agent details to debug agent issues</h3>
 <p>This page is useful to figure out if there are agent issues and hence a certain job keeps failing on that agent.</p>
 <p>Consider a job which runs functional tests for a web application that need a browser to be available. The job was passing so far and only recently it has started to fail intermittently. Here are the steps you can follow to figure out if this is an agent issue.</p>
 <ol>
@@ -2203,7 +2207,7 @@
 <li>Navigate to the &quot;Job Run History&quot; tab</li>
 <li>Sort on the Job Name and locate the job that just navigated from</li>
 </ol>
-<p>You&#39;d notice that the job started to fail recently. You can even see if there are other jobs that have started failing around the same time by now sorting on the Completed date.</p>
+<p>You&apos;d notice that the job started to fail recently. You can even see if there are other jobs that have started failing around the same time by now sorting on the Completed date.</p>
 
                     
                     </section>

@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="7.10" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="7.10" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,14 +2176,14 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_33">
+                    <section class="normal" id="section-gitbook_34">
                     
-                        <h1 id="users-api">Users API</h1>
+                        <h1 id="users-api"><a name="users-api" class="plugin-anchor" href="#users-api"><span class="fa fa-link"></span></a>Users API</h1>
 <p>This API allows you to control User accounts in Go</p>
 <blockquote>
 <p><strong>NOTE:</strong> Only Go administrator users will be able to use this API</p>
 </blockquote>
-<h2 id="delete">Delete</h2>
+<h2 id="delete"><a name="delete" class="plugin-anchor" href="#delete"><span class="fa fa-link"></span></a>Delete</h2>
 <table>
 <thead>
 <tr>
@@ -2194,7 +2198,7 @@
 <td><a href="http://[server]/go/api/users/[user_name" target="_blank">http://[server]/go/api/users/[user_name</a>]</td>
 <td>DELETE</td>
 <td>no parameters</td>
-<td>Deletes the user with username &#39;user_name&#39;. Note: Only disabled users can be deleted.</td>
+<td>Deletes the user with username &apos;user_name&apos;. Note: Only disabled users can be deleted.</td>
 </tr>
 </tbody>
 </table>
@@ -2225,13 +2229,13 @@
 </tr>
 </tbody>
 </table>
-<h2 id="examples">Examples</h2>
+<h2 id="examples"><a name="examples" class="plugin-anchor" href="#examples"><span class="fa fa-link"></span></a>Examples</h2>
 <ul>
 <li>We use curl, a command line tool for transferring files with URL syntax, in the following examples. Of course, you can use any HTTP client library.</li>
 <li>We assume that the URL of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
 <li>We assume security has been switched on, and that there is an admin user named <strong>admin</strong> with the password <strong>badger</strong> .</li>
 </ul>
-<p>To delete a user named &#39;another_user&#39;</p>
+<p>To delete a user named &apos;another_user&apos;</p>
 <pre><code>curl -u admin:badger -X &quot;DELETE&quot; http://goserver.com:8153/go/api/users/another_user
 </code></pre>
                     

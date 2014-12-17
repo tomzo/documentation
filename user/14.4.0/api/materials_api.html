@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="7.7" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="7.7" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,11 +2176,11 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_28">
+                    <section class="normal" id="section-gitbook_29">
                     
-                        <h1 id="materials-api">Materials API</h1>
-<h2 id="config-listing-api">Config listing API</h2>
-<p>This API allows you list all Materials in Go&#39;s Config in JSON format. This API is built primarily to aid rendering of Material modifications page. Hence only the information required for that is exposed.</p>
+                        <h1 id="materials-api"><a name="materials-api" class="plugin-anchor" href="#materials-api"><span class="fa fa-link"></span></a>Materials API</h1>
+<h2 id="config-listing-api"><a name="config-listing-api" class="plugin-anchor" href="#config-listing-api"><span class="fa fa-link"></span></a>Config listing API</h2>
+<p>This API allows you list all Materials in Go&apos;s Config in JSON format. This API is built primarily to aid rendering of Material modifications page. Hence only the information required for that is exposed.</p>
 <table>
 <thead>
 <tr>
@@ -2195,23 +2199,23 @@
 </tr>
 </tbody>
 </table>
-<h3 id="examples">Examples</h3>
+<h3 id="examples"><a name="examples" class="plugin-anchor" href="#examples"><span class="fa fa-link"></span></a>Examples</h3>
 <ul>
 <li>We use curl, a command line tool to demonstrate the use of the API, in the following examples. Of course, you can use any HTTP client library.</li>
 <li>We assume that the URL of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
 <li>We assume security has been switched on, and that there is a user named <strong>admin</strong> with the password <strong>badger</strong> .</li>
 </ul>
 <p>Assuming the pipeline configuration looks like:</p>
-<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">"first"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"foo"</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">"foo-${COUNT}"</span> <span class="hljs-attribute">isLocked</span>=<span class="hljs-value">"true"</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">&quot;first&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;foo&quot;</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">&quot;foo-${COUNT}&quot;</span> <span class="hljs-attribute">isLocked</span>=<span class="hljs-value">&quot;true&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">hg</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">"http://10.22.12.2:8000"</span> <span class="hljs-attribute">materialName</span>=<span class="hljs-value">"hg_material"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">hg</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://10.22.12.2:8000&quot;</span> <span class="hljs-attribute">materialName</span>=<span class="hljs-value">&quot;hg_material&quot;</span> /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"DEV"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;DEV&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UnitTest"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UnitTest&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">"all-UAT"</span> /&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;all-UAT&quot;</span> /&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
           <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
@@ -2223,24 +2227,24 @@
 <pre><code>curl -u admin:badger http://goserver.com:8153/go/api/config/materials
 </code></pre><pre><code class="lang-json">[
   {
-    "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"URL: http:\/\/10.22.12.2:8000"</span></span>,
-    "<span class="hljs-attribute">fingerprint</span>": <span class="hljs-value"><span class="hljs-string">"64987f67c407020dfd6badf4975421428aa5d044e0b14b3086266294b969b6a8"</span></span>,
-    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Mercurial"</span>
+    &quot;<span class="hljs-attribute">description</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;URL: http:\/\/10.22.12.2:8000&quot;</span></span>,
+    &quot;<span class="hljs-attribute">fingerprint</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;64987f67c407020dfd6badf4975421428aa5d044e0b14b3086266294b969b6a8&quot;</span></span>,
+    &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Mercurial&quot;</span>
   </span>}
   {
-    "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"URL: http:\/\/10.22.12.2:7019"</span></span>,
-    "<span class="hljs-attribute">fingerprint</span>": <span class="hljs-value"><span class="hljs-string">"7ee3e832cb5d0f1304502a0319f42235fb01c49fd14da0f24f0253139306ad03 "</span></span>,
-    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Git"</span>
+    &quot;<span class="hljs-attribute">description</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;URL: http:\/\/10.22.12.2:7019&quot;</span></span>,
+    &quot;<span class="hljs-attribute">fingerprint</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;7ee3e832cb5d0f1304502a0319f42235fb01c49fd14da0f24f0253139306ad03 &quot;</span></span>,
+    &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Git&quot;</span>
   </span>}
 ]
 </code></pre>
-<h2 id="notification-api">Notification API</h2>
+<h2 id="notification-api"><a name="notification-api" class="plugin-anchor" href="#notification-api"><span class="fa fa-link"></span></a>Notification API</h2>
 <p>APIs that notify Go Server when a commit has been made in Version Control and Go needs to trigger relevant pipelines.</p>
 <blockquote>
 <p><strong>NOTE</strong> : Only Go Administrators will be able to invoke this API</p>
 <p>When using this feature, uncheck <strong>Poll for new changes</strong> or set <strong>autoUpdate</strong> flag in cruise configuration to <strong>false</strong> for the relevant subversion materials</p>
 </blockquote>
-<h3 id="subversion">Subversion</h3>
+<h3 id="subversion"><a name="subversion" class="plugin-anchor" href="#subversion"><span class="fa fa-link"></span></a>Subversion</h3>
 <table>
 <thead>
 <tr>
@@ -2259,7 +2263,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="examples">Examples</h4>
+<h4 id="examples"><a name="examples" class="plugin-anchor" href="#examples"><span class="fa fa-link"></span></a>Examples</h4>
 <ul>
 <li>We use curl, a command line tool for transferring files with URL syntax, in the following examples. Of course, you can use any HTTP client library.</li>
 <li>We assume that the URL of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
@@ -2279,7 +2283,7 @@
 
                 curl -d &quot;uuid=$UUID&quot; -u admin:password http://goserver.com:8153/go/api/material/notify/svn
 </code></pre>
-<h3 id="git">Git</h3>
+<h3 id="git"><a name="git" class="plugin-anchor" href="#git"><span class="fa fa-link"></span></a>Git</h3>
 <table>
 <thead>
 <tr>
@@ -2298,7 +2302,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="example">Example</h4>
+<h4 id="example"><a name="example" class="plugin-anchor" href="#example"><span class="fa fa-link"></span></a>Example</h4>
 <ul>
 <li>We use curl, a command line tool for transferring files with URL syntax, in the following examples. Of course, you can use any HTTP client library.</li>
 <li>We assume that the URL of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
@@ -2316,7 +2320,7 @@
                 echo `curl -d &quot;repository_url=git://url-for-git-repo.git&quot; -u admin:badger http://goserver.com:8153/go/api/material/notify/git`
                 echo `curl -d &quot;repository_url=https://url-for-git-repo.git&quot; -u admin:badger http://goserver.com:8153/go/api/material/notify/git`
 </code></pre>
-<h2 id="modifications-api">Modifications API</h2>
+<h2 id="modifications-api"><a name="modifications-api" class="plugin-anchor" href="#modifications-api"><span class="fa fa-link"></span></a>Modifications API</h2>
 <p>This API lists Material modifications known to Go in JSON format. API gives 10 modifications at a time, sorted in reverse order. Supports pagination using offset which tells the API how many modifications to skip. This API is built primarily to aid rendering Material modifications page. Hence the information required for that is exposed.</p>
 <table>
 <thead>
@@ -2336,24 +2340,24 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> You can get Material&#39;s fingerprint from Material Config listing API.</p>
-<h3 id="examples">Examples</h3>
+<p><strong>Note:</strong> You can get Material&apos;s fingerprint from Material Config listing API.</p>
+<h3 id="examples"><a name="examples" class="plugin-anchor" href="#examples"><span class="fa fa-link"></span></a>Examples</h3>
 <ul>
 <li>We use curl, a command line tool to demonstrate the use of the API, in the following examples. Of course, you can use any HTTP client library.</li>
 <li>We assume that the URL of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
 <li>We assume security has been switched on, and that there is a user named <strong>admin</strong> with the password <strong>badger</strong> .</li>
 </ul>
 <p>Assuming the pipeline configuration looks like:</p>
-<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">"first"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"foo"</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">"foo-${COUNT}"</span> <span class="hljs-attribute">isLocked</span>=<span class="hljs-value">"true"</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">&quot;first&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;foo&quot;</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">&quot;foo-${COUNT}&quot;</span> <span class="hljs-attribute">isLocked</span>=<span class="hljs-value">&quot;true&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">hg</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">"http://10.22.12.2:8000"</span> <span class="hljs-attribute">materialName</span>=<span class="hljs-value">"hg_material"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">hg</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://10.22.12.2:8000&quot;</span> <span class="hljs-attribute">materialName</span>=<span class="hljs-value">&quot;hg_material&quot;</span> /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"DEV"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;DEV&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UnitTest"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UnitTest&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">"all-UAT"</span> /&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;all-UAT&quot;</span> /&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
           <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
@@ -2364,26 +2368,26 @@
 <p>The following command produces output specified below:</p>
 <pre><code>curl -u admin:badger http://goserver.com:8153/go/api/materials/7ee3e832cb5d0f1304502a0319f42235fb01c49fd14da0f24f0253139306ad03/0
 </code></pre><pre><code class="lang-json">{
-  "<span class="hljs-attribute">modifications</span>": <span class="hljs-value">[
+  &quot;<span class="hljs-attribute">modifications</span>&quot;: <span class="hljs-value">[
     {
-      "<span class="hljs-attribute">modified_time</span>": <span class="hljs-value"><span class="hljs-number">1411463559000</span></span>,
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
-      "<span class="hljs-attribute">user_name</span>": <span class="hljs-value"><span class="hljs-string">"Admin &lt;test@test.com&gt;"</span></span>,
-      "<span class="hljs-attribute">comment</span>": <span class="hljs-value"><span class="hljs-string">"new commit"</span></span>,
-      "<span class="hljs-attribute">revision</span>": <span class="hljs-value"><span class="hljs-string">"96b9157fff67f1a3b8707d490fd72d9300f67603"</span>
+      &quot;<span class="hljs-attribute">modified_time</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411463559000</span></span>,
+      &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      &quot;<span class="hljs-attribute">user_name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Admin &lt;test@test.com&gt;&quot;</span></span>,
+      &quot;<span class="hljs-attribute">comment</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;new commit&quot;</span></span>,
+      &quot;<span class="hljs-attribute">revision</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;96b9157fff67f1a3b8707d490fd72d9300f67603&quot;</span>
     </span>},
     {
-      "<span class="hljs-attribute">modified_time</span>": <span class="hljs-value"><span class="hljs-number">1409664999000</span></span>,
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
-      "<span class="hljs-attribute">user_name</span>": <span class="hljs-value"><span class="hljs-string">"Admin &lt;test@test.com&gt;"</span></span>,
-      "<span class="hljs-attribute">comment</span>": <span class="hljs-value"><span class="hljs-string">"old commit"</span></span>,
-      "<span class="hljs-attribute">revision</span>": <span class="hljs-value"><span class="hljs-string">"6f75b392941c40666ae822045c064e0887ffd007"</span>
+      &quot;<span class="hljs-attribute">modified_time</span>&quot;: <span class="hljs-value"><span class="hljs-number">1409664999000</span></span>,
+      &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      &quot;<span class="hljs-attribute">user_name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Admin &lt;test@test.com&gt;&quot;</span></span>,
+      &quot;<span class="hljs-attribute">comment</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;old commit&quot;</span></span>,
+      &quot;<span class="hljs-attribute">revision</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;6f75b392941c40666ae822045c064e0887ffd007&quot;</span>
     </span>}
   ]</span>,
-  "<span class="hljs-attribute">pagination</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">offset</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-    "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
-    "<span class="hljs-attribute">page_size</span>": <span class="hljs-value"><span class="hljs-number">10</span>
+  &quot;<span class="hljs-attribute">pagination</span>&quot;: <span class="hljs-value">{
+    &quot;<span class="hljs-attribute">offset</span>&quot;: <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    &quot;<span class="hljs-attribute">total</span>&quot;: <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    &quot;<span class="hljs-attribute">page_size</span>&quot;: <span class="hljs-value"><span class="hljs-number">10</span>
   </span>}
 </span>}
 </code></pre>

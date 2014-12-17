@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="4.1" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="4.1" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,18 +2176,18 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_66">
+                    <section class="normal" id="section-gitbook_67">
                     
-                        <h1 id="setup-a-new-pipeline">Setup a new pipeline</h1>
-<h2 id="new-pipeline-wizard">New Pipeline Wizard</h2>
-<p>After you&#39;ve entered your license information, clicking on the <strong>Pipelines</strong> tab will take you to the &quot;Add new pipeline&quot; page. You can also add a pipeline by navigating to the Admin page and clicking on the &quot;Create a new pipeline within a group&quot; link. You can create a pipeline in 3 steps.</p>
-<h3 id="step-1-basic-settings">Step 1: Basic Settings</h3>
+                        <h1 id="setup-a-new-pipeline"><a name="setup-a-new-pipeline" class="plugin-anchor" href="#setup-a-new-pipeline"><span class="fa fa-link"></span></a>Setup a new pipeline</h1>
+<h2 id="new-pipeline-wizard"><a name="new-pipeline-wizard" class="plugin-anchor" href="#new-pipeline-wizard"><span class="fa fa-link"></span></a>New Pipeline Wizard</h2>
+<p>After you&apos;ve entered your license information, clicking on the <strong>Pipelines</strong> tab will take you to the &quot;Add new pipeline&quot; page. You can also add a pipeline by navigating to the Admin page and clicking on the &quot;Create a new pipeline within a group&quot; link. You can create a pipeline in 3 steps.</p>
+<h3 id="step-1-basic-settings"><a name="step-1-basic-settings" class="plugin-anchor" href="#step-1-basic-settings"><span class="fa fa-link"></span></a>Step 1: Basic Settings</h3>
 <p><img src="../resources/images/new_pipeline_1.png" alt=""></p>
 <ol>
 <li>Fill in the pipeline name</li>
 <li>Fill in the pipeline group</li>
 </ol>
-<h3 id="step-2-material">Step 2: Material</h3>
+<h3 id="step-2-material"><a name="step-2-material" class="plugin-anchor" href="#step-2-material"><span class="fa fa-link"></span></a>Step 2: Material</h3>
 <p><img src="../resources/images/new_pipeline_2.png" alt=""></p>
 <ol>
 <li><p>Choose the material type. The material can be your Source Control Management (SCM or version control) repository or another pipeline or a <a href="../extension_points/package_repository_extension.html">package repository</a> (e.g. <a href="../extension_points/yum_repository_poller.html">yum</a>). Currently Go supports the following SCMs:</p>
@@ -2198,7 +2202,7 @@
 <li><p>Fill in settings specific to the material type.</p>
 </li>
 </ol>
-<h3 id="step-3-stage-and-job">Step 3: Stage and Job</h3>
+<h3 id="step-3-stage-and-job"><a name="step-3-stage-and-job" class="plugin-anchor" href="#step-3-stage-and-job"><span class="fa fa-link"></span></a>Step 3: Stage and Job</h3>
 <p><img src="../resources/images/new_pipeline_3.png" alt=""></p>
 <p>A pipeline contains one or more stages. Define the first stage of your pipeline</p>
 <ol>
@@ -2208,20 +2212,20 @@
 <li>If you use Ant, NAnt or Rake for scripting, Go provides convenience wrappers for these tools. To use any other scripting tool (e.g: Maven, msbuild, etc.), choose the &quot;More...&quot; option to use the <a href="../advanced_usage/command_repository.html">command repository</a> or specify the command line syntax for that tool.</li>
 </ol>
 <p>See the <a href="managing_pipelines.html">Managing pipelines</a> documentation for editing these settings following the creation of your pipeline.</p>
-<h2 id="initial-task-settings">Initial task settings</h2>
-<h3 id="ant">Ant</h3>
-<p>The Ant task allows you to run an ant script. Go does not include Ant and so you must ensure that it is already on the command path. By default it will use build.xml in the agent&#39;s working directory as the build file. If you want to customize the build file or build target, click the <strong>edit</strong> link to change the defaults.</p>
+<h2 id="initial-task-settings"><a name="initial-task-settings" class="plugin-anchor" href="#initial-task-settings"><span class="fa fa-link"></span></a>Initial task settings</h2>
+<h3 id="ant"><a name="ant" class="plugin-anchor" href="#ant"><span class="fa fa-link"></span></a>Ant</h3>
+<p>The Ant task allows you to run an ant script. Go does not include Ant and so you must ensure that it is already on the command path. By default it will use build.xml in the agent&apos;s working directory as the build file. If you want to customize the build file or build target, click the <strong>edit</strong> link to change the defaults.</p>
 <p>For this option to work, Ant needs to be installed on the Go Agent(s) and the <em>go user</em> should be able to execute it.</p>
-<h3 id="nant">NAnt</h3>
-<p>The NAnt task allows you to run a NAnt script. Go does not include NAnt and so you must ensure that it is already on the command path. By default it will use default.build as build file in the agent&#39;s working directory. If you want to customize the build file or build target, click the <strong>edit</strong> link to change the defaults.</p>
+<h3 id="nant"><a name="nant" class="plugin-anchor" href="#nant"><span class="fa fa-link"></span></a>NAnt</h3>
+<p>The NAnt task allows you to run a NAnt script. Go does not include NAnt and so you must ensure that it is already on the command path. By default it will use default.build as build file in the agent&apos;s working directory. If you want to customize the build file or build target, click the <strong>edit</strong> link to change the defaults.</p>
 <p>For this option to work, NAnt needs to be installed on the Go Agent(s) and the <em>go user</em> should be able to execute it.</p>
-<h3 id="rake">Rake</h3>
+<h3 id="rake"><a name="rake" class="plugin-anchor" href="#rake"><span class="fa fa-link"></span></a>Rake</h3>
 <p>The Rake task allows you to run a ruby rake build. Go does not include ruby or rake and so you must ensure that it is correctly installed on the agents. Go will assume the standard <strong>rakefile</strong> exists in the working directory of the agent.</p>
 <p>For this option to work, Rake needs to be installed on the Go Agent(s) and the <em>go user</em> should be able to execute it.</p>
-<h3 id="more">More...</h3>
+<h3 id="more"><a name="more" class="plugin-anchor" href="#more"><span class="fa fa-link"></span></a>More...</h3>
 <p>In addition to the above tasks, Go allows you to run anything on the command line. You can use the <a href="../advanced_usage/command_repository.html">command repository</a> to help you choose the command. Alternately you can specify a command on your own.</p>
 <p>You can see the complete configuration reference <a href="configuration_reference.html">here</a>.</p>
-<h4 id="also-see">Also See</h4>
+<h4 id="also-see"><a name="also-see" class="plugin-anchor" href="#also-see"><span class="fa fa-link"></span></a>Also See</h4>
 <ul>
 <li><a href="admin_add_material.html">Adding a material to an existing pipeline</a></li>
 <li><a href="admin_add_stage.html">Adding a stage to an existing pipeline</a></li>

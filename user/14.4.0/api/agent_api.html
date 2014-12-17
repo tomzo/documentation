@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="7.6" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="7.6" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,11 +2176,11 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_20">
+                    <section class="normal" id="section-gitbook_21">
                     
-                        <h1 id="agent-api">Agent API</h1>
+                        <h1 id="agent-api"><a name="agent-api" class="plugin-anchor" href="#agent-api"><span class="fa fa-link"></span></a>Agent API</h1>
 <p>A collection of APIs to get information and do operations on agents. They allow Go administrators to provision and de-provision agents without needing to use the web interface.</p>
-<h2 id="list-agents">List Agents</h2>
+<h2 id="list-agents"><a name="list-agents" class="plugin-anchor" href="#list-agents"><span class="fa fa-link"></span></a>List Agents</h2>
 <table>
 <thead>
 <tr>
@@ -2208,7 +2212,7 @@
 <li><code>resources</code>: (Maps to &quot;Resources&quot; column of Agents tab)</li>
 <li><code>environments</code>: (Maps to &quot;Environments&quot; column of Agents tab)</li>
 </ul>
-<h2 id="enable-agent">Enable Agent</h2>
+<h2 id="enable-agent"><a name="enable-agent" class="plugin-anchor" href="#enable-agent"><span class="fa fa-link"></span></a>Enable Agent</h2>
 <table>
 <thead>
 <tr>
@@ -2227,7 +2231,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="disable-agent">Disable Agent</h2>
+<h2 id="disable-agent"><a name="disable-agent" class="plugin-anchor" href="#disable-agent"><span class="fa fa-link"></span></a>Disable Agent</h2>
 <table>
 <thead>
 <tr>
@@ -2246,7 +2250,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="delete-agent">Delete Agent</h2>
+<h2 id="delete-agent"><a name="delete-agent" class="plugin-anchor" href="#delete-agent"><span class="fa fa-link"></span></a>Delete Agent</h2>
 <table>
 <thead>
 <tr>
@@ -2284,7 +2288,7 @@
 </tr>
 <tr>
 <td>406</td>
-<td>Agent is not &#39;Disabled&#39; or is still &#39;Building&#39; or &#39;Cancelled&#39;</td>
+<td>Agent is not &apos;Disabled&apos; or is still &apos;Building&apos; or &apos;Cancelled&apos;</td>
 </tr>
 <tr>
 <td>401</td>
@@ -2306,7 +2310,7 @@
 <li>Use the delete agents API to delete the agent</li>
 </ul>
 </blockquote>
-<h3 id="examples">Examples</h3>
+<h3 id="examples"><a name="examples" class="plugin-anchor" href="#examples"><span class="fa fa-link"></span></a>Examples</h3>
 <ul>
 <li>We use curl, a command line tool for transferring files with URL syntax, in the following examples. Of course, you can use any HTTP client library.</li>
 <li>We assume that the URL of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
@@ -2316,32 +2320,32 @@
 <pre><code class="lang-xml">        <span class="hljs-tag">&lt;<span class="hljs-title">cruise</span>&gt;</span>
         ....
           <span class="hljs-tag">&lt;<span class="hljs-title">agents</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">agent</span> <span class="hljs-attribute">hostname</span>=<span class="hljs-value">"agent-machine1"</span> <span class="hljs-attribute">ipaddress</span>=<span class="hljs-value">"10.38.10.7"</span> <span class="hljs-attribute">uuid</span>=<span class="hljs-value">"e4d86ae7-7b7d-4bb9-9b3e-876c06d01605"</span> <span class="hljs-attribute">isDenied</span>=<span class="hljs-value">"true"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">agent</span> <span class="hljs-attribute">hostname</span>=<span class="hljs-value">&quot;agent-machine1&quot;</span> <span class="hljs-attribute">ipaddress</span>=<span class="hljs-value">&quot;10.38.10.7&quot;</span> <span class="hljs-attribute">uuid</span>=<span class="hljs-value">&quot;e4d86ae7-7b7d-4bb9-9b3e-876c06d01605&quot;</span> <span class="hljs-attribute">isDenied</span>=<span class="hljs-value">&quot;true&quot;</span>&gt;</span>
               <span class="hljs-tag">&lt;<span class="hljs-title">resources</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-title">resource</span>&gt;</span>twist<span class="hljs-tag">&lt;/<span class="hljs-title">resource</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-title">resource</span>&gt;</span>windows<span class="hljs-tag">&lt;/<span class="hljs-title">resource</span>&gt;</span>
               <span class="hljs-tag">&lt;/<span class="hljs-title">resources</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-title">agent</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">agent</span> <span class="hljs-attribute">hostname</span>=<span class="hljs-value">"agent-machine2"</span> <span class="hljs-attribute">ipaddress</span>=<span class="hljs-value">"10.2.12.26"</span> <span class="hljs-attribute">uuid</span>=<span class="hljs-value">"bf0e5682-51ad-4183-8776-b13491cf2f59"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">agent</span> <span class="hljs-attribute">hostname</span>=<span class="hljs-value">&quot;agent-machine2&quot;</span> <span class="hljs-attribute">ipaddress</span>=<span class="hljs-value">&quot;10.2.12.26&quot;</span> <span class="hljs-attribute">uuid</span>=<span class="hljs-value">&quot;bf0e5682-51ad-4183-8776-b13491cf2f59&quot;</span>&gt;</span>
               <span class="hljs-tag">&lt;<span class="hljs-title">resources</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-title">resource</span>&gt;</span>ec2<span class="hljs-tag">&lt;/<span class="hljs-title">resource</span>&gt;</span>
               <span class="hljs-tag">&lt;/<span class="hljs-title">resources</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-title">agent</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">agent</span> <span class="hljs-attribute">hostname</span>=<span class="hljs-value">"agent-machine3"</span> <span class="hljs-attribute">ipaddress</span>=<span class="hljs-value">"10.2.12.26"</span> <span class="hljs-attribute">uuid</span>=<span class="hljs-value">"259f7a6b-f386-4d10-bee3-28997678c05c"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">agent</span> <span class="hljs-attribute">hostname</span>=<span class="hljs-value">"agent-machine3"</span> <span class="hljs-attribute">ipaddress</span>=<span class="hljs-value">"10.18.3.152"</span> <span class="hljs-attribute">uuid</span>=<span class="hljs-value">"098d4904-0533-4160-8c92-077849cd52df"</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">agent</span> <span class="hljs-attribute">hostname</span>=<span class="hljs-value">"agent-machine4"</span> <span class="hljs-attribute">ipaddress</span>=<span class="hljs-value">"10.18.3.153"</span> <span class="hljs-attribute">uuid</span>=<span class="hljs-value">"31aea908-717a-435c-ad04-96dcc8d941df"</span> <span class="hljs-attribute">isDisabled</span>=<span class="hljs-value">"true"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">agent</span> <span class="hljs-attribute">hostname</span>=<span class="hljs-value">&quot;agent-machine3&quot;</span> <span class="hljs-attribute">ipaddress</span>=<span class="hljs-value">&quot;10.2.12.26&quot;</span> <span class="hljs-attribute">uuid</span>=<span class="hljs-value">&quot;259f7a6b-f386-4d10-bee3-28997678c05c&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">agent</span> <span class="hljs-attribute">hostname</span>=<span class="hljs-value">&quot;agent-machine3&quot;</span> <span class="hljs-attribute">ipaddress</span>=<span class="hljs-value">&quot;10.18.3.152&quot;</span> <span class="hljs-attribute">uuid</span>=<span class="hljs-value">&quot;098d4904-0533-4160-8c92-077849cd52df&quot;</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">agent</span> <span class="hljs-attribute">hostname</span>=<span class="hljs-value">&quot;agent-machine4&quot;</span> <span class="hljs-attribute">ipaddress</span>=<span class="hljs-value">&quot;10.18.3.153&quot;</span> <span class="hljs-attribute">uuid</span>=<span class="hljs-value">&quot;31aea908-717a-435c-ad04-96dcc8d941df&quot;</span> <span class="hljs-attribute">isDisabled</span>=<span class="hljs-value">&quot;true&quot;</span>&gt;</span>
           <span class="hljs-tag">&lt;/<span class="hljs-title">agents</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">cruise</span>&gt;</span>
 </code></pre>
-<p>If you want to get all agents&#39; information:</p>
+<p>If you want to get all agents&apos; information:</p>
 <pre><code>curl -u admin:badger http://goserver.com:8153/go/api/agents
-</code></pre><p>If you want to enable agent on &#39;agent-machine1&#39;:</p>
+</code></pre><p>If you want to enable agent on &apos;agent-machine1&apos;:</p>
 <pre><code>curl -u admin:badger -X POST http://goserver.com:8153/go/api/agents/e4d86ae7-7b7d-4bb9-9b3e-876c06d01605/enable
-</code></pre><p>If you want to disable agent on &#39;agent-machine2&#39;:</p>
+</code></pre><p>If you want to disable agent on &apos;agent-machine2&apos;:</p>
 <pre><code>curl -u admin:badger -X POST http://goserver.com:8153/go/api/agents/bf0e5682-51ad-4183-8776-b13491cf2f59/disable
-</code></pre><p>If you want to delete agent on &#39;agent-machine4&#39;:</p>
+</code></pre><p>If you want to delete agent on &apos;agent-machine4&apos;:</p>
 <pre><code>curl -u admin:badger -X POST http://goserver.com:8153/go/api/agents/31aea908-717a-435c-ad04-96dcc8d941df/delete
-</code></pre><h2 id="agent-job-run-history">Agent Job Run History</h2>
+</code></pre><h2 id="agent-job-run-history"><a name="agent-job-run-history" class="plugin-anchor" href="#agent-job-run-history"><span class="fa fa-link"></span></a>Agent Job Run History</h2>
 <p>This API lists Job instances run by an Agent in JSON format. API gives 10 instances at a time, sorted in reverse order. Supports pagination using offset which tells the API how many instances to skip. This API is built primarily to aid rendering Agent Job run history page. Hence the information required for that is exposed.</p>
 <table>
 <thead>
@@ -2361,39 +2365,39 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> You can get Agent&#39;s UUID from Agent listing API or Job History API.</p>
-<h3 id="examples">Examples</h3>
+<p><strong>Note:</strong> You can get Agent&apos;s UUID from Agent listing API or Job History API.</p>
+<h3 id="examples"><a name="examples" class="plugin-anchor" href="#examples"><span class="fa fa-link"></span></a>Examples</h3>
 <ul>
 <li>We use curl, a command line tool to demonstrate the use of the API, in the following examples. Of course, you can use any HTTP client library.</li>
 <li>We assume that the URL of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
 <li>We assume security has been switched on, and that there is a user named <strong>admin</strong> with the password <strong>badger</strong> .</li>
 </ul>
 <p>Assuming the pipeline configuration looks like:</p>
-<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">"first"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"foo"</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">"foo-${COUNT}"</span> <span class="hljs-attribute">isLocked</span>=<span class="hljs-value">"true"</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">&quot;first&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;foo&quot;</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">&quot;foo-${COUNT}&quot;</span> <span class="hljs-attribute">isLocked</span>=<span class="hljs-value">&quot;true&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">hg</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">"http://10.22.12.2:8000"</span> <span class="hljs-attribute">materialName</span>=<span class="hljs-value">"hg_material"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">hg</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://10.22.12.2:8000&quot;</span> <span class="hljs-attribute">materialName</span>=<span class="hljs-value">&quot;hg_material&quot;</span> /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"DEV"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;DEV&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UnitTest"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UnitTest&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">"all-UAT"</span> /&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;all-UAT&quot;</span> /&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
           <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UATTest"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UATTest&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UAT"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UAT&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">exec</span> <span class="hljs-attribute">command</span>=<span class="hljs-value">"sleep"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">exec</span> <span class="hljs-attribute">command</span>=<span class="hljs-value">&quot;sleep&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-title">arg</span>&gt;</span>10000<span class="hljs-tag">&lt;/<span class="hljs-title">arg</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">runif</span> <span class="hljs-attribute">status</span>=<span class="hljs-value">"passed"</span> /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">runif</span> <span class="hljs-attribute">status</span>=<span class="hljs-value">&quot;passed&quot;</span> /&gt;</span>
               <span class="hljs-tag">&lt;/<span class="hljs-title">exec</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"target"</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">"pkg/foo.war"</span> /&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;pkg/foo.war&quot;</span> /&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
           <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
@@ -2404,102 +2408,102 @@
 <p>The following command produces output specified below:</p>
 <pre><code>curl -u admin:badger http://goserver.com:8153/go/api/agents/0794793b-5c1a-443f-b860-df480986586b/job_run_history/0
 </code></pre><pre><code class="lang-json">{
-  "<span class="hljs-attribute">jobs</span>": <span class="hljs-value">[
+  &quot;<span class="hljs-attribute">jobs</span>&quot;: <span class="hljs-value">[
     {
-      "<span class="hljs-attribute">agent_uuid</span>": <span class="hljs-value"><span class="hljs-string">"0794793b-5c1a-443f-b860-df480986586b"</span></span>,
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"UnitTest"</span></span>,
-      "<span class="hljs-attribute">job_state_transitions</span>": <span class="hljs-value">[
+      &quot;<span class="hljs-attribute">agent_uuid</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;0794793b-5c1a-443f-b860-df480986586b&quot;</span></span>,
+      &quot;<span class="hljs-attribute">name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;UnitTest&quot;</span></span>,
+      &quot;<span class="hljs-attribute">job_state_transitions</span>&quot;: <span class="hljs-value">[
         {
-          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456876262</span></span>,
-          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">13</span></span>,
-          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Scheduled"</span>
+          &quot;<span class="hljs-attribute">state_change_time</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411456876262</span></span>,
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">13</span></span>,
+          &quot;<span class="hljs-attribute">state</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Scheduled&quot;</span>
         </span>},
         {
-          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456881401</span></span>,
-          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">14</span></span>,
-          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Assigned"</span>
+          &quot;<span class="hljs-attribute">state_change_time</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411456881401</span></span>,
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">14</span></span>,
+          &quot;<span class="hljs-attribute">state</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Assigned&quot;</span>
         </span>},
         {
-          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456891415</span></span>,
-          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
-          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Preparing"</span>
+          &quot;<span class="hljs-attribute">state_change_time</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411456891415</span></span>,
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">15</span></span>,
+          &quot;<span class="hljs-attribute">state</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Preparing&quot;</span>
         </span>},
         {
-          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456892853</span></span>,
-          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
-          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Building"</span>
+          &quot;<span class="hljs-attribute">state_change_time</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411456892853</span></span>,
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">16</span></span>,
+          &quot;<span class="hljs-attribute">state</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Building&quot;</span>
         </span>},
         {
-          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456893094</span></span>,
-          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">17</span></span>,
-          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Completing"</span>
+          &quot;<span class="hljs-attribute">state_change_time</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411456893094</span></span>,
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">17</span></span>,
+          &quot;<span class="hljs-attribute">state</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Completing&quot;</span>
         </span>},
         {
-          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456893135</span></span>,
-          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
-          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Completed"</span>
+          &quot;<span class="hljs-attribute">state_change_time</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411456893135</span></span>,
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">18</span></span>,
+          &quot;<span class="hljs-attribute">state</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Completed&quot;</span>
         </span>}
       ]</span>,
-      "<span class="hljs-attribute">scheduled_date</span>": <span class="hljs-value"><span class="hljs-number">1411456876262</span></span>,
-      "<span class="hljs-attribute">pipeline_counter</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
-      "<span class="hljs-attribute">rerun</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
-      "<span class="hljs-attribute">pipeline_name</span>": <span class="hljs-value"><span class="hljs-string">"foo"</span></span>,
-      "<span class="hljs-attribute">result</span>": <span class="hljs-value"><span class="hljs-string">"Failed"</span></span>,
-      "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Completed"</span></span>,
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
-      "<span class="hljs-attribute">stage_counter</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
-      "<span class="hljs-attribute">stage_name</span>": <span class="hljs-value"><span class="hljs-string">"DEV"</span>
+      &quot;<span class="hljs-attribute">scheduled_date</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411456876262</span></span>,
+      &quot;<span class="hljs-attribute">pipeline_counter</span>&quot;: <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      &quot;<span class="hljs-attribute">rerun</span>&quot;: <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+      &quot;<span class="hljs-attribute">pipeline_name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;foo&quot;</span></span>,
+      &quot;<span class="hljs-attribute">result</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Failed&quot;</span></span>,
+      &quot;<span class="hljs-attribute">state</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Completed&quot;</span></span>,
+      &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">3</span></span>,
+      &quot;<span class="hljs-attribute">stage_counter</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;1&quot;</span></span>,
+      &quot;<span class="hljs-attribute">stage_name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;DEV&quot;</span>
     </span>},
     {
-      "<span class="hljs-attribute">agent_uuid</span>": <span class="hljs-value"><span class="hljs-string">"0794793b-5c1a-443f-b860-df480986586b"</span></span>,
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"UnitTest"</span></span>,
-      "<span class="hljs-attribute">job_state_transitions</span>": <span class="hljs-value">[
+      &quot;<span class="hljs-attribute">agent_uuid</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;0794793b-5c1a-443f-b860-df480986586b&quot;</span></span>,
+      &quot;<span class="hljs-attribute">name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;UnitTest&quot;</span></span>,
+      &quot;<span class="hljs-attribute">job_state_transitions</span>&quot;: <span class="hljs-value">[
         {
-          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456676119</span></span>,
-          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
-          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Scheduled"</span>
+          &quot;<span class="hljs-attribute">state_change_time</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411456676119</span></span>,
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">1</span></span>,
+          &quot;<span class="hljs-attribute">state</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Scheduled&quot;</span>
         </span>},
         {
-          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456757905</span></span>,
-          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
-          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Assigned"</span>
+          &quot;<span class="hljs-attribute">state_change_time</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411456757905</span></span>,
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">2</span></span>,
+          &quot;<span class="hljs-attribute">state</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Assigned&quot;</span>
         </span>},
         {
-          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456761645</span></span>,
-          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
-          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Preparing"</span>
+          &quot;<span class="hljs-attribute">state_change_time</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411456761645</span></span>,
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">3</span></span>,
+          &quot;<span class="hljs-attribute">state</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Preparing&quot;</span>
         </span>},
         {
-          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456762696</span></span>,
-          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
-          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Building"</span>
+          &quot;<span class="hljs-attribute">state_change_time</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411456762696</span></span>,
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">4</span></span>,
+          &quot;<span class="hljs-attribute">state</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Building&quot;</span>
         </span>},
         {
-          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456762889</span></span>,
-          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
-          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Completing"</span>
+          &quot;<span class="hljs-attribute">state_change_time</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411456762889</span></span>,
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">5</span></span>,
+          &quot;<span class="hljs-attribute">state</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Completing&quot;</span>
         </span>},
         {
-          "<span class="hljs-attribute">state_change_time</span>": <span class="hljs-value"><span class="hljs-number">1411456762955</span></span>,
-          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
-          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Completed"</span>
+          &quot;<span class="hljs-attribute">state_change_time</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411456762955</span></span>,
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">6</span></span>,
+          &quot;<span class="hljs-attribute">state</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Completed&quot;</span>
         </span>}
       ]</span>,
-      "<span class="hljs-attribute">scheduled_date</span>": <span class="hljs-value"><span class="hljs-number">1411456676119</span></span>,
-      "<span class="hljs-attribute">pipeline_counter</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
-      "<span class="hljs-attribute">rerun</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
-      "<span class="hljs-attribute">pipeline_name</span>": <span class="hljs-value"><span class="hljs-string">"foo"</span></span>,
-      "<span class="hljs-attribute">result</span>": <span class="hljs-value"><span class="hljs-string">"Passed"</span></span>,
-      "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Completed"</span></span>,
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
-      "<span class="hljs-attribute">stage_counter</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
-      "<span class="hljs-attribute">stage_name</span>": <span class="hljs-value"><span class="hljs-string">"DEV"</span>
+      &quot;<span class="hljs-attribute">scheduled_date</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411456676119</span></span>,
+      &quot;<span class="hljs-attribute">pipeline_counter</span>&quot;: <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      &quot;<span class="hljs-attribute">rerun</span>&quot;: <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+      &quot;<span class="hljs-attribute">pipeline_name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;foo&quot;</span></span>,
+      &quot;<span class="hljs-attribute">result</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Passed&quot;</span></span>,
+      &quot;<span class="hljs-attribute">state</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Completed&quot;</span></span>,
+      &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      &quot;<span class="hljs-attribute">stage_counter</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;1&quot;</span></span>,
+      &quot;<span class="hljs-attribute">stage_name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;DEV&quot;</span>
     </span>}
   ]</span>,
-  "<span class="hljs-attribute">pagination</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">offset</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-    "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
-    "<span class="hljs-attribute">page_size</span>": <span class="hljs-value"><span class="hljs-number">10</span>
+  &quot;<span class="hljs-attribute">pagination</span>&quot;: <span class="hljs-value">{
+    &quot;<span class="hljs-attribute">offset</span>&quot;: <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    &quot;<span class="hljs-attribute">total</span>&quot;: <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    &quot;<span class="hljs-attribute">page_size</span>&quot;: <span class="hljs-value"><span class="hljs-number">10</span>
   </span>}
 </span>}
 </code></pre>

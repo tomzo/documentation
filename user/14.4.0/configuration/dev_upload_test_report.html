@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="4.25" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="4.25" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,13 +2176,13 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_54">
+                    <section class="normal" id="section-gitbook_55">
                     
-                        <h1 id="publishing-artifacts">Publishing artifacts</h1>
+                        <h1 id="publishing-artifacts"><a name="publishing-artifacts" class="plugin-anchor" href="#publishing-artifacts"><span class="fa fa-link"></span></a>Publishing artifacts</h1>
 <p>When executing a job on an agent there are often artifacts created that we need to keep around. For example, JUnit creates xml reports that Go is able to parse in order to help you <a href="../faq/dev_understand_why_build_broken.html">understand why the build is broken</a>. You can use Go with any XUnit style xml reports. Or you might create a flash video of your UI tests that we want displayed in Go. You can upload any html file from your build and view it in Go.</p>
 <p>To publish artifacts you add a an <a href="configuration_reference.html#artifact">&lt; artifact &gt;</a> to the job configuration. More information can be found on the <a href="managing_artifacts_and_reports.html">Managing artifacts and reports</a> page.</p>
-<h2 id="example-usages">Example usages</h2>
-<h3 id="uploading-junit-xml-reports">Uploading JUnit xml reports</h3>
+<h2 id="example-usages"><a name="example-usages" class="plugin-anchor" href="#example-usages"><span class="fa fa-link"></span></a>Example usages</h2>
+<h3 id="uploading-junit-xml-reports"><a name="uploading-junit-xml-reports" class="plugin-anchor" href="#uploading-junit-xml-reports"><span class="fa fa-link"></span></a>Uploading JUnit xml reports</h3>
 <p>We are going to assume that the JUnit test reports are being placed in the &quot;target/reports&quot; folder.</p>
 <p>Click on the <strong>Administration</strong> tab</p>
 <p><img src="../resources/images/topnav_admin.png" alt=""></p>
@@ -2192,7 +2196,7 @@
 <li><img src="../resources/images/4_add_test_artifacts_tag.png" alt=""></li>
 <li>Click &quot;Save&quot;</li>
 </ul>
-<h3 id="uploading-a-flash-video-and-displaying-it-as-a-sub-tab">Uploading a flash video and displaying it as a sub-tab</h3>
+<h3 id="uploading-a-flash-video-and-displaying-it-as-a-sub-tab"><a name="uploading-a-flash-video-and-displaying-it-as-a-sub-tab" class="plugin-anchor" href="#uploading-a-flash-video-and-displaying-it-as-a-sub-tab"><span class="fa fa-link"></span></a>Uploading a flash video and displaying it as a sub-tab</h3>
 <p>We are going to assume that the flash file, and the html file referencing it, are being created in the &quot;target/reports&quot; folder.</p>
 <p>Click on the <a href="../navigation/administration_page.html">Adminstration</a> tab</p>
 <p><img src="../resources/images/topnav_admin.png" alt=""></p>

@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="4.22" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="4.22" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,11 +2176,11 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_51">
+                    <section class="normal" id="section-gitbook_52">
                     
-                        <h1 id="authorization">Authorization</h1>
+                        <h1 id="authorization"><a name="authorization" class="plugin-anchor" href="#authorization"><span class="fa fa-link"></span></a>Authorization</h1>
 <p>With no security switched on, there is of course no authorization either. Once you have configured security, the default is that any user can perform any operation. However you can get Go to limit certain operations to particular Users or Roles, and manage membership of those Roles.</p>
-<h2 id="administrators">Administrators</h2>
+<h2 id="administrators"><a name="administrators" class="plugin-anchor" href="#administrators"><span class="fa fa-link"></span></a>Administrators</h2>
 <p>Go allows you to restrict the users who can perform certain functions. Administrators is a special role that allows its members to perform any action in Go. Specifying administrators is optional -- without it, all users are automatically made administrators.</p>
 <p>If administrators are specified, only they can perform the following actions:</p>
 <ul>
@@ -2188,10 +2192,10 @@
 <p>Users can be made administrators from the &quot;User Summary&quot; tab in the &quot;Admin&quot; section.</p>
 <p><img src="../resources/images/user_summary_make_admin.png" alt=""></p>
 <p>To give admin privileges to users and/or roles via &quot;Config xml&quot;, please refer to the example in the section below, where members of the &quot;go_admin&quot; role (jhumble and qiao), along with the user chris, can administer Go.</p>
-<h2 id="role-based-security">Role-based security</h2>
+<h2 id="role-based-security"><a name="role-based-security" class="plugin-anchor" href="#role-based-security"><span class="fa fa-link"></span></a>Role-based security</h2>
 <p>You can define roles that can be used anywhere that authorization is required. A role is just a group of users. Administrators can add users to a new or existing role from the &quot;User Summary&quot; tab in the &quot;Admin&quot; section. Here, you can select any number of users and assign a new or existing role to them. In this example, user &quot;aantony&quot; is being added to the role &quot;analyst&quot;</p>
 <p><img src="../resources/images/user_summary_add_user_to_role.png" alt=""></p>
-<p>For power users, here&#39;s how you would configure roles via &quot;Config XML&quot;:</p>
+<p>For power users, here&apos;s how you would configure roles via &quot;Config XML&quot;:</p>
 <pre><code class="lang-{.code}">&lt;cruise&gt;
   &lt;server&gt;
     &lt;license ... /&gt;
@@ -2218,7 +2222,7 @@
 &lt;/cruise&gt;
 </code></pre>
 <p>In this example, the &quot;qa&quot; role has two users: dyang and pavan. The &quot;go_admin&quot; role also has two users: jhumble and qiao.</p>
-<h2 id="specifying-permissions-for-pipeline-groups">Specifying permissions for pipeline groups</h2>
+<h2 id="specifying-permissions-for-pipeline-groups"><a name="specifying-permissions-for-pipeline-groups" class="plugin-anchor" href="#specifying-permissions-for-pipeline-groups"><span class="fa fa-link"></span></a>Specifying permissions for pipeline groups</h2>
 <p>Go allows you to group pipelines together. If you define pipeline groups, you can specify who is able to view or operate those groups. To do this, you configure permissions to the pipeline group. System administrators will continue to have full access to the pipeline group even if they have not been explicitly granted permissions.</p>
 <p>The <strong>&quot;view&quot; permission</strong> allows users to view the pipeline. It does not give permission to trigger pipelines, approve stages, or re-run stages. In the below example, the users &quot;akrishna&quot; and &quot;aantony&quot; can view the pipelines in this group, but they cannot perform any operations on it.</p>
 <p>The <strong>&quot;operate&quot; permission</strong> allows users to trigger pipelines and its stages. In the below example, the role &quot;developer&quot; is being granted the operate permission and will be able to trigger pipelines and its stages within this group.</p>
@@ -2231,7 +2235,7 @@
 <p>Then, click the &quot;Edit&quot; link for the pipeline group you want to manage permissions for:</p>
 <p><img src="../resources/images/group_permission.png" alt=""></p>
 <p>If no authorization is defined for a pipeline group, all Go users will have view and operate permissions to that group.</p>
-<p>For power users, here&#39;s how you would configure permissions via &quot;Config XML&quot;:</p>
+<p>For power users, here&apos;s how you would configure permissions via &quot;Config XML&quot;:</p>
 <pre><code class="lang-{.code}">&lt;pipelines group=&quot;Shine&quot;&gt;
   &lt;authorization&gt;
     &lt;view&gt;
@@ -2250,11 +2254,11 @@
   ...
 &lt;/pipelines&gt;
 </code></pre>
-<h2 id="adding-authorization-to-approvals">Adding authorization to approvals</h2>
+<h2 id="adding-authorization-to-approvals"><a name="adding-authorization-to-approvals" class="plugin-anchor" href="#adding-authorization-to-approvals"><span class="fa fa-link"></span></a>Adding authorization to approvals</h2>
 <p>In Go, it is possible to specify <a href="managing_pipelines.html">manual approvals</a> between stages. You can also specify which user is allowed to trigger manual approvals.</p>
 <p>The authorization can be inherited from the pipeline group this pipeline belongs to. But defining specific permissions overrides this. In the example below, only members of the role &quot;admin&quot;, and the user &quot;goleys&quot;, can trigger the approval.</p>
 <p><img src="../resources/images/stage_permissions.png" alt=""></p>
-<p>For power users, here&#39;s how you would configure authorization for approvals for a stage via &quot;Config XML&quot;:</p>
+<p>For power users, here&apos;s how you would configure authorization for approvals for a stage via &quot;Config XML&quot;:</p>
 <pre><code class="lang-{.code}">&lt;stage name=&quot;defaultStage&quot;&gt;
 
   &lt;approval type=&quot;manual&quot;&gt;
@@ -2276,13 +2280,13 @@
   &lt;/jobs&gt;
 &lt;/stage&gt;
 </code></pre>
-<h2 id="specifying-permissions-for-templates">Specifying permissions for templates</h2>
+<h2 id="specifying-permissions-for-templates"><a name="specifying-permissions-for-templates" class="plugin-anchor" href="#specifying-permissions-for-templates"><span class="fa fa-link"></span></a>Specifying permissions for templates</h2>
 <p>A Go Administrator can make any user a template administrator for a specific template. As a template administrator, a user can now view and edit the template to which he has permissions.</p>
 <p>To edit the permissions for a template, navigate to the &quot;Templates&quot; tab on the &quot;Admin&quot; section:</p>
 <p><img src="../resources/images/templates_tab_on_admin_page.png" alt=""></p>
 <p>Then, click the &quot;Permissions&quot; link for the template you want to manage permissions for:</p>
 <p><img src="../resources/images/add_template_permissions.png" alt=""></p>
-<p>For power users, here&#39;s how you would configure permissions via &quot;Config XML&quot;:</p>
+<p>For power users, here&apos;s how you would configure permissions via &quot;Config XML&quot;:</p>
 <pre><code class="lang-{.code}">&lt;templates&gt;
     &lt;pipeline name=&quot;app-1-template&quot;&gt;
       &lt;authorization&gt;
@@ -2294,7 +2298,7 @@
     &lt;/pipeline&gt;
   &lt;/templates&gt;
 </code></pre>
-<h3 id="also-see">Also See</h3>
+<h3 id="also-see"><a name="also-see" class="plugin-anchor" href="#also-see"><span class="fa fa-link"></span></a>Also See</h3>
 <ul>
 <li><a href="delegating_group_administration.html">Delegating group administration</a></li>
 </ul>

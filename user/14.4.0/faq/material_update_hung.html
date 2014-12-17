@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="9.18" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="9.18" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2174,33 +2178,33 @@
                 
                     <section class="normal" id="section-gitbook_83">
                     
-                        <h1 id="go-unable-to-poll-for-changes">Go unable to poll for changes</h1>
-<p>Go server polls for changes to all materials of &#39;Auto Triggered&#39; pipelines. By default, polling occurs every minute and ten materials at a time. The polling interval and the number of materials to be polled simultaneously are configurable.</p>
+                        <h1 id="go-unable-to-poll-for-changes"><a name="go-unable-to-poll-for-changes" class="plugin-anchor" href="#go-unable-to-poll-for-changes"><span class="fa fa-link"></span></a>Go unable to poll for changes</h1>
+<p>Go server polls for changes to all materials of &apos;Auto Triggered&apos; pipelines. By default, polling occurs every minute and ten materials at a time. The polling interval and the number of materials to be polled simultaneously are configurable.</p>
 <p>Go uses SCM commands to poll for changes. For example, to check for any new changes in SVN repository the following command is used:</p>
-<pre><code class="lang-{.code}">svn log --non-interactive --xml -v -r HEAD:&#39;revision&#39; &#39;repository-URL&#39;
+<pre><code class="lang-{.code}">svn log --non-interactive --xml -v -r HEAD:&apos;revision&apos; &apos;repository-URL&apos;
 </code></pre>
 <p>The SCM command used by Go server can hang with no output. Invalid configuration, network issues, console input block are some of the causes for such a situation. Such scenarios cause pipeline scheduling delays and also lead to performance degradation</p>
 <p>Such a scenario is notified to the users by a warning in Server Health; when clicked shows a message similar to the one below.</p>
 <p><img src="../resources/images/material_update_hung.png" alt=""></p>
-<h2 id="what-can-i-do-with-the-information">What can I do with the information</h2>
+<h2 id="what-can-i-do-with-the-information"><a name="what-can-i-do-with-the-information" class="plugin-anchor" href="#what-can-i-do-with-the-information"><span class="fa fa-link"></span></a>What can I do with the information</h2>
 <p>When you see warning messages like the one above</p>
 <ul>
 <li>Identify the processes running as children of Go Server</li>
-<li>Determine the process that&#39;s hung. The extra information like URL: &quot;<a href="https://test@bitbucket.org/test/git_repo.git" target="_blank">https://test@bitbucket.org/test/git_repo.git</a>&quot; in the warning information should help you with this.</li>
+<li>Determine the process that&apos;s hung. The extra information like URL: &quot;<a href="https://test@bitbucket.org/test/git_repo.git" target="_blank">https://test@bitbucket.org/test/git_repo.git</a>&quot; in the warning information should help you with this.</li>
 <li>On linux system, you should see lines like these:</li>
 <li>Kill the process and all its children (the whole process tree).</li>
 <li>Ensure that the warning message goes away from Server Health.</li>
 </ul>
-<h2 id="configuring-warning-time">Configuring warning time</h2>
+<h2 id="configuring-warning-time"><a name="configuring-warning-time" class="plugin-anchor" href="#configuring-warning-time"><span class="fa fa-link"></span></a>Configuring warning time</h2>
 <ul>
-<li>Go server waits for 15 minutes (of no output) before it warns user about possible hung material update. User can modify this wait time using a System Property: &#39;material.update.inactive.timeout&#39;.</li>
+<li>Go server waits for 15 minutes (of no output) before it warns user about possible hung material update. User can modify this wait time using a System Property: &apos;material.update.inactive.timeout&apos;.</li>
 <li><p>On linux installations of Go server, add the following line to /etc/default/go-server.</p>
-<pre><code class="lang-{.code}">export GO_SERVER_SYSTEM_PROPERTIES=&#39;-Dmaterial.update.inactive.timeout=20&#39;
+<pre><code class="lang-{.code}">export GO_SERVER_SYSTEM_PROPERTIES=&apos;-Dmaterial.update.inactive.timeout=20&apos;
 </code></pre>
 <p>The above configuration sets the time that Go server uses to determine if a material update is possibly hung, to 20 minutes.</p>
 </li>
 <li><p>On Windows, add the following line in the <em><a href="../installation/installing_go_server.html">wrapper-properties.conf</a></em> file in the config folder of the Go server installation where <strong>x</strong> is 1 more than the highest number in <em>wrapper-server.conf</em> and <em>wrapper-properties.conf</em> combined.</p>
-<pre><code class="lang-{.code}">wrapper.java.additional.x=&#39;-Dmaterial.update.inactive.timeout=20&#39;
+<pre><code class="lang-{.code}">wrapper.java.additional.x=&apos;-Dmaterial.update.inactive.timeout=20&apos;
 </code></pre>
 <p>The above configuration sets the time that Go server uses to determine if a material update is possibly hung, to 20 minutes.</p>
 </li>

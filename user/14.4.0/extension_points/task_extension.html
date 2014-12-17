@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="8.4" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="8.4" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,14 +2176,14 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_3">
+                    <section class="normal" id="section-gitbook_4">
                     
-                        <h1 id="task-extension">Task Extension</h1>
-<h2 id="overview">Overview</h2>
-<p>Go supports configuring a few kinds of tasks (Nant, Ant and Rake), directly, from the configuration UI, without specifying them as a custom command. For instance, if you go to the configuration UI for a job, you&#39;ll see something like this:</p>
+                        <h1 id="task-extension"><a name="task-extension" class="plugin-anchor" href="#task-extension"><span class="fa fa-link"></span></a>Task Extension</h1>
+<h2 id="overview"><a name="overview" class="plugin-anchor" href="#overview"><span class="fa fa-link"></span></a>Overview</h2>
+<p>Go supports configuring a few kinds of tasks (Nant, Ant and Rake), directly, from the configuration UI, without specifying them as a custom command. For instance, if you go to the configuration UI for a job, you&apos;ll see something like this:</p>
 <p><img src="../resources/images/1_Without_Curl.png" alt=""></p>
 <p>A task plugin allows you to extend this so that you can have other tasks available here. The plugin also allows you to control the UI, as well as the data stored for this task.</p>
-<p>For instance, you can find the source of a sample Curl plugin, <a href="go_plugins_basics.html#building-a-plugin">at this location</a>. Assuming you have the plugin installed, you&#39;ll see that the dropdown in the job configuration UI has changed to look like this:</p>
+<p>For instance, you can find the source of a sample Curl plugin, <a href="go_plugins_basics.html#building-a-plugin">at this location</a>. Assuming you have the plugin installed, you&apos;ll see that the dropdown in the job configuration UI has changed to look like this:</p>
 <p><img src="../resources/images/2_With_Curl.png" alt=""></p>
 <p>When selected, the dialog box which allows you to configure details about the task looks like this:</p>
 <p><img src="../resources/images/3_Curl_Form.png" alt=""></p>

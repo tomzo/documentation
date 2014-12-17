@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="7.2" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="7.2" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,14 +2176,14 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_30">
+                    <section class="normal" id="section-gitbook_31">
                     
-                        <h1 id="pipeline-group-api">Pipeline Group API</h1>
-<h2 id="introduction">Introduction</h2>
+                        <h1 id="pipeline-group-api"><a name="pipeline-group-api" class="plugin-anchor" href="#pipeline-group-api"><span class="fa fa-link"></span></a>Pipeline Group API</h1>
+<h2 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><span class="fa fa-link"></span></a>Introduction</h2>
 <blockquote>
 <p>The Go API documented here is a work in progress. Future versions may change this API.</p>
 </blockquote>
-<h2 id="config-listing-api">Config listing API</h2>
+<h2 id="config-listing-api"><a name="config-listing-api" class="plugin-anchor" href="#config-listing-api"><span class="fa fa-link"></span></a>Config listing API</h2>
 <p>This API allows you to list Pipeline groups, Pipelines in each group, Material &amp; Stage in each pipeline in JSON format. This API is built primarily to aid rendering of VSM for config. Hence only the information required for that is exposed.</p>
 <table>
 <thead>
@@ -2199,35 +2203,35 @@
 </tr>
 </tbody>
 </table>
-<h3 id="examples">Examples</h3>
+<h3 id="examples"><a name="examples" class="plugin-anchor" href="#examples"><span class="fa fa-link"></span></a>Examples</h3>
 <ul>
 <li>We use curl, a command line tool to demonstrate the use of the API, in the following examples. Of course, you can use any HTTP client library.</li>
 <li>We assume that the URL of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
 <li>We assume security has been switched on, and that there is a user named <strong>admin</strong> with the password <strong>badger</strong> .</li>
 </ul>
 <p>The pipeline configuration looks like:</p>
-<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">"first"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"foo"</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">"foo-${COUNT}"</span> <span class="hljs-attribute">isLocked</span>=<span class="hljs-value">"true"</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">&quot;first&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;foo&quot;</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">&quot;foo-${COUNT}&quot;</span> <span class="hljs-attribute">isLocked</span>=<span class="hljs-value">&quot;true&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">hg</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">"http://10.22.12.2:8000"</span> <span class="hljs-attribute">materialName</span>=<span class="hljs-value">"hg_material"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">hg</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://10.22.12.2:8000&quot;</span> <span class="hljs-attribute">materialName</span>=<span class="hljs-value">&quot;hg_material&quot;</span> /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"DEV"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;DEV&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UnitTest"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UnitTest&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">"ut"</span> /&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;ut&quot;</span> /&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
           <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UATTest"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UATTest&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UAT"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UAT&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">"all-UAT"</span> /&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;all-UAT&quot;</span> /&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"target"</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">"pkg/foo.war"</span> /&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;pkg/foo.war&quot;</span> /&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
           <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
@@ -2239,28 +2243,28 @@
 <pre><code>curl -u admin:badger http://goserver.com:8153/go/api/config/pipeline_groups
 </code></pre><pre><code class="lang-json">[
   {
-    "<span class="hljs-attribute">pipelines</span>": <span class="hljs-value">[
+    &quot;<span class="hljs-attribute">pipelines</span>&quot;: <span class="hljs-value">[
       {
-        "<span class="hljs-attribute">stages</span>": <span class="hljs-value">[
+        &quot;<span class="hljs-attribute">stages</span>&quot;: <span class="hljs-value">[
           {
-            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"DEV"</span>
+            &quot;<span class="hljs-attribute">name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;DEV&quot;</span>
           </span>},
           {
-            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"UATTest"</span>
+            &quot;<span class="hljs-attribute">name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;UATTest&quot;</span>
           </span>}
         ]</span>,
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"foo"</span></span>,
-        "<span class="hljs-attribute">materials</span>": <span class="hljs-value">[
+        &quot;<span class="hljs-attribute">name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;foo&quot;</span></span>,
+        &quot;<span class="hljs-attribute">materials</span>&quot;: <span class="hljs-value">[
           {
-            "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"URL: http:\/\/10.22.12.2:8000"</span></span>,
-            "<span class="hljs-attribute">fingerprint</span>": <span class="hljs-value"><span class="hljs-string">"64987f67c407020dfd6badf4975421428aa5d044e0b14b3086266294b969b6a8"</span></span>,
-            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Mercurial"</span>
+            &quot;<span class="hljs-attribute">description</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;URL: http:\/\/10.22.12.2:8000&quot;</span></span>,
+            &quot;<span class="hljs-attribute">fingerprint</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;64987f67c407020dfd6badf4975421428aa5d044e0b14b3086266294b969b6a8&quot;</span></span>,
+            &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Mercurial&quot;</span>
           </span>}
         ]</span>,
-        "<span class="hljs-attribute">label</span>": <span class="hljs-value"><span class="hljs-string">"foo-${COUNT}"</span>
+        &quot;<span class="hljs-attribute">label</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;foo-${COUNT}&quot;</span>
       </span>}
     ]</span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"first"</span>
+    &quot;<span class="hljs-attribute">name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;first&quot;</span>
   </span>}
 ]
 </code></pre>

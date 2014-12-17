@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="7.4" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="7.4" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,14 +2176,14 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_32">
+                    <section class="normal" id="section-gitbook_33">
                     
-                        <h1 id="stages-api">Stages API</h1>
-<h2 id="introduction">Introduction</h2>
+                        <h1 id="stages-api"><a name="stages-api" class="plugin-anchor" href="#stages-api"><span class="fa fa-link"></span></a>Stages API</h1>
+<h2 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><span class="fa fa-link"></span></a>Introduction</h2>
 <blockquote>
 <p>The Go API documented here is a work in progress. Future versions may change this API.</p>
 </blockquote>
-<h2 id="stage-cancellation-api">Stage Cancellation API</h2>
+<h2 id="stage-cancellation-api"><a name="stage-cancellation-api" class="plugin-anchor" href="#stage-cancellation-api"><span class="fa fa-link"></span></a>Stage Cancellation API</h2>
 <p>This API provides the ability to cancel an active stage of a pipeline. The API needs the name of the pipeline and name of the stage to perform cancellation.</p>
 <p>Security Note: The user invoking the API should have sufficient permission to operate on the pipeline.</p>
 <table>
@@ -2223,21 +2227,21 @@
 </tr>
 </tbody>
 </table>
-<h3 id="examples">Examples</h3>
+<h3 id="examples"><a name="examples" class="plugin-anchor" href="#examples"><span class="fa fa-link"></span></a>Examples</h3>
 <ul>
 <li>We use curl, a command line tool to demonstrate the use of the API, in the following examples. Of course, you can use any HTTP client library.</li>
 <li>We assume that the URL of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
 <li>We assume security has been switched on, and that there is a user named <strong>admin</strong> with the password <strong>badger</strong> .</li>
 </ul>
 <p>Assuming the pipeline configuration looks like:</p>
-<pre><code class="lang-xml">                    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"demo_pipeline"</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">"demo_pipeline-1.0-${COUNT}"</span>&gt;</span>
+<pre><code class="lang-xml">                    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;demo_pipeline&quot;</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">&quot;demo_pipeline-1.0-${COUNT}&quot;</span>&gt;</span>
                        <span class="hljs-tag">&lt;<span class="hljs-title">material</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">"..."</span>/&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;...&quot;</span>/&gt;</span>
                        <span class="hljs-tag">&lt;/<span class="hljs-title">material</span>&gt;</span>
-                       <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"first_stage"</span>&gt;</span>
-                         <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"first_job"</span>&gt;</span>
+                       <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;first_stage&quot;</span>&gt;</span>
+                         <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;first_job&quot;</span>&gt;</span>
                            <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-                              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">"run"</span>/&gt;</span>
+                              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;run&quot;</span>/&gt;</span>
                            <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
                          <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
                        <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
@@ -2246,7 +2250,7 @@
 </code></pre>
 <p>Run this command to cancel the stage of the pipeline:</p>
 <pre><code>curl -u admin:badger -d &quot;&quot; http://goserver.com:8153/go/api/stages/demo_pipeline/first_stage/cancel
-</code></pre><h2 id="stage-history">Stage History</h2>
+</code></pre><h2 id="stage-history"><a name="stage-history" class="plugin-anchor" href="#stage-history"><span class="fa fa-link"></span></a>Stage History</h2>
 <p>This API lists Stage instances in JSON format. API gives 10 instances at a time, sorted in reverse order. Supports pagination using offset which tells the API how many instances to skip. This API is built primarily to aid rendering Stage history widget. Hence the information required for that is exposed.</p>
 <table>
 <thead>
@@ -2266,38 +2270,38 @@
 </tr>
 </tbody>
 </table>
-<h3 id="examples">Examples</h3>
+<h3 id="examples"><a name="examples" class="plugin-anchor" href="#examples"><span class="fa fa-link"></span></a>Examples</h3>
 <ul>
 <li>We use curl, a command line tool to demonstrate the use of the API, in the following examples. Of course, you can use any HTTP client library.</li>
 <li>We assume that the URL of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
 <li>We assume security has been switched on, and that there is a user named <strong>admin</strong> with the password <strong>badger</strong> .</li>
 </ul>
 <p>Assuming the pipeline configuration looks like:</p>
-<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">"first"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"foo"</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">"foo-${COUNT}"</span> <span class="hljs-attribute">isLocked</span>=<span class="hljs-value">"true"</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">&quot;first&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;foo&quot;</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">&quot;foo-${COUNT}&quot;</span> <span class="hljs-attribute">isLocked</span>=<span class="hljs-value">&quot;true&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">hg</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">"http://10.22.12.2:8000"</span> <span class="hljs-attribute">materialName</span>=<span class="hljs-value">"hg_material"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">hg</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://10.22.12.2:8000&quot;</span> <span class="hljs-attribute">materialName</span>=<span class="hljs-value">&quot;hg_material&quot;</span> /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"DEV"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;DEV&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UnitTest"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UnitTest&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">"all-UAT"</span> /&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;all-UAT&quot;</span> /&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
           <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UATTest"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UATTest&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UAT"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UAT&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">exec</span> <span class="hljs-attribute">command</span>=<span class="hljs-value">"sleep"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">exec</span> <span class="hljs-attribute">command</span>=<span class="hljs-value">&quot;sleep&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-title">arg</span>&gt;</span>10000<span class="hljs-tag">&lt;/<span class="hljs-title">arg</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">runif</span> <span class="hljs-attribute">status</span>=<span class="hljs-value">"passed"</span> /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">runif</span> <span class="hljs-attribute">status</span>=<span class="hljs-value">&quot;passed&quot;</span> /&gt;</span>
               <span class="hljs-tag">&lt;/<span class="hljs-title">exec</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"target"</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">"pkg/foo.war"</span> /&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;pkg/foo.war&quot;</span> /&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
           <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
@@ -2308,50 +2312,50 @@
 <p>The following command produces output specified below:</p>
 <pre><code>curl -u admin:badger http://goserver.com:8153/go/api/stages/foo/DEV/history/0
 </code></pre><pre><code class="lang-json">{
-  "<span class="hljs-attribute">stages</span>": <span class="hljs-value">[
+  &quot;<span class="hljs-attribute">stages</span>&quot;: <span class="hljs-value">[
     {
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"DEV"</span></span>,
-      "<span class="hljs-attribute">approved_by</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-      "<span class="hljs-attribute">jobs</span>": <span class="hljs-value">[
+      &quot;<span class="hljs-attribute">name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;DEV&quot;</span></span>,
+      &quot;<span class="hljs-attribute">approved_by</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;admin&quot;</span></span>,
+      &quot;<span class="hljs-attribute">jobs</span>&quot;: <span class="hljs-value">[
         {
-          "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"UnitTest"</span></span>,
-          "<span class="hljs-attribute">result</span>": <span class="hljs-value"><span class="hljs-string">"Failed"</span></span>,
-          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Completed"</span></span>,
-          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
-          "<span class="hljs-attribute">scheduled_date</span>": <span class="hljs-value"><span class="hljs-number">1411456876262</span>
+          &quot;<span class="hljs-attribute">name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;UnitTest&quot;</span></span>,
+          &quot;<span class="hljs-attribute">result</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Failed&quot;</span></span>,
+          &quot;<span class="hljs-attribute">state</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Completed&quot;</span></span>,
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">3</span></span>,
+          &quot;<span class="hljs-attribute">scheduled_date</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411456876262</span>
         </span>}
       ]</span>,
-      "<span class="hljs-attribute">pipeline_counter</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
-      "<span class="hljs-attribute">pipeline_name</span>": <span class="hljs-value"><span class="hljs-string">"foo"</span></span>,
-      "<span class="hljs-attribute">approval_type</span>": <span class="hljs-value"><span class="hljs-string">"success"</span></span>,
-      "<span class="hljs-attribute">result</span>": <span class="hljs-value"><span class="hljs-string">"Failed"</span></span>,
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
-      "<span class="hljs-attribute">counter</span>": <span class="hljs-value"><span class="hljs-string">"1"</span>
+      &quot;<span class="hljs-attribute">pipeline_counter</span>&quot;: <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      &quot;<span class="hljs-attribute">pipeline_name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;foo&quot;</span></span>,
+      &quot;<span class="hljs-attribute">approval_type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;success&quot;</span></span>,
+      &quot;<span class="hljs-attribute">result</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Failed&quot;</span></span>,
+      &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">3</span></span>,
+      &quot;<span class="hljs-attribute">counter</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;1&quot;</span>
     </span>},
     {
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"DEV"</span></span>,
-      "<span class="hljs-attribute">approved_by</span>": <span class="hljs-value"><span class="hljs-string">"changes"</span></span>,
-      "<span class="hljs-attribute">jobs</span>": <span class="hljs-value">[
+      &quot;<span class="hljs-attribute">name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;DEV&quot;</span></span>,
+      &quot;<span class="hljs-attribute">approved_by</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;changes&quot;</span></span>,
+      &quot;<span class="hljs-attribute">jobs</span>&quot;: <span class="hljs-value">[
         {
-          "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"UnitTest"</span></span>,
-          "<span class="hljs-attribute">result</span>": <span class="hljs-value"><span class="hljs-string">"Passed"</span></span>,
-          "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Completed"</span></span>,
-          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
-          "<span class="hljs-attribute">scheduled_date</span>": <span class="hljs-value"><span class="hljs-number">1411456676119</span>
+          &quot;<span class="hljs-attribute">name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;UnitTest&quot;</span></span>,
+          &quot;<span class="hljs-attribute">result</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Passed&quot;</span></span>,
+          &quot;<span class="hljs-attribute">state</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Completed&quot;</span></span>,
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">1</span></span>,
+          &quot;<span class="hljs-attribute">scheduled_date</span>&quot;: <span class="hljs-value"><span class="hljs-number">1411456676119</span>
         </span>}
       ]</span>,
-      "<span class="hljs-attribute">pipeline_counter</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
-      "<span class="hljs-attribute">pipeline_name</span>": <span class="hljs-value"><span class="hljs-string">"foo"</span></span>,
-      "<span class="hljs-attribute">approval_type</span>": <span class="hljs-value"><span class="hljs-string">"success"</span></span>,
-      "<span class="hljs-attribute">result</span>": <span class="hljs-value"><span class="hljs-string">"Passed"</span></span>,
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
-      "<span class="hljs-attribute">counter</span>": <span class="hljs-value"><span class="hljs-string">"1"</span>
+      &quot;<span class="hljs-attribute">pipeline_counter</span>&quot;: <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      &quot;<span class="hljs-attribute">pipeline_name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;foo&quot;</span></span>,
+      &quot;<span class="hljs-attribute">approval_type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;success&quot;</span></span>,
+      &quot;<span class="hljs-attribute">result</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;Passed&quot;</span></span>,
+      &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      &quot;<span class="hljs-attribute">counter</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;1&quot;</span>
     </span>}
   ]</span>,
-  "<span class="hljs-attribute">pagination</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">offset</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
-    "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
-    "<span class="hljs-attribute">page_size</span>": <span class="hljs-value"><span class="hljs-number">10</span>
+  &quot;<span class="hljs-attribute">pagination</span>&quot;: <span class="hljs-value">{
+    &quot;<span class="hljs-attribute">offset</span>&quot;: <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    &quot;<span class="hljs-attribute">total</span>&quot;: <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    &quot;<span class="hljs-attribute">page_size</span>&quot;: <span class="hljs-value"><span class="hljs-number">10</span>
   </span>}
 </span>}
 </code></pre>

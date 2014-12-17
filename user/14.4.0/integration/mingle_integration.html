@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="6.3" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="6.3" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2174,25 +2178,25 @@
                 
                     <section class="normal" id="section-gitbook_107">
                     
-                        <h1 id="mingle-integration">Mingle Integration</h1>
+                        <h1 id="mingle-integration"><a name="mingle-integration" class="plugin-anchor" href="#mingle-integration"><span class="fa fa-link"></span></a>Mingle Integration</h1>
 <p>Go integrates with <a href="http://www.thoughtworks.com/products/mingle-agile-project-management/" target="_blank">Mingle, the Agile Project Management tool</a> from ThoughtWorks Studios. This allows the users of Go and Mingle to surround their data with additional context, increasing the value of the information.</p>
-<p>Go&#39;s <a href="mingle_card_activity_gadget.html">Mingle card activity gadget</a> allows users to see, in the context of Go, the new activity in a pipeline in terms of the Mingle cards that were worked on in that period. This card activity can reflect information about your project, such as which features were just deployed to production or which features require testing. To enable this integration, please follow the instructions for <a href="mingle_in_go.html">configuring the display of Mingle gadgets within Go.</a></p>
-<h3 id="supported-versions">Supported versions</h3>
+<p>Go&apos;s <a href="mingle_card_activity_gadget.html">Mingle card activity gadget</a> allows users to see, in the context of Go, the new activity in a pipeline in terms of the Mingle cards that were worked on in that period. This card activity can reflect information about your project, such as which features were just deployed to production or which features require testing. To enable this integration, please follow the instructions for <a href="mingle_in_go.html">configuring the display of Mingle gadgets within Go.</a></p>
+<h3 id="supported-versions"><a name="supported-versions" class="plugin-anchor" href="#supported-versions"><span class="fa fa-link"></span></a>Supported versions</h3>
 <p>To display a Go pipeline status gadget in Mingle, Mingle must be version 3.3 or greater and Go must be version 2.1 or greater.</p>
 <p>To display a Mingle card activity gadget in Go, Mingle must be version 3.3 or greater and Go must be version 2.2 or greater.</p>
-<h2 id="integration-technologies">Integration technologies</h2>
-<h3 id="opensocial-gadgets">OpenSocial gadgets</h3>
-<p>ThoughtWorks Studios products use the <a href="http://www.opensocial.org/" target="_blank">OpenSocial</a> gadget stack to provide UI integrations. This provides a secure, standards-based platform for displaying one application&#39;s content in another application. Part of this infrastructure is that Go is itself an OpenSocial gadget rendering server. In general, a gadget is simply a piece of content from another application, such as showing a Mingle card activity table inside of Go. If you use iGoogle and have customized your home page, you have worked with OpenSocial gadgets.</p>
-<p>Most OpenSocial gadgets are publicly available content that do not require authentication and authorization. However, some gadgets, such as those published by the ThoughtWorks Studios products Go and Mingle, do require authorization. To accomplish this, Go&#39;s gadget rendering server supports OAuth 2.0 services.</p>
+<h2 id="integration-technologies"><a name="integration-technologies" class="plugin-anchor" href="#integration-technologies"><span class="fa fa-link"></span></a>Integration technologies</h2>
+<h3 id="opensocial-gadgets"><a name="opensocial-gadgets" class="plugin-anchor" href="#opensocial-gadgets"><span class="fa fa-link"></span></a>OpenSocial gadgets</h3>
+<p>ThoughtWorks Studios products use the <a href="http://www.opensocial.org/" target="_blank">OpenSocial</a> gadget stack to provide UI integrations. This provides a secure, standards-based platform for displaying one application&apos;s content in another application. Part of this infrastructure is that Go is itself an OpenSocial gadget rendering server. In general, a gadget is simply a piece of content from another application, such as showing a Mingle card activity table inside of Go. If you use iGoogle and have customized your home page, you have worked with OpenSocial gadgets.</p>
+<p>Most OpenSocial gadgets are publicly available content that do not require authentication and authorization. However, some gadgets, such as those published by the ThoughtWorks Studios products Go and Mingle, do require authorization. To accomplish this, Go&apos;s gadget rendering server supports OAuth 2.0 services.</p>
 <p>Enabling Go for OAuth 2.0 enabled gadgets does require the Go administrator to take <a href="mingle_in_go.html">extra configuration steps</a>.</p>
 <p>If you are simply looking to configure the display of Mingle card activity gadgets in Go, please skip straight to the <a href="mingle_in_go.html">instructions that are specific to showing Mingle gadgets in Go.</a></p>
 <p>A gadget rendering server with OAuth 2.0 capabilities similar to what Go provides would be capable of showing ThoughtWorks Studios gadgets. That is, if iGoogle were to start supporting OAuth 2.0 in conjunction with its gadget support, and your Go instance was on a public server, it would be possible to display ThoughtWorks Studios gadgets on your home page. This is not currently possible so look for more on this from us in the future.</p>
-<h3 id="oauth-20">OAuth 2.0</h3>
+<h3 id="oauth-20"><a name="oauth-20" class="plugin-anchor" href="#oauth-20"><span class="fa fa-link"></span></a>OAuth 2.0</h3>
 <p>OAuth is an open-standard that enables a user to share private protected resources (e.g. photos or financial records) which she stores on one site (or application) with another one of her commonly used sites or applications without asking her to share any passwords between the two sites. OAuth is quickly becoming a widely adopted standard; for example, Yahoo, Facebook and Twitter have all adopted OAuth.</p>
 <p>In the context of ThoughtWorks Studios applications, the application data is the private protected resource. For example, if someone had configured Go and Mingle integration, a Go user will only be allowed to see Mingle card information in Go that he would normally be allowed to see in Mingle. That is, when Go shows Mingle data in its pages, the Mingle authorization rules are not relaxed to allow all members of that Go pipeline group to automatically see the card activity for any Mingle project, rather he will only be able to see data from Mingle projects for which he has access. The same can be said when Mingle shows Go data in its pages. It should also be possible to maintain this principle when showing Go or Mingle content in a 3rd party, non-ThoughtWorks Studios context.</p>
 <p>In order to make this work, Go and Mingle - and in the future all Studios server-based applications - use OAuth 2.0 (v9) as a means of allowing a user of one application to establish his identity in the other application, while also granting the appropriate data access for that user. Both applications are OAuth providers and both applications run a gadget rendering server capable of acting as an OAuth client. Currently, OAuth is only used for gadget-related communication, but we plan on expanding what data can be made available via OAuth in the future.</p>
-<p>Below is a series of movies we&#39;ve made that explain how OAuth works. Part 1 covers the basics and is likely enough for most users. Parts 2-4 get into the more technical details of how the protocol works.</p>
-<h4 id="also-see">Also see</h4>
+<p>Below is a series of movies we&apos;ve made that explain how OAuth works. Part 1 covers the basics and is likely enough for most users. Parts 2-4 get into the more technical details of how the protocol works.</p>
+<h4 id="also-see"><a name="also-see" class="plugin-anchor" href="#also-see"><span class="fa fa-link"></span></a>Also see</h4>
 <ul>
 <li><a href="mingle_integration.html">Integrating Go with Mingle - an overview</a></li>
 <li><a href="mingle_card_activity_gadget.html">Reference for Mingle card activity gadget</a></li>
