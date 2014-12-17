@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="5.2" data-basepath=".." data-revision="1418805819461">
+    <div class="book" data-level="5.2" data-basepath=".." data-revision="1418807770183">
     
 
 <div class="book-summary">
@@ -44,8 +48,20 @@
         
     	
     	
+    	    
+            <li>
+                <a href="http://go.cd" target="blank" class="custom-link">Home</a>
+            </li>
+    	
+    	    
+            <li>
+                <a href="https://github.com/gocd/documentation/" target="blank" class="custom-link">Contribute</a>
+            </li>
+    	
     	
 
+        
+        <li class="divider"></li>
         
 
         
@@ -2541,7 +2557,7 @@
                 
                     <section class="normal" id="section-gitbook_20">
                     
-                        <h2 id="52-fan-in">5.2 Fan-in</h2>
+                        <h2 id="52-fan-in"><a name="52-fan-in" class="plugin-anchor" href="#52-fan-in"><span class="fa fa-link"></span></a>5.2 Fan-in</h2>
 <p>Go supports multiple SCM/pipeline dependencies. There are a lot of challenges that come up because of it. Dependency management is one of them. </p>
 <p>Consider the below case:</p>
 <ol>
@@ -2559,27 +2575,27 @@
 <p>Now b2 goes green. There is a valid new revision for D to run with - b2 &amp; c1 (since both were green). If D goes ahead and deploys the application:</p>
 <ul>
 <li>What if c2 goes red (with failing tests)?</li>
-<li>What if c2 goes green? Should D trigger again (for b2 &amp; c2)? Wouldn&#39;t it be a wasteful deployment?</li>
+<li>What if c2 goes green? Should D trigger again (for b2 &amp; c2)? Wouldn&apos;t it be a wasteful deployment?</li>
 </ul>
 <p>Another problem that D would face is that C &amp; D need to pull artifact from A for deployment. But if D is triggered with b2 (which triggered off of a2) &amp; c1 (which triggered off of a1), Which version of A should be considered for the artifact fetch?</p>
 <p>To solve these problems we wrote a feature in Go which does not trigger D until both B &amp; C go green for a particular commit. Once both go green say b2 &amp; c2. D has a consistent revision of A (a2) to fetch the artifact from. It will also reduce wastefull runs of D. i.e. D will not run twice &amp; it will not run at all in case both the pipelines do not go green for a revision.</p>
-<h3 id="521-a-nameoverviewa-overview">5.2.1 <a name="overview"></a> Overview</h3>
-<h4 id="challenges">Challenges:</h4>
+<h3 id="521-a-nameoverviewa-overview"><a name="521-a-nameoverviewa-overview" class="plugin-anchor" href="#521-a-nameoverviewa-overview"><span class="fa fa-link"></span></a>5.2.1 <a name="overview"></a> Overview</h3>
+<h4 id="challenges"><a name="challenges" class="plugin-anchor" href="#challenges"><span class="fa fa-link"></span></a>Challenges:</h4>
 <p>Fan-in is the most complex feature in Go. It took us really long to develop &amp; test it, especially because it was a change in the core of Go (Scheduling). It went through 3 algorithm re-writes, it is really hard to debug/pin down issues because of the recursive nature of algorithm and has lot of tricky corner cases.</p>
-<h5 id="efficiency">Efficiency:</h5>
+<h5 id="efficiency"><a name="efficiency" class="plugin-anchor" href="#efficiency"><span class="fa fa-link"></span></a>Efficiency:</h5>
 <p>The algorithm had to be effecient since there are 1000+ pipelines in some of our customer setups. And, Go tries to schedule 10 pipelines every second using 10 threads, which meant that if the algorithm for scheduling took longer, then the threads will be blocked for that much more time. This would drastically increase the amount of time Go takes to detect a check-in &amp; schedule pipelines that can trigger off of that change.</p>
-<h4 id="graph-representation--instance-data-population">Graph Representation &amp; Instance Data population</h4>
+<h4 id="graph-representation--instance-data-population"><a name="graph-representation--instance-data-population" class="plugin-anchor" href="#graph-representation--instance-data-population"><span class="fa fa-link"></span></a>Graph Representation &amp; Instance Data population</h4>
 <p>To be able to implement the algorithm we needed to have a Graph representation of the whole of the upstream. To build this, we traverse the config recusively from the current pipeline i.e., the pipeline that is supposed to be triggered, and store all pipelines &amp; SCMs that we come across. We populate the parent &amp; child information in the nodes during the traversal. Go maintains a data-structure called Pipeline timeline. It stores pipeline instances for each pipeline in &quot;schedule order&quot; &amp; &quot;natural order&quot; separately.</p>
-<h3 id="522-a-namepipeline-timelinea-pipeline-timeline">5.2.2 <a name="pipeline-timeline"></a> Pipeline Timeline</h3>
-<h4 id="schedule-order">Schedule order</h4>
+<h3 id="522-a-namepipeline-timelinea-pipeline-timeline"><a name="522-a-namepipeline-timelinea-pipeline-timeline" class="plugin-anchor" href="#522-a-namepipeline-timelinea-pipeline-timeline"><span class="fa fa-link"></span></a>5.2.2 <a name="pipeline-timeline"></a> Pipeline Timeline</h3>
+<h4 id="schedule-order"><a name="schedule-order" class="plugin-anchor" href="#schedule-order"><span class="fa fa-link"></span></a>Schedule order</h4>
 <p>The order in which pipeline instances got triggered. This is simply based on the pipeline counter.</p>
 <p>Ex: If pipeline P ran 3 times, instances being P1, P2 &amp; P3 with trigger times T1, T2 &amp; T3 respectively, with T1 &lt; T2 &lt; T3, then schedule order would be P1, P2, P3.</p>
-<h4 id="natural-order">Natural order</h4>
+<h4 id="natural-order"><a name="natural-order" class="plugin-anchor" href="#natural-order"><span class="fa fa-link"></span></a>Natural order</h4>
 <p>The pipeline instances ordered by SCM commit time. </p>
 <p>Ex: If pipeline P depends on git G which has 3 commits G1, G2 &amp; G3 with commit times T1, T2 &amp; T3 respectively, with T1 &lt; T2 &lt; T3. P1 has triggered with G1, while P2 has triggered with G3 &amp; P3 has triggered with G2, then the natural order would be P1, P3, P2.</p>
 <p>This data-structure can be used if you are trying to find a pipeline instance that is older than the current instance in terms of code.</p>
 <p>Ex: In the above example, say the current pipeline instance is P3 and you want an older instance of the pipeline. P2 is not an older instance since it has a newer commit (g3), but P1 is an older instance since it has an older commit (g1).</p>
-<h3 id="523-a-namealgorithma-algorithm">5.2.3 <a name="algorithm"></a> Algorithm</h3>
+<h3 id="523-a-namealgorithma-algorithm"><a name="523-a-namealgorithma-algorithm" class="plugin-anchor" href="#523-a-namealgorithma-algorithm"><span class="fa fa-link"></span></a>5.2.3 <a name="algorithm"></a> Algorithm</h3>
 <pre><code>resolve_revisions(graph)
   make sure there is atleast one revision available for all upstream dependencies
 
@@ -2638,12 +2654,12 @@ end
 def alter_revision(pipeline, scm_revision)
   set pipeline instance to something that has run with scm_revision / some revision older than scm_revision
 end
-</code></pre><h3 id="524-a-namecorner-casesa-corner-cases">5.2.4 <a name="corner-cases"></a> Corner Cases</h3>
+</code></pre><h3 id="524-a-namecorner-casesa-corner-cases"><a name="524-a-namecorner-casesa-corner-cases" class="plugin-anchor" href="#524-a-namecorner-casesa-corner-cases"><span class="fa fa-link"></span></a>5.2.4 <a name="corner-cases"></a> Corner Cases</h3>
 <p>Sample fan-in dependency.</p>
 <p><img src="images/fan_in_base_scenario.png" alt="Sample fan-in dependency"></p>
 <p>General reasons for auto-triggered downstream pipelines to not trigger (without errors):</p>
 <ol>
-<li><p>If both the pipelines B &amp; C have mutually exclusive blacklists, i.e. say A has 2 folders ’src/’ ’test/’ and B ignores test/ while C ignores src/ and there are no commits to both folders together, then B &amp; C run for different commits of A. This leaves D with no compatible runs of B &amp; C that it can trigger off of.</p>
+<li><p>If both the pipelines B &amp; C have mutually exclusive blacklists, i.e. say A has 2 folders &#x2019;src/&#x2019; &#x2019;test/&#x2019; and B ignores test/ while C ignores src/ and there are no commits to both folders together, then B &amp; C run for different commits of A. This leaves D with no compatible runs of B &amp; C that it can trigger off of.</p>
 </li>
 <li><p>If the upstream pipelines B &amp; C are timer triggered/manually triggered they always run off of latest change in A. So, if you trigger B &amp; C at different times they may have different revisions of A, causing incompatibility for D.</p>
 </li>
@@ -2660,7 +2676,7 @@ end
 <li>C has run c1 (with a1 &amp; b1).</li>
 <li>Before C runs with a2 &amp; b2, A is triggered for a3 (with g2).</li>
 </ul>
-<p>Now during fan-in resolution for C, we see g2, so look for B with &lt;= g2, find b1 (g1). Now we look for A with &lt;= g1 find a1 (g1) and resolution stops at a1, b1, g1 with which C has already run. So it doesn&#39;t run. Even though there is newer revision of B &amp; C available which are compatible! (a2 &amp; b2)</p>
+<p>Now during fan-in resolution for C, we see g2, so look for B with &lt;= g2, find b1 (g1). Now we look for A with &lt;= g1 find a1 (g1) and resolution stops at a1, b1, g1 with which C has already run. So it doesn&apos;t run. Even though there is newer revision of B &amp; C available which are compatible! (a2 &amp; b2)</p>
 <p>General reasons for auto-trigger downstream pipelines to not trigger (with errors):</p>
 <ol>
 <li><p>If one of the pipelines, say B, is paused/manual and has not run for long, while the other pipeline (C in this case) runs constantly then the resolution of downstream D fails after a few runs of C. This is because Go tries to resolve the upstream pipelines by considering maximum upto 100 instances of each upstream pipeline after which it will stop resolution to avoid consuming too many CPU cycles.</p>
@@ -2671,8 +2687,8 @@ end
 Fan-in algorithm is used for resolving the correct upstream dependency revisions only for pipelines that are set to auto-trigger. It does not take effect when you manually trigger a pipeline or if the pipeline is timer triggered.</p>
 </li>
 </ol>
-<h3 id="525-a-nameextensionsa-extensions">5.2.5 <a name="extensions"></a> Extensions</h3>
-<p>Add fan-in resolution for trigger with options. User can open the revision selection popup, select revisions for the materials user cares for &amp; click &#39;resolve revisions&#39; which could resolve the revisions for other upstream materials &amp; fill the pop-up. This would help users select consistent upstream revisions without having to manually resolve them.</p>
+<h3 id="525-a-nameextensionsa-extensions"><a name="525-a-nameextensionsa-extensions" class="plugin-anchor" href="#525-a-nameextensionsa-extensions"><span class="fa fa-link"></span></a>5.2.5 <a name="extensions"></a> Extensions</h3>
+<p>Add fan-in resolution for trigger with options. User can open the revision selection popup, select revisions for the materials user cares for &amp; click &apos;resolve revisions&apos; which could resolve the revisions for other upstream materials &amp; fill the pop-up. This would help users select consistent upstream revisions without having to manually resolve them.</p>
 <p>Provide &quot;resolve &amp; trigger&quot; button. This is an extension of the first &quot;resolve for trigger with options&quot; feature. People want pipeline to be manual trigger but want it to be consistent.</p>
 <p>Handle corner cases better. May be an improved algorithm which covers more cases than the current one. Atleast provide easily consumable warnings/error messages when resolution fails. Users must be able to debug the problem by themselves.</p>
 

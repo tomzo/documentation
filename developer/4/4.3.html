@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="4.3" data-basepath=".." data-revision="1418805819461">
+    <div class="book" data-level="4.3" data-basepath=".." data-revision="1418807770183">
     
 
 <div class="book-summary">
@@ -44,8 +48,20 @@
         
     	
     	
+    	    
+            <li>
+                <a href="http://go.cd" target="blank" class="custom-link">Home</a>
+            </li>
+    	
+    	    
+            <li>
+                <a href="https://github.com/gocd/documentation/" target="blank" class="custom-link">Contribute</a>
+            </li>
+    	
     	
 
+        
+        <li class="divider"></li>
         
 
         
@@ -2539,13 +2555,13 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_10">
+                    <section class="normal" id="section-gitbook_13">
                     
-                        <h2 id="43-go-agent">4.3 Go Agent</h2>
-<h3 id="a-nameagent-overviewa431-overview"><a name="agent-overview"></a>4.3.1 Overview</h3>
+                        <h2 id="43-go-agent"><a name="43-go-agent" class="plugin-anchor" href="#43-go-agent"><span class="fa fa-link"></span></a>4.3 Go Agent</h2>
+<h3 id="a-nameagent-overviewa431-overview"><a name="a-nameagent-overviewa431-overview" class="plugin-anchor" href="#a-nameagent-overviewa431-overview"><span class="fa fa-link"></span></a><a name="agent-overview"></a>4.3.1 Overview</h3>
 <p>Go Agent is the component of Go which runs the jobs given to it by the Go Server. An Agent comprises of 3 parts, the Agent Bootstrapper, the Agent Launcher and the Agent itself.</p>
 <p><img src="images/agent_overview.png" alt="Agent Overview"></p>
-<h3 id="a-nameagent-bootstrappera432-bootstrapper"><a name="agent-bootstrapper"></a>4.3.2 Bootstrapper</h3>
+<h3 id="a-nameagent-bootstrappera432-bootstrapper"><a name="a-nameagent-bootstrappera432-bootstrapper" class="plugin-anchor" href="#a-nameagent-bootstrappera432-bootstrapper"><span class="fa fa-link"></span></a><a name="agent-bootstrapper"></a>4.3.2 Bootstrapper</h3>
 <p>The bootstrapper is the only component of a Go agent that requires a manual upgrade, therefore its code is kept to a bare minimum to avoid this manual upgrade.</p>
 <p>A new installation of an agent has only the agent-bootstrapper.jar. When you start an agent, it essentially starts the agent-bootstrapper.jar, which does the following: </p>
 <ol>
@@ -2563,7 +2579,7 @@
 </ol>
 <p>This agent is launched this way inorder to prevent the launcher from being launched as a separate java process while still maintaining it as a component on its own.</p>
 <p>The bootstrapper logs to go-agent-bootstrapper.log file.</p>
-<h3 id="a-nameagent-launchera433-launcher"><a name="agent-launcher"></a>4.3.3 Launcher</h3>
+<h3 id="a-nameagent-launchera433-launcher"><a name="a-nameagent-launchera433-launcher" class="plugin-anchor" href="#a-nameagent-launchera433-launcher"><span class="fa fa-link"></span></a><a name="agent-launcher"></a>4.3.3 Launcher</h3>
 <p>Once the launcher is launched, it does the following:</p>
 <ol>
 <li>Creates a lockfile. The purpose of the lockfile is to prevent multiple instances of the bootstrapper from being launched using the same agent-bootstrapper.jar, i.e., if you want to run two agents on the same box, they should not be started in the same location as it would interfere with the working of the agents. </li>
@@ -2572,13 +2588,13 @@
 </ol>
 <p>The launcher allows for the automatic upgradation of the agent without manual intervention.</p>
 <p>The agent launcher logs to the go-agent-launcher.log file.</p>
-<h3 id="a-nameagenta434-agent"><a name="agent"></a>4.3.4 Agent</h3>
+<h3 id="a-nameagenta434-agent"><a name="a-nameagenta434-agent" class="plugin-anchor" href="#a-nameagenta434-agent"><span class="fa fa-link"></span></a><a name="agent"></a>4.3.4 Agent</h3>
 <p>The agent is responsible for running a job given to it by the server.</p>
 <p>The starting point for an agent is the <code>AgentProcessParentImpl</code>. At this point three things happen, agent is downloaded if required (this is done twice - once in the launcher and once at this point, this is to maintain backward compatibility with agents prior to version 2.3, where the launcher module was not present), plugins are downloaded if required, and the agent.jar is launched as a separate java process.</p>
 <p>Agents are uniquely identified by the server based on their UUID. Information about all agent instances are stored in-memory on the go server.</p>
 <p>At any given time, an agent has to be in one of the following states:</p>
 <ol>
-<li>Pending - until an adminitrator enables it for the very first time and that&#39;s how agent details come into the config.</li>
+<li>Pending - until an adminitrator enables it for the very first time and that&apos;s how agent details come into the config.</li>
 <li>Idle - when it is not running any jobs.</li>
 <li>Preparing - when it is preparing to run the job given to it by the server, for example - checking out the source code.</li>
 <li>Building - when it is running the job given to it by the server.</li>
@@ -2592,9 +2608,9 @@
 <li>Loop/Worker Thread - The first time an agent comes up, the loop thread, which runs every 10 seconds, registers it with the server. Once this is done, it checks for agent upgrade and also retrieves work from the server.</li>
 <li>Instruction Execution Thread - which runs every 10 seconds to check if the server has issued a job cancel instruction. A separate thread is maintained as a job cancel instruction is an asynchronous action, it might occur at any time and hence, it has to be monitored constantly.</li>
 </ol>
-<h4 id="4341-upgrade">4.3.4.1 Upgrade</h4>
+<h4 id="4341-upgrade"><a name="4341-upgrade" class="plugin-anchor" href="#4341-upgrade"><span class="fa fa-link"></span></a>4.3.4.1 Upgrade</h4>
 <p>In most situations, the Go agent services keep running while the server is upgraded. The loop thread checks to see if the agent needs to be upgraded every time it runs. So, the first time the loop thread contacts the server after a server upgrade, it realizes that the agent needs to be upgraded. The agent kills itself as a result of this. The agent launcher then upgrades and restarts the agent.</p>
-<h4 id="4342-initialization">4.3.4.2 Initialization</h4>
+<h4 id="4342-initialization"><a name="4342-initialization" class="plugin-anchor" href="#4342-initialization"><span class="fa fa-link"></span></a>4.3.4.2 Initialization</h4>
 <p>Agent initialization happens through Spring. The first time the AgentController bean is initialized, it creates the following:</p>
 <ol>
 <li>Pipelines folder - the location where the agent will check out the source code to run the jobs on.</li>
@@ -2602,7 +2618,7 @@
 <li>Global Unique Identifier (GUID) - with which the agent identifies itself with the server. As part of this procces the GUID of the agent is stored in the guid.txt, present under the config folder of the agent working directory.</li>
 </ol>
 <p>The initial communication, up until registration, between the server and agent happens over HTTP. Once the registration is complete, the communication between the server and agent happens over HTTPS. </p>
-<h4 id="4343-registration">4.3.4.3 Registration</h4>
+<h4 id="4343-registration"><a name="4343-registration" class="plugin-anchor" href="#4343-registration"><span class="fa fa-link"></span></a>4.3.4.3 Registration</h4>
 <p>Registration of the agent with the server happens when the loop thread is first initialized. Since, a number of agents can contact the server at the same time, the registration process might not be successful the very first time itself. So, the agent keeps trying to register itself every 10 seconds until it is successful.</p>
 <p><em>Agent Side</em></p>
 <pre><code>loop_thread()
@@ -2632,7 +2648,7 @@ end
 </code></pre><p>When an agent is initially registered with the server, it is in the pending state until a Go administrator manually enables the agent. This is mainly done to prevent malicious agents from automatically enabling themselves on the server.</p>
 <p><strong>Auto Registering Agents</strong></p>
 <p>In the case where you want to enable an agent automatically with the server, you can do so by creating the agent-registration.properties file. Through this file you can specify which resources and environments the agent belongs to. When the agent initially tries to register itself with the server, the server checks to see if the incoming request has an agent-registration.properties file <code>auto_register_agent_if_required()</code>, if so then it sets up the agent with the resources and environments specified in this file. The agent will be in the enabled state after this.</p>
-<h4 id="4344-retrieve--build-work">4.3.4.4 Retrieve &amp; Build Work</h4>
+<h4 id="4344-retrieve--build-work"><a name="4344-retrieve--build-work" class="plugin-anchor" href="#4344-retrieve--build-work"><span class="fa fa-link"></span></a>4.3.4.4 Retrieve &amp; Build Work</h4>
 <p>Once the agent is enabled on the server, it is by default in the &quot;idle&quot; state, indicating that the agent is not doing any work. The loop thread then requests the server for work. </p>
 <p><em>Server Side</em></p>
 <pre><code>getWork()

@@ -29,9 +29,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="4.5" data-basepath=".." data-revision="1418805819461">
+    <div class="book" data-level="4.5" data-basepath=".." data-revision="1418807770183">
     
 
 <div class="book-summary">
@@ -42,8 +46,20 @@
         
     	
     	
+    	    
+            <li>
+                <a href="http://go.cd" target="blank" class="custom-link">Home</a>
+            </li>
+    	
+    	    
+            <li>
+                <a href="https://github.com/gocd/documentation/" target="blank" class="custom-link">Contribute</a>
+            </li>
+    	
     	
 
+        
+        <li class="divider"></li>
         
 
         
@@ -2539,52 +2555,52 @@
                 
                     <section class="normal" id="section-gitbook_16">
                     
-                        <h2 id="45-build-infrastructure">4.5 Build Infrastructure</h2>
+                        <h2 id="45-build-infrastructure"><a name="45-build-infrastructure" class="plugin-anchor" href="#45-build-infrastructure"><span class="fa fa-link"></span></a>4.5 Build Infrastructure</h2>
 <p>Go uses <em><a href="http://buildr.apache.org/" target="_blank">buildr</a></em> for its build infrastructure except for mac installers which are done through <em><a href="http://ant.apache.org/" target="_blank">ant</a></em>. </p>
-<h3 id="a-namepackaginga451-packaging"><a name="packaging"></a>4.5.1 Packaging</h3>
-<p>Go&#39;s dependencies are managed through maven. The build scripts are mostly written in maven pom files with some parts being written in ant, rake &amp; buildr.</p>
-<h4 id="a-namemodulesa4511-modules"><a name="modules"></a>4.5.1.1 Modules</h4>
+<h3 id="a-namepackaginga451-packaging"><a name="a-namepackaginga451-packaging" class="plugin-anchor" href="#a-namepackaginga451-packaging"><span class="fa fa-link"></span></a><a name="packaging"></a>4.5.1 Packaging</h3>
+<p>Go&apos;s dependencies are managed through maven. The build scripts are mostly written in maven pom files with some parts being written in ant, rake &amp; buildr.</p>
+<h4 id="a-namemodulesa4511-modules"><a name="a-namemodulesa4511-modules" class="plugin-anchor" href="#a-namemodulesa4511-modules"><span class="fa fa-link"></span></a><a name="modules"></a>4.5.1.1 Modules</h4>
 <p>There are 2 components in Go: Server &amp; Agent.</p>
 <p>Config: </p>
 <ul>
-<li>The code related to config, that is required by both the Server &amp; the Agent (like object mapping of config etc.), is in <strong>&#39;config-api&#39;</strong> module.</li>
-<li>The code related to config, that is required by the Server alone (like config read, write etc.), is in <strong>&#39;config-server&#39;</strong> module.</li>
+<li>The code related to config, that is required by both the Server &amp; the Agent (like object mapping of config etc.), is in <strong>&apos;config-api&apos;</strong> module.</li>
+<li>The code related to config, that is required by the Server alone (like config read, write etc.), is in <strong>&apos;config-server&apos;</strong> module.</li>
 </ul>
 <p>Plugin infrastructure:</p>
 <ul>
-<li><strong>&#39;go-plugin-api&#39;</strong> contains API&#39;s exposed for plugin authors and is required by plugins during compile time.</li>
-<li><strong>&#39;go-plugin-api-internal&#39;</strong></li>
-<li><strong>&#39;go-plugin-infra&#39;</strong></li>
-<li><strong>&#39;go-plugin-activator&#39;</strong></li>
-<li><strong>&#39;go-plugin-access&#39;</strong></li>
+<li><strong>&apos;go-plugin-api&apos;</strong> contains API&apos;s exposed for plugin authors and is required by plugins during compile time.</li>
+<li><strong>&apos;go-plugin-api-internal&apos;</strong></li>
+<li><strong>&apos;go-plugin-infra&apos;</strong></li>
+<li><strong>&apos;go-plugin-activator&apos;</strong></li>
+<li><strong>&apos;go-plugin-access&apos;</strong></li>
 </ul>
 <p>Agent:</p>
 <ul>
-<li><strong>&#39;agent-bootstrapper&#39;</strong> is the code that is available on fresh Agent installation. This is the only part that is not auto-upgraded. Its only responsibility is to launch the launcher.</li>
-<li><strong>&#39;agent-launcher&#39;</strong> is the code that takes care of downloading latest launcher, agent, plugins &amp; restart of agent when it dies / when upgrade is required.</li>
-<li><strong>&#39;agent&#39;</strong> - contains code to fetch jobs, run tasks &amp; communicate results back to server.</li>
-<li>The code that is common to above 3 agent modules is in <strong>&#39;agent-common&#39;</strong>.</li>
+<li><strong>&apos;agent-bootstrapper&apos;</strong> is the code that is available on fresh Agent installation. This is the only part that is not auto-upgraded. Its only responsibility is to launch the launcher.</li>
+<li><strong>&apos;agent-launcher&apos;</strong> is the code that takes care of downloading latest launcher, agent, plugins &amp; restart of agent when it dies / when upgrade is required.</li>
+<li><strong>&apos;agent&apos;</strong> - contains code to fetch jobs, run tasks &amp; communicate results back to server.</li>
+<li>The code that is common to above 3 agent modules is in <strong>&apos;agent-common&apos;</strong>.</li>
 </ul>
 <p>Server:</p>
 <ul>
-<li>The complete code related to the server is in the <strong>&#39;server&#39;</strong> module. Contains code related to database, security, view, etc. The server webapp is created using rake tasks. We generate help docs, minify css, js &amp; inline rails partials as part of this.</li>
-<li>The module <strong>&#39;server-launcher&#39;</strong> is a module definition with dependencies specified in pom file, which is used in creation of server launcher using buildr scripts.</li>
+<li>The complete code related to the server is in the <strong>&apos;server&apos;</strong> module. Contains code related to database, security, view, etc. The server webapp is created using rake tasks. We generate help docs, minify css, js &amp; inline rails partials as part of this.</li>
+<li>The module <strong>&apos;server-launcher&apos;</strong> is a module definition with dependencies specified in pom file, which is used in creation of server launcher using buildr scripts.</li>
 </ul>
 <p>Others:</p>
 <ul>
-<li>The code that is common to both the &#39;server&#39; &amp; &#39;agent&#39; modules is in <strong>&#39;common&#39;</strong> module.</li>
-<li>The code that is common to all the modules is in the <strong>&#39;base&#39;</strong> module.</li>
-<li>Code related to TFS implementation is in a separate module <strong>&#39;tfs-impl&#39;</strong>. It was made into a separate module to resolve classpath issues.</li>
-<li>The <strong>&#39;test-utils&#39;</strong> module contain code that is used in unit &amp; integration tests and which should not be part of main codebase.</li>
+<li>The code that is common to both the &apos;server&apos; &amp; &apos;agent&apos; modules is in <strong>&apos;common&apos;</strong> module.</li>
+<li>The code that is common to all the modules is in the <strong>&apos;base&apos;</strong> module.</li>
+<li>Code related to TFS implementation is in a separate module <strong>&apos;tfs-impl&apos;</strong>. It was made into a separate module to resolve classpath issues.</li>
+<li>The <strong>&apos;test-utils&apos;</strong> module contain code that is used in unit &amp; integration tests and which should not be part of main codebase.</li>
 </ul>
 <p>Deprecated:</p>
 <ul>
-<li>The <strong>&#39;util&#39;</strong> dependency is deprecated. Please refrain from adding code into this module.</li>
+<li>The <strong>&apos;util&apos;</strong> dependency is deprecated. Please refrain from adding code into this module.</li>
 </ul>
-<h4 id="a-namedocumentation-creationa4512-documentation-creation"><a name="documentation-creation"></a>4.5.1.2 Documentation Creation</h4>
-<p>Documentation is created through a <em>rake</em> task inside the helper module. The default task generates documentation based on changed files only while another task &#39;<em>site</em>&#39; generates the whole documetation as it cleans before generating the documentation.</p>
+<h4 id="a-namedocumentation-creationa4512-documentation-creation"><a name="a-namedocumentation-creationa4512-documentation-creation" class="plugin-anchor" href="#a-namedocumentation-creationa4512-documentation-creation"><span class="fa fa-link"></span></a><a name="documentation-creation"></a>4.5.1.2 Documentation Creation</h4>
+<p>Documentation is created through a <em>rake</em> task inside the helper module. The default task generates documentation based on changed files only while another task &apos;<em>site</em>&apos; generates the whole documetation as it cleans before generating the documentation.</p>
 <p>The documentation is written in xml format and all images are placed in resources. The xml files are parsed (parsing is done by ruby files present in builder module of helper) to generate corresponding html files. </p>
-<h4 id="a-namepom-conventionsa4513-pom-conventions"><a name="pom-conventions"></a>4.5.1.3 Pom conventions</h4>
+<h4 id="a-namepom-conventionsa4513-pom-conventions"><a name="a-namepom-conventionsa4513-pom-conventions" class="plugin-anchor" href="#a-namepom-conventionsa4513-pom-conventions"><span class="fa fa-link"></span></a><a name="pom-conventions"></a>4.5.1.3 Pom conventions</h4>
 <ul>
 <li><p>Version of all Go modules is fixed to 1.0 which means the code for every module assumes that the latest code of its dependencies is available at version 1.0 in the local maven repository (~/.m2/repository).</p>
 </li>
@@ -2595,19 +2611,19 @@
 <li><p>All source dependencies are listed followed by test dependencies. In both source &amp; test dependencies the Go modules are listed first followed by external library dependencies. We have tried our best to not redeclare dependencies that are available as transitive dependency from other modules/libraries. We have also tried to exclude transitive dependencies that are of a older/newer version than the ones that are required by Go. We have a pipeline dedicated to watch packaged dependencies &amp; fail whenever there is a change to it. This acts as a manual gate to make sure the dependency change was intended.</p>
 </li>
 </ul>
-<h4 id="a-namejar-packaginga4514-jar-packaging"><a name="jar-packaging"></a>4.5.1.4 Jar packaging</h4>
+<h4 id="a-namejar-packaginga4514-jar-packaging"><a name="a-namejar-packaginga4514-jar-packaging" class="plugin-anchor" href="#a-namejar-packaginga4514-jar-packaging"><span class="fa fa-link"></span></a><a name="jar-packaging"></a>4.5.1.4 Jar packaging</h4>
 <ul>
-<li>We use onejar-maven-plugin to package &#39;agent-bootstrapper&#39;, &#39;agent&#39; &amp; &#39;server-launcher&#39;</li>
-<li>&#39;agent-launcher&#39; &amp; &#39;tfs-impl&#39; is just a zip containing its own jar &amp; its dependencies</li>
-<li>&#39;server&#39; is packaged with standard &#39;maven-war-plugin&#39;</li>
-<li>The rest of the modules are packaged with standard &#39;maven-jar-plugin&#39;</li>
+<li>We use onejar-maven-plugin to package &apos;agent-bootstrapper&apos;, &apos;agent&apos; &amp; &apos;server-launcher&apos;</li>
+<li>&apos;agent-launcher&apos; &amp; &apos;tfs-impl&apos; is just a zip containing its own jar &amp; its dependencies</li>
+<li>&apos;server&apos; is packaged with standard &apos;maven-war-plugin&apos;</li>
+<li>The rest of the modules are packaged with standard &apos;maven-jar-plugin&apos;</li>
 </ul>
-<h4 id="a-nametlb-integrationa4515-tlbhttptest-load-balancergithubio-integration"><a name="tlb-integration"></a>4.5.1.5 <a href="http://test-load-balancer.github.io/" target="_blank">TLB</a> integration</h4>
-<p>Modules &#39;common&#39; &amp; &#39;server&#39; have a lot of tests. We use TLB to run them in parallel in our builds.
-To achieve this we use &#39;maven-antrun-plugin&#39; to run tests through ant-junit, with which TLB integrates, to prune the list of test to run before running them.
-The classpath is provided by maven to maintain consistency with the &#39;maven-surefire-plugin&#39;. So any test would run under the same environment when run through maven or through TLB.</p>
-<h3 id="a-nameinstaller-creationa452-installer-creation"><a name="installer-creation"></a>4.5.2 Installer Creation</h3>
-<p>All the necessary files are put in a jar through buildr &#39;package&#39;. This jar known as <em>go.jar</em> is then used by <em>buildr</em> while creating the installers. </p>
+<h4 id="a-nametlb-integrationa4515-tlbhttptest-load-balancergithubio-integration"><a name="a-nametlb-integrationa4515-tlbhttptest-load-balancergithubio-integration" class="plugin-anchor" href="#a-nametlb-integrationa4515-tlbhttptest-load-balancergithubio-integration"><span class="fa fa-link"></span></a><a name="tlb-integration"></a>4.5.1.5 <a href="http://test-load-balancer.github.io/" target="_blank">TLB</a> integration</h4>
+<p>Modules &apos;common&apos; &amp; &apos;server&apos; have a lot of tests. We use TLB to run them in parallel in our builds.
+To achieve this we use &apos;maven-antrun-plugin&apos; to run tests through ant-junit, with which TLB integrates, to prune the list of test to run before running them.
+The classpath is provided by maven to maintain consistency with the &apos;maven-surefire-plugin&apos;. So any test would run under the same environment when run through maven or through TLB.</p>
+<h3 id="a-nameinstaller-creationa452-installer-creation"><a name="a-nameinstaller-creationa452-installer-creation" class="plugin-anchor" href="#a-nameinstaller-creationa452-installer-creation"><span class="fa fa-link"></span></a><a name="installer-creation"></a>4.5.2 Installer Creation</h3>
+<p>All the necessary files are put in a jar through buildr &apos;package&apos;. This jar known as <em>go.jar</em> is then used by <em>buildr</em> while creating the installers. </p>
 <p>Go creates all its installers except mac through <em>buildr</em> tasks in <code>cruise-modules.rb</code>. Mac installers are generated through <em>ant</em> tasks. The module structure of installers in code is as follows:</p>
 <pre><code>  installers
      +
@@ -2632,25 +2648,25 @@ The classpath is provided by maven to maintain consistency with the &#39;maven-s
 <p>Before the installers are created, buildr packages the war file along with <em>h2</em> db, db deltas, command repository, internal plugins, agent jar, agent bootstrapper and launcer jar, along with config files and libraries like tfs-impl, go-plugin-activator, etc. The packaging is done through <em>buildr</em> <em><a href="http://buildr.apache.org/rdoc/Buildr/Package.html" target="_blank">package</a></em> and the jar created is known as <strong>go.jar</strong>. </p>
 <p>For packaging command repository, the repo is cloned from the public git repo <code>github.com/gocd/go-command-repo.git</code>. Every time an installer is created the command repository version is bumped up. This is done to make sure the users are always on the latest version of command repository. The command repository version is independent of Go Server version.</p>
 <p>The plugin jars placed inside <code>tw-go-plugins/dist/</code> are packaged in Go as <em><a href="http://www.thoughtworks.com/products/docs/go/current/help/plugin_user_guide.html" target="_blank">bundled plugin</a></em>.</p>
-<h4 id="a-namezipa4521-zip"><a name="zip"></a>4.5.2.1 Zip</h4>
+<h4 id="a-namezipa4521-zip"><a name="a-namezipa4521-zip" class="plugin-anchor" href="#a-namezipa4521-zip"><span class="fa fa-link"></span></a><a name="zip"></a>4.5.2.1 Zip</h4>
 <p>The <em>buildr</em> task <code>cruise:pkg:zip</code> calls <code>cruise:agent-bootstrapper:dist:zip</code> and <code>cruise:server:dist:zip</code> which creates the agent and server zip installers respectively.  The <em>release</em> module inside server and agent modules of installer contains the files that needs to be present in the zip installer along with the License and the <em>go.jar</em>. </p>
 <p>The <em>release</em> module provides all the scripts to start and stop server/agent. It has a CMD file which is used by the batch scripts on windows to start server/agent and has shell scripts for linux based systems to do the same. Also, scripts are provided to start/stop Go server/agent through a daemon conforming to <em>Linux Standard Base (LSB)</em> implementation to ensure it works across distros. Apart from these scripts, it also provides the installer with the default configuration to be used while starting Go server/agent. These scripts are also used by other installers!</p>
-<h4 id="a-namerpma4522-rpm"><a name="rpm"></a>4.5.2.2 RPM</h4>
+<h4 id="a-namerpma4522-rpm"><a name="a-namerpma4522-rpm" class="plugin-anchor" href="#a-namerpma4522-rpm"><span class="fa fa-link"></span></a><a name="rpm"></a>4.5.2.2 RPM</h4>
 <p>The <em>buildr</em> task <code>cruise:pkg:redhat</code> calls <code>cruise:agent-bootstrapper:dist:rpm</code> and <code>cruise:server:dist:rpm</code> which creates the agent and server rpm installers respectively. </p>
 <p>To prepare the installer, the zip installer is taken, unzipped and the files from it are placed accordingly along with the pre/post install scripts from <em>shared</em> module of installer. The spec file necessary for rpm installers is taken from <em>rpm</em> module inside agent/server modules of installer. <em>rpmbuild</em> with <em>fakeroot</em> is then used to generate the rpm installers.</p>
-<p>The shared <em>pre install</em> script is used to create <strong>go</strong> user within a new <strong>go</strong> group if not already present while the <em>post install</em> script is used to create necessary directories and set ownership to user <strong>go</strong>. It also sets defaults path, log4j properties and java home to be used by Go. To set the java for Go, the system variable &quot;JAVA_HOME&quot; is checked if it&#39;s set. If not, the command <em>which java</em> is executed and its output is used.</p>
-<h4 id="a-namedebiana4523-debian"><a name="debian"></a>4.5.2.3 Debian</h4>
+<p>The shared <em>pre install</em> script is used to create <strong>go</strong> user within a new <strong>go</strong> group if not already present while the <em>post install</em> script is used to create necessary directories and set ownership to user <strong>go</strong>. It also sets defaults path, log4j properties and java home to be used by Go. To set the java for Go, the system variable &quot;JAVA_HOME&quot; is checked if it&apos;s set. If not, the command <em>which java</em> is executed and its output is used.</p>
+<h4 id="a-namedebiana4523-debian"><a name="a-namedebiana4523-debian" class="plugin-anchor" href="#a-namedebiana4523-debian"><span class="fa fa-link"></span></a><a name="debian"></a>4.5.2.3 Debian</h4>
 <p>The <em>buildr</em> task <code>cruise:pkg:debian</code> calls <code>cruise:agent-bootstrapper:dist:debian</code> and <code>cruise:server:dist:debian</code> which creates the agent and server rpm installers respectively. </p>
 <p>To prepare the installer, the zip installer is taken, unzipped and the files from it are placed accordingly along with the pre/post install scripts from <em>shared</em> module and other necessary files for debian packaging that are taken from <em>deb</em> module inside agent/server modules of installer. <em>dpkg-deb</em> with <em>fakeroot</em> is then used to generate the debian installers.</p>
 <p>Besides providing with the pre and post install scripts like rpm, the <em>deb</em> module provides pre and post rm (remove) scripts used while un-installing Go. <code>prerm.go-server</code> might be used during the upgrade flow as well and checks if the Go server version is greater than the existing one. If not, it displays a message accordingly.</p>
-<h4 id="a-namewindowsa4524-windows"><a name="windows"></a>4.5.2.4 Windows</h4>
+<h4 id="a-namewindowsa4524-windows"><a name="a-namewindowsa4524-windows" class="plugin-anchor" href="#a-namewindowsa4524-windows"><span class="fa fa-link"></span></a><a name="windows"></a>4.5.2.4 Windows</h4>
 <p>The <em>buildr</em> task <code>cruise:pkg:windows</code> calls <code>cruise:agent-bootstrapper:dist:exe</code> and <code>cruise:server:dist:exe</code> which creates the agent and server windows installers respectively. </p>
 <p>To prepare the installer, the zip installer is taken, unzipped and the files from it are placed accordingly along with the necessary files for windows packaging that are taken from <em>win</em> module inside agent/server modules of installer. </p>
 <p><a href="http://nsis.sourceforge.net/Main_Page" target="_blank"><em>Nullsoft Scriptable Install System (NSIS)</em></a> is used to create windows installers. INI files, <code>JavaHome.ini</code> and <code>ServerIP.ini</code>, are used to provide dialog boxes during installation for providing users the choice to use bundled jre or user specified java for Go to use, and to provide IP of server to the agent respectively.</p>
 <p>The <code>go-server.nsi</code> and <code>go-agent.nsi</code> files present in the <em>win</em> module are the ones responsible for the installation procedure on windows. These files create the windows registry keys and install the wrapper-server.conf/wrapper-agent.conf to be used by Go server/agent for their start-up configurations respectively. These files also take care of deleting the windows registry keys (created by Go during installation) at the time of un-install. Both these files include <code>windows-installer-base.nsi</code> which is responsible to maintain the main flow of the installation process setting up the installation directory and reading/writing windows registry keys besides taking care of the upgrade flow. Silent installation of agent is also taken care of by these files. The line <code>#include config/wrapper-properties.conf\</code> in <code>wrapper-server.conf</code> and <code>wrapper-agent.conf</code> provides the ability to override default startup arguments with the values written in the user provided file - <code>wrapper-properties.conf</code>.</p>
-<h4 id="a-namemac-osxa4525-mac-os-x"><a name="mac-osx"></a>4.5.2.5 Mac OS X</h4>
-<p>The <em>ant</em> task <code>dist.osx</code> generates the mac installers. The  <a href="https://developer.apple.com/library/ios/documentation/general/Reference/InfoPlistKeyReference/Articles/AboutInformationPropertyListFiles.html" target="_blank">information property list file</a>, <code>Info.plist</code> present in <em>osx</em> module of agent/server module of installer provides the necessary configuration information for the bundled Go server/agent executable. The &#39;<em>JavaApplicationStub64</em>&#39;, used by the mac system to read the applications plist and then launch the Java VM with the appropriate properties such as the classpath and main class name, is provided from osx submodule inside build.</p>
-<h4 id="a-namesolarisa4526-solaris"><a name="solaris"></a>4.5.2.6 Solaris</h4>
+<h4 id="a-namemac-osxa4525-mac-os-x"><a name="a-namemac-osxa4525-mac-os-x" class="plugin-anchor" href="#a-namemac-osxa4525-mac-os-x"><span class="fa fa-link"></span></a><a name="mac-osx"></a>4.5.2.5 Mac OS X</h4>
+<p>The <em>ant</em> task <code>dist.osx</code> generates the mac installers. The  <a href="https://developer.apple.com/library/ios/documentation/general/Reference/InfoPlistKeyReference/Articles/AboutInformationPropertyListFiles.html" target="_blank">information property list file</a>, <code>Info.plist</code> present in <em>osx</em> module of agent/server module of installer provides the necessary configuration information for the bundled Go server/agent executable. The &apos;<em>JavaApplicationStub64</em>&apos;, used by the mac system to read the applications plist and then launch the Java VM with the appropriate properties such as the classpath and main class name, is provided from osx submodule inside build.</p>
+<h4 id="a-namesolarisa4526-solaris"><a name="a-namesolarisa4526-solaris" class="plugin-anchor" href="#a-namesolarisa4526-solaris"><span class="fa fa-link"></span></a><a name="solaris"></a>4.5.2.6 Solaris</h4>
 <p>The <em>buildr</em> task <code>cruise:pkg:solaris</code> calls <code>cruise:agent-bootstrapper:dist:solaris</code> and <code>cruise:server:dist:solaris</code> which creates the agent and server solaris installers respectively. </p>
 <p>To generate solaris installer Go uses the unzipped zip installer like other linux installers along with the necessary files for solaris packaging that are taken from <em>sol</em> module inside agent/server modules of installer. </p>
 <p>The <em>sol</em> module provides the scripts for pre/post install and un-insatll solaris installer. <code>pkginfo</code> file contains the necessary information about the package and the <code>svc.xml</code> provides the data required by <em>svcadm</em> and register Go as a service on solaris. Prototype file entries are generated with <em>pkgproto</em> command and given as input to <em>pkgmk</em> command which produces an installable package. The installable package is then taken and translated to datastream with <em>pkgtrans</em> command followed by <em>gzip</em> to generate the installer.</p>

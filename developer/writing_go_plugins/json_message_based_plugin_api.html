@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="6.4" data-basepath=".." data-revision="1418805819461">
+    <div class="book" data-level="6.4" data-basepath=".." data-revision="1418807770183">
     
 
 <div class="book-summary">
@@ -44,8 +48,20 @@
         
     	
     	
+    	    
+            <li>
+                <a href="http://go.cd" target="blank" class="custom-link">Home</a>
+            </li>
+    	
+    	    
+            <li>
+                <a href="https://github.com/gocd/documentation/" target="blank" class="custom-link">Contribute</a>
+            </li>
+    	
     	
 
+        
+        <li class="divider"></li>
         
 
         
@@ -2541,14 +2557,14 @@
                 
                     <section class="normal" id="section-gitbook_36">
                     
-                        <h1 id="json-message-based-plugin-api">JSON message based plugin API</h1>
-<h2 id="prerequisite">Prerequisite</h2>
+                        <h1 id="json-message-based-plugin-api"><a name="json-message-based-plugin-api" class="plugin-anchor" href="#json-message-based-plugin-api"><span class="fa fa-link"></span></a>JSON message based plugin API</h1>
+<h2 id="prerequisite"><a name="prerequisite" class="plugin-anchor" href="#prerequisite"><span class="fa fa-link"></span></a>Prerequisite</h2>
 <p>If you are not already aware about Go plugin architecture and usage guide, please go through below links</p>
 <p>[Go Plugin Architecture] (../../developer/4/4.4.1.md)</p>
 <p>[Plugins in Go] (go_plugins_basics.md)</p>
 <p>[Plugin User Guide] (plugin_user_guide.md)</p>
-<h2 id="introduction">Introduction</h2>
-<p>Java interface based plugin API&#39;s makes it difficult to support backward compatibility for plugins, any change in the contract would mean plugins using older contract no longer work. Although multiple versions of API interfaces and classes can be maintained but it gets messy after sometime.  JSON message based plugin API will help address this issue. Instead of implementing set of java interfaces to write a plugin, plugin authors have to implement a very thin java interface and rest of the communication between plugin and Go will be through JSON messages. Once JSON messages are used to enforce contract, incremental changes can be done without breaking older plugins. Below are some the benefits of this approach.</p>
+<h2 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><span class="fa fa-link"></span></a>Introduction</h2>
+<p>Java interface based plugin API&apos;s makes it difficult to support backward compatibility for plugins, any change in the contract would mean plugins using older contract no longer work. Although multiple versions of API interfaces and classes can be maintained but it gets messy after sometime.  JSON message based plugin API will help address this issue. Instead of implementing set of java interfaces to write a plugin, plugin authors have to implement a very thin java interface and rest of the communication between plugin and Go will be through JSON messages. Once JSON messages are used to enforce contract, incremental changes can be done without breaking older plugins. Below are some the benefits of this approach.</p>
 <ul>
 <li><p>Backward compatibility for plugins</p>
 </li>
@@ -2557,7 +2573,7 @@
 <li><p>No need re-distribute plugin API when a new extension point is introduced.</p>
 </li>
 </ul>
-<h2 id="how-does-it-work">How does it work?</h2>
+<h2 id="how-does-it-work"><a name="how-does-it-work" class="plugin-anchor" href="#how-does-it-work"><span class="fa fa-link"></span></a>How does it work?</h2>
 <p>Each plugin will have to provide an instance of GoPluginIdentifier when asked by Go. GoPluginIdentifier will allow Go to identity type of extension plugin supports.
 Interactions between Go and plugin for an extension point is broken down into multiple requests. Each interaction between Go and plugin will have extension name and request name, which determines
 expected response from plugin.  Each extension will have </p>
@@ -2592,8 +2608,8 @@ expected response from plugin.  Each extension will have </p>
 </li>
 </ul>
 <p><img src="../images/json_message_based_plugin_api_interaction.png" alt=""></p>
-<h1 id="what-are-the-changes-at-plugin-side">What are the changes at plugin side?</h1>
-<p>Every &#39;JSON message based API&#39; Go plugin will have to implement GoPlugin interface. GoPlugin interface is as shown below</p>
+<h1 id="what-are-the-changes-at-plugin-side"><a name="what-are-the-changes-at-plugin-side" class="plugin-anchor" href="#what-are-the-changes-at-plugin-side"><span class="fa fa-link"></span></a>What are the changes at plugin side?</h1>
+<p>Every &apos;JSON message based API&apos; Go plugin will have to implement GoPlugin interface. GoPlugin interface is as shown below</p>
 <pre><code class="lang-{code}">
     @GoPluginApiMarker
     public interface GoPlugin {
@@ -2613,7 +2629,7 @@ GoPluginApiRequest represents request message sent from Go to a plugin against s
 GoPluginApiResponse represents response message sent from a plugin to Go against specific request of a extension. As mentioned above, GoPluginApiResponse has response body, response code and response headers.        </p>
 <p><strong><em>GoApplicationAccessor</em></strong>
 Sometimes it is necessary for a plugin to get certain information from Go which might not be part of request sent. Precisely for this reason plugin would be provided an instance 
-of type GoApplicationAccessor which can help accessing set of JSON API&#39;s exposed specifically for plugins.</p>
+of type GoApplicationAccessor which can help accessing set of JSON API&apos;s exposed specifically for plugins.</p>
 <p>Go as of now supports package material extension and task extension. GoApplicationAccessor instance is not required for these extension points. More details about GoApplicationAccessor
 will be provided when an extension point comes up which needs to use it.</p>
 <p>Go plugin API provides an abstract implementation of GoPlugin called AbstractGoPlugin. It provides default implementation for &quot;initializeGoApplicationAccessor&quot; as below.  </p>
@@ -2627,7 +2643,7 @@ will be provided when an extension point comes up which needs to use it.</p>
     }
 </code></pre>
 <p>Please refer <a href="overview.html#plugin-api-javadoc">javadocs</a> for more details about API classes.</p>
-<h2 id="extension-points-supported-by-go">Extension points supported by Go</h2>
+<h2 id="extension-points-supported-by-go"><a name="extension-points-supported-by-go" class="plugin-anchor" href="#extension-points-supported-by-go"><span class="fa fa-link"></span></a>Extension points supported by Go</h2>
 <p><a href="package_material/json_message_based_package_material_extension.html">Package Repository As Material Extension</a></p>
 <p><a href="task/json_message_based_task_extension.html">Task Extension</a></p>
 

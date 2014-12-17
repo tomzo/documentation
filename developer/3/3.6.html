@@ -27,9 +27,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="3.6" data-basepath=".." data-revision="1418805819461">
+    <div class="book" data-level="3.6" data-basepath=".." data-revision="1418807770183">
     
 
 <div class="book-summary">
@@ -40,8 +44,20 @@
         
     	
     	
+    	    
+            <li>
+                <a href="http://go.cd" target="blank" class="custom-link">Home</a>
+            </li>
+    	
+    	    
+            <li>
+                <a href="https://github.com/gocd/documentation/" target="blank" class="custom-link">Contribute</a>
+            </li>
+    	
     	
 
+        
+        <li class="divider"></li>
         
 
         
@@ -2537,17 +2553,17 @@
                 
                     <section class="normal" id="section-gitbook_6">
                     
-                        <h2 id="36-user-interface">3.6 User Interface</h2>
-<h4 id="361-markup-and-styling--html--css">3.6.1 Markup and Styling : HTML &amp; CSS</h4>
+                        <h2 id="36-user-interface"><a name="36-user-interface" class="plugin-anchor" href="#36-user-interface"><span class="fa fa-link"></span></a>3.6 User Interface</h2>
+<h4 id="361-markup-and-styling--html--css"><a name="361-markup-and-styling--html--css" class="plugin-anchor" href="#361-markup-and-styling--html--css"><span class="fa fa-link"></span></a>3.6.1 Markup and Styling : HTML &amp; CSS</h4>
 <p>Usage of HTML and CSS is very obvious for any web app, because of the browser requirement. To be specific about the version of HTML, most of the layouts are still in XHTML1.0, we are gradually shifting them to HTML5. We all know its our responsibility to take web forward by using as much as latest tech we can use (obviously keeping browser support in mind :-))</p>
-<p>The markup resides inside <code>.html.erb</code> and <code>.vm</code> files, as we&#39;re using Rails and Velocity frameworks for front-end, parsing and processing of <code>.erb</code> and <code>.vm</code> files into HTML will be taken care by Rails and Velocity respectively.</p>
+<p>The markup resides inside <code>.html.erb</code> and <code>.vm</code> files, as we&apos;re using Rails and Velocity frameworks for front-end, parsing and processing of <code>.erb</code> and <code>.vm</code> files into HTML will be taken care by Rails and Velocity respectively.</p>
 <p>The existing pages are styled with CSS2.1 specification (a few with CSS3), we are also in the process of restructuring our front-end CSS files and using a CSS preprocessor instead of writing plain CSS. With this shift in progress, we are also tryng to adopt CSS3 as much as we can. Also, we are gradually merging icon files into one and planning to use CSS sprites concept to leverage rendering performance.</p>
-<h3 id="362-dom-interaction--javascriptjs-jquery-and-prototype">3.6.2 DOM interaction : JavaScript(JS), jQuery and Prototype</h3>
+<h3 id="362-dom-interaction--javascriptjs-jquery-and-prototype"><a name="362-dom-interaction--javascriptjs-jquery-and-prototype" class="plugin-anchor" href="#362-dom-interaction--javascriptjs-jquery-and-prototype"><span class="fa fa-link"></span></a>3.6.2 DOM interaction : JavaScript(JS), jQuery and Prototype</h3>
 <p>We all know that JS, jQuery and Prototype are the ways of adding dynamism in markup. Initially, Go used Prototype (a JavaScript API library) to interact with DOM and register events. We have started using jQuery and are in the process of eliminating prototype completely, there are still a lot of pieces using Prototype.</p>
-<p>Prototype is almost out of the JS API competition now, apparently not maintained anymore too, so no point of continuing it in future code. So, we started adopting jQuery, and currently we&#39;ve jQuery version 1.7.1.</p>
-<h3 id="363-css-preprocessor--sass">3.6.3 CSS Preprocessor : SASS</h3>
+<p>Prototype is almost out of the JS API competition now, apparently not maintained anymore too, so no point of continuing it in future code. So, we started adopting jQuery, and currently we&apos;ve jQuery version 1.7.1.</p>
+<h3 id="363-css-preprocessor--sass"><a name="363-css-preprocessor--sass" class="plugin-anchor" href="#363-css-preprocessor--sass"><span class="fa fa-link"></span></a>3.6.3 CSS Preprocessor : SASS</h3>
 <p>CSS is very straightforward and plain, extensions like SASS or LESS makes it really powerful, Sass is the one of the most mature, stable, and powerful professional grade CSS extension language in the world. We will not write plain CSS anymore, but will take the help of Sass. We are also rewriting our existing CSS files and moving them into SCSS files.</p>
-<h3 id="364-what-else-frameworks-libraries-or-anything">3.6.4 What else? Frameworks, Libraries or anything?</h3>
+<h3 id="364-what-else-frameworks-libraries-or-anything"><a name="364-what-else-frameworks-libraries-or-anything" class="plugin-anchor" href="#364-what-else-frameworks-libraries-or-anything"><span class="fa fa-link"></span></a>3.6.4 What else? Frameworks, Libraries or anything?</h3>
 <ul>
 <li><p>MicroContentPopup.js - Almost all the custom dropdowns in Go use Micro Content Popup(MCP). This lib is also outdated and not maintained anymore, so we are moving them to bootstrap dropdown. </p>
 </li>

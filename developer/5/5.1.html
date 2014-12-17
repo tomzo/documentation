@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="5.1" data-basepath=".." data-revision="1418805819461">
+    <div class="book" data-level="5.1" data-basepath=".." data-revision="1418807770183">
     
 
 <div class="book-summary">
@@ -44,8 +48,20 @@
         
     	
     	
+    	    
+            <li>
+                <a href="http://go.cd" target="blank" class="custom-link">Home</a>
+            </li>
+    	
+    	    
+            <li>
+                <a href="https://github.com/gocd/documentation/" target="blank" class="custom-link">Contribute</a>
+            </li>
+    	
     	
 
+        
+        <li class="divider"></li>
         
 
         
@@ -2541,14 +2557,14 @@
                 
                     <section class="normal" id="section-gitbook_17">
                     
-                        <h2 id="51-dashboard">5.1 Dashboard</h2>
+                        <h2 id="51-dashboard"><a name="51-dashboard" class="plugin-anchor" href="#51-dashboard"><span class="fa fa-link"></span></a>5.1 Dashboard</h2>
 <p>In the context of Go, the landing page is often called the <em>dashboard</em>. The dashboard presents the user with a view of all the pipelines that he/she is authorized to view. The dashboard contains the below listed functional areas:</p>
 <ul>
 <li>Personalise</li>
 <li>Search</li>
 <li>Pipeline Group(s) &amp; Pipeline(s)</li>
 </ul>
-<h3 id="511-personalise">5.1.1 Personalise</h3>
+<h3 id="511-personalise"><a name="511-personalise" class="plugin-anchor" href="#511-personalise"><span class="fa fa-link"></span></a>5.1.1 Personalise</h3>
 <p>The user has the ability to customize their front page view by selecting which pipelines are visible. By default, the console shows all newly created pipelines to the user (that the user has permission to see). This behavior is useful for administrators. The user can modify this behavior by unchecking the &quot;Show newly created pipelines&quot; checkbox in the <strong>Personalize</strong> tab.</p>
 <p>A user can blacklist the set of pipelines that he/she does not wish to view on the dashboard.</p>
 <p>The blacklisting feature is implemented in the <strong>pipelineselections</strong> table in the database. Here, the <em>selection</em> is either a <em>whitelist</em> (i.e. pipelines that should be displayed) or a <em>blacklist</em> (i.e. pipelines that should not be displayed). This is toggled based on the <code>isBlacklist</code> column of the table. </p>
@@ -2572,12 +2588,12 @@
 </code></pre><blockquote>
 <p>In case of anonymous access, every user share the dashboard configuration and every personalise operation overwrites the previous value.</p>
 </blockquote>
-<h3 id="512-search">5.1.2 Search</h3>
+<h3 id="512-search"><a name="512-search" class="plugin-anchor" href="#512-search"><span class="fa fa-link"></span></a>5.1.2 Search</h3>
 <p>Client side search is achieved using Javascript and DOM manipulation. The file named <em>jquery.listsearch.js</em> has the implementation.</p>
-<h3 id="513-pipeline-groups">5.1.3 Pipeline Group(s)</h3>
+<h3 id="513-pipeline-groups"><a name="513-pipeline-groups" class="plugin-anchor" href="#513-pipeline-groups"><span class="fa fa-link"></span></a>5.1.3 Pipeline Group(s)</h3>
 <p>Pipeline groups were meant to provide logical grouping of pipelines that might share a similar purpose. With reference to domain, <code>com.thoughtworks.go.config.PipelineConfigs</code> represents the entity. Group information are not persisted in the database and its only purpose is to achive grouping among the different pipelines in the system. Apart from grouping, it also allows finer grained permission model (<code>com.thoughtworks.go.config.Authorization</code>) that authorizes access to the group.</p>
 <p>You can read more about the dashboard layout in the <a href="http://www.thoughtworks.com/products/docs/go/current/help/Pipelines_Dashboard_page.html" target="_blank">user docs</a>.</p>
-<h3 id="514-pipelines-and-ordering-of-pipeline-instances">5.1.4 Pipeline(s) and Ordering of pipeline instances</h3>
+<h3 id="514-pipelines-and-ordering-of-pipeline-instances"><a name="514-pipelines-and-ordering-of-pipeline-instances" class="plugin-anchor" href="#514-pipelines-and-ordering-of-pipeline-instances"><span class="fa fa-link"></span></a>5.1.4 Pipeline(s) and Ordering of pipeline instances</h3>
 <p>Pipelines have two representations with reference to Go. There is the pipeline configuration represented by  <code>com.thoughtworks.go.config.PipelineConfig</code>, and an instance of a pipeline run represented by  <code>com.thoughtworks.go.domain.Pipeline</code>.</p>
 <p>Each pipeline run that shows up on the dashboard are ordered based on a certain logic. In Go, we use two distinct ordering methods:</p>
 <ul>
@@ -2599,7 +2615,7 @@
         }
     }
 </code></pre>
-<h3 id="515-active-pipelines">5.1.5 Active Pipelines</h3>
+<h3 id="515-active-pipelines"><a name="515-active-pipelines" class="plugin-anchor" href="#515-active-pipelines"><span class="fa fa-link"></span></a>5.1.5 Active Pipelines</h3>
 <p>Any pipeline instance which</p>
 <ul>
 <li>is the latest run of that pipeline configuration</li>
