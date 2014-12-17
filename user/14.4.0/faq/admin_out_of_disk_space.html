@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="9.21" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="9.21" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2174,17 +2178,17 @@
                 
                     <section class="normal" id="section-gitbook_72">
                     
-                        <h1 id="running-out-of-disk-space">Running out of disk space</h1>
-<p>After you&#39;ve had Go running for a while, you may notice the following warning box when browsing Go:</p>
+                        <h1 id="running-out-of-disk-space"><a name="running-out-of-disk-space" class="plugin-anchor" href="#running-out-of-disk-space"><span class="fa fa-link"></span></a>Running out of disk space</h1>
+<p>After you&apos;ve had Go running for a while, you may notice the following warning box when browsing Go:</p>
 <p><img src="../resources/images/1_low_disk_space_on_artifacts.png" alt=""></p>
-<p>If you don&#39;t do anything about it, you&#39;ll end up seeing the following error:</p>
+<p>If you don&apos;t do anything about it, you&apos;ll end up seeing the following error:</p>
 <p><img src="../resources/images/2_out_of_disk_space_on_artifacts.png" alt=""></p>
 <p>Go will stop scheduling new pipelines until you make more room, either by compressing large files, attaching a larger hard drive, or by deleting unused artifacts. You could also let Go manage artifact disk space by enabling auto purge of old artifacts.</p>
-<h2 id="auto-delete-artifacts">Auto delete artifacts</h2>
-<h3 id="introduction">Introduction</h3>
+<h2 id="auto-delete-artifacts"><a name="auto-delete-artifacts" class="plugin-anchor" href="#auto-delete-artifacts"><span class="fa fa-link"></span></a>Auto delete artifacts</h2>
+<h3 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><span class="fa fa-link"></span></a>Introduction</h3>
 <p>Go can be configured to automatically delete artifacts if the available disk space on the server is low. Go will purge artifacts when available disk space is lower than the given value. Artifacts will be purged upto the point when available disk space is greater than a defined value.</p>
-<h3 id="configuration">Configuration</h3>
-<h4 id="specify-artifact-purge-start-and-end-limits">Specify artifact purge start and end limits</h4>
+<h3 id="configuration"><a name="configuration" class="plugin-anchor" href="#configuration"><span class="fa fa-link"></span></a>Configuration</h3>
+<h4 id="specify-artifact-purge-start-and-end-limits"><a name="specify-artifact-purge-start-and-end-limits" class="plugin-anchor" href="#specify-artifact-purge-start-and-end-limits"><span class="fa fa-link"></span></a>Specify artifact purge start and end limits</h4>
 <blockquote>
 <p>You must be logged in as an admin user to configure this step.</p>
 </blockquote>
@@ -2195,7 +2199,7 @@
 <li>Specify when Go should stop purging artifacts in the second edit box.</li>
 </ol>
 <p><img src="../resources/images/pipeline_management.png" alt="Purge artifacts"></p>
-<h4 id="never-delete-artifacts-for-a-stage">Never delete artifacts for a stage</h4>
+<h4 id="never-delete-artifacts-for-a-stage"><a name="never-delete-artifacts-for-a-stage" class="plugin-anchor" href="#never-delete-artifacts-for-a-stage"><span class="fa fa-link"></span></a>Never delete artifacts for a stage</h4>
 <blockquote>
 <p>You must be logged in as an admin user to configure this step.</p>
 </blockquote>
@@ -2207,19 +2211,19 @@
 </ol>
 <p><img src="../resources/images/artifact_disable_stage.png" alt="Disable artifact cleanup"></p>
 <ol>
-<li>Check the box &#39;Never Cleanup Aartifacts&#39;</li>
+<li>Check the box &apos;Never Cleanup Aartifacts&apos;</li>
 </ol>
-<h3 id="also-see">Also see...</h3>
+<h3 id="also-see"><a name="also-see" class="plugin-anchor" href="#also-see"><span class="fa fa-link"></span></a>Also see...</h3>
 <ul>
 <li><a href="../configuration/managing_artifacts_and_reports.html">Managing artifacts and reports</a></li>
 <li><a href="../advanced_usage/dev_clean_up_when_cancel.html">Clean up after cancelling a task</a></li>
 </ul>
-<h2 id="compress-large-log-files">Compress large log files</h2>
-<p>In many cases, the easiest thing to do is compress some of the larger artifacts that you won&#39;t frequently have need for. For example, if you have a large log file named &#39;test.log&#39; and you&#39;re running Go server on a unix machine, the following script will gzip those files that haven&#39;t been modified in the last 10 days</p>
-<pre><code>find /var/lib/go-server/logs/pipelines -name test.log -mtime +10 -type f -exec gzip -v &#39;{}&#39; \;
+<h2 id="compress-large-log-files"><a name="compress-large-log-files" class="plugin-anchor" href="#compress-large-log-files"><span class="fa fa-link"></span></a>Compress large log files</h2>
+<p>In many cases, the easiest thing to do is compress some of the larger artifacts that you won&apos;t frequently have need for. For example, if you have a large log file named &apos;test.log&apos; and you&apos;re running Go server on a unix machine, the following script will gzip those files that haven&apos;t been modified in the last 10 days</p>
+<pre><code>find /var/lib/go-server/logs/pipelines -name test.log -mtime +10 -type f -exec gzip -v &apos;{}&apos; \;
 </code></pre><p>Now, if you add this to a system <a href="http://en.wikipedia.org/wiki/Cron" target="_blank">crontab</a>, your server can compress large artifacts automatically.</p>
-<h2 id="move-the-artifact-repository-to-a-new-larger-drive">Move the artifact repository to a new (larger) drive</h2>
-<p>If compressing large artifacts is not giving you enough free space, another thing you can do is attach a larger disk drive to store artifacts. After the drive is attached to the system, we can easily change the location Go uses for it&#39;s artifact repository.</p>
+<h2 id="move-the-artifact-repository-to-a-new-larger-drive"><a name="move-the-artifact-repository-to-a-new-larger-drive" class="plugin-anchor" href="#move-the-artifact-repository-to-a-new-larger-drive"><span class="fa fa-link"></span></a>Move the artifact repository to a new (larger) drive</h2>
+<p>If compressing large artifacts is not giving you enough free space, another thing you can do is attach a larger disk drive to store artifacts. After the drive is attached to the system, we can easily change the location Go uses for it&apos;s artifact repository.</p>
 <ul>
 <li>Find the location of the Go configuration file</li>
 <li>Navigate to the <a href="../navigation/administration_page.html">Admin</a> section
@@ -2236,7 +2240,7 @@
 </code></pre></li>
 <li>Start up Go server and verify you still have access to old artifacts</li>
 </ul>
-<h2 id="delete-unused-artifacts">Delete unused artifacts</h2>
+<h2 id="delete-unused-artifacts"><a name="delete-unused-artifacts" class="plugin-anchor" href="#delete-unused-artifacts"><span class="fa fa-link"></span></a>Delete unused artifacts</h2>
 <p>Another option for making more room is to remove unused (or easily recreatable) artifacts. You may also have old pipelines that you no longer need.</p>
 <p>The directory structure of the artifact repository makes selecting which artifacts are safe to delete easier. The format is:</p>
 <pre><code>[artifacts-dir]/pipelines/[pipelineName]/[pipelineLabel]/[stageName]/[stageCounter]/[jobName]

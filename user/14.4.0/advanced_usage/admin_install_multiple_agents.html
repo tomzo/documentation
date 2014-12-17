@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="5.3" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="5.3" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,14 +2176,14 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_6">
+                    <section class="normal" id="section-gitbook_8">
                     
-                        <h1 id="install-multiple-agents-on-the-same-machine">Install multiple agents on the same machine</h1>
+                        <h1 id="install-multiple-agents-on-the-same-machine"><a name="install-multiple-agents-on-the-same-machine" class="plugin-anchor" href="#install-multiple-agents-on-the-same-machine"><span class="fa fa-link"></span></a>Install multiple agents on the same machine</h1>
 <p>In order to fully utilize your hardware, it is often useful to install multiple agents on a single machine.</p>
 <p>Currently Go installers do not support this out of the box. The following sections describe how this can be done manually</p>
-<h2 id="windows">Windows</h2>
+<h2 id="windows"><a name="windows" class="plugin-anchor" href="#windows"><span class="fa fa-link"></span></a>Windows</h2>
 <p>On Windows, multiple Go agents can be run in two ways - as Windows service or as a Windows command</p>
-<h3 id="running-as-windows-service">Running as Windows service</h3>
+<h3 id="running-as-windows-service"><a name="running-as-windows-service" class="plugin-anchor" href="#running-as-windows-service"><span class="fa fa-link"></span></a>Running as Windows service</h3>
 <ul>
 <li><a href="../installation/installing_go_agent.html">Install your first agent with the installer to the default location</a></li>
 <li>Copy the installation folder (&quot;C:\Program Files\Go Agent&quot;) to &quot;C:\Program Files\Go Agent 2&quot;</li>
@@ -2195,7 +2199,7 @@ Just after the line #include ../conf/wrapper-licenses.conf, add<ul>
 </code></pre></li>
 <li>Start &quot;GoAgent2&quot; service</li>
 </ul>
-<h3 id="running-as-windows-command">Running as Windows command</h3>
+<h3 id="running-as-windows-command"><a name="running-as-windows-command" class="plugin-anchor" href="#running-as-windows-command"><span class="fa fa-link"></span></a>Running as Windows command</h3>
 <ul>
 <li>Follow the instructions to <a href="../installation/run_go_without_install.html">run Go without installation on Windows</a></li>
 <li>Do the same steps on a different folder to set up another agent</li>
@@ -2203,7 +2207,7 @@ Just after the line #include ../conf/wrapper-licenses.conf, add<ul>
 <blockquote>
 <p>You should use a VNC application (such as <a href="http://www.tightvnc.com" target="_blank">TightVNC</a>) to keep windows user logged in. If the user logs out or the computer restarts, the agents will shutdown.</p>
 </blockquote>
-<h2 id="mac-osx">Mac OSX</h2>
+<h2 id="mac-osx"><a name="mac-osx" class="plugin-anchor" href="#mac-osx"><span class="fa fa-link"></span></a>Mac OSX</h2>
 <ul>
 <li><a href="../installation/installing_go_agent.html">Install your first agent with the installer</a></li>
 <li>Run Terminal.app</li>
@@ -2211,7 +2215,7 @@ Just after the line #include ../conf/wrapper-licenses.conf, add<ul>
 <li>In this folder, run<pre><code>java -jar &quot;/Applications/Go Agent.app/agent-bootstrapper.jar&quot; 127.0.0.1 &amp;
 </code></pre></li>
 </ul>
-<h2 id="linux-and-other-unix">Linux (and other UNIX)</h2>
+<h2 id="linux-and-other-unix"><a name="linux-and-other-unix" class="plugin-anchor" href="#linux-and-other-unix"><span class="fa fa-link"></span></a>Linux (and other UNIX)</h2>
 <ul>
 <li><a href="../installation/installing_go_agent.html">Install your first agent with the installer</a></li>
 <li>Make an empty folder called /var/lib/go-agent-2</li>

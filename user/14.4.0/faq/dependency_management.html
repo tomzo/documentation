@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="9.10" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="9.10" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2174,27 +2178,27 @@
                 
                     <section class="normal" id="section-gitbook_75">
                     
-                        <h1 id="dependency-management">Dependency Management</h1>
+                        <h1 id="dependency-management"><a name="dependency-management" class="plugin-anchor" href="#dependency-management"><span class="fa fa-link"></span></a>Dependency Management</h1>
 <p>When you have non-trivial dependency pipeline chains, you may have concerns about how dependent pipelines and materials interact. For example, code and tests are checked in as part of the same commit. But code is built and tested in sequence, so the same material version has to be used for pipelines that build and test your code. This section covers some Dependency Management concepts and how Go handles certain complex scenarios.</p>
-<h2 id="propagate-material-revision-throughout-the-dependency-chain">Propagate material revision throughout the dependency chain</h2>
+<h2 id="propagate-material-revision-throughout-the-dependency-chain"><a name="propagate-material-revision-throughout-the-dependency-chain" class="plugin-anchor" href="#propagate-material-revision-throughout-the-dependency-chain"><span class="fa fa-link"></span></a>Propagate material revision throughout the dependency chain</h2>
 <p>If you have frequent material updates coupled with long running dependent pipelines sharing that same material, you may encounter situations where the revision that triggered the dependency chain is no longer the latest revision. Go keeps track of what revision triggered a dependency chain and ensures that the same version propagates throughout all members of that chain. This helps ensure that all artifacts generated as part of that build share a common revision.</p>
-<h3 id="example">Example</h3>
+<h3 id="example"><a name="example" class="plugin-anchor" href="#example"><span class="fa fa-link"></span></a>Example</h3>
 <p>Consider the following dependency chain:</p>
 <p><img src="../resources/images/revision_propagation.png" alt=""></p>
-<h4 id="legend">Legend</h4>
+<h4 id="legend"><a name="legend" class="plugin-anchor" href="#legend"><span class="fa fa-link"></span></a>Legend</h4>
 <ul>
 <li><strong>SCM</strong> : Repository</li>
 <li><strong>rev1, rev2</strong> : Check-ins to the repository</li>
 <li><strong>A</strong> : Pipeline for development build</li>
 <li>dependent <strong>B</strong> : Pipeline for acceptance tests</li>
 </ul>
-<h4 id="how-it-works">How it works</h4>
+<h4 id="how-it-works"><a name="how-it-works" class="plugin-anchor" href="#how-it-works"><span class="fa fa-link"></span></a>How it works</h4>
 <ul>
 <li>Code is checked in to SCM (rev1)</li>
 <li>Development build (A) is triggered by the check-in</li>
 <li>There is another check-in to SCM (rev2)</li>
 <li>Development build completes (with rev1) and triggers acceptance tests (B)</li>
-<li>Here&#39;s where dependency management comes in. Go is smart enough detect that rev1 originally triggered the build and ensures that the acceptance tests check-out that revision (rev1) and not the latest revision (rev2). In this situation, Go ensures that the appropriate version of acceptance tests are run against the appropriate version of the development build.</li>
+<li>Here&apos;s where dependency management comes in. Go is smart enough detect that rev1 originally triggered the build and ensures that the acceptance tests check-out that revision (rev1) and not the latest revision (rev2). In this situation, Go ensures that the appropriate version of acceptance tests are run against the appropriate version of the development build.</li>
 </ul>
 
                     

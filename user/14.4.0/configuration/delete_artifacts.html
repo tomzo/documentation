@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="4.27" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="4.27" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,13 +2176,13 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_49">
+                    <section class="normal" id="section-gitbook_50">
                     
-                        <h1 id="auto-delete-artifacts">Auto delete artifacts</h1>
-<h2 id="introduction">Introduction</h2>
+                        <h1 id="auto-delete-artifacts"><a name="auto-delete-artifacts" class="plugin-anchor" href="#auto-delete-artifacts"><span class="fa fa-link"></span></a>Auto delete artifacts</h1>
+<h2 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><span class="fa fa-link"></span></a>Introduction</h2>
 <p>Go can be configured to automatically delete artifacts if the available disk space on the server is low. Go will purge artifacts when available disk space is lower than the given value. Artifacts will be purged upto the point when available disk space is greater than a defined value.</p>
-<h2 id="configuration">Configuration</h2>
-<h3 id="specify-artifact-purge-start-and-end-limits">Specify artifact purge start and end limits</h3>
+<h2 id="configuration"><a name="configuration" class="plugin-anchor" href="#configuration"><span class="fa fa-link"></span></a>Configuration</h2>
+<h3 id="specify-artifact-purge-start-and-end-limits"><a name="specify-artifact-purge-start-and-end-limits" class="plugin-anchor" href="#specify-artifact-purge-start-and-end-limits"><span class="fa fa-link"></span></a>Specify artifact purge start and end limits</h3>
 <p>You must be logged in as an admin user to configure this step.</p>
 <ol>
 <li>Navigate to the Admin section on the Go dashboard.</li>
@@ -2187,7 +2191,7 @@
 <li>Specify when Go should stop purging artifacts in the second edit box.
 <img src="../resources/images/pipeline_management.png" alt="Purge artifacts"></li>
 </ol>
-<h3 id="never-delete-artifacts-for-a-stage">Never delete artifacts for a stage</h3>
+<h3 id="never-delete-artifacts-for-a-stage"><a name="never-delete-artifacts-for-a-stage" class="plugin-anchor" href="#never-delete-artifacts-for-a-stage"><span class="fa fa-link"></span></a>Never delete artifacts for a stage</h3>
 <p>You must be logged in as an admin user to configure this step.</p>
 <p>You can disallow deletion of artifacts from a particular stage so that those artifacts are excluded during deletion. This option can be set in the stage editor for a pipeline. This option can be set for stages that are important so that artifacts for the stage are preserved.</p>
 <ol>
@@ -2195,9 +2199,9 @@
 <li>Navigate to the pipelines section and choose a pipeline to edit</li>
 <li>Navigate to the stage settings for the stage
 <img src="../resources/images/artifact_disable_stage.png" alt="Disable artifact cleanup"></li>
-<li>Check the box &#39;Never Cleanup Aartifacts&#39;</li>
+<li>Check the box &apos;Never Cleanup Aartifacts&apos;</li>
 </ol>
-<h3 id="also-see">Also see...</h3>
+<h3 id="also-see"><a name="also-see" class="plugin-anchor" href="#also-see"><span class="fa fa-link"></span></a>Also see...</h3>
 <ul>
 <li><a href="managing_artifacts_and_reports.html">Managing artifacts and reports</a></li>
 <li><a href="../advanced_usage/dev_clean_up_when_cancel.html">Clean up after cancelling a task</a></li>

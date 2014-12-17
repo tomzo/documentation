@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="4.30" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="4.30" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,12 +2176,12 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_36">
+                    <section class="normal" id="section-gitbook_37">
                     
-                        <h1 id="notifications">Notifications</h1>
+                        <h1 id="notifications"><a name="notifications" class="plugin-anchor" href="#notifications"><span class="fa fa-link"></span></a>Notifications</h1>
 <p>It is often useful to receive an email when certain status changes occur in a stage. For example, a developer might want to know when their own check-in has broken the build. Alternatively, a manager might want an email whenever a project is deployed into production. Both of these scenarios can be covered by Notification Filters</p>
 <p>Notifications will only work if <a href="dev_authentication.html">Security</a> is enabled and <a href="admin_mailhost_info.html">mailhost information</a> is correct.</p>
-<h2 id="example-usage">Example usage</h2>
+<h2 id="example-usage"><a name="example-usage" class="plugin-anchor" href="#example-usage"><span class="fa fa-link"></span></a>Example usage</h2>
 <p><strong>Usage: As a developer, I want to be notified when I break a build on &quot;acceptance&quot; pipeline.</strong></p>
 <ul>
 <li><p>Click on the <strong>Preferences</strong> tab</p>
@@ -2195,7 +2199,7 @@
 </li>
 </ul>
 <p><img src="../resources/images/4_add_filter.png" alt=""></p>
-<h3 id="events">Events</h3>
+<h3 id="events"><a name="events" class="plugin-anchor" href="#events"><span class="fa fa-link"></span></a>Events</h3>
 <p>You can set up notifications for different events</p>
 <ul>
 <li>All - all the runs for the stage</li>
@@ -2214,15 +2218,15 @@
 </ul>
 <p><img src="../resources/images/5_added_filter.png" alt=""></p>
 <blockquote>
-<p>I&#39;ll be emailed whenever the &quot;twist-plugins&quot; stage of &quot;acceptance&quot; pipeline breaks due to my check-in</p>
-<p>I&#39;ll be emailed whenever the &quot;build&quot; stage of &quot;plugins&quot; pipeline fails due to my check-in</p>
-<p>I&#39;ll be emailed whenever the &quot;upload-installers&quot; stage of &quot;distributions-all&quot; pipeline passes for any check-in</p>
-<p>I&#39;ll be emailed on all events for any stage of &quot;regression&quot; pipeline for my check-in</p>
+<p>I&apos;ll be emailed whenever the &quot;twist-plugins&quot; stage of &quot;acceptance&quot; pipeline breaks due to my check-in</p>
+<p>I&apos;ll be emailed whenever the &quot;build&quot; stage of &quot;plugins&quot; pipeline fails due to my check-in</p>
+<p>I&apos;ll be emailed whenever the &quot;upload-installers&quot; stage of &quot;distributions-all&quot; pipeline passes for any check-in</p>
+<p>I&apos;ll be emailed on all events for any stage of &quot;regression&quot; pipeline for my check-in</p>
 </blockquote>
 <p>Users can also select to get notifications for a particular (or all) event on any satge of any pipeline.</p>
 <p><img src="../resources/images/6_added_filter_any_pipeline.png" alt=""></p>
 <blockquote>
-<p>I&#39;ll be emailed whenever any stage of any pipeline fails due to my check-in</p>
+<p>I&apos;ll be emailed whenever any stage of any pipeline fails due to my check-in</p>
 </blockquote>
 
                     

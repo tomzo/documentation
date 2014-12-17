@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="4.17" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="4.17" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,20 +2176,20 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_52">
+                    <section class="normal" id="section-gitbook_53">
                     
-                        <h1 id="choose-when-a-stage-runs">Choose when a stage runs</h1>
-<p>Often there are steps in your <a href="../introduction/concepts_in_go.html">pipeline</a> that you do not want to happen automatically. For example, you might want to keep binaries from being created for every pipeline (to prevent <a href="../faq/admin_out_of_disk_space.html">running out of disk space</a>) or want to choose when your code is <a href="../faq/rm_deploy_to_environment.html">deployed to production</a>. Stages in Go can be marked as &#39;manual&#39; just for this purpose.</p>
+                        <h1 id="choose-when-a-stage-runs"><a name="choose-when-a-stage-runs" class="plugin-anchor" href="#choose-when-a-stage-runs"><span class="fa fa-link"></span></a>Choose when a stage runs</h1>
+<p>Often there are steps in your <a href="../introduction/concepts_in_go.html">pipeline</a> that you do not want to happen automatically. For example, you might want to keep binaries from being created for every pipeline (to prevent <a href="../faq/admin_out_of_disk_space.html">running out of disk space</a>) or want to choose when your code is <a href="../faq/rm_deploy_to_environment.html">deployed to production</a>. Stages in Go can be marked as &apos;manual&apos; just for this purpose.</p>
 <p>You can create a manual pipeline by setting the first stage to manual.</p>
-<h2 id="example-usage">Example usage</h2>
-<p>Usage: We need a manual &#39;dist&#39; stage that will create the binaries used by later stages.</p>
+<h2 id="example-usage"><a name="example-usage" class="plugin-anchor" href="#example-usage"><span class="fa fa-link"></span></a>Example usage</h2>
+<p>Usage: We need a manual &apos;dist&apos; stage that will create the binaries used by later stages.</p>
 <ul>
-<li><a href="admin_add_stage.html">Add a new stage</a> named &#39;dist&#39; after a build stage</li>
+<li><a href="admin_add_stage.html">Add a new stage</a> named &apos;dist&apos; after a build stage</li>
 <li>Set the Stage type to manual</li>
 </ul>
 <p><img src="../resources/images/1_add_approval_tag.png" alt=""></p>
 <ul>
-<li>Now, when the build stage &#39;build&#39; is completed, you can manually cause Go to create the binary from the <a href="../navigation/pipeline_activity_page.html">Pipeline activity</a> page</li>
+<li>Now, when the build stage &apos;build&apos; is completed, you can manually cause Go to create the binary from the <a href="../navigation/pipeline_activity_page.html">Pipeline activity</a> page</li>
 </ul>
 
                     

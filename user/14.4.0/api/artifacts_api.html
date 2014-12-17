@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="7.9" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="7.9" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,14 +2176,14 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_26">
+                    <section class="normal" id="section-gitbook_27">
                     
-                        <h1 id="artifacts-api">Artifacts API</h1>
+                        <h1 id="artifacts-api"><a name="artifacts-api" class="plugin-anchor" href="#artifacts-api"><span class="fa fa-link"></span></a>Artifacts API</h1>
 <blockquote>
 <p>The Go API documented here is a work in progress. Future versions may change this API.</p>
 </blockquote>
 <p>The Artifacts API is not as much an API as a way to list, download and upload artifacts through command-line.</p>
-<h2 id="list">List</h2>
+<h2 id="list"><a name="list" class="plugin-anchor" href="#list"><span class="fa fa-link"></span></a>List</h2>
 <table>
 <thead>
 <tr>
@@ -2198,7 +2202,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="show">Show</h2>
+<h2 id="show"><a name="show" class="plugin-anchor" href="#show"><span class="fa fa-link"></span></a>Show</h2>
 <table>
 <thead>
 <tr>
@@ -2229,7 +2233,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="create--append">Create &amp; Append</h2>
+<h2 id="create--append"><a name="create--append" class="plugin-anchor" href="#create--append"><span class="fa fa-link"></span></a>Create &amp; Append</h2>
 <table>
 <thead>
 <tr>
@@ -2250,48 +2254,48 @@
 <td>Append</td>
 <td><a href="http://[server]/go/files/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job]/[filename" target="_blank">http://[server]/go/files/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job]/[filename</a>]</td>
 <td>PUT</td>
-<td>appending a string to a file named &#39;filename&#39; in the default artifact folder of the pipeline/stage/job with particular pipeline counter</td>
+<td>appending a string to a file named &apos;filename&apos; in the default artifact folder of the pipeline/stage/job with particular pipeline counter</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>You can use key word &#39;latest&#39; as a pipeline counter or a stage counter.</li>
+<li>You can use key word &apos;latest&apos; as a pipeline counter or a stage counter.</li>
 <li><strong>pipeline-counter</strong> is a number which indicates how many times the pipeline has been triggerd.</li>
 <li><strong>stage-counter</strong> is a number which indicates how many times the stage has been re-run in the pipeline with the same pipeline counter.</li>
 <li>The name in the RESTful url is case-sensitive.</li>
 </ul>
-<h2 id="examples">Examples</h2>
+<h2 id="examples"><a name="examples" class="plugin-anchor" href="#examples"><span class="fa fa-link"></span></a>Examples</h2>
 <ul>
 <li>We use curl, a command line tool for transferring files with URL syntax, in the following examples. Of course, you can use any HTTP client library.</li>
 <li>We assume that the url of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
 <li>We assume security has been switched on, and that there is a user named <strong>admin</strong> with the password <strong>badger</strong>.</li>
 </ul>
 <p>And the pipeline configuration looks like:</p>
-<pre><code class="lang-xml">      <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"foo"</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">"foo-1.0-${COUNT}"</span>&gt;</span>
+<pre><code class="lang-xml">      <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;foo&quot;</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">&quot;foo-1.0-${COUNT}&quot;</span>&gt;</span>
          <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
-               <span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">"...."</span>/&gt;</span>
+               <span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;....&quot;</span>/&gt;</span>
          <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"DEV"</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;DEV&quot;</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
-           <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UnitTest"</span>&gt;</span>
+           <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UnitTest&quot;</span>&gt;</span>
            <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">"ut"</span>/&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;ut&quot;</span>/&gt;</span>
            <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span>  <span class="hljs-attribute">src</span>=<span class="hljs-value">"coverage"</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">"coveragereport.html"</span>/&gt;</span>         
+                <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span>  <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;coverage&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;coveragereport.html&quot;</span>/&gt;</span>         
             <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
          <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
          <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UATest"</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UATest&quot;</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
-           <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"UAT"</span>&gt;</span>
+           <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UAT&quot;</span>&gt;</span>
            <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">"all-UAT"</span>/&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;all-UAT&quot;</span>/&gt;</span>
            <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span>  <span class="hljs-attribute">src</span>=<span class="hljs-value">"report"</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">"UAreport.html"</span>/&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span>  <span class="hljs-attribute">src</span>=<span class="hljs-value">"target"</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">"pkg/foo.war"</span>/&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span>  <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;report&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;UAreport.html&quot;</span>/&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span>  <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;pkg/foo.war&quot;</span>/&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
          <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
@@ -2300,25 +2304,25 @@
 </code></pre>
 <p>If you want to get the list of files in json for the latest completed job UnitTest, the command is</p>
 <pre><code>curl -u admin:badger http://goserver.com:8153/go/files/foo/latest/DEV/1/UnitTest.json
-</code></pre><p>If you want to get the list of files in json for the job UnitTest with the pipeline counter 1243 and stage counter &#39;1&#39;, the command is</p>
+</code></pre><p>If you want to get the list of files in json for the job UnitTest with the pipeline counter 1243 and stage counter &apos;1&apos;, the command is</p>
 <pre><code>curl -u admin:badger http://goserver.com:8153/go/files/foo/1243/DEV/1/UnitTest.json
-</code></pre><p>If you want to get the file &#39;foo.war&#39; under the folder &#39;pkg&#39; for the job UAT with the pipeline counter 1243, the command is</p>
+</code></pre><p>If you want to get the file &apos;foo.war&apos; under the folder &apos;pkg&apos; for the job UAT with the pipeline counter 1243, the command is</p>
 <pre><code>curl -u admin:badger http://goserver.com:8153/go/files/foo/1243/UATest/1/UAT/pkg/foo.war
-</code></pre><p>If you want to get a zip file of the contents of &#39;binaries&#39; under the folder &#39;pkg&#39; for the job UAT with the pipeline counter 1243, the command is</p>
+</code></pre><p>If you want to get a zip file of the contents of &apos;binaries&apos; under the folder &apos;pkg&apos; for the job UAT with the pipeline counter 1243, the command is</p>
 <pre><code>curl -u admin:badger http://goserver.com:8153/go/files/foo/1243/UATest/1/UAT/pkg/binaries.zip
 </code></pre><blockquote>
 <p>The above command will return immediately with an HTTP status code of 202 to indicate that the request was accepted. The same command needs to be retried after a few seconds to actually retrieve the zip contents</p>
 </blockquote>
-<p>If you want to get the list in the folder &quot;pkg&quot; in json format for the job UAT with the pipeline counter 1243 with stage counter &#39;1&#39;, the command is</p>
+<p>If you want to get the list in the folder &quot;pkg&quot; in json format for the job UAT with the pipeline counter 1243 with stage counter &apos;1&apos;, the command is</p>
 <pre><code>curl -u admin:badger http://goserver.com:8153/go/files/foo/1243/UATest/1/UAT/pkg.json
-</code></pre><p>If you want to upload a file abc.txt to the job UAT with the pipeline counter 1243 and stage counter &#39;1&#39;,and the target name is def.txt, the command is</p>
+</code></pre><p>If you want to upload a file abc.txt to the job UAT with the pipeline counter 1243 and stage counter &apos;1&apos;,and the target name is def.txt, the command is</p>
 <pre><code>curl -u admin:badger -F file=@abc.txt http://goserver.com:8153/go/files/foo/1243/UATest/1/UAT/def.txt
-</code></pre><p>If you want to upload a zip file abc.zip to the job UAT with the pipeline counter 1243 with stage counter &#39;1&#39;, and the target name is def.zip, the command is</p>
+</code></pre><p>If you want to upload a zip file abc.zip to the job UAT with the pipeline counter 1243 with stage counter &apos;1&apos;, and the target name is def.zip, the command is</p>
 <pre><code>curl -u admin:badger -F file=@abc.zip http://goserver.com:8153/go/files/foo/1243/UATest/1/UAT/def.zip
 </code></pre><p><strong>Notes:</strong></p>
-<p>In order to upload a folder, first zip it up. Next, assuming you want it to be associated with the job UAT, pipeline counter 1243, stage counter &#39;1&#39;, and the folder name &#39;def&#39;, the command is</p>
+<p>In order to upload a folder, first zip it up. Next, assuming you want it to be associated with the job UAT, pipeline counter 1243, stage counter &apos;1&apos;, and the folder name &apos;def&apos;, the command is</p>
 <pre><code>curl -u admin:badger -F zipfile=@abc.zip http://goserver.com:8153/go/files/foo/1243/UATest/1/UAT/def
-</code></pre><p>If you want to append the content of a file, say abc.txt, to the end of a file &#39;def.txt&#39; to the job UnitTest with the pipeline counter 1243 and stage counter &#39;1&#39;, the command is</p>
+</code></pre><p>If you want to append the content of a file, say abc.txt, to the end of a file &apos;def.txt&apos; to the job UnitTest with the pipeline counter 1243 and stage counter &apos;1&apos;, the command is</p>
 <pre><code>curl -u admin:badger -T abc.txt http://goserver.com:8153/go/files/foo/1243/DEV/1/UnitTest/def.txt
 </code></pre>
                     

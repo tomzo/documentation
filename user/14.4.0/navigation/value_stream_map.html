@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="2.10" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="2.10" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2174,8 +2178,8 @@
                 
                     <section class="normal" id="section-gitbook_120">
                     
-                        <h1 id="value-stream-map">Value Stream Map</h1>
-<h2 id="introduction">Introduction</h2>
+                        <h1 id="value-stream-map"><a name="value-stream-map" class="plugin-anchor" href="#value-stream-map"><span class="fa fa-link"></span></a>Value Stream Map</h1>
+<h2 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><span class="fa fa-link"></span></a>Introduction</h2>
 <p>Value Stream Map helps you visualize your CI/CD workflow. With a single click, it allows you to trace a commit from when it is checked in up to when it is deployed.</p>
 <p><img src="../resources/images/whole_map.png" alt=""></p>
 <p>A value stream map can be drawn for every instance of a pipeline. It provides you with the ability to:</p>
@@ -2186,33 +2190,33 @@
 <li>See changes in dependencies of the pipeline across different runs of it.</li>
 </ul>
 <p>Along with all this, it also allows you to easily debug problems when a dependency/configuration change caused your build-test-release setup to break.</p>
-<h2 id="understanding-the-value-stream-map">Understanding the Value Stream Map</h2>
+<h2 id="understanding-the-value-stream-map"><a name="understanding-the-value-stream-map" class="plugin-anchor" href="#understanding-the-value-stream-map"><span class="fa fa-link"></span></a>Understanding the Value Stream Map</h2>
 <p>The Value Stream Map is laid out as an end-to-end dependency graph. The graph originates from source control materials and flows from left to right.</p>
 <p>The pipeline instance for which the Value Stream Map is being viewed is the main pipeline and is highlighted. Everything to the left of this pipeline are its upstream dependencies, ie all the materials that have contributed to this instance. Everything to the right are its downstream dependencies, ie, all the pipelines that it can potentially trigger or contribute to.</p>
 <p><img src="../resources/images/upstream_and_downstream.png" alt=""></p>
-<h3 id="upstream-dependencies">Upstream Dependencies</h3>
+<h3 id="upstream-dependencies"><a name="upstream-dependencies" class="plugin-anchor" href="#upstream-dependencies"><span class="fa fa-link"></span></a>Upstream Dependencies</h3>
 <p>The upstream dependencies of the main pipeline are taken from history and show all the source control and pipeline dependency materials that have contributed to the main pipeline. Even when the Go Configuration changes after a certain instance of a pipeline, its upstream dependency graph will continue to reflect the older configuration with which it was run. This also means that it would display pipelines that do not exist in the configuration any more.</p>
-<p>Let us assume that instance &#39;1&#39; of pipeline &#39;Build&#39; is as below</p>
+<p>Let us assume that instance &apos;1&apos; of pipeline &apos;Build&apos; is as below</p>
 <p><img src="../resources/images/upstream.png" alt=""></p>
-<p>If the configuration changes to replace the pipeline &#39;Services&#39; with 2 pipelines - &#39;Service-1&#39; and &#39;Service-2&#39;, the next instance of pipeline &#39;Build&#39; would reflect the change.</p>
+<p>If the configuration changes to replace the pipeline &apos;Services&apos; with 2 pipelines - &apos;Service-1&apos; and &apos;Service-2&apos;, the next instance of pipeline &apos;Build&apos; would reflect the change.</p>
 <p><img src="../resources/images/upstream_config_changed.png" alt=""></p>
-<p>Value Stream Map of pipeline &#39;Build&#39; with counter &#39;1&#39; would look as below</p>
+<p>Value Stream Map of pipeline &apos;Build&apos; with counter &apos;1&apos; would look as below</p>
 <p><img src="../resources/images/upstream_pipeline_deleted.png" alt=""></p>
-<h3 id="downstream-dependencies">Downstream Dependencies</h3>
+<h3 id="downstream-dependencies"><a name="downstream-dependencies" class="plugin-anchor" href="#downstream-dependencies"><span class="fa fa-link"></span></a>Downstream Dependencies</h3>
 <p>The downstream dependencies of the main pipeline instance indicate what can happen with it. This information is always taken from the latest configuration. Pipelines that have not run yet are also shown</p>
 <p><img src="../resources/images/downstream_unrun_instance.png" alt=""></p>
-<p>If Environment-1 is removed from the configuration, the Value Stream Map for the same instance of &#39;Build&#39; would look as below.</p>
+<p>If Environment-1 is removed from the configuration, the Value Stream Map for the same instance of &apos;Build&apos; would look as below.</p>
 <p><img src="../resources/images/downstream_pipeline_deleted.png" alt=""></p>
-<h3 id="multiple-pipeline-instances">Multiple Pipeline Instances</h3>
-<p>A pipeline could be re-triggered multiple times with the same revision. In such cases, all the instances are shown in descending order against that pipeline. In the below example, &#39;Deploy&#39; has been triggered thrice with counter &#39;2&#39; of pipeline &#39;FunctionalTests&#39;.</p>
+<h3 id="multiple-pipeline-instances"><a name="multiple-pipeline-instances" class="plugin-anchor" href="#multiple-pipeline-instances"><span class="fa fa-link"></span></a>Multiple Pipeline Instances</h3>
+<p>A pipeline could be re-triggered multiple times with the same revision. In such cases, all the instances are shown in descending order against that pipeline. In the below example, &apos;Deploy&apos; has been triggered thrice with counter &apos;2&apos; of pipeline &apos;FunctionalTests&apos;.</p>
 <p><img src="../resources/images/multiple_instances.png" alt=""></p>
-<h3 id="viewing-the-value-stream-map">Viewing the Value Stream Map</h3>
+<h3 id="viewing-the-value-stream-map"><a name="viewing-the-value-stream-map" class="plugin-anchor" href="#viewing-the-value-stream-map"><span class="fa fa-link"></span></a>Viewing the Value Stream Map</h3>
 <p>Every pipeline label in Go directs you to the value stream map of that instance of the pipeline.</p>
 <p><img src="../resources/images/navigation.png" alt=""></p>
 <p>You can access Value Stream Map for a commit in 2 ways:</p>
 <p><img src="../resources/images/vsm_commit_1.png" alt="">
 <img src="../resources/images/vsm_commit_2.png" alt=""></p>
-<h3 id="permissions">Permissions</h3>
+<h3 id="permissions"><a name="permissions" class="plugin-anchor" href="#permissions"><span class="fa fa-link"></span></a>Permissions</h3>
 <p>The permissions required to view a value stream map are as follows:</p>
 <ul>
 <li>Go Administrators have access to the value stream maps of all the pipelines that are configured.</li>

@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="9.7" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="9.7" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,10 +2176,10 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_80">
+                    <section class="normal" id="section-gitbook_81">
                     
-                        <h1 id="using-environment-variables-in-go">Using Environment Variables in Go</h1>
-<h2 id="standard-go-environment-variables">Standard Go environment variables</h2>
+                        <h1 id="using-environment-variables-in-go"><a name="using-environment-variables-in-go" class="plugin-anchor" href="#using-environment-variables-in-go"><span class="fa fa-link"></span></a>Using Environment Variables in Go</h1>
+<h2 id="standard-go-environment-variables"><a name="standard-go-environment-variables" class="plugin-anchor" href="#standard-go-environment-variables"><span class="fa fa-link"></span></a>Standard Go environment variables</h2>
 <table>
 <thead>
 <tr>
@@ -2247,7 +2251,7 @@
 </tr>
 <tr>
 <td>GO_REVISION_${material name or dest}</td>
-<td>If you are using more than one material in your pipeline, the revision for each material is available. The environment variable is named with the material&#39;s &quot;materialName&quot; attribute. If &quot;materialName&quot; is not defined, then &quot;dest&quot; directory is used. Non alphanumeric characters are replaced with underscores (&quot;_&quot;).</td>
+<td>If you are using more than one material in your pipeline, the revision for each material is available. The environment variable is named with the material&apos;s &quot;materialName&quot; attribute. If &quot;materialName&quot; is not defined, then &quot;dest&quot; directory is used. Non alphanumeric characters are replaced with underscores (&quot;_&quot;).</td>
 <td><code>123</code></td>
 </tr>
 <tr>
@@ -2257,7 +2261,7 @@
 </tr>
 <tr>
 <td>GO_TO_REVISION_${material name or dest}</td>
-<td>If you are using more than one material in your pipeline, the &#39;to&#39; revision for each material is available. The environment variable is named with the material&#39;s &quot;materialName&quot; attribute. If &quot;materialName&quot; is not defined, then &quot;dest&quot; directory is used. Non alphanumeric characters are replaced with underscores (&quot;_&quot;).</td>
+<td>If you are using more than one material in your pipeline, the &apos;to&apos; revision for each material is available. The environment variable is named with the material&apos;s &quot;materialName&quot; attribute. If &quot;materialName&quot; is not defined, then &quot;dest&quot; directory is used. Non alphanumeric characters are replaced with underscores (&quot;_&quot;).</td>
 <td><code>123</code></td>
 </tr>
 <tr>
@@ -2267,30 +2271,30 @@
 </tr>
 <tr>
 <td>GO_FROM_REVISION_${material name or dest}</td>
-<td>If you are using more than one material in your pipeline, the &#39;from&#39; revision for each material is available. The environment variable is named with the material&#39;s &quot;materialName&quot; attribute. If &quot;materialName&quot; is not defined, then &quot;dest&quot; directory is used. Non alphanumeric characters are replaced with underscores (&quot;_&quot;).</td>
+<td>If you are using more than one material in your pipeline, the &apos;from&apos; revision for each material is available. The environment variable is named with the material&apos;s &quot;materialName&quot; attribute. If &quot;materialName&quot; is not defined, then &quot;dest&quot; directory is used. Non alphanumeric characters are replaced with underscores (&quot;_&quot;).</td>
 <td><code>121</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="use-current-revision-in-a-build">Use current revision in a build</h2>
+<h2 id="use-current-revision-in-a-build"><a name="use-current-revision-in-a-build" class="plugin-anchor" href="#use-current-revision-in-a-build"><span class="fa fa-link"></span></a>Use current revision in a build</h2>
 <p>It is often useful to use the current version control revision number in your build. For example, you might want to use the svn version number in the name of your binary for tracing purposes. Go makes much of this information available to your build scripts as environment variables.</p>
-<h3 id="example-usages">Example usages</h3>
-<h3 id="one-material">One material</h3>
+<h3 id="example-usages"><a name="example-usages" class="plugin-anchor" href="#example-usages"><span class="fa fa-link"></span></a>Example usages</h3>
+<h3 id="one-material"><a name="one-material" class="plugin-anchor" href="#one-material"><span class="fa fa-link"></span></a>One material</h3>
 <p>For this example, we are going to assume we are using a single <a href="http://subversion.tigris.org/" target="_blank">Subversion</a> repository for our source control system and we have a job set up to call the ant target &quot;dist&quot;.</p>
 <ul>
 <li>Add the following target to your ant build.xml</li>
-<li>Now, when Go runs the &#39;my-app&#39; pipeline on revision 123, the file deploy-123.txt will be created, with the following content:</li>
+<li>Now, when Go runs the &apos;my-app&apos; pipeline on revision 123, the file deploy-123.txt will be created, with the following content:</li>
 </ul>
-<h4 id="multiple-materials">Multiple materials</h4>
+<h4 id="multiple-materials"><a name="multiple-materials" class="plugin-anchor" href="#multiple-materials"><span class="fa fa-link"></span></a>Multiple materials</h4>
 <p>For this example we are going to assume we are using a <a href="http://subversion.tigris.org/" target="_blank">Subversion</a> repository containing the code and a <a href="http://www.selenic.com/mercurial/wiki/" target="_blank">Mercurial</a> repository containing configuration scripts.</p>
 <ul>
 <li>Ensure the pipeline materials look like this</li>
 <li>Add the following target to your ant build.xml</li>
-<li>Now, when Go runs the &#39;my-app&#39; pipeline with the code at revision &#39;123&#39; and the configuration at revision &#39;59cab75ccf231b9e338c96cff0f4adad5cb7d335&#39;, the file deploy-123.txt will be created with the following content:</li>
+<li>Now, when Go runs the &apos;my-app&apos; pipeline with the code at revision &apos;123&apos; and the configuration at revision &apos;59cab75ccf231b9e338c96cff0f4adad5cb7d335&apos;, the file deploy-123.txt will be created with the following content:</li>
 </ul>
-<h2 id="pass-environment-variables-to-a-job">Pass environment variables to a job</h2>
-<p>You can specify variables for Environments, Pipelines, Stages and Jobs. If a variable is specified more than once, the most specific scope is used. For example if you specify variable FOO=&#39;foo&#39; for an environment, and FOO=&#39;bar&#39; for a Job, then the variable will have the value &#39;bar&#39; when the job runs.</p>
-<h2 id="setting-variables-on-an-environment">Setting variables on an environment</h2>
+<h2 id="pass-environment-variables-to-a-job"><a name="pass-environment-variables-to-a-job" class="plugin-anchor" href="#pass-environment-variables-to-a-job"><span class="fa fa-link"></span></a>Pass environment variables to a job</h2>
+<p>You can specify variables for Environments, Pipelines, Stages and Jobs. If a variable is specified more than once, the most specific scope is used. For example if you specify variable FOO=&apos;foo&apos; for an environment, and FOO=&apos;bar&apos; for a Job, then the variable will have the value &apos;bar&apos; when the job runs.</p>
+<h2 id="setting-variables-on-an-environment"><a name="setting-variables-on-an-environment" class="plugin-anchor" href="#setting-variables-on-an-environment"><span class="fa fa-link"></span></a>Setting variables on an environment</h2>
 <p>You can add variables to an environment by editing the configuration of the environment. Click on the name of the environment to edit configuration.</p>
 <p><img src="../resources/images/env_variables_environment.png" alt=""></p>
 <p>You specify variables on an environment in the Config XML by adding an <a href="../configuration/configuration_reference.html#environmentvariables">&lt; environmentvariables &gt;</a> section to the environment definition.</p>
@@ -2336,7 +2340,7 @@
     ...
 &lt;/job&gt;
 </code></pre>
-<h2 id="using-environment-variables-in-task">Using environment variables in task</h2>
+<h2 id="using-environment-variables-in-task"><a name="using-environment-variables-in-task" class="plugin-anchor" href="#using-environment-variables-in-task"><span class="fa fa-link"></span></a>Using environment variables in task</h2>
 <p>You can access these environment variables to construct versioned artifacts or to store properties on the current build. For example the following snippet of an ant file shows how to access Go variables:</p>
 <pre><code class="lang-{.code}">&lt;property environment=&quot;go&quot; /&gt;
 &lt;target name=&quot;all&quot;&gt;

@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="4.20" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="4.20" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,12 +2176,12 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_62">
+                    <section class="normal" id="section-gitbook_63">
                     
-                        <h1 id="managing-users">Managing Users</h1>
-<p>Go&#39;s user management features allow you to control access to Go and grant role-based permissions.</p>
+                        <h1 id="managing-users"><a name="managing-users" class="plugin-anchor" href="#managing-users"><span class="fa fa-link"></span></a>Managing Users</h1>
+<p>Go&apos;s user management features allow you to control access to Go and grant role-based permissions.</p>
 <p>All user management features depend on an <a href="dev_authentication.html">authentication mechanism</a> having been configured in Go. Please ensure you have at least one <a href="dev_authentication.html">authentication mechanism</a> enabled before attempting to use any of the features mentioned in this chapter.</p>
-<h2 id="adding-users">Adding Users</h2>
+<h2 id="adding-users"><a name="adding-users" class="plugin-anchor" href="#adding-users"><span class="fa fa-link"></span></a>Adding Users</h2>
 <ol>
 <li>Navigate to the Admin section</li>
 <li>Click on the &quot;User Summary&quot; tab</li>
@@ -2190,9 +2194,9 @@
 <li>From the list of results, select the user to add and click &quot;Add User&quot;</li>
 </ol>
 <p><img src="../resources/images/user_summary_search.png" alt=""></p>
-<h2 id="assigning-roles">Assigning Roles</h2>
+<h2 id="assigning-roles"><a name="assigning-roles" class="plugin-anchor" href="#assigning-roles"><span class="fa fa-link"></span></a>Assigning Roles</h2>
 <p>Roles allow you to group a set of users with similar functional duties and grant them a common set of permissions.</p>
-<p>For example, you may have 3 pipelines configured as part of your workflow -- build, acceptance and deploy. You team may consist of 6 developers and 2 testers. With roles, you can group all 6 of your developers into a role called &quot;developers&quot; and your 2 testers into a role called &quot;testers&quot;. You&#39;d then assign the following permissions to your pipelines:</p>
+<p>For example, you may have 3 pipelines configured as part of your workflow -- build, acceptance and deploy. You team may consist of 6 developers and 2 testers. With roles, you can group all 6 of your developers into a role called &quot;developers&quot; and your 2 testers into a role called &quot;testers&quot;. You&apos;d then assign the following permissions to your pipelines:</p>
 <ul>
 <li>build: Auto triggered pipeline with approval permissions granted to both developers and testers</li>
 <li>acceptance: Auto triggered pipeline with approval permissions granted to testers only</li>
@@ -2209,17 +2213,17 @@
 <li>Alternately, you can create a new role to apply to the selected users by typing in the name of a role in the input box and clicking &quot;Add&quot;</li>
 </ol>
 <p><img src="../resources/images/user_summary_roles.png" alt=""></p>
-<h2 id="managing-go-system-administrator-privilege">Managing &#39;Go System Administrator&#39; privilege</h2>
-<p>&#39;Go System Administrator&#39; has access to all administrative functions, and has operational access to all parts of a Go installation.</p>
+<h2 id="managing-go-system-administrator-privilege"><a name="managing-go-system-administrator-privilege" class="plugin-anchor" href="#managing-go-system-administrator-privilege"><span class="fa fa-link"></span></a>Managing &apos;Go System Administrator&apos; privilege</h2>
+<p>&apos;Go System Administrator&apos; has access to all administrative functions, and has operational access to all parts of a Go installation.</p>
 <p>User management page allows you to assign admin privileges to or revoke admin privileges from selected users.</p>
-<p>This control allows you to modify admin privileges for users(not for roles). Checking &#39;Go System Administrator&#39; for selected users adds them directly to \<admins/\> configuration tag. This control is disabled when one or more of the selected users have implicit admin privilege through role(s).</p>
-<p><strong>Assign/Revoke &#39;Go System Administrator&#39; privilege:</strong></p>
+<p>This control allows you to modify admin privileges for users(not for roles). Checking &apos;Go System Administrator&apos; for selected users adds them directly to \<admins \=""> configuration tag. This control is disabled when one or more of the selected users have implicit admin privilege through role(s).</admins></p>
+<p><strong>Assign/Revoke &apos;Go System Administrator&apos; privilege:</strong></p>
 <ol>
 <li>Navigate to the Admin section</li>
 <li>Click on the &quot;User Summary&quot; tab</li>
-<li>Select the users you want assign/revoke &#39;Go System Administrator&#39; privilege.</li>
-<li>Click the &quot;Roles&quot; button to load &#39;Go System Administrator&#39; control</li>
-<li>Check/un-check the &#39;Go System Administrator&#39; checkbox and click &quot;Apply&quot;</li>
+<li>Select the users you want assign/revoke &apos;Go System Administrator&apos; privilege.</li>
+<li>Click the &quot;Roles&quot; button to load &apos;Go System Administrator&apos; control</li>
+<li>Check/un-check the &apos;Go System Administrator&apos; checkbox and click &quot;Apply&quot;</li>
 </ol>
 
                     

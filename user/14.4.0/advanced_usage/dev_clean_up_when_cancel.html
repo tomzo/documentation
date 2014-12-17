@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="5.4" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="5.4" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,27 +2176,27 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_11">
+                    <section class="normal" id="section-gitbook_12">
                     
-                        <h1 id="clean-up-after-canceling-a-task">Clean up after canceling a task</h1>
+                        <h1 id="clean-up-after-canceling-a-task"><a name="clean-up-after-canceling-a-task" class="plugin-anchor" href="#clean-up-after-canceling-a-task"><span class="fa fa-link"></span></a>Clean up after canceling a task</h1>
 <p>When you have jobs that take a long time to run, it is very useful to have the capability to cancel it when you already know it will fail.</p>
 <p>By default, Go will <strong>kill any currently running tasks</strong> . There are two other alternatives to this behaviour</p>
 <ul>
 <li>Specify a task to clean up your environment. This could kill the processes and cleanup any existing state.</li>
 <li>Indicate to Go you do not want anything done. This will allow the task to finish executing so the agent does not get into an inconsistent state.</li>
 </ul>
-<h2 id="using-web-interface">Using web interface</h2>
+<h2 id="using-web-interface"><a name="using-web-interface" class="plugin-anchor" href="#using-web-interface"><span class="fa fa-link"></span></a>Using web interface</h2>
 <p>To perform a custom cleanup through the web interface, edit the desired <strong>task configuration</strong> and check the <strong>On Cancel Task</strong> checkbox in <strong>Advanced Options</strong></p>
 <p><img src="../resources/images/clean_up_after_cancel.png" alt=""></p>
-<h2 id="using-xml-configuration">Using XML configuration</h2>
-<h3 id="example-override-task-to-perform-custom-cleanup">Example: Override task to perform custom cleanup</h3>
+<h2 id="using-xml-configuration"><a name="using-xml-configuration" class="plugin-anchor" href="#using-xml-configuration"><span class="fa fa-link"></span></a>Using XML configuration</h2>
+<h3 id="example-override-task-to-perform-custom-cleanup"><a name="example-override-task-to-perform-custom-cleanup" class="plugin-anchor" href="#example-override-task-to-perform-custom-cleanup"><span class="fa fa-link"></span></a>Example: Override task to perform custom cleanup</h3>
 <p>Usage: As a developer, I want to stop running my <a href="http://www.thoughtworks.com/products/twist-agile-testing" target="_blank">Twist</a> tests and clean up the environment on each job when I cancel the stage.</p>
 <ul>
 <li>On the <a href="../navigation/administration_page.html">Administration Tab</a>, edit the jobs that should handle canceling correctly</li>
 <li>Ensure the following &quot;task&quot; block is in the job configuration</li>
 <li>Now, whenever you cancel the stage while the jobs are running the ant &quot;twist&quot; target, the target &quot;kill_twist&quot; will execute</li>
 </ul>
-<h3 id="example-override-task-to-disable-all-cleanup">Example: Override task to disable all cleanup</h3>
+<h3 id="example-override-task-to-disable-all-cleanup"><a name="example-override-task-to-disable-all-cleanup" class="plugin-anchor" href="#example-override-task-to-disable-all-cleanup"><span class="fa fa-link"></span></a>Example: Override task to disable all cleanup</h3>
 <p>Usage: As a developer, I want to allow my database tests to not be halted when I cancel the stage.</p>
 <ul>
 <li>On the <a href="../navigation/administration_page.html">Administration Tab</a>, edit the jobs that should handle canceling correctly</li>

@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="9.2" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="9.2" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2174,18 +2178,18 @@
                 
                     <section class="normal" id="section-gitbook_89">
                     
-                        <h1 id="historical-configuration">Historical Configuration</h1>
-<h2 id="trace-a-stage-run-to-its-config">Trace a stage run to it&#39;s config</h2>
-<p>Go provides a section on the stage details page to view the Go configuration xml used when executing a particular instance of the stage. Admin users can use this view to trace a pipeline run back to it&#39;s configuration. The stage history widget which can be found on the right hand side of the stage details page has markers to indicate Go configuration changes. These markers are visible to all users.</p>
+                        <h1 id="historical-configuration"><a name="historical-configuration" class="plugin-anchor" href="#historical-configuration"><span class="fa fa-link"></span></a>Historical Configuration</h1>
+<h2 id="trace-a-stage-run-to-its-config"><a name="trace-a-stage-run-to-its-config" class="plugin-anchor" href="#trace-a-stage-run-to-its-config"><span class="fa fa-link"></span></a>Trace a stage run to it&apos;s config</h2>
+<p>Go provides a section on the stage details page to view the Go configuration xml used when executing a particular instance of the stage. Admin users can use this view to trace a pipeline run back to it&apos;s configuration. The stage history widget which can be found on the right hand side of the stage details page has markers to indicate Go configuration changes. These markers are visible to all users.</p>
 <p><strong>To navigate to the historical config:</strong></p>
 <ol>
 <li>Click on the stage bar of the relevant stage on the pipelines dashboard.</li>
-<li>Click on the tab &#39;Config&#39;.</li>
+<li>Click on the tab &apos;Config&apos;.</li>
 <li>Choose the stage instance from the stage history widget on the right.</li>
 </ol>
 <p>Note: This tab is available to admin users only.</p>
 <p><img src="../resources/images/stage_config.png" alt=""></p>
-<h2 id="see-what-changed-in-the-configuration-between-two-stage-runs">See what changed in the configuration between two stage runs</h2>
+<h2 id="see-what-changed-in-the-configuration-between-two-stage-runs"><a name="see-what-changed-in-the-configuration-between-two-stage-runs" class="plugin-anchor" href="#see-what-changed-in-the-configuration-between-two-stage-runs"><span class="fa fa-link"></span></a>See what changed in the configuration between two stage runs</h2>
 <p>As mentioned in the previous section, the stage history widget has markers to show if configuration has changed between two stage runs. For admin users, who have the permission to view the configuration xml, the markers appear as links. Clicking on these links shows the exact difference between the configurations. The changes are shown in the same format as that of &quot;Git Diff&quot;.</p>
 <p><img src="../resources/images/stage_config_diff.png" alt=""></p>
 

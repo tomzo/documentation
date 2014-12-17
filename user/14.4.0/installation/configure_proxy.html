@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="3.7" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="3.7" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2174,9 +2178,9 @@
                 
                     <section class="normal" id="section-gitbook_93">
                     
-                        <h1 id="configure-a-proxy">Configure a Proxy</h1>
+                        <h1 id="configure-a-proxy"><a name="configure-a-proxy" class="plugin-anchor" href="#configure-a-proxy"><span class="fa fa-link"></span></a>Configure a Proxy</h1>
 <p>It is sometimes useful to front Go with a proxy server. In this section, we give you some tips and examples on how to achieve this.</p>
-<h2 id="go-with-apache">Go with Apache</h2>
+<h2 id="go-with-apache"><a name="go-with-apache" class="plugin-anchor" href="#go-with-apache"><span class="fa fa-link"></span></a>Go with Apache</h2>
 <p>An example of how to configure Go with Apache is shown below.</p>
 <p><strong>Assumptions:</strong></p>
 <ul>
@@ -2196,12 +2200,12 @@ NameVirtualHost nnn.nnn.nnn.nnn:80
     ProxyPassReverse / https://localhost:8154/
 &lt;/VirtualHost&gt;
 </code></pre>
-<h2 id="oauth-20-with-apache">OAuth 2.0 with Apache</h2>
+<h2 id="oauth-20-with-apache"><a name="oauth-20-with-apache" class="plugin-anchor" href="#oauth-20-with-apache"><span class="fa fa-link"></span></a>OAuth 2.0 with Apache</h2>
 <p>If you have set up Go to use <a href="../integration/mingle_in_go.html">OAuth 2.0 gadgets</a> and Go is fronted with an Apache server, then you have to set X_FORWARDED_PROTO to &quot;https&quot; in the https virtual host configuration section.</p>
-<pre><code class="lang-{.code}">RequestHeader set X_FORWARDED_PROTO &#39;https&#39;
+<pre><code class="lang-{.code}">RequestHeader set X_FORWARDED_PROTO &apos;https&apos;
 </code></pre>
-<p>This directive can replace HTTP request headers. The header is modified just before the content handler is run, allowing incoming headers to be changed to &#39;https&#39;.</p>
-<h2 id="also-see">Also see...</h2>
+<p>This directive can replace HTTP request headers. The header is modified just before the content handler is run, allowing incoming headers to be changed to &apos;https&apos;.</p>
+<h2 id="also-see"><a name="also-see" class="plugin-anchor" href="#also-see"><span class="fa fa-link"></span></a>Also see...</h2>
 <ul>
 <li><a href="configuring_server_details.html#configure-site-urls">Configure site URLs</a></li>
 </ul>

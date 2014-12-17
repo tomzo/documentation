@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="10.1" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="10.1" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,17 +2176,17 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_34">
+                    <section class="normal" id="section-gitbook_35">
                     
-                        <h1 id="beta-feature-comment-on-a-pipeline-run">Beta feature: Comment on a pipeline run</h1>
+                        <h1 id="beta-feature-comment-on-a-pipeline-run"><a name="beta-feature-comment-on-a-pipeline-run" class="plugin-anchor" href="#beta-feature-comment-on-a-pipeline-run"><span class="fa fa-link"></span></a>Beta feature: Comment on a pipeline run</h1>
 <div style="background-color: rgba(0, 192, 0, 0.25); padding: 5px; margin-bottom: 1em">
   Note: This is a beta feature, which is turned off by default in Go 14.4.0. It can be turned on by using the feature
   toggle API, for this feature. If you are using curl, this is what you will need to do:
 
-  <div style="font-family: monospace; font-size: 70%; padding-top: 1em; padding-bottom: 1em">curl -d &#39;toggle_value=on&#39; &#39;<a href="http://go_server/go/api/admin/feature_toggles/pipeline_comment_feature_toggle_key" target="_blank">http://go_server/go/api/admin/feature_toggles/pipeline_comment_feature_toggle_key</a>&#39;</div>
+  <div style="font-family: monospace; font-size: 70%; padding-top: 1em; padding-bottom: 1em">curl -d &apos;toggle_value=on&apos; &apos;<a href="http://go_server/go/api/admin/feature_toggles/pipeline_comment_feature_toggle_key" target="_blank">http://go_server/go/api/admin/feature_toggles/pipeline_comment_feature_toggle_key</a>&apos;</div>
 
 <p>  When authentication is turned on in your Go Server setup, add the --user option to the curl command, like this:</p>
-  <div style="font-family: monospace; font-size: 70%; margin-top: -1em">curl --user username:password -d &#39;toggle_value=on&#39; ...</div>
+  <div style="font-family: monospace; font-size: 70%; margin-top: -1em">curl --user username:password -d &apos;toggle_value=on&apos; ...</div>
 </div>
 
 <p>Each pipeline in the <a href="../navigation/pipeline_activity_page.html">pipeline activity</a> page can now be annotated with a

@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="4.19" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="4.19" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2174,16 +2178,16 @@
                 
                     <section class="normal" id="section-gitbook_56">
                     
-                        <h1 id="job-timeout">Job Timeout</h1>
-<h2 id="introduction">Introduction</h2>
+                        <h1 id="job-timeout"><a name="job-timeout" class="plugin-anchor" href="#job-timeout"><span class="fa fa-link"></span></a>Job Timeout</h1>
+<h2 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><span class="fa fa-link"></span></a>Introduction</h2>
 <p>Go can be configured to automatically cancel jobs that do not generate any console output for a period of time. Default Job timeout options include:</p>
 <ul>
 <li>Never : Jobs will never be timed out by default. You can override this behavior when configuring the job in the job editor</li>
 <li>Timeout after a period of inactivity : A job will be cancelled if it did not have any console output for a period of time (in minutes)</li>
 </ul>
 <p>When a job is timed out, the onCancel task for the job will be triggered.</p>
-<h2 id="configuration">Configuration</h2>
-<h3 id="specify-default-job-timeout-at-the-server-level">Specify default job timeout at the server level</h3>
+<h2 id="configuration"><a name="configuration" class="plugin-anchor" href="#configuration"><span class="fa fa-link"></span></a>Configuration</h2>
+<h3 id="specify-default-job-timeout-at-the-server-level"><a name="specify-default-job-timeout-at-the-server-level" class="plugin-anchor" href="#specify-default-job-timeout-at-the-server-level"><span class="fa fa-link"></span></a>Specify default job timeout at the server level</h3>
 <p>You must be logged in as an admin user to configure this step.</p>
 <ol>
 <li>Navigate to the Admin section on the Go dashboard.</li>
@@ -2192,7 +2196,7 @@
 <img src="../resources/images/pipeline_management_timeout.png" alt="Job timeout"></li>
 <li>Enter the default timeout for a job.</li>
 </ol>
-<h3 id="configure-timeout-behavior-for-a-job">Configure timeout behavior for a job</h3>
+<h3 id="configure-timeout-behavior-for-a-job"><a name="configure-timeout-behavior-for-a-job" class="plugin-anchor" href="#configure-timeout-behavior-for-a-job"><span class="fa fa-link"></span></a>Configure timeout behavior for a job</h3>
 <p>You must be logged in as an admin user to configure this step.</p>
 <p>You can configure timeouts for each job if the timeout behavior needs to be different from the default timeout.</p>
 <ol>
@@ -2201,7 +2205,7 @@
 <img src="../resources/images/job_timeout_individual.png" alt="Job timeout settings"></li>
 <li>Choose the desired timeout behavior. You can choose to never timeout the job, provide a specific value or use the default job timeout.</li>
 </ol>
-<h3 id="also-see">Also see...</h3>
+<h3 id="also-see"><a name="also-see" class="plugin-anchor" href="#also-see"><span class="fa fa-link"></span></a>Also see...</h3>
 <ul>
 <li><a href="admin_add_job.html">Adding a job</a></li>
 <li><a href="../advanced_usage/dev_clean_up_when_cancel.html">Clean up after cancelling a task</a></li>

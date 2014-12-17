@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="4.2" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="4.2" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,14 +2176,14 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_61">
+                    <section class="normal" id="section-gitbook_62">
                     
-                        <h1 id="managing-pipelines">Managing pipelines</h1>
+                        <h1 id="managing-pipelines"><a name="managing-pipelines" class="plugin-anchor" href="#managing-pipelines"><span class="fa fa-link"></span></a>Managing pipelines</h1>
 <p>Go can be configured using <a href="../navigation/administration_page.html">Administration</a> Tab. You can perform operations like add/edit Pipelines, Stages, Jobs, Tasks, Templates and Pipeline group. You can also configure Go by editing the full XML file if you wish, by clicking on the <strong>Config XML</strong> section of the <a href="../navigation/administration_page.html">Administration</a> tab. Go will check the syntax of the configuration before it saves it again</p>
-<h2 id="creating-a-new-pipeline">Creating a new pipeline</h2>
+<h2 id="creating-a-new-pipeline"><a name="creating-a-new-pipeline" class="plugin-anchor" href="#creating-a-new-pipeline"><span class="fa fa-link"></span></a>Creating a new pipeline</h2>
 <p>To create a new pipeline, go to the <strong>Pipelines</strong> sub-tab of the <a href="../navigation/administration_page.html">Administration</a> tab and click on the <a href="quick_pipeline_setup.html">&quot;Create a new pipeline within this group&quot;</a> link as shown in the screen shot below.</p>
 <p><img src="../resources/images/create_new_pipeline_link.png" alt=""></p>
-<h2 id="add-a-new-material-to-an-existing-pipeline">Add a new material to an existing pipeline</h2>
+<h2 id="add-a-new-material-to-an-existing-pipeline"><a name="add-a-new-material-to-an-existing-pipeline" class="plugin-anchor" href="#add-a-new-material-to-an-existing-pipeline"><span class="fa fa-link"></span></a>Add a new material to an existing pipeline</h2>
 <p>Now that you have a pipeline, lets add another material to it.</p>
 <ul>
 <li>Navigate to the new pipeline you created by clicking on the <strong>Edit</strong> link under the Actions against it. You can also click on the name of the pipeline.</li>
@@ -2204,7 +2208,7 @@
 <ul>
 <li>Click &quot;Save&quot;.</li>
 </ul>
-<h2 id="blacklist">Blacklist</h2>
+<h2 id="blacklist"><a name="blacklist" class="plugin-anchor" href="#blacklist"><span class="fa fa-link"></span></a>Blacklist</h2>
 <p>Often you do want to specify a set of files that Go should ignore when it checks for changes. Repository changesets which contain only these files will not automatically trigger a pipeline. These are detailed in the <a href="configuration_reference.html#ignore">ignore</a> section of the <a href="configuration_reference.html">configuration reference</a>.</p>
 <ul>
 <li>Enter the items to blacklist using ant-style syntax below</li>
@@ -2213,7 +2217,7 @@
 <ul>
 <li>Click &quot;Save&quot;.</li>
 </ul>
-<h2 id="add-a-new-stage-to-an-existing-pipeline">Add a new stage to an existing pipeline</h2>
+<h2 id="add-a-new-stage-to-an-existing-pipeline"><a name="add-a-new-stage-to-an-existing-pipeline" class="plugin-anchor" href="#add-a-new-stage-to-an-existing-pipeline"><span class="fa fa-link"></span></a>Add a new stage to an existing pipeline</h2>
 <p>Now that you have a pipeline with a single stage, lets add more stages to it.</p>
 <ul>
 <li>Navigate to the new pipeline you created by clicking on the <strong>Edit</strong> link under the Actions against it. You can also click on the name of the pipeline.</li>
@@ -2239,7 +2243,7 @@
 <ul>
 <li>Click &quot;Save&quot;.</li>
 </ul>
-<h2 id="add-a-new-job-to-an-existing-stage">Add a new job to an existing stage</h2>
+<h2 id="add-a-new-job-to-an-existing-stage"><a name="add-a-new-job-to-an-existing-stage" class="plugin-anchor" href="#add-a-new-job-to-an-existing-stage"><span class="fa fa-link"></span></a>Add a new job to an existing stage</h2>
 <p>Now that we have a pipeline with stage(s), we can add more jobs to any of the existing stages. You can now use the tree navigation on the left side of the screen to edit a stage or a job under a pipeline.</p>
 <ul>
 <li>Click on the stage name that you want to edit on the tree as shown below. The &quot;defaultStage&quot; is being edited.</li>
@@ -2268,7 +2272,7 @@
 <li><p>Click &quot;Save&quot;</p>
 </li>
 </ul>
-<h2 id="add-a-new-task-to-an-existing-job">Add a new task to an existing Job</h2>
+<h2 id="add-a-new-task-to-an-existing-job"><a name="add-a-new-task-to-an-existing-job" class="plugin-anchor" href="#add-a-new-task-to-an-existing-job"><span class="fa fa-link"></span></a>Add a new task to an existing Job</h2>
 <p>Now that we have a pipeline with stage(s) containing job(s) we can add tasks to any of the existing jobs. You can now use the tree navigation on the left side of the screen to edit a a job under a stage.</p>
 <ul>
 <li>Click on the job name that you want to edit on the tree as shown below. The &quot;defaultJob&quot; is being edited.</li>
@@ -2290,7 +2294,7 @@
 <ul>
 <li>Advanced Options section allows you to specify a Task in which you can provide the actions (typically clean up) that needs to be taken when users chooses to cancel the stage.</li>
 </ul>
-<h2 id="clone-an-existing-pipeline">Clone an existing pipeline</h2>
+<h2 id="clone-an-existing-pipeline"><a name="clone-an-existing-pipeline" class="plugin-anchor" href="#clone-an-existing-pipeline"><span class="fa fa-link"></span></a>Clone an existing pipeline</h2>
 <p>Clone pipeline functionality helps you create a new pipeline from an existing pipeline by giving it a new name. Typically when setting up a pipeline for a new branch, it is very useful to take an existing pipeline and clone it.</p>
 <p>If the user is a pipeline group admin, she can clone the new pipeline into a group that she has access to. If the user is an admin she can clone the pipeline into any group or give a new group name, in which case the group gets created.</p>
 <ul>
@@ -2312,28 +2316,28 @@
 <li><p>Click &quot;Save&quot;</p>
 </li>
 </ul>
-<h2 id="pipeline-templates">Pipeline Templates</h2>
+<h2 id="pipeline-templates"><a name="pipeline-templates" class="plugin-anchor" href="#pipeline-templates"><span class="fa fa-link"></span></a>Pipeline Templates</h2>
 <p>Templating helps to create reusable workflows in order to make tasks like creating and maintaining branches, and managing large number of pipelines easier.</p>
-<h3 id="creating-pipeline-templates">Creating Pipeline Templates</h3>
+<h3 id="creating-pipeline-templates"><a name="creating-pipeline-templates" class="plugin-anchor" href="#creating-pipeline-templates"><span class="fa fa-link"></span></a>Creating Pipeline Templates</h3>
 <p>Pipeline Templates can be managed from the Templates tab on the Administration Page.</p>
 <p><img src="../resources/images/pipeline_templates.png" alt=""></p>
 <p>Clicking on the &quot;Add New Template&quot; brings up the following form which allows you to create a fresh template, or extract it from an existing pipeline. Once saved, the pipeline indicated will also start using this newly created template.</p>
 <p><img src="../resources/images/add_new_template.png" alt=""></p>
 <p>A template can also be extracted from a pipeline using the &quot;Extract Template&quot; link. This can be found on the &quot;Pipelines&quot; tab in the Administration page.</p>
 <p><img src="../resources/images/extract_template_from_pipeline.png" alt=""></p>
-<h3 id="example">Example</h3>
+<h3 id="example"><a name="example" class="plugin-anchor" href="#example"><span class="fa fa-link"></span></a>Example</h3>
 <p>As an example, assume that there is a pipeline group called &quot;my-app&quot; and it contains a pipeline called &quot;app-trunk&quot; which builds the application from trunk. Now, if we need to create another pipeline called &quot;app-1.0-branch&quot; which builds 1.0 version of the application, we can use Pipeline Templates as follows</p>
-<h4 id="using-administration-ui">Using Administration UI</h4>
+<h4 id="using-administration-ui"><a name="using-administration-ui" class="plugin-anchor" href="#using-administration-ui"><span class="fa fa-link"></span></a>Using Administration UI</h4>
 <ul>
 <li>Create a template &quot;my-app-build&quot; by extracting it from the pipeline &quot;app-trunk&quot;, as shown in the previous section.</li>
 <li>Create a new pipeline &quot;app-1.0-branch&quot; which defines SCM material with the branch url and uses the template &quot;my-app-build&quot;.</li>
 </ul>
-<h4 id="using-xml">Using XML</h4>
-<h3 id="editing-pipeline-templates">Editing Pipeline Templates</h3>
+<h4 id="using-xml"><a name="using-xml" class="plugin-anchor" href="#using-xml"><span class="fa fa-link"></span></a>Using XML</h4>
+<h3 id="editing-pipeline-templates"><a name="editing-pipeline-templates" class="plugin-anchor" href="#editing-pipeline-templates"><span class="fa fa-link"></span></a>Editing Pipeline Templates</h3>
 <p>Go Administrators can now enable any Go user to edit a template by <a href="dev_authorization.html#specifying-permissions-for-templates">making them a template administrator</a>.</p>
 <p>Template administrators can view and edit the templates to which they have permissions, on the template tab of the admin page. Template Administrators, will however not be able to add, delete or change permissions for a template. They will also be able to see the number of pipelines in which the template is being used, but not the details of those pipelines.</p>
 <p><img src="../resources/images/template_admin_edit_template.png" alt=""></p>
-<h3 id="viewing-pipeline-templates">Viewing Pipeline Templates</h3>
+<h3 id="viewing-pipeline-templates"><a name="viewing-pipeline-templates" class="plugin-anchor" href="#viewing-pipeline-templates"><span class="fa fa-link"></span></a>Viewing Pipeline Templates</h3>
 <p>Pipeline Templates can now be viewed by Administrators and Pipeline Group Administrators while editing or creating a Pipeline.</p>
 <p><img src="../resources/images/template_view_on_pipeline_tab.png" alt=""></p>
 <p>Clicking on the icon indicated by arrow will display the following:</p>
@@ -2345,15 +2349,15 @@
 <li>If any &quot;On Cancel Task&quot; has been configured, it will be indicated like this.</li>
 <li>Shows the &quot;Run If Condition&quot; for this task.</li>
 </ol>
-<h4 id="see-also">See also...</h4>
+<h4 id="see-also"><a name="see-also" class="plugin-anchor" href="#see-also"><span class="fa fa-link"></span></a>See also...</h4>
 <ul>
 <li><a href="configuration_reference.html#templates">Templates - Configuration Reference</a></li>
 </ul>
-<h2 id="stage-approvals-in-action">Stage approvals in action</h2>
-<p>By default, when one stage completes successfully, the next stage is automatically triggered by Go. However sometimes you don&#39;t want the next stage to be triggered automatically. This might be the case if you have a stage that deploys your application to a testing, staging or production environment. Another case can be when you don&#39;t want your pipeline to be automatically triggered by changes in version control. In these situations, you want the stage triggered by manual intervention. This can be done through manual <a href="configuration_reference.html#approval">approvals</a>.</p>
+<h2 id="stage-approvals-in-action"><a name="stage-approvals-in-action" class="plugin-anchor" href="#stage-approvals-in-action"><span class="fa fa-link"></span></a>Stage approvals in action</h2>
+<p>By default, when one stage completes successfully, the next stage is automatically triggered by Go. However sometimes you don&apos;t want the next stage to be triggered automatically. This might be the case if you have a stage that deploys your application to a testing, staging or production environment. Another case can be when you don&apos;t want your pipeline to be automatically triggered by changes in version control. In these situations, you want the stage triggered by manual intervention. This can be done through manual <a href="configuration_reference.html#approval">approvals</a>.</p>
 <p>If you add a manual approval to the first stage in a pipeline, it will prevent the pipeline from being triggered from version control. Instead, it will only pick up changes when you trigger the pipeline manually (this is sometimes known as &quot;forcing the build&quot;).</p>
 <p>From Cruise 1.1 (legacy version of Go), you can control who can trigger manual approvals. See the section on <a href="dev_authorization.html#adding-authorization-to-approvals">Adding authorization to approvals</a> for more details.</p>
-<h2 id="managing-pipeline-groups">Managing pipeline groups</h2>
+<h2 id="managing-pipeline-groups"><a name="managing-pipeline-groups" class="plugin-anchor" href="#managing-pipeline-groups"><span class="fa fa-link"></span></a>Managing pipeline groups</h2>
 <p>Starting with Cruise 1.3 (legacy version of Go), there is support for collecting multiple pipelines into a single named group. See the section on <a href="dev_authorization.html#specifying-permissions-for-pipeline-groups">Specifying who can view and operate pipeline groups</a> for more details.</p>
 
                     

@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="5.8" data-basepath=".." data-revision="1418788222860">
+    <div class="book" data-level="5.8" data-basepath=".." data-revision="1418797835130">
     
 
 <div class="book-summary">
@@ -2172,13 +2176,13 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_16">
+                    <section class="normal" id="section-gitbook_17">
                     
-                        <h1 id="properties">Properties</h1>
-<h2 id="introduction">Introduction</h2>
+                        <h1 id="properties"><a name="properties" class="plugin-anchor" href="#properties"><span class="fa fa-link"></span></a>Properties</h1>
+<h2 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><span class="fa fa-link"></span></a>Introduction</h2>
 <p>Properties provide a simple way of collecting metrics over time. Go sets some standard properties for you. You can also set properties yourself using the Go REST APIs (see <a href="../api/Properties_API.html">Properties API</a> for more information). Go also allows you to download the history of your job in a convenient CSV format, so that you can analyse the results in spreadsheets or scripts.</p>
 <p><img src="../resources/images/cruise_properties.png" alt=""></p>
-<h2 id="property-history">Property history</h2>
+<h2 id="property-history"><a name="property-history" class="plugin-anchor" href="#property-history"><span class="fa fa-link"></span></a>Property history</h2>
 <p>Go allows you to download the history of properties that you have defined. This history is available as a Comma Separated Values (CSV) file. You can import this file into a spreadsheet program to generate charts and diagnostics of your project.</p>
 <p>You can of course access these resources through standard URLs:</p>
 <ul>
@@ -2188,7 +2192,7 @@
 <p>To open the property history in a spreadsheet application, you can click on the <strong>Export property history to spreadsheet (csv)</strong> link on the Properties tab of the job.</p>
 <p><img src="../resources/images/properties_export.png" alt=""></p>
 <p><img src="../resources/images/properties-chart.png" alt=""></p>
-<h2 id="standard-properties">Standard Properties</h2>
+<h2 id="standard-properties"><a name="standard-properties" class="plugin-anchor" href="#standard-properties"><span class="fa fa-link"></span></a>Standard Properties</h2>
 <p>The standard properties defined by Go are:</p>
 <ul>
 <li><strong>cruise_agent</strong> -- the agent that is running the job</li>
@@ -2205,20 +2209,20 @@
 <li><strong>cruise_timestamp_05_completing</strong> -- time at which the job entered the completing state</li>
 <li><strong>cruise_timestamp_06_completed</strong> -- time at which the job completed</li>
 </ul>
-<h2 id="generating-properties-from-artifacts">Generating Properties from Artifacts</h2>
+<h2 id="generating-properties-from-artifacts"><a name="generating-properties-from-artifacts" class="plugin-anchor" href="#generating-properties-from-artifacts"><span class="fa fa-link"></span></a>Generating Properties from Artifacts</h2>
 <p>Go allows you to generate properties from XML artifacts that you create during the build. This can be used to harvest statistics produced by coverage tools etc. By storing them as properties it becomes very easy to show the history and trends over time of these values.</p>
 <p>Note that the properties are generated on the agent side, so the src path is relative to the working directory of the pipeline on the agent.</p>
 <p>For example, to add support for the coverage tool &quot;Emma&quot;, you might do this:</p>
 <pre><code class="lang-{.code}">&lt;job&gt;  
   &lt;properties&gt;  
-    &lt;property name=&quot;coverage.class&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&#39;class&#39;)]/@value, &#39;%&#39;)&quot; /&gt;  
-    &lt;property name=&quot;coverage.method&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&#39;method&#39;)]/@value, &#39;%&#39;)&quot; /&gt;  
-    &lt;property name=&quot;coverage.block&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&#39;block&#39;)]/@value, &#39;%&#39;)&quot; /&gt;  
-    &lt;property name=&quot;coverage.line&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&#39;line&#39;)]/@value, &#39;%&#39;)&quot; /&gt;  
+    &lt;property name=&quot;coverage.class&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;class&apos;)]/@value, &apos;%&apos;)&quot; /&gt;  
+    &lt;property name=&quot;coverage.method&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;method&apos;)]/@value, &apos;%&apos;)&quot; /&gt;  
+    &lt;property name=&quot;coverage.block&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;block&apos;)]/@value, &apos;%&apos;)&quot; /&gt;  
+    &lt;property name=&quot;coverage.line&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;line&apos;)]/@value, &apos;%&apos;)&quot; /&gt;  
   &lt;/properties&gt;
 &lt;/job&gt;
 </code></pre>
-<h3 id="tests">Tests</h3>
+<h3 id="tests"><a name="tests" class="plugin-anchor" href="#tests"><span class="fa fa-link"></span></a>Tests</h3>
 <p>If you define a tests artifact that contains the test reports, then Go will add some properties associated with the tests.</p>
 <ul>
 <li><strong>tests_failed_count</strong> -- number of failed tests</li>
