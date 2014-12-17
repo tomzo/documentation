@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="5.3" data-basepath=".." data-revision="1418805819461">
+    <div class="book" data-level="5.3" data-basepath=".." data-revision="1418807770183">
     
 
 <div class="book-summary">
@@ -44,8 +48,20 @@
         
     	
     	
+    	    
+            <li>
+                <a href="http://go.cd" target="blank" class="custom-link">Home</a>
+            </li>
+    	
+    	    
+            <li>
+                <a href="https://github.com/gocd/documentation/" target="blank" class="custom-link">Contribute</a>
+            </li>
+    	
     	
 
+        
+        <li class="divider"></li>
         
 
         
@@ -2541,7 +2557,7 @@
                 
                     <section class="normal" id="section-gitbook_21">
                     
-                        <h2 id="53-value-steam-map">5.3 Value Steam Map</h2>
+                        <h2 id="53-value-steam-map"><a name="53-value-steam-map" class="plugin-anchor" href="#53-value-steam-map"><span class="fa fa-link"></span></a>5.3 Value Steam Map</h2>
 <p>Go has a very strong modelling capability in terms of parallel-serial-parallel-serial (pipeline-stage-job-task) division of work. It supports multiple SCM / pipeline dependencies &amp; allows fetching of artifacts from ancestor pipelines.</p>
 <p>Go has good visualisation of things from pipeline level, i.e. everything from pipeline level is well organised for information consumption.</p>
 <ul>
@@ -2558,26 +2574,26 @@
 <li>which revision of ancestor upstream pipeline / SCM did the current pipeline run with</li>
 </ul>
 <p>To solve this problem we had to come up with a visualisation where the whole work-flow of current pipeline (upstream &amp; downstream) could be layed out as a graph.</p>
-<h3 id="531-overview">5.3.1 Overview</h3>
-<h4 id="challenges">Challenges</h4>
+<h3 id="531-overview"><a name="531-overview" class="plugin-anchor" href="#531-overview"><span class="fa fa-link"></span></a>5.3.1 Overview</h3>
+<h4 id="challenges"><a name="challenges" class="plugin-anchor" href="#challenges"><span class="fa fa-link"></span></a>Challenges</h4>
 <p>When we set out to implement the feature we faced quiet a few challenges:</p>
-<h4 id="deterministic-vs-randomised-algorithm">Deterministic vs Randomised Algorithm:</h4>
+<h4 id="deterministic-vs-randomised-algorithm"><a name="deterministic-vs-randomised-algorithm" class="plugin-anchor" href="#deterministic-vs-randomised-algorithm"><span class="fa fa-link"></span></a>Deterministic vs Randomised Algorithm:</h4>
 <p>The algorithm had to be deterministic i.e. given a particular input, it should always produce the same output. This would keep the layout same when user would refresh VSM page. It would also keep the nodes at same position until there is change in configuration making it intuitive for human eye to search for a node.</p>
-<h4 id="efficiency">Efficiency:</h4>
+<h4 id="efficiency"><a name="efficiency" class="plugin-anchor" href="#efficiency"><span class="fa fa-link"></span></a>Efficiency:</h4>
 <p>The algorithm had to run in polynomial time since it would be run frequently (every VSM page load). It should be fast enough that we could put a auto-refresh if we wanted to at some point of time.</p>
-<h4 id="reusable">Reusable:</h4>
+<h4 id="reusable"><a name="reusable" class="plugin-anchor" href="#reusable"><span class="fa fa-link"></span></a>Reusable:</h4>
 <p>The algorithm had to be scalable &amp; reusable so that we could use it to display the whole of config as a Pipeline Dependency Graph (PDG).</p>
-<h4 id="visualisation">Visualisation:</h4>
+<h4 id="visualisation"><a name="visualisation" class="plugin-anchor" href="#visualisation"><span class="fa fa-link"></span></a>Visualisation:</h4>
 <p>The algorithm should facilitate showing each dependency as separate line, i.e. not merge dependencies into one line so that we could show artifact being fetched from different pipeline separately. But it should minimise edge crossings so as to improve readability / visual appeal.</p>
-<h4 id="graph-representation--instance-data-population">Graph Representation &amp; Instance Data population</h4>
+<h4 id="graph-representation--instance-data-population"><a name="graph-representation--instance-data-population" class="plugin-anchor" href="#graph-representation--instance-data-population"><span class="fa fa-link"></span></a>Graph Representation &amp; Instance Data population</h4>
 <p>To be able to implement the algorithm we needed to have Graph representation of whole upstream &amp; downstream flow with respect to current pipeline. Building the graph for VSM is more tricky than it first seems like.</p>
 <p>When you are building upstream graph you need to consider the build-cause that is stored in database for current pipeline &amp; recursively traverse upstream build-causes to generate the whole upstream graph.</p>
 <p>While for building downstream graph we need to see the config to see all pipelines that get triggered off of current pipeline &amp; recurse downstream till we build the whole downstream graph.</p>
 <p>Pipeline instances of upstream pipelines &amp; SCM revisions are got during traversal of build cause, the pipeline instances of downstream pipelines are not directly available in any form. So we query for each pipeline instance we know (starting from current pipeline) - instances of downstream pipeline that ran off of current instance. Once we know the pipeline instances we populate stage information for pipeline instances.</p>
-<h3 id="532-algorithm">5.3.2 Algorithm</h3>
+<h3 id="532-algorithm"><a name="532-algorithm" class="plugin-anchor" href="#532-algorithm"><span class="fa fa-link"></span></a>5.3.2 Algorithm</h3>
 <p>The Pipeline dependency graph is essentially a Directed Acyclic Graph (DAG). This would mean any algorithm for laying out DAGs would work.</p>
 <p>We decided to implement Sugiyama Algorithm for this. The algorithm goes about laying out the graph in 4 steps:</p>
-<h4 id="a-namelayer-assignmenta-layer-assignment"><a name="layer-assignment"></a> Layer Assignment</h4>
+<h4 id="a-namelayer-assignmenta-layer-assignment"><a name="a-namelayer-assignmenta-layer-assignment" class="plugin-anchor" href="#a-namelayer-assignmenta-layer-assignment"><span class="fa fa-link"></span></a><a name="layer-assignment"></a> Layer Assignment</h4>
 <p>We assign a layer to every node in graph. Layers are assigned left to right increasing layer
 number by one for every layer. Ex:</p>
 <p><img src="images/vsm_layering.png" alt="VSM layering"></p>
@@ -2608,7 +2624,7 @@ number by one for every layer. Ex:</p>
             root_node.layer = minimum_layer_of_all_children(root_node) - 1
         end
     end
-</code></pre><h4 id="a-namedummy-node-creationa-dummy-node-creation"><a name="dummy-node-creation"></a> Dummy Node Creation</h4>
+</code></pre><h4 id="a-namedummy-node-creationa-dummy-node-creation"><a name="a-namedummy-node-creationa-dummy-node-creation" class="plugin-anchor" href="#a-namedummy-node-creationa-dummy-node-creation"><span class="fa fa-link"></span></a><a name="dummy-node-creation"></a> Dummy Node Creation</h4>
 <p>In the above graph the edge B -&gt;E spans across 2 layers. We need to avoid edges that cut across multiple layers. This would help us reduce edge crossings (explained in next section). To avoid having edges across layers we introduce one dummy nodes in every layer between source &amp; destination node. So in the above graph we insert a dummy node X between B -&gt;E making it B -&gt; X -&gt;E</p>
 <pre><code>    create_dummy_nodes()
         root_nodes = get all root nodes
@@ -2637,7 +2653,7 @@ number by one for every layer. Ex:</p>
             end
         end
     end
-</code></pre><h4 id="a-nameedge-cross-minimizationa-edge-cross-minimization"><a name="edge-cross-minimization"></a> Edge Cross Minimization</h4>
+</code></pre><h4 id="a-nameedge-cross-minimizationa-edge-cross-minimization"><a name="a-nameedge-cross-minimizationa-edge-cross-minimization" class="plugin-anchor" href="#a-nameedge-cross-minimizationa-edge-cross-minimization"><span class="fa fa-link"></span></a><a name="edge-cross-minimization"></a> Edge Cross Minimization</h4>
 <p>We used BaryCenter algorithm to minimise edge crossings. We initialise all nodes with a depth by traversing the graph in DFS fashion &amp; assigning max. depth of layer the node belongs to at that point of time. Then algorithm traverses the graph layer by layer left to right assigning avg. depth of parents to node &amp; then traverses right to left assigning avg. depth of children to node.</p>
 <pre><code>    assign_depth_to_nodes()
         root_nodes = get all root nodes
@@ -2691,7 +2707,7 @@ number by one for every layer. Ex:</p>
             node.depth = depth / adjacent_nodes_at_previous_layer.size()
         end
     end
-</code></pre><h4 id="a-namecorner-casesa-corner-cases"><a name="corner-cases"></a> Corner Cases</h4>
+</code></pre><h4 id="a-namecorner-casesa-corner-cases"><a name="a-namecorner-casesa-corner-cases" class="plugin-anchor" href="#a-namecorner-casesa-corner-cases"><span class="fa fa-link"></span></a><a name="corner-cases"></a> Corner Cases</h4>
 <p>There is a corner case where a pipeline can be both an upstream pipeline &amp; a downstream pipeline for a particular pipeline. This can happen due to change in config where A was upstream of B when B ran after which A became downstream of B. This causes a cycle in VSM of A and causes the VSM rendering algorithm to go into an infinite loop. To avoid this we had to put in a cycle detection check before rendering the VSM.</p>
 <pre><code>    has_cycle()
         root_nodes = get all root nodes
@@ -2738,7 +2754,7 @@ G         |
 </code></pre><p>It could have happened that A &amp; B ran off of different revisions of G. We merge the revisions into one list &amp; show it in SCM revisions popup.</p>
 <p>In the setup some upstream / downstream pipeline could have been deleted or user might not have access to the pipeline. Which is shown as a grey box.
 Currently VSM only shows upstream &amp; downstream of a pipeline instance, i.e. everything is wrt to a pipeline instance.</p>
-<h4 id="a-nameextensionsa-extensions"><a name="extensions"></a> Extensions</h4>
+<h4 id="a-nameextensionsa-extensions"><a name="a-nameextensionsa-extensions" class="plugin-anchor" href="#a-nameextensionsa-extensions"><span class="fa fa-link"></span></a><a name="extensions"></a> Extensions</h4>
 <p>We could render VSM for a commit. This would be useful in a few scenarios. Ex: If the setup is like below.</p>
 <pre><code>G -&gt; A -&gt; C
 |         |

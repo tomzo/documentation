@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="6.1" data-basepath=".." data-revision="1418805819461">
+    <div class="book" data-level="6.1" data-basepath=".." data-revision="1418807770183">
     
 
 <div class="book-summary">
@@ -44,8 +48,20 @@
         
     	
     	
+    	    
+            <li>
+                <a href="http://go.cd" target="blank" class="custom-link">Home</a>
+            </li>
+    	
+    	    
+            <li>
+                <a href="https://github.com/gocd/documentation/" target="blank" class="custom-link">Contribute</a>
+            </li>
+    	
     	
 
+        
+        <li class="divider"></li>
         
 
         
@@ -2541,8 +2557,8 @@
                 
                     <section class="normal" id="section-gitbook_14">
                     
-                        <h1 id="441-plugins-architecture---osgi">4.4.1 Plugins Architecture - OSGi</h1>
-<h2 id="overview">Overview:</h2>
+                        <h1 id="441-plugins-architecture---osgi"><a name="441-plugins-architecture---osgi" class="plugin-anchor" href="#441-plugins-architecture---osgi"><span class="fa fa-link"></span></a>4.4.1 Plugins Architecture - OSGi</h1>
+<h2 id="overview"><a name="overview" class="plugin-anchor" href="#overview"><span class="fa fa-link"></span></a>Overview:</h2>
 <p>Go plug-in architecture allows Go application to be modular, customizable, and easily extensible by creating extension points.
 Extension points are defined by set of java interfaces and classes which abstract specific aspect of Go application.
 Plugins can be developed against these extension points by implementation of interfaces or extending abstract classes.
@@ -2553,12 +2569,12 @@ Go plug-in architecture has the following modules.</p>
 </code></pre></li>
 <li>Go Plugin Activator:<pre><code>  This modules is responsible for loading all classes in the plug-in which are not in the dependency directory and registering services for the plug-in extensions.
 </code></pre></li>
-<li>Go Plugin Api:<pre><code>  This modules mainly contains API&#39;s for all extension points and annotations which are required to mark various aspects of a plug-in.
+<li>Go Plugin Api:<pre><code>  This modules mainly contains API&apos;s for all extension points and annotations which are required to mark various aspects of a plug-in.
 </code></pre></li>
-<li>Go Plugin Api internal:<pre><code>  This modules contains API&#39;s for bunch of services which will be made available to plug-in at run time, for example PluginHealthService and LoggingService.
+<li>Go Plugin Api internal:<pre><code>  This modules contains API&apos;s for bunch of services which will be made available to plug-in at run time, for example PluginHealthService and LoggingService.
 </code></pre></li>
 </ul>
-<h2 id="go-plugin-infra">Go Plugin Infra:</h2>
+<h2 id="go-plugin-infra"><a name="go-plugin-infra" class="plugin-anchor" href="#go-plugin-infra"><span class="fa fa-link"></span></a>Go Plugin Infra:</h2>
 <ul>
 <li>GoPluginDescriptor is representation of plugin which essentially contains id, name, version, status , jar location, bundle location, OSGi bundle instance and any other information of plug-in.</li>
 </ul>
@@ -2587,15 +2603,15 @@ plugin jar is extracted into bundle directory, GoPluginDescriptor will be added 
 <li><p>GoPluginOSGiFramework is responsible for loading and unloading OSGi bundles given a GoPluginDescriptor. All the communication between Go application and plug-ins will be facilitated through GoPluginOSGiFramework. Given java class service reference and plug-in id, GoPluginOSGiFramework can find service reference instance.</p>
 </li>
 </ul>
-<h2 id="go-plugin-activator">Go Plugin Activator:</h2>
+<h2 id="go-plugin-activator"><a name="go-plugin-activator" class="plugin-anchor" href="#go-plugin-activator"><span class="fa fa-link"></span></a>Go Plugin Activator:</h2>
 <ul>
 <li><p>DefaultGoPluginActivator is an implementation of OSGi BundleActivator and is responsible for loading all classes in the plug-in which are not in the dependency directory and registering services for the plug-in extensions.</p>
 </li>
 <li><p>Go Plugin Activator module gets packaged as separate jar and added as dependency JAR into each plug-in by copying activator jar into bundle directory of plug-in.</p>
 </li>
 </ul>
-<h2 id="go-plugin-api">Go Plugin Api:</h2>
-<p>This module contains all the API&#39;s which are specific to extension points and also API classes which are common across all the extension. Go Plugin Api module also contains various java annotation classes which are
+<h2 id="go-plugin-api"><a name="go-plugin-api" class="plugin-anchor" href="#go-plugin-api"><span class="fa fa-link"></span></a>Go Plugin Api:</h2>
+<p>This module contains all the API&apos;s which are specific to extension points and also API classes which are common across all the extension. Go Plugin Api module also contains various java annotation classes which are
 required to mark various aspects of a plugin.</p>
 <p>Every plugin needs to interact with GO server to capture certain information and it is represented as Configuration class. Configuration is either provided by GO application or by user. Configuration has list of Property. Each
 Property has name, value and set of Options associated with Property.</p>
@@ -2610,7 +2626,7 @@ Property has name, value and set of Options associated with Property.</p>
 <li><p>UsedOnGoServer : A method mark by this annotation indicates that the method is invoked on the Go server.</p>
 </li>
 </ul>
-<h2 id="go-plugin-api-internal">Go Plugin Api internal:</h2>
+<h2 id="go-plugin-api-internal"><a name="go-plugin-api-internal" class="plugin-anchor" href="#go-plugin-api-internal"><span class="fa fa-link"></span></a>Go Plugin Api internal:</h2>
 <p>Go application leaks bunch of service implementations to plug-in which can be used at various stages of plug-in execution. This module contains interfaces for such service implementations.</p>
 <ul>
 <li><p>PluginHealthService: Go plugin infrastructure will load every plug-in through Go plug-in activator. If Go plugin activator encounters any issues while loading they will be notified to Go server via PluginHealthService</p>

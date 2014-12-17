@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="6" data-basepath=".." data-revision="1418805819461">
+    <div class="book" data-level="6" data-basepath=".." data-revision="1418807770183">
     
 
 <div class="book-summary">
@@ -44,8 +48,20 @@
         
     	
     	
+    	    
+            <li>
+                <a href="http://go.cd" target="blank" class="custom-link">Home</a>
+            </li>
+    	
+    	    
+            <li>
+                <a href="https://github.com/gocd/documentation/" target="blank" class="custom-link">Contribute</a>
+            </li>
+    	
     	
 
+        
+        <li class="divider"></li>
         
 
         
@@ -2541,7 +2557,7 @@
                 
                     <section class="normal" id="section-gitbook_37">
                     
-                        <h1 id="guide-to-write-go-plugin">Guide to write Go plugin</h1>
+                        <h1 id="guide-to-write-go-plugin"><a name="guide-to-write-go-plugin" class="plugin-anchor" href="#guide-to-write-go-plugin"><span class="fa fa-link"></span></a>Guide to write Go plugin</h1>
 <p>Please go through below links before writing Go plugin</p>
 <ul>
 <li><p><a href="../4/4.4.1.html">Go Plugin Architecture</a></p>
@@ -2551,17 +2567,17 @@
 <li><p><a href="http://www.go.cd/documentation/user/current/extension_points/plugin_user_guide.html" target="_blank">Go Plugin User Guide</a></p>
 </li>
 </ul>
-<h2 id="writing-plugins-for-go">Writing plugins for Go</h2>
+<h2 id="writing-plugins-for-go"><a name="writing-plugins-for-go" class="plugin-anchor" href="#writing-plugins-for-go"><span class="fa fa-link"></span></a>Writing plugins for Go</h2>
 <p>Traditionally, writing a plugin for Go involved implementing some pre-defined java interfaces which exist for the each extension point. We call them Java interface/class based plugin API. 
 With time, we noticed many shortcomings in this approach, one of them being the interfaces went out of date even if a new field was added. This broke all existing plugins without providing enough time for the plugin authors to make appropriate changes to their respective plugins and make a release. 
 This raised a need for an alternate approach to write plugins. With version 14.4.0 Go introduced support for JSON message based plugin API. This still deals with a few java classes, but the dynamic part which is the details being sent back and forth between Go and plugin is in the form of JSON data. 
 In order to support existing plugins and provide enough time to the plugin authors to migrate these to use the newer APIs, Go still works with old java interface based plugin API. However, this support will be removed eventually and hence all plugin authors are adviced to write new plugins using JSON based API, and also migrate their existing plugins to the same.</p>
 <p>JSON message based plugin API has been described in further details <a href="json_message_based_plugin_api.html">here</a>.</p>
-<h2 id="plugin-api-jar">Plugin API Jar</h2>
+<h2 id="plugin-api-jar"><a name="plugin-api-jar" class="plugin-anchor" href="#plugin-api-jar"><span class="fa fa-link"></span></a>Plugin API Jar</h2>
 <p>-<a href="https://bintray.com/artifact/download/gocd/gocd/go-plugin-api-14.4.0.jar" target="_blank">14.4.0</a></p>
-<h2 id="plugin-api-javadoc">Plugin API Javadoc</h2>
+<h2 id="plugin-api-javadoc"><a name="plugin-api-javadoc" class="plugin-anchor" href="#plugin-api-javadoc"><span class="fa fa-link"></span></a>Plugin API Javadoc</h2>
 <p>-<a href="http://www.go.cd/documentation/developer/resources/javadoc/14.4.0/index.html" target="_blank">14.4.0</a></p>
-<h2 id="package-repository-plugin">Package Repository Plugin</h2>
+<h2 id="package-repository-plugin"><a name="package-repository-plugin" class="plugin-anchor" href="#package-repository-plugin"><span class="fa fa-link"></span></a>Package Repository Plugin</h2>
 <ul>
 <li><p><a href="http://www.go.cd/documentation/user/current/extension_points/package_repository_extension.html" target="_blank">Package Repository Extension</a></p>
 </li>
@@ -2570,7 +2586,7 @@ In order to support existing plugins and provide enough time to the plugin autho
 <li><p><a href="package_material/json_message_based_package_material_extension.html">Package repository plugin using JSON message based plugin API</a></p>
 </li>
 </ul>
-<h2 id="task-plugin">Task Plugin</h2>
+<h2 id="task-plugin"><a name="task-plugin" class="plugin-anchor" href="#task-plugin"><span class="fa fa-link"></span></a>Task Plugin</h2>
 <ul>
 <li><p><a href="http://www.go.cd/documentation/user/current/extension_points/task_extension.html" target="_blank">Task Extension</a></p>
 </li>

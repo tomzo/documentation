@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="7.2" data-basepath=".." data-revision="1418805819461">
+    <div class="book" data-level="7.2" data-basepath=".." data-revision="1418807770183">
     
 
 <div class="book-summary">
@@ -44,8 +48,20 @@
         
     	
     	
+    	    
+            <li>
+                <a href="http://go.cd" target="blank" class="custom-link">Home</a>
+            </li>
+    	
+    	    
+            <li>
+                <a href="https://github.com/gocd/documentation/" target="blank" class="custom-link">Contribute</a>
+            </li>
+    	
     	
 
+        
+        <li class="divider"></li>
         
 
         
@@ -2541,7 +2557,7 @@
                 
                     <section class="normal" id="section-gitbook_28">
                     
-                        <h2 id="62-test-infrastructure">6.2 Test Infrastructure</h2>
+                        <h2 id="62-test-infrastructure"><a name="62-test-infrastructure" class="plugin-anchor" href="#62-test-infrastructure"><span class="fa fa-link"></span></a>6.2 Test Infrastructure</h2>
 <p>Being advocates of continuous delivery and firm believers of TDD, we understand the power that automated testing brings. Automated tests are core to the development process of Go, and we strive to ensure that all production code is covered by automated tests.
 Tests are written at multiple levels i.e. unit, integration and functional. The rule of thumb is :</p>
 <ul>
@@ -2551,9 +2567,9 @@ Tests are written at multiple levels i.e. unit, integration and functional. The 
 </ul>
 
 <p>The tool that you use to write/run the test depends on what exactly needs to be tested. Rails code is tested using <a href="http://rspec.info/" target="_blank">RSpec</a>, java using <a href="http://junit.org/" target="_blank">JUnit</a>, javascript using <a href="https://github.com/pivotal/jsunit" target="_blank">JsUnit</a>, and functional tests using <a href="http://www.thoughtworks.com/products/twist-agile-testing" target="_blank">Twist</a>.</p>
-<h3 id="621-rails-specs-using-rspec">6.2.1 Rails specs using RSpec:</h3>
+<h3 id="621-rails-specs-using-rspec"><a name="621-rails-specs-using-rspec" class="plugin-anchor" href="#621-rails-specs-using-rspec"><span class="fa fa-link"></span></a>6.2.1 Rails specs using RSpec:</h3>
 <p>Most of the Go UI is implemented using Rails. We use RSpec to test all of rails views, controllers, models and any other ruby code that we write. So far, rspec tests are mostly written at unit level, i.e. for a particular view, or controller etc. In a unit test, all interactions with other layers are mocked.<br>You can find them under <code>server/webapp/WEB-INF/rails/spec</code> folder.</p>
-<h4 id="6211-execution">6.2.1.1 Execution:</h4>
+<h4 id="6211-execution"><a name="6211-execution" class="plugin-anchor" href="#6211-execution"><span class="fa fa-link"></span></a>6.2.1.1 Execution:</h4>
 <p>These tests can be executed from command prompt as well as individually from your editor. 
 To run all rspec tests from commandline, execute the following:</p>
 <p><code>./tools/bin/old.go.jruby -S rake --rakefile server/run_rspec_tests.rake spec</code></p>
@@ -2568,41 +2584,41 @@ Program: <code>$ModuleFileDir$/webapp/WEB-INF/rails/script/spec</code>
 Parameters: <code>-X $FilePath$ -l $LineNumber$</code>
 Working directory: <code>$ModuleFileDir$/webapp/WEB-INF/rails</code></p>
 <p>Please bear in mind that any changes to rails config files or java code would require a restart of spec server for the changes to take effect.</p>
-<h3 id="622-java-testing-using-junit">6.2.2 Java testing using JUnit:</h3>
+<h3 id="622-java-testing-using-junit"><a name="622-java-testing-using-junit" class="plugin-anchor" href="#622-java-testing-using-junit"><span class="fa fa-link"></span></a>6.2.2 Java testing using JUnit:</h3>
 <p>You would see a <em>test</em> folder under each module, these usually have a <em>unit</em> and <em>integration</em> folder wherein the respective tests for the module are written.</p>
-<h4 id="6221-unit-tests">6.2.2.1 Unit Tests:</h4>
+<h4 id="6221-unit-tests"><a name="6221-unit-tests" class="plugin-anchor" href="#6221-unit-tests"><span class="fa fa-link"></span></a>6.2.2.1 Unit Tests:</h4>
 <p>These tests use mocks and stubs to achieve isolation, they do not access the db or other layers and have minimal interaction with other classes. </p>
-<h4 id="6222-integration-tests">6.2.2.2 Integration Tests:</h4>
+<h4 id="6222-integration-tests"><a name="6222-integration-tests" class="plugin-anchor" href="#6222-integration-tests"><span class="fa fa-link"></span></a>6.2.2.2 Integration Tests:</h4>
 <p>These tests on the other hand cuts across all layers including read/write to db and file-system. Database used by integration tests is the same as the one DevelopmentServer uses, hence make sure you shutdown DevelopmentServer when running integration tests.</p>
-<h4 id="6223-execution">6.2.2.3 Execution:</h4>
+<h4 id="6223-execution"><a name="6223-execution" class="plugin-anchor" href="#6223-execution"><span class="fa fa-link"></span></a>6.2.2.3 Execution:</h4>
 <p>To run these from command line, <em>cd</em> to the module directory and run the following command:</p>
 <p><code>mvn -Dtest=&lt;TestClassName&gt; test</code></p>
 <p>Any format for test specification that is supported by the Maven surefire plugin can be used in the above command.</p>
-<h3 id="623-javascript-testing-using-jsunit-tests">6.2.3 Javascript testing using JsUnit Tests:</h3>
+<h3 id="623-javascript-testing-using-jsunit-tests"><a name="623-javascript-testing-using-jsunit-tests" class="plugin-anchor" href="#623-javascript-testing-using-jsunit-tests"><span class="fa fa-link"></span></a>6.2.3 Javascript testing using JsUnit Tests:</h3>
 <p>Standalone version of jsunit, placed under <code>server/jsunit</code>, is used to test javascripts. </p>
-<h4 id="6231-execution">6.2.3.1 Execution</h4>
+<h4 id="6231-execution"><a name="6231-execution" class="plugin-anchor" href="#6231-execution"><span class="fa fa-link"></span></a>6.2.3.1 Execution</h4>
 <p>Run all tests:</p>
 <p><code>./b cruise:misc:jsunit</code></p>
 <p>Run individual test:</p>
 <p>You could launch a test server using the below command. The url for the same would be printed on the console. Hit this url from a browser window after updating the value of <em>testPage</em> param to the desired value and <em>run</em> test.</p>
 <p><code>./b cruise:misc:jsunit_server</code></p>
-<h3 id="624-acceptance--regression-tests-using-twist">6.2.4 Acceptance &amp; Regression tests using Twist:</h3>
+<h3 id="624-acceptance--regression-tests-using-twist"><a name="624-acceptance--regression-tests-using-twist" class="plugin-anchor" href="#624-acceptance--regression-tests-using-twist"><span class="fa fa-link"></span></a>6.2.4 Acceptance &amp; Regression tests using Twist:</h3>
 <p>Functional tests are end-to-end tests which interacts with the web application. Running these require <a href="http://www.thoughtworks.com/products/twist-agile-testing" target="_blank">Twist</a> to be installed.</p>
 <p>These could be broken down further into three categories - Smoke, Acceptance, and Regression.</p>
 <ul>
-<li><p>Smoke: covers basic functionality such as if server and agent come up after an upgrade, and if one can create a pipeline etc. Such tests are marked with Twist tag &#39;smoke&#39;.</p>
+<li><p>Smoke: covers basic functionality such as if server and agent come up after an upgrade, and if one can create a pipeline etc. Such tests are marked with Twist tag &apos;smoke&apos;.</p>
 </li>
-<li><p>Acceptance: covers happy paths of all major features. These are tagged as &#39;stage1&#39;.</p>
+<li><p>Acceptance: covers happy paths of all major features. These are tagged as &apos;stage1&apos;.</p>
 </li>
-<li><p>Regression: covers happy paths of all minor features and alternate paths of major features. Tests which are neither marked as &#39;smoke&#39; nor &#39;stage1&#39; would be executed as a part of Regression test run which are scheduled to run once in a day as they take atleast a few hours to run.</p>
+<li><p>Regression: covers happy paths of all minor features and alternate paths of major features. Tests which are neither marked as &apos;smoke&apos; nor &apos;stage1&apos; would be executed as a part of Regression test run which are scheduled to run once in a day as they take atleast a few hours to run.</p>
 </li>
 </ul>
-<h3 id="625-performance-tests">6.2.5 Performance Tests</h3>
+<h3 id="625-performance-tests"><a name="625-performance-tests" class="plugin-anchor" href="#625-performance-tests"><span class="fa fa-link"></span></a>6.2.5 Performance Tests</h3>
 <p>We use <a href="http://www.yourkit.com/" target="_blank">Yourkit java profiler</a> to profile Go. The test involves a setup of 100 materials of each supported SCM type, with 500 pipelines and 100 agents. </p>
 <p>To simulate a very active system, continuous commits are made to each of the different materials which are configured. This would cause each of the pipelines to run utilizing all available agents. In the meanwhile, multiple <a href="http://httpd.apache.org/docs/current/programs/ab.html">ab requests</a> are made to different pages of the application to simulate user interaction.
 During this entire activity, Yourkit profiler is started to perform memory, CPU and Sql profiling. This goes on for about 30 minutes after which yourkit snapshot is saved and examined.</p>
-<h3 id="626-test-parallelization">6.2.6 Test Parallelization</h3>
-<p>By default, each job in the build pipeline would run tests from a given module. However, few modules like <em>server</em> and <em>common</em> have a lot of tests. Running them in a serial fashion would take along time.  Quick feedback through build is very important, however as the number of tests increase the longer the test execution time would be. In order to tackle this issue, we use a <a href="http://test-load-balancer.github.io/" target="_blank">Test load balancer</a> to perform test parallelization. TLB creates &#39;n&#39; number of partitions of tests. There are multiple jobs created in the build pipeline each with a allocated <em>TLB_PARTITION_NUMBER</em>. Based on the <em>TLB_PARTITION_NUMBER</em>, TLB would assign the tests in a given partition to the job.</p>
+<h3 id="626-test-parallelization"><a name="626-test-parallelization" class="plugin-anchor" href="#626-test-parallelization"><span class="fa fa-link"></span></a>6.2.6 Test Parallelization</h3>
+<p>By default, each job in the build pipeline would run tests from a given module. However, few modules like <em>server</em> and <em>common</em> have a lot of tests. Running them in a serial fashion would take along time.  Quick feedback through build is very important, however as the number of tests increase the longer the test execution time would be. In order to tackle this issue, we use a <a href="http://test-load-balancer.github.io/" target="_blank">Test load balancer</a> to perform test parallelization. TLB creates &apos;n&apos; number of partitions of tests. There are multiple jobs created in the build pipeline each with a allocated <em>TLB_PARTITION_NUMBER</em>. Based on the <em>TLB_PARTITION_NUMBER</em>, TLB would assign the tests in a given partition to the job.</p>
 
                     
                     </section>

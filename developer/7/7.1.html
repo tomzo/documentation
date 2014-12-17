@@ -29,9 +29,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="8.1" data-basepath=".." data-revision="1418805819461">
+    <div class="book" data-level="8.1" data-basepath=".." data-revision="1418807770183">
     
 
 <div class="book-summary">
@@ -42,8 +46,20 @@
         
     	
     	
+    	    
+            <li>
+                <a href="http://go.cd" target="blank" class="custom-link">Home</a>
+            </li>
+    	
+    	    
+            <li>
+                <a href="https://github.com/gocd/documentation/" target="blank" class="custom-link">Contribute</a>
+            </li>
+    	
     	
 
+        
+        <li class="divider"></li>
         
 
         
@@ -2539,17 +2555,17 @@
                 
                     <section class="normal" id="section-gitbook_1">
                     
-                        <h2 id="71-technical-debt">7.1 Technical Debt</h2>
+                        <h2 id="71-technical-debt"><a name="71-technical-debt" class="plugin-anchor" href="#71-technical-debt"><span class="fa fa-link"></span></a>7.1 Technical Debt</h2>
 <p>Most codebases which have been worked on by many people, over a long, long time, usually have some parts which are not very nice. Here are some parts of the Go codebase (in no particular order) which could do with cleaning up -</p>
-<h3 id="711-old-version-of-jruby-and-rails-in-codebase">7.1.1 Old version of JRuby and Rails in codebase</h3>
-<h4 id="description">Description</h4>
-<p>Go uses a 2.3.x release of Rails, which recently got deprecated. Probably don&#39;t need to say much more about this. :(
+<h3 id="711-old-version-of-jruby-and-rails-in-codebase"><a name="711-old-version-of-jruby-and-rails-in-codebase" class="plugin-anchor" href="#711-old-version-of-jruby-and-rails-in-codebase"><span class="fa fa-link"></span></a>7.1.1 Old version of JRuby and Rails in codebase</h3>
+<h4 id="description"><a name="description" class="plugin-anchor" href="#description"><span class="fa fa-link"></span></a>Description</h4>
+<p>Go uses a 2.3.x release of Rails, which recently got deprecated. Probably don&apos;t need to say much more about this. :(
 It causes Go to not be able to take advantage of new improvements in Rails. Causes people to have to use antiquated
 Rails contructs rather than the new ones.</p>
-<h4 id="history">History</h4>
-<p>It&#39;s a daunting task, because of API changes in Rails, dependency on JRuby, RSpec and other gems. It feels like one
+<h4 id="history"><a name="history" class="plugin-anchor" href="#history"><span class="fa fa-link"></span></a>History</h4>
+<p>It&apos;s a daunting task, because of API changes in Rails, dependency on JRuby, RSpec and other gems. It feels like one
 upgrade was missed a few years ago and then it was too late.</p>
-<h4 id="moving-forward">Moving forward</h4>
+<h4 id="moving-forward"><a name="moving-forward" class="plugin-anchor" href="#moving-forward"><span class="fa fa-link"></span></a>Moving forward</h4>
 <p>Will need to first upgrade JRuby and Jetty to the newer revisions, since newer Rails releases do not support the old
 JRuby revision that is used (corresponds to Ruby 1.8.6). Then, need to do a pretty big upgrade to all Rails code in
 the codebase. Need to bring in Bundler into the codebase for gem management. Biggest hurdles will be:</p>
@@ -2561,21 +2577,21 @@ the codebase. Need to bring in Bundler into the codebase for gem management. Big
 fail.</p>
 </li>
 </ol>
-<h3 id="712-improve-user-documentation">7.1.2 Improve user documentation</h3>
+<h3 id="712-improve-user-documentation"><a name="712-improve-user-documentation" class="plugin-anchor" href="#712-improve-user-documentation"><span class="fa fa-link"></span></a>7.1.2 Improve user documentation</h3>
 <p>generate images for every release (automation)</p>
-<h3 id="713-upgrade-jetty-6123---913-spring-303---4x">7.1.3 Upgrade jetty 6.1.23 -&gt; 9.1.3, spring 3.0.3 -&gt; 4.x</h3>
-<h3 id="714-use-of-velocity-for-views">7.1.4 Use of velocity for views</h3>
-<h3 id="715-hibernate-and-ibatis---both-used">7.1.5 Hibernate and iBatis - Both used</h3>
-<h4 id="description">Description</h4>
+<h3 id="713-upgrade-jetty-6123---913-spring-303---4x"><a name="713-upgrade-jetty-6123---913-spring-303---4x" class="plugin-anchor" href="#713-upgrade-jetty-6123---913-spring-303---4x"><span class="fa fa-link"></span></a>7.1.3 Upgrade jetty 6.1.23 -&gt; 9.1.3, spring 3.0.3 -&gt; 4.x</h3>
+<h3 id="714-use-of-velocity-for-views"><a name="714-use-of-velocity-for-views" class="plugin-anchor" href="#714-use-of-velocity-for-views"><span class="fa fa-link"></span></a>7.1.4 Use of velocity for views</h3>
+<h3 id="715-hibernate-and-ibatis---both-used"><a name="715-hibernate-and-ibatis---both-used" class="plugin-anchor" href="#715-hibernate-and-ibatis---both-used"><span class="fa fa-link"></span></a>7.1.5 Hibernate and iBatis - Both used</h3>
+<h4 id="description"><a name="description" class="plugin-anchor" href="#description"><span class="fa fa-link"></span></a>Description</h4>
 <p>Some of the DAOs in the Go codebase still use iBatis. Some use Hibernate. This causes, for instance, the transaction
 management to be more complicated than it should be. It also stops Go from easily supporting multiple databases.</p>
-<h4 id="history">History</h4>
+<h4 id="history"><a name="history" class="plugin-anchor" href="#history"><span class="fa fa-link"></span></a>History</h4>
 <p>It was a planned and slow strangler move from iBatis to Hibernate, which got slower over time, rather than quicker.</p>
-<h4 id="moving-forward">Moving forward</h4>
+<h4 id="moving-forward"><a name="moving-forward" class="plugin-anchor" href="#moving-forward"><span class="fa fa-link"></span></a>Moving forward</h4>
 <p>Need to move iBatis code over to Hibernate whenever any work around an area is done. Might need to allocate some time
 specifically to move, too.</p>
-<h3 id="716-javascript-frameworks">7.1.6 Javascript frameworks</h3>
-<h4 id="description">Description</h4>
+<h3 id="716-javascript-frameworks"><a name="716-javascript-frameworks" class="plugin-anchor" href="#716-javascript-frameworks"><span class="fa fa-link"></span></a>7.1.6 Javascript frameworks</h3>
+<h4 id="description"><a name="description" class="plugin-anchor" href="#description"><span class="fa fa-link"></span></a>Description</h4>
 <ol>
 <li><p>Prototype and jQuery: Should migrate to jQuery. There are a few pages which still use Prototype.</p>
 </li>
@@ -2587,11 +2603,11 @@ testing. A framework like Jasmine will work better.</p>
 organized.</p>
 </li>
 </ol>
-<h4 id="history">History</h4>
+<h4 id="history"><a name="history" class="plugin-anchor" href="#history"><span class="fa fa-link"></span></a>History</h4>
 <p>A consequence of a long-running project, probably. Some amount of stranglers left behind. Some cleanup should have
-been done before, but wasn&#39;t. Needs to be done now.</p>
-<h3 id="717-make-server--agent-independent-of-jetty-so-that-we-can-support-all-servers">7.1.7 Make server &amp; agent independent of jetty so that we can support all servers.</h3>
-<h3 id="718-util-module-should-be-used-only-by-server">7.1.8 ‘util’ module should be used only by ‘server’</h3>
+been done before, but wasn&apos;t. Needs to be done now.</p>
+<h3 id="717-make-server--agent-independent-of-jetty-so-that-we-can-support-all-servers"><a name="717-make-server--agent-independent-of-jetty-so-that-we-can-support-all-servers" class="plugin-anchor" href="#717-make-server--agent-independent-of-jetty-so-that-we-can-support-all-servers"><span class="fa fa-link"></span></a>7.1.7 Make server &amp; agent independent of jetty so that we can support all servers.</h3>
+<h3 id="718-util-module-should-be-used-only-by-server"><a name="718-util-module-should-be-used-only-by-server" class="plugin-anchor" href="#718-util-module-should-be-used-only-by-server"><span class="fa fa-link"></span></a>7.1.8 &#x2018;util&#x2019; module should be used only by &#x2018;server&#x2019;</h3>
 
                     
                     </section>

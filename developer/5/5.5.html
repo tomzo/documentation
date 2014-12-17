@@ -31,9 +31,13 @@
         
 <link rel="stylesheet" href="../gitbook/style.css">
 
+    
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    
+
 
         
-    <div class="book" data-level="5.5.1" data-basepath=".." data-revision="1418805819461">
+    <div class="book" data-level="5.5.1" data-basepath=".." data-revision="1418807770183">
     
 
 <div class="book-summary">
@@ -44,8 +48,20 @@
         
     	
     	
+    	    
+            <li>
+                <a href="http://go.cd" target="blank" class="custom-link">Home</a>
+            </li>
+    	
+    	    
+            <li>
+                <a href="https://github.com/gocd/documentation/" target="blank" class="custom-link">Contribute</a>
+            </li>
+    	
     	
 
+        
+        <li class="divider"></li>
         
 
         
@@ -2541,8 +2557,8 @@
                 
                     <section class="normal" id="section-gitbook_25">
                     
-                        <h2 id="55-packagerepository">5.5 PackageRepository</h2>
-<h3 id="551-overview">5.5.1 Overview</h3>
+                        <h2 id="55-packagerepository"><a name="55-packagerepository" class="plugin-anchor" href="#55-packagerepository"><span class="fa fa-link"></span></a>5.5 PackageRepository</h2>
+<h3 id="551-overview"><a name="551-overview" class="plugin-anchor" href="#551-overview"><span class="fa fa-link"></span></a>5.5.1 Overview</h3>
 <p>A package repository typically holds a set of packages, each of which can have multiple versions. Package repository material allows Go to trigger a pipeline(s) when a newer version of a
 package is published. Package repository and package are represented as PackageRepository and PackageDefinition respectively in Go.</p>
 <p>PackageRepository consists of name, id, list of ConfigurationProperty represented as Configuration, list PackageDefinition represented as Packages
@@ -2553,10 +2569,10 @@ and PluginConfiguration which controls PackageRepository.</p>
 <p>PackageMaterial captures association between PackageDefinition and a Pipeline. Each PackageMaterial will be uniquely identified by combination of PackageRepository and
 PackageDefinition Configuration. Plugin associated with PackageRepository will decide if a ConfigurationProperty should be considered to uniquely identify PackageMaterial.</p>
 <p>PackageMaterialPoller handles all communication between Go and PackageMaterial plugins.</p>
-<h4 id="552--capturing-configuration">5.5.2  Capturing Configuration:</h4>
+<h4 id="552--capturing-configuration"><a name="552--capturing-configuration" class="plugin-anchor" href="#552--capturing-configuration"><span class="fa fa-link"></span></a>5.5.2  Capturing Configuration:</h4>
 <p>When Go is required to capture Configuration a for PackageRepository, it will contact associated plugin for the configuration metadata. Configuration metadata is captured only once during Go
 server startup and same information is cached for later usage. Once Configuration for a PackageRepository is captured from user, it will be stored in config file and database.</p>
-<h4 id="553--retrieving-package-revisions">5.5.3  Retrieving Package Revisions:</h4>
+<h4 id="553--retrieving-package-revisions"><a name="553--retrieving-package-revisions" class="plugin-anchor" href="#553--retrieving-package-revisions"><span class="fa fa-link"></span></a>5.5.3  Retrieving Package Revisions:</h4>
 <p>When a MaterialUpdateService kicks-in, all unique PackageMaterial will be identified. For each unique PackageMaterial, associated plugin will be invoked for the latest revision. All the
 Configuration of PackageMaterial will be sent to plugin during this invocation. Once plugin return latest PackageRevision, the same will be persisted in database like any other material revision.</p>
 
