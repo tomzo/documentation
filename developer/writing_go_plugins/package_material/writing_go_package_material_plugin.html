@@ -37,7 +37,7 @@
 
 
         
-    <div class="book" data-level="6.5" data-basepath="../.." data-revision="1418812861849">
+    <div class="book" data-level="6.5" data-basepath="../.." data-revision="1421657895453">
     
 
 <div class="book-summary">
@@ -50,7 +50,7 @@
     	
     	    
             <li>
-                <a href="http://go.cd" target="blank" class="custom-link">Home</a>
+                <a href="http://www.go.cd" target="blank" class="custom-link">Home</a>
             </li>
     	
     	    
@@ -2617,9 +2617,9 @@
 <li><p><strong>getRepositoryConfiguration:</strong> This method should return the repository level configuration that is needed to be captured while configuring a package material in Go. The configuration information should be returned as an instance of RepositoryConfiguration.</p>
 <pre><code class="lang-{.code}">    public RepositoryConfiguration getRepositoryConfiguration() {
         RepositoryConfiguration repositoryConfiguration = new RepositoryConfiguration();
-        repositoryConfiguration.add(new Property(&quot;REPO_URL&quot;).with(Property.DISPLAY_NAME, &quot;Repository Url&quot;).with(Property.DISPLAY_ORDER, 0));
-        repositoryConfiguration.add(new Property(&quot;USERNAME&quot;).with(Property.DISPLAY_NAME, &quot;Username&quot;).with(Property.DISPLAY_ORDER, 1));
-        repositoryConfiguration.add(new Property(&quot;PASSWORD&quot;).with(Property.DISPLAY_NAME, &quot;Password&quot;).with(Property.DISPLAY_ORDER, 2));
+        repositoryConfiguration.add(new PackageMaterialProperty(&quot;REPO_URL&quot;).with(Property.DISPLAY_NAME, &quot;Repository Url&quot;).with(Property.DISPLAY_ORDER, 0));
+        repositoryConfiguration.add(new PackageMaterialProperty(&quot;USERNAME&quot;).with(Property.DISPLAY_NAME, &quot;Username&quot;).with(Property.DISPLAY_ORDER, 1));
+        repositoryConfiguration.add(new PackageMaterialProperty(&quot;PASSWORD&quot;).with(Property.DISPLAY_NAME, &quot;Password&quot;).with(Property.DISPLAY_ORDER, 2));
         return repositoryConfiguration;
     }
 </code></pre>
@@ -2627,7 +2627,7 @@
 <li><p><strong>getPackageConfiguration:</strong> This method should return the package configuration that is needed to be captured while configuring a package material in Go. The configuration information should be returned as an instance of PackageConfiguration.</p>
 <pre><code class="lang-{.code}">    public PackageConfiguration getPackageConfiguration() {
         PackageConfiguration packageConfiguration = new PackageConfiguration();
-        packageConfiguration.add(new Property(&quot;PACKAGE_DETAILS&quot;));
+        packageConfiguration.add(new PackageMaterialProperty(&quot;PACKAGE_DETAILS&quot;));
         return packageConfiguration;
     }
 </code></pre>
