@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>Go Api | Go User Documentation</title>
+        <title>SCM Extension | Go User Documentation</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.3.4">
@@ -18,10 +18,10 @@
         
     
     
-    <link rel="next" href="../api/go_api.html" />
+    <link rel="next" href="../extension_points/task_extension.html" />
     
     
-    <link rel="prev" href="../integration/mingle_card_activity_gadget.html" />
+    <link rel="prev" href="../extension_points/yum_repository_poller.html" />
     
 
         
@@ -37,7 +37,7 @@
 
 
         
-    <div class="book" data-level="7" data-basepath=".." data-revision="1425385855425">
+    <div class="book" data-level="8.4" data-basepath=".." data-revision="1425385855425">
     
 
 <div class="book-summary">
@@ -1338,7 +1338,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="7" data-path="api/index.html">
+        <li class="chapter " data-level="7" data-path="api/index.html">
             
                 
                     <a href="../api/index.html">
@@ -1649,7 +1649,7 @@
         </li>
     
         
-        <li class="chapter " data-level="8.4" data-path="extension_points/scm_extension.html">
+        <li class="chapter active" data-level="8.4" data-path="extension_points/scm_extension.html">
             
                 
                     <a href="../extension_points/scm_extension.html">
@@ -2224,30 +2224,72 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_23">
+                    <section class="normal" id="section-gitbook_5">
                     
-                        <html>
-    <head>
-        <title>concepts_in_go</title>
-    </head>
-    <body>
-    <div style="text-align:center;" class="my-block">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-       <h1><a name="undefined" class="plugin-anchor" href="#undefined"><span class="fa fa-link"></span></a>APIs</h1>
-       <h1><a name="undefined" class="plugin-anchor" href="#undefined"><span class="fa fa-link"></span></a>IN GO</h1>
-    </div>
-    </body>
-</html>
+                        <h1 id="scm-material"><a name="scm-material" class="plugin-anchor" href="#scm-material"><span class="fa fa-link"></span></a>SCM Material</h1>
+<h2 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><span class="fa fa-link"></span></a>Introduction</h2>
+<p>A build typically consumes source code maintained in a version control system (VCS/SCM). Go has built-in support for Git, Mercurial, SVN, TFS &amp; Perforce. Users can use SCM plugins to poll other SCMs.</p>
+<h3 id="scms-and-materials"><a name="scms-and-materials" class="plugin-anchor" href="#scms-and-materials"><span class="fa fa-link"></span></a>SCMs and Materials</h3>
+<p>You can define a SCM globally. A pipeline may refer to a SCM as a material. When there is a new revision in the SCM, interested pipelines will get scheduled.</p>
+<h4 id="scm-definition"><a name="scm-definition" class="plugin-anchor" href="#scm-definition"><span class="fa fa-link"></span></a>SCM Definition</h4>
+<p>A SCM material plugin lets pipeline group admins provide details of the corresponding SCM type to Go.</p>
+<h5 id="note"><a name="note" class="plugin-anchor" href="#note"><span class="fa fa-link"></span></a>Note:</h5>
+<ol>
+<li>The SCM name is not used by the SCM material plugin - it is used by Go to construct the material name.</li>
+<li>Two SCMs cannot have the same name.</li>
+<li>Use the check connection button to ensure that Go can work with this SCM.</li>
+</ol>
+<p>--</p>
+<p>Unlike built-in VCS/SCM materials, <em>the material definition in case of plugin SCMs is not contained within the pipeline definition</em>. Many pipelines may have material definitions refering to the same SCM. Here is how we associate an existing SCM as material for a pipeline.</p>
+<p>--</p>
+<h5 id="note"><a name="note" class="plugin-anchor" href="#note"><span class="fa fa-link"></span></a>Note:</h5>
+<p>Each SCM material plugin defines a subset of its properties as a <em>SCM fingerprint</em>. e.g. SCM URL and Branch could be included while username and password could be excluded. SCM names are <strong>not</strong> part of SCM fingerprint. It is not permitted to multiple SCMs having the same SCM fingerprint. An attempt to do so will result in an error message like this:</p>
+<p>The following error(s) need to be resolved in order to perform this action:<br>
+Cannot save SCM, found duplicate SCMs. [SCM Name: &apos;apple&apos;], [SCM Name: &apos;orange&apos;]</p>
+<h4 id="sample-xml-configuration"><a name="sample-xml-configuration" class="plugin-anchor" href="#sample-xml-configuration"><span class="fa fa-link"></span></a>Sample XML Configuration</h4>
+<p>Here is a XML view of an SCM. Note the relation between SCM and pipeline material. Loosely typed property, key and value tags are used for SCM configuration in order to accommodate different plugins. If you choose to configure via direct XML edit, note that it isn&apos;t necessary to provide SCM IDs, Go server wil auto-generate them. However, not all validations that are performed while configuring via UI kick in while configuring via XML edit - the resulting failures will show up later in the server health message panel at the bottom right of the browser frame.</p>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-title">scms</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">scm</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;3bfc282e-43a6-4795-ba9c-6c50665220dd&quot;</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;git-repo&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">pluginConfiguration</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;git&quot;</span> <span class="hljs-attribute">version</span>=<span class="hljs-value">&quot;1.0&quot;</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">configuration</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">property</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">key</span>&gt;</span>url<span class="hljs-tag">&lt;/<span class="hljs-title">key</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>http://localhost:8080/git-repo<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">property</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">configuration</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">scm</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">scms</span>&gt;</span>
+  ...
+   <span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">&quot;pipeline-group&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;pipeline&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">scm</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">&quot;3bfc282e-43a6-4795-ba9c-6c50665220dd&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;dest_dir&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">filter</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">ignore</span> <span class="hljs-attribute">pattern</span>=<span class="hljs-value">&quot;*.log&quot;</span> /&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-title">filter</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">scm</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
+    ...
+</code></pre>
+<h3 id="permissions"><a name="permissions" class="plugin-anchor" href="#permissions"><span class="fa fa-link"></span></a>Permissions</h3>
+<p>SCMs are global entities not tied to a pipeline group or environment. Pipeline group admins may define SCMs for use in their pipelines. One pipeline group admin may also use SCMs defined by another for their pipelines. Changing a SCM definition will cause all dependent pipelines to schedule - even those not in the same pipeline group as that of the person editing. Hence, we don&apos;t have a UI way of changing the definition of a SCM. Only the Go admin can change it via Admin &gt; Config XML tab.</p>
+<h3 id="polling"><a name="polling" class="plugin-anchor" href="#polling"><span class="fa fa-link"></span></a>Polling</h3>
+<p>Even if no pipelines use a SCM, Go polls for newer revisions every minute. This may be turned off at a SCM level by setting <a href="../configuration/configuration_reference.html#scm"><code>autoUpdate</code></a> to false via the config xml (Go admins only). <code>autoUpdate</code> is turned on by default. When a newer revision is found for a SCM, the pipelines for which it is a material get scheduled (assuming <a href="../configuration/pipeline_scheduling.html">auto scheduling of pipelines</a> is on). Also see <a href="../api/pipeline_api.html#key">API scheduling</a>.</p>
+<p><em>Filters:</em> At times you may not want Go to trigger pipelines for every commit. e.g. you might not want to &apos;build&apos; if its a &apos;documentation&apos; change. You can setup a <a href="../configuration/configuration_reference.html#filter">filter</a> at pipeline level asking Go to skip pipeline scheduling if commit contains only files that match a pattern.</p>
+<h3 id="scm-information-display"><a name="scm-information-display" class="plugin-anchor" href="#scm-information-display"><span class="fa fa-link"></span></a>SCM information display</h3>
+<p>The following information is expected from the SCM material plugin (which in turn obtains it from the SCM metadata if available)</p>
+<ol>
+<li>SCM revision</li>
+<li>Commit time</li>
+<li>Name of committer (if available)</li>
+<li>Comment for the commit</li>
+<li>SCM name</li>
+</ol>
+<p>At the time of building the SCM, it is recommended to include as much of the above information as possible so that it is available for Go to display as below.</p>
+<p><img src="../resources/images/package-changes.png" alt=""></p>
+<h3 id="scm-checkout-on-agent"><a name="scm-checkout-on-agent" class="plugin-anchor" href="#scm-checkout-on-agent"><span class="fa fa-link"></span></a>SCM checkout on Agent</h3>
+<p>VCS/SCM plugin will by default checkout code into <code>destination</code> directory on Agent before the job begins.</p>
+
                     
                     </section>
                 
@@ -2257,10 +2299,10 @@
         </div>
 
         
-        <a href="../integration/mingle_card_activity_gadget.html" class="navigation navigation-prev " aria-label="Previous page: Mingle Card Activity Gadget"><i class="fa fa-angle-left"></i></a>
+        <a href="../extension_points/yum_repository_poller.html" class="navigation navigation-prev " aria-label="Previous page: Yum Repository Poller"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../api/go_api.html" class="navigation navigation-next " aria-label="Next page: Introducing Go API"><i class="fa fa-angle-right"></i></a>
+        <a href="../extension_points/task_extension.html" class="navigation navigation-next " aria-label="Next page: Task Extension"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
