@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>How do I re-run jobs? | Go User Documentation</title>
+        <title>Pipeline upload from within Go | Go User Documentation</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.3.4">
@@ -18,10 +18,10 @@
         
     
     
-    <link rel="next" href="../faq/material_update_hung.html" />
+    <link rel="next" href="../release_history/index.html" />
     
     
-    <link rel="prev" href="../faq/what_is_opensocial.html" />
+    <link rel="prev" href="../beta/comment_on_pipeline_run.html" />
     
 
         
@@ -37,7 +37,7 @@
 
 
         
-    <div class="book" data-level="9.17" data-basepath=".." data-revision="1428442433483">
+    <div class="book" data-level="10.2" data-basepath=".." data-revision="1428442433483">
     
 
 <div class="book-summary">
@@ -1975,7 +1975,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="9.17" data-path="faq/job_rerun.html">
+        <li class="chapter " data-level="9.17" data-path="faq/job_rerun.html">
             
                 
                     <a href="../faq/job_rerun.html">
@@ -2093,7 +2093,7 @@
         </li>
     
         
-        <li class="chapter " data-level="10.2" data-path="beta/plugin_upload.html">
+        <li class="chapter active" data-level="10.2" data-path="beta/plugin_upload.html">
             
                 
                     <a href="../beta/plugin_upload.html">
@@ -2240,24 +2240,30 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_75">
+                    <section class="normal" id="section-gitbook_40">
                     
-                        <h1 id="re-running-jobs"><a name="re-running-jobs" class="plugin-anchor" href="#re-running-jobs"><span class="fa fa-link"></span></a>Re-running Job(s)</h1>
-<p>You may sometimes encounter situations where you want to re-run only a subset of jobs within a stage rather than the entire stage or pipeline. Examples of such scenarios include:</p>
-<ul>
-<li>Environmental problems on a particular agent caused a job to fail</li>
-<li>Unsuccessful build deployment to one (or more) servers within a cluster of servers</li>
-</ul>
-<h2 id="to-re-run-a-job"><a name="to-re-run-a-job" class="plugin-anchor" href="#to-re-run-a-job"><span class="fa fa-link"></span></a>To re-run a job</h2>
-<ul>
-<li>Navigate to the <strong>Stage Details</strong> screen of the stage who&apos;s job you want to re-run.</li>
-<li>Click on the <strong>Jobs</strong> tab.</li>
-<li>Check the job(s) you want to re-run and click the <strong>Rerun</strong> button.</li>
-</ul>
-<p>The &quot;Rerun&quot; option is only available for stages that have completed. You cannot re-run jobs for stages that are still running.</p>
-<p><img src="../resources/images/stage_details_pre_job_rerun.png" alt=""></p>
-<p>Job re-runs are denoted by a circular arrow overlay on the stages and jobs that have been re-run:</p>
-<p><img src="../resources/images/stage_details_post_job_rerun.png" alt=""></p>
+                        <h1 id="beta-feature-upload-plugins-from-within-go-without-restarting-the-server"><a name="beta-feature-upload-plugins-from-within-go-without-restarting-the-server" class="plugin-anchor" href="#beta-feature-upload-plugins-from-within-go-without-restarting-the-server"><span class="fa fa-link"></span></a>Beta feature: Upload plugins, from within Go, without restarting the server</h1>
+<div style="background-color: rgba(0, 192, 0, 0.25); padding: 5px; margin-bottom: 1em">
+  Note: This is a beta feature, which is turned off by default in Go 15.1.0. It can be turned on by using the feature
+  toggle API, for this feature. If you are using curl, this is what you will need to do:
+
+  <div style="font-family: monospace; font-size: 70%; padding-top: 1em; padding-bottom: 1em">curl -d &apos;toggle_value=on&apos; &apos;<a href="http://go_server/go/api/admin/feature_toggles/plugin_upload_feature_toggle_key" target="_blank">http://go_server/go/api/admin/feature_toggles/plugin_upload_feature_toggle_key</a>&apos;</div>
+
+<p>  When authentication is turned on in your Go Server setup, add the --user option to the curl command, like this:</p>
+  <div style="font-family: monospace; font-size: 70%; margin-top: -1em">curl --user username:password -d &apos;toggle_value=on&apos; ...</div>
+</div>
+
+<p>Without this feature turned on, the plugins list page looks like this:</p>
+<p><img src="../resources/images/plugin_upload_feature_off.png" alt="Plugins list - Without feature turned on"></p>
+<p>When this feature is turned on, the plugins list page will include a form to upload a plugin:</p>
+<p><img src="../resources/images/plugin_upload_feature_on.png" alt="Plugins list - With feature turned on"></p>
+<p>For this upload to work, you need to turn on another flag during startup (sorry, there is a reason for not turning this
+on, though). The <a href="../advanced_usage/other_config_options.html#system-properties">system property</a> you need to set is
+<code>pluginLocationMonitor.sleepTimeInSecs</code>. You can set that to something like 3 seconds, by <a href="../advanced_usage/other_config_options.html#system-properties">changing</a>
+<code>GO_SERVER_SYSTEM_PROPERTIES</code> to include <code>-DpluginLocationMonitor.sleepTimeInSecs=3</code>, for instance.</p>
+<p>Once you have that setup, and add a plugin using the upload form above, you&apos;ll see a message about the successful save
+of the plugin. Within 3 seconds (property you set earlier), the plugin will be loaded, and you can see it when you
+refresh the plugin listing page.</p>
 
                     
                     </section>
@@ -2268,10 +2274,10 @@
         </div>
 
         
-        <a href="../faq/what_is_opensocial.html" class="navigation navigation-prev " aria-label="Previous page: What is OpenSocial?"><i class="fa fa-angle-left"></i></a>
+        <a href="../beta/comment_on_pipeline_run.html" class="navigation navigation-prev " aria-label="Previous page: Comment on a pipeline run"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../faq/material_update_hung.html" class="navigation navigation-next " aria-label="Next page: Go unable to poll for changes"><i class="fa fa-angle-right"></i></a>
+        <a href="../release_history/index.html" class="navigation navigation-next " aria-label="Next page: Release History"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

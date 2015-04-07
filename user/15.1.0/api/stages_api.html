@@ -37,7 +37,7 @@
 
 
         
-    <div class="book" data-level="7.4" data-basepath=".." data-revision="1425385855425">
+    <div class="book" data-level="7.4" data-basepath=".." data-revision="1428442433483">
     
 
 <div class="book-summary">
@@ -2092,6 +2092,22 @@
             
         </li>
     
+        
+        <li class="chapter " data-level="10.2" data-path="beta/plugin_upload.html">
+            
+                
+                    <a href="../beta/plugin_upload.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                         Pipeline upload from within Go
+                    </a>
+                
+            
+            
+        </li>
+    
 
             </ul>
             
@@ -2224,7 +2240,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_36">
+                    <section class="normal" id="section-gitbook_37">
                     
                         <h1 id="stages-api"><a name="stages-api" class="plugin-anchor" href="#stages-api"><span class="fa fa-link"></span></a>Stages API</h1>
 <h2 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><span class="fa fa-link"></span></a>Introduction</h2>
@@ -2233,7 +2249,8 @@
 </blockquote>
 <h2 id="stage-cancellation-api"><a name="stage-cancellation-api" class="plugin-anchor" href="#stage-cancellation-api"><span class="fa fa-link"></span></a>Stage Cancellation API</h2>
 <p>This API provides the ability to cancel an active stage of a pipeline. The API needs the name of the pipeline and name of the stage to perform cancellation.</p>
-<p>Security Note: The user invoking the API should have sufficient permission to operate on the pipeline.</p>
+<p><strong>Note:</strong> The <code>scheduled_date</code> field in the response is in UNIX timestamp format. It records the number of milliseconds since the UNIX epoch date of 01 JAN 1970. To read more about this value and see examples of how to convert it to other formats including human readable form (for various languages) see <a href="http://www.epochconverter.com/" target="_blank">http://www.epochconverter.com/</a>. Be aware it may be necessary to convert to seconds first.</p>
+<p><strong>Security Note:</strong> The user invoking the API should have sufficient permission to operate on the pipeline.</p>
 <table>
 <thead>
 <tr>
