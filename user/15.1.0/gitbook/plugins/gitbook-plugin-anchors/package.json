@@ -27,7 +27,7 @@
   "_id": "gitbook-plugin-anchors@0.4.0",
   "scripts": {},
   "_shasum": "9f2b1729a8470c129f6803c22d12be38ffbcdfc0",
-  "_from": "gitbook-plugin-anchors@",
+  "_from": "gitbook-plugin-anchors@*",
   "_npmVersion": "1.4.23",
   "_npmUser": {
     "name": "rlmv",
@@ -44,6 +44,5 @@
     "tarball": "http://registry.npmjs.org/gitbook-plugin-anchors/-/gitbook-plugin-anchors-0.4.0.tgz"
   },
   "directories": {},
-  "_resolved": "https://registry.npmjs.org/gitbook-plugin-anchors/-/gitbook-plugin-anchors-0.4.0.tgz",
-  "readme": "ERROR: No README data found!"
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-anchors/-/gitbook-plugin-anchors-0.4.0.tgz"
 }
