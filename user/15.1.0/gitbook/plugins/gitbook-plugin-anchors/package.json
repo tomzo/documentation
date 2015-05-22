@@ -14,7 +14,7 @@
   "homepage": "https://github.com/rlmv/gitbook-plugin-anchors",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rlmv/gitbook-plugin-anchors.git"
+    "url": "git+https://github.com/rlmv/gitbook-plugin-anchors.git"
   },
   "bugs": {
     "url": "https://github.com/rlmv/gitbook-plugin-anchors/issues"
@@ -27,7 +27,7 @@
   "_id": "gitbook-plugin-anchors@0.4.0",
   "scripts": {},
   "_shasum": "9f2b1729a8470c129f6803c22d12be38ffbcdfc0",
-  "_from": "gitbook-plugin-anchors@0.4.0",
+  "_from": "gitbook-plugin-anchors@latest",
   "_npmVersion": "1.4.23",
   "_npmUser": {
     "name": "rlmv",
