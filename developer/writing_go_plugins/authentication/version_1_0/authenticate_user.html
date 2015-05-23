@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="6.10.1.2" data-basepath="../../.." data-revision="1432281823653">
+    <div class="book" data-level="6.10.1.2" data-basepath="../../.." data-revision="1432360039906">
     
 
 <div class="book-summary">
@@ -3203,9 +3203,11 @@
 <p><strong><em>Expected response body</em></strong>: The plugin is expected to send a response, with details of user (<code>username</code>, <code>display-name</code> &amp; <code>email-id</code>) if user is successfully authenticated, else return <code>null</code> or <code>{}</code> to indicate authentication failed.</p>
 <p><strong><em>Example response</em></strong>:</p>
 <pre><code class="lang-json">{
-    &quot;<span class="hljs-attribute">username</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;sample-username&quot;</span></span>,
-    &quot;<span class="hljs-attribute">display-name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;sample-display-name&quot;</span></span>,
-    &quot;<span class="hljs-attribute">email-id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;sample-email-id&quot;</span>
+    &quot;<span class="hljs-attribute">user</span>&quot;: <span class="hljs-value">{
+        &quot;<span class="hljs-attribute">username</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;sample-username&quot;</span></span>,
+        &quot;<span class="hljs-attribute">display-name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;sample-display-name&quot;</span></span>,
+        &quot;<span class="hljs-attribute">email-id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;sample-email-id&quot;</span>
+    </span>}
 </span>}
 </code></pre>
 <h3 id="schema-information"><a name="schema-information" class="plugin-anchor" href="#schema-information"><span class="fa fa-link"></span></a>Schema information</h3>
@@ -3235,19 +3237,27 @@
   &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;/&quot;</span></span>,
   &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;object&quot;</span></span>,
   &quot;<span class="hljs-attribute">properties</span>&quot;: <span class="hljs-value">{
-    &quot;<span class="hljs-attribute">username</span>&quot;: <span class="hljs-value">{
-      &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;username&quot;</span></span>,
-      &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;string&quot;</span></span>,
-      &quot;<span class="hljs-attribute">required</span>&quot;: <span class="hljs-value"><span class="hljs-literal">true</span>
-    </span>}</span>,
-    &quot;<span class="hljs-attribute">display-name</span>&quot;: <span class="hljs-value">{
-      &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;display-name&quot;</span></span>,
-      &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;string&quot;</span></span>,
-      &quot;<span class="hljs-attribute">required</span>&quot;: <span class="hljs-value"><span class="hljs-literal">true</span>
-    </span>}</span>,
-    &quot;<span class="hljs-attribute">email-id</span>&quot;: <span class="hljs-value">{
-      &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;email-id&quot;</span></span>,
-      &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;string&quot;</span></span>,
+    &quot;<span class="hljs-attribute">user</span>&quot;: <span class="hljs-value">{
+      &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;user&quot;</span></span>,
+      &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;object&quot;</span></span>,
+      &quot;<span class="hljs-attribute">properties</span>&quot;: <span class="hljs-value">{
+        &quot;<span class="hljs-attribute">username</span>&quot;: <span class="hljs-value">{
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;username&quot;</span></span>,
+          &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;string&quot;</span></span>,
+          &quot;<span class="hljs-attribute">required</span>&quot;: <span class="hljs-value"><span class="hljs-literal">true</span>
+        </span>}</span>,
+        &quot;<span class="hljs-attribute">display-name</span>&quot;: <span class="hljs-value">{
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;display-name&quot;</span></span>,
+          &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;string&quot;</span></span>,
+          &quot;<span class="hljs-attribute">required</span>&quot;: <span class="hljs-value"><span class="hljs-literal">false</span>
+        </span>}</span>,
+        &quot;<span class="hljs-attribute">email-id</span>&quot;: <span class="hljs-value">{
+          &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;email-id&quot;</span></span>,
+          &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;string&quot;</span></span>,
+          &quot;<span class="hljs-attribute">required</span>&quot;: <span class="hljs-value"><span class="hljs-literal">false</span>
+        </span>}
+      </span>}</span>,
+      &quot;<span class="hljs-attribute">additionalProperties</span>&quot;: <span class="hljs-value"><span class="hljs-literal">false</span></span>,
       &quot;<span class="hljs-attribute">required</span>&quot;: <span class="hljs-value"><span class="hljs-literal">false</span>
     </span>}
   </span>}</span>,
