@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="6.10.1.1" data-basepath="../../.." data-revision="1432360039906">
+    <div class="book" data-level="6.10.1.1" data-basepath="../../.." data-revision="1433522368445">
     
 
 <div class="book-summary">
@@ -2862,6 +2862,22 @@
             
         </li>
     
+        
+        <li class="chapter " data-level="6.10.1.3" data-path="writing_go_plugins/authentication/version_1_0/search_user.html">
+            
+                
+                    <a href="../../../writing_go_plugins/authentication/version_1_0/search_user.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.10.1.3.</b>
+                        
+                         Search User
+                    </a>
+                
+            
+            
+        </li>
+    
 
             </ul>
             
@@ -3198,7 +3214,8 @@
 <p><strong><em>Example response</em></strong>:</p>
 <pre><code class="lang-json">{
     &quot;<span class="hljs-attribute">display-name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;LDAP&quot;</span></span>,
-    &quot;<span class="hljs-attribute">supports-password-based-authentication</span>&quot;: <span class="hljs-value"><span class="hljs-literal">true</span>
+    &quot;<span class="hljs-attribute">supports-password-based-authentication</span>&quot;: <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    &quot;<span class="hljs-attribute">supports-user-search</span>&quot;: <span class="hljs-value"><span class="hljs-literal">true</span>
 </span>}
 </code></pre>
 <h3 id="schema-information"><a name="schema-information" class="plugin-anchor" href="#schema-information"><span class="fa fa-link"></span></a>Schema information</h3>
@@ -3215,6 +3232,11 @@
     </span>}</span>,
     &quot;<span class="hljs-attribute">supports-password-based-authentication</span>&quot;: <span class="hljs-value">{
       &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;supports-password-based-authentication&quot;</span></span>,
+      &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;boolean&quot;</span></span>,
+      &quot;<span class="hljs-attribute">required</span>&quot;: <span class="hljs-value"><span class="hljs-literal">false</span>
+    </span>}</span>,
+    &quot;<span class="hljs-attribute">supports-user-search</span>&quot;: <span class="hljs-value">{
+      &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;supports-user-search&quot;</span></span>,
       &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;boolean&quot;</span></span>,
       &quot;<span class="hljs-attribute">required</span>&quot;: <span class="hljs-value"><span class="hljs-literal">false</span>
     </span>}
