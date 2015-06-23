@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="7.8" data-basepath=".." data-revision="1435058783406">
+    <div class="book" data-level="7.8" data-basepath=".." data-revision="1435066049527">
     
 
 <div class="book-summary">
@@ -2271,7 +2271,7 @@
 <p>A user with admin privileges can invoke:</p>
 <pre><code>curl -u admin:badger http://goserver.com:8153/go/api/admin/config/[digest].xml
 </code></pre><p>to get the version of configuration identified by <em>[digest]</em>.</p>
-<p>For instance, if configuration as on a certain day has digest value 5059cf548db9ea2d1b9192b45529ccf0, it can be retrieved on any future day by invoking:</p>
+<p>For instance, if configuration as on a certain day has digest value <code>5059cf548db9ea2d1b9192b45529ccf0</code>, it can be retrieved on any future day by invoking:</p>
 <pre><code>curl -u admin:badger http://goserver.com:8153/go/api/admin/config/5059cf548db9ea2d1b9192b45529ccf0.xml
 </code></pre><h3 id="other-convenience-apis"><a name="other-convenience-apis" class="plugin-anchor" href="#other-convenience-apis"><span class="fa fa-link"></span></a>Other convenience APIs</h3>
 <p>In addition to &apos;historical configuration version retrieval&apos;, Go exposes other convenience APIs around this feature, that allow retrieval of current configuration without passing in the digest value.</p>
@@ -2356,15 +2356,16 @@
 </ul>
 <p>The following command produces output specified below:</p>
 <pre><code>curl -u admin:badger http://goserver.com:8153/go/config/diff/238d2081ca5fde32440c4c1da6c6f95267196162/59fcc29a3385b17795c7b2ac2c2f6dd7cb9421bd
-</code></pre><pre><code>@@ -55,7 +55,7 @@
+</code></pre><pre><code class="lang-patch"><span class="hljs-chunk">@@ -55,7 +55,7 @@</span>
    &lt;/pipelines&gt;
    &lt;agents&gt;
      &lt;agent hostname=&quot;blrstdcrspair02&quot; ipaddress=&quot;10.4.7.202&quot; uuid=&quot;f6a76eaa-96ac-43a2-8255-7c898236ba22&quot; /&gt;
--    &lt;agent hostname=&quot;unknowne4ce8f40e2ca&quot; ipaddress=&quot;127.0.0.1&quot; uuid=&quot;0794793b-5c1a-443f-b860-df480986586b&quot; /&gt;
-+    &lt;agent hostname=&quot;unknowne4ce8f40e2ca&quot; ipaddress=&quot;192.168.1.12&quot; uuid=&quot;0794793b-5c1a-443f-b860-df480986586b&quot; /&gt;
+<span class="hljs-deletion">-    &lt;agent hostname=&quot;unknowne4ce8f40e2ca&quot; ipaddress=&quot;127.0.0.1&quot; uuid=&quot;0794793b-5c1a-443f-b860-df480986586b&quot; /&gt;</span>
+<span class="hljs-addition">+    &lt;agent hostname=&quot;unknowne4ce8f40e2ca&quot; ipaddress=&quot;192.168.1.12&quot; uuid=&quot;0794793b-5c1a-443f-b860-df480986586b&quot; /&gt;</span>
    &lt;/agents&gt;
  &lt;/cruise&gt;
-</code></pre><h2 id="adding-a-new-pipeline"><a name="adding-a-new-pipeline" class="plugin-anchor" href="#adding-a-new-pipeline"><span class="fa fa-link"></span></a>Adding a new pipeline</h2>
+</code></pre>
+<h2 id="adding-a-new-pipeline"><a name="adding-a-new-pipeline" class="plugin-anchor" href="#adding-a-new-pipeline"><span class="fa fa-link"></span></a>Adding a new pipeline</h2>
 <p>To add a pipeline, you perform a POST to the URL <a href="http://[server]/go/tab/admin/pipelines/[pipeline\_name].json" target="_blank">http://[server]/go/tab/admin/pipelines/[pipeline\_name].json</a> where pipeline_name is the name of the pipeline that you wish to create. Creating a pipeline supports the following parameters:</p>
 <p>For example, suppose you have switched on security and the username and the password are &apos;my_user&apos; and &apos;my_password&apos;. If you want to create a new pipeline named &apos;mypipeline&apos;, which uses an svn repository without username and password, and the location of repository is &apos;<a href="http://yoursvnrepository/trunk" target="_blank">http://yoursvnrepository/trunk</a>&apos;. The command should be:</p>
 <pre><code>curl -u admin:badger -d &quot;url=http://yoursvnrepository/trunk&quot; http://goserver.com:8153/go/tab/admin/pipelines/mypipeline.json
@@ -2450,12 +2451,13 @@
 <td>username</td>
 <td>checkout_username</td>
 <td>No</td>
-<td></td>
+<td>The SVN username</td>
 </tr>
 <tr>
 <td>password</td>
 <td>checkout_password</td>
 <td>No</td>
+<td>The SVN password</td>
 </tr>
 </tbody>
 </table>
@@ -2474,7 +2476,7 @@
 <td>scm</td>
 <td>hg</td>
 <td>Yes</td>
-<td></td>
+<td>-</td>
 </tr>
 <tr>
 <td>url</td>
@@ -2499,7 +2501,7 @@
 <td>scm</td>
 <td>git</td>
 <td>Yes</td>
-<td></td>
+<td>-</td>
 </tr>
 <tr>
 <td>url</td>
@@ -2524,7 +2526,7 @@
 <td>scm</td>
 <td>p4</td>
 <td>Yes</td>
-<td></td>
+<td>-</td>
 </tr>
 <tr>
 <td>url</td>
@@ -2548,12 +2550,13 @@
 <td>useTickets</td>
 <td>true or false</td>
 <td>No</td>
-<td></td>
+<td>-</td>
 </tr>
 <tr>
 <td>view</td>
 <td>//depot/... //something/...</td>
 <td>Yes</td>
+<td>-</td>
 </tr>
 </tbody>
 </table>
@@ -2572,7 +2575,7 @@
 <td>scm</td>
 <td>tfs</td>
 <td>Yes</td>
-<td></td>
+<td>-</td>
 </tr>
 <tr>
 <td>url</td>
