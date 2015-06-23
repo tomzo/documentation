@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="3.6" data-basepath=".." data-revision="1433522268060">
+    <div class="book" data-level="3.6" data-basepath=".." data-revision="1435048050147">
     
 
 <div class="book-summary">
@@ -2285,11 +2285,11 @@ Admin section:</p>
 <p>You can change the artifacts directory location at any time using the method described above, even when Go is running. However Go will not move existing artifacts to the new location for you, and changing the location while Go is running won&apos;t take effect until Go Server is restarted.</p>
 <p>If you decide to move your artifact repository, the safe way to do it is:</p>
 <ol>
-<li>pause all pipelines and wait until all active jobs on the agent grid has completed (all agents are in the state &quot;idle&quot;)</li>
-<li>shut down Go server</li>
-<li>copy the artifact repository to the new location</li>
-<li>edit Go&apos;s configuration file manually as described above to tell Go where to find the artifacts</li>
-<li>restart Go server</li>
+<li>Pause all pipelines and wait until all active jobs on the agent grid has completed (all agents are in the state &quot;idle&quot;)</li>
+<li>Shut down Go server</li>
+<li>Copy the artifact repository to the new location</li>
+<li>Edit Go&apos;s configuration file manually as described above to tell Go where to find the artifacts</li>
+<li>Restart Go server</li>
 </ol>
 <p>Even when all active jobs on the agent grid have stopped, users may still be uploading artifacts using the RESTful URLs. This is why we need to stop Go server completely in order to be safe.</p>
 <h2 id="configure-site-urls"><a name="configure-site-urls" class="plugin-anchor" href="#configure-site-urls"><span class="fa fa-link"></span></a>Configure site URLs</h2>

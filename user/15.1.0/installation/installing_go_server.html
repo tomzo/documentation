@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="3.2" data-basepath=".." data-revision="1433522268060">
+    <div class="book" data-level="3.2" data-basepath=".." data-revision="1435048050147">
     
 
 <div class="book-summary">
@@ -2265,24 +2265,24 @@
 <h3 id="how-to-install-go-server-for-windows"><a name="how-to-install-go-server-for-windows" class="plugin-anchor" href="#how-to-install-go-server-for-windows"><span class="fa fa-link"></span></a>How to install Go server for Windows</h3>
 <p>You must be logged in as a user with Administrator privileges to install the Go server on Windows.</p>
 <ol>
-<li>Double-click the go-server-${version}.exe installer file and follow the prompts to install Go.</li>
-<li>During installation you will be asked to select a directory that will serve as the root path for your Go server installation. Go server will store all of its associated data in this directory by default.</li>
+<li>Double-click the <code>go-server-${version}.exe</code> installer file and follow the prompts to install Go</li>
+<li>During installation you will be asked to select a directory that will serve as the root path for your Go server installation. Go server will store all of its associated data in this directory by default</li>
 <li>You will next be prompted to choose the bundled Oracle 7 JRE or specify the location of JRE (or JDK) installed on your system</li>
-<li>At the end of the installation, Go server will register itself as a windows service owned by &apos;Local System&apos; and start running automatically.</li>
-<li>Shortcuts to Go will be placed on your Desktop and in your Start Menu for convenience - double-click the shortcut to go to the Go dashboard.</li>
+<li>At the end of the installation, Go server will register itself as a windows service owned by &apos;Local System&apos; and start running automatically</li>
+<li>Shortcuts to Go will be placed on your Desktop and in your Start Menu for convenience - double-click the shortcut to go to the Go dashboard</li>
 </ol>
 <h4 id="override-default-startup-arguments"><a name="override-default-startup-arguments" class="plugin-anchor" href="#override-default-startup-arguments"><span class="fa fa-link"></span></a>Override default startup arguments</h4>
 <p><img src="../resources/images/windows-server-startup-config-cascade.png" alt=""></p>
 <ul>
-<li>Create a file named <em>wrapper-properties.conf</em> inside the <em>config</em> directory</li>
-<li>With reference to the representation above, if you wish to increase the maximum java heap size from default <em>1024m</em> to <em>2048m</em>,<ol>
-<li>Copy the property <em>wrapper.java.additional.2=-Xmx1024m</em> from <em>wrapper-server.conf</em> to <em>wrapper-properties.conf</em></li>
-<li>Change the value associated to <em>wrapper.java.additional.2</em> to the desired value <em>2048m</em> as shown in the above representation</li>
+<li>Create a file named <code>wrapper-properties.conf</code> inside the <em>config</em> directory</li>
+<li>With reference to the representation above, if you wish to increase the maximum java heap size from default <code>1024m</code> to <code>2048m</code>,<ol>
+<li>Copy the property <code>wrapper.java.additional.2=-Xmx1024m</code> from <code>wrapper-server.conf</code> to <code>wrapper-properties.conf</code></li>
+<li>Change the value associated to <code>wrapper.java.additional.2</code> to the desired value <code>2048m</code> as shown in the above representation</li>
 </ol>
 </li>
 <li>Adding a new property entails:<ol>
-<li>Increment the <strong>x</strong> by 1 in <em>wrapper.java.additional.x</em> where <strong>x</strong> is the highest number in <em>wrapper-server.conf</em> and <em>wrapper-properties.conf</em> combined</li>
-<li>Add this newly created property to the <em>wrapper-properties.conf</em></li>
+<li>Increment the <strong>x</strong> by 1 in <code>wrapper.java.additional.x</code> where <strong>x</strong> is the highest number in <code>wrapper-server.conf</code> and <code>wrapper-properties.conf</code> combined</li>
+<li>Add this newly created property to the <code>wrapper-properties.conf</code></li>
 </ol>
 </li>
 </ul>
@@ -2290,9 +2290,9 @@
 <ol>
 <li>Double-click the downloaded file to unzip the contents.</li>
 <li>Drag the Go server Application to the Applications folder.</li>
-<li>Go server will store its data in <em><user-home>/Library/Application Support/Go Server</user-home></em> subfolder of the user&apos;s home folder</li>
-<li>Double-click on the Go Server.app icon to open the launcher.</li>
-<li><p>While the Go server is starting up, you&apos;ll see a progress bar in the top left of your screen.</p>
+<li>Go server will store its data in <code>~/Library/Application Support/Go Server</code> subfolder of the user&apos;s home folder</li>
+<li>Double-click on the <code>Go Server.app</code> icon to open the launcher</li>
+<li><p>While the Go server is starting up, you&apos;ll see a progress bar in the top left of your screen</p>
 <p><img src="../resources/images/cruise_server_osx_startup.png" alt="Go server OSX startup"></p>
 </li>
 <li><p>Once the Go server has started, it will open your default browser to the Go dashboard page.</p>
@@ -2306,54 +2306,54 @@
 <pre><code class="lang-{.code}"> PATH=$PATH:/usr/local/bin open /Applications/Go\ Server.app
 </code></pre>
 </li>
-<li><p>Overriding them using a file: The file &quot;~/Library/Application Support/Go Server/overrides.env&quot; is sourced as a part of
+<li><p>Overriding them using a file: The file <code>~/Library/Application Support/Go Server/overrides.env</code> is sourced as a part of
 the server startup, and it can be setup to change environment variables. For instance, changing the contents of that
 file to:</p>
 <pre><code class="lang-{.code}"> PATH=$PATH:/usr/local/bin
 </code></pre>
-<p> will set the PATH appropriately for the Go Server.</p>
+<p> will set the <code>PATH</code> appropriately for the Go Server.</p>
 </li>
 </ol>
 <h3 id="how-to-install-go-server-for-linux"><a name="how-to-install-go-server-for-linux" class="plugin-anchor" href="#how-to-install-go-server-for-linux"><span class="fa fa-link"></span></a>How to install Go server for Linux</h3>
-<p>You must be logged in as root, or use <em>sudo</em>, to install Go on Linux. Go server also requires that Oracle or Open JRE or JDK - version 6 or above - is installed.</p>
-<p>The Linux installer will create a user called <em>go</em> if one does not exist on the machine. The home directory will be set to <em>/var/go</em>. If you want to create your own <em>go</em> user, make sure you do it before you install the Go server</p>
+<p>You must be logged in as root, or use <code>sudo</code>, to install Go on Linux. Go server also requires Oracle or Open JRE or JDK - version 7 or above - to be installed.</p>
+<p>The Linux installer will create a user called <em>go</em> if one does not exist on the machine. The home directory will be set to <code>/var/go</code>. If you want to create your own <em>go</em> user, make sure you do it before you install the Go server</p>
 <h4 id="rpm-based-distributions-ie-redhat"><a name="rpm-based-distributions-ie-redhat" class="plugin-anchor" href="#rpm-based-distributions-ie-redhat"><span class="fa fa-link"></span></a>RPM based distributions (i.e. RedHat)</h4>
 <p>The Go server RPM installer has been tested on RedHat Enterprise Linux and CentOS. It should work on linux distributions which use rpms</p>
 <ul>
-<li>Run <em>rpm -i go-server-${version}.noarch.rpm</em> to install Go server.</li>
+<li>Run <code>rpm -i go-server-${version}.noarch.rpm</code> to install Go server.</li>
 </ul>
 <h4 id="debian-based-distributions-ie-ubuntu"><a name="debian-based-distributions-ie-ubuntu" class="plugin-anchor" href="#debian-based-distributions-ie-ubuntu"><span class="fa fa-link"></span></a>Debian based distributions (i.e. Ubuntu)</h4>
 <p>The Go server deb installer has been tested on Ubuntu. It should work on linux distributions which use debs</p>
 <ol>
-<li>Run <em>dpkg -i go-server-${version}.deb</em> to install Go server.</li>
+<li>Run <code>dpkg -i go-server-${version}.deb</code> to install Go server.</li>
 </ol>
 <p>The following command could be used after installation:</p>
 <ul>
-<li>Check Go server status with command <em>sudo /etc/init.d/go-server status</em></li>
-<li>Start Go server with command <em>sudo /etc/init.d/go-server start</em></li>
-<li>Stop Go server with command <em>sudo /etc/init.d/go-server stop</em></li>
+<li>Check Go server status with command <code>sudo /etc/init.d/go-server status</code></li>
+<li>Start Go server with command <code>sudo /etc/init.d/go-server start</code></li>
+<li>Stop Go server with command <code>sudo /etc/init.d/go-server stop</code></li>
 </ul>
-<p>Once the installation is complete the Go server will be started and it will print out the URL for the Dashboard page. This will be http://&lt; server host name &gt;:8153/go</p>
+<p>Once the installation is complete the Go server will be started and it will print out the URL for the Dashboard page. This will be <code>http://&lt;server host name&gt;:8153/go</code></p>
 <h4 id="how-to-install-go-server-for-solaris"><a name="how-to-install-go-server-for-solaris" class="plugin-anchor" href="#how-to-install-go-server-for-solaris"><span class="fa fa-link"></span></a>How to install Go server for Solaris</h4>
 <p>The Go server installer has been tested on OpenIndiana</p>
-<p>You must be logged in as root, or use <em>sudo</em> or <em>pfexec</em>, to install Go under Solaris. Go server also requires that Oracle or Open JRE or JDK - version 6 or above - is installed.</p>
-<p>The installer will create a user called <em>go</em> if one does not exist on the machine. The home directory will be set to <em>/var/go</em>. If you want to create your own <em>go</em> user, make sure you do it before you install the Go server.</p>
+<p>You must be logged in as root, or use <em>sudo</em> or <em>pfexec</em>, to install Go under Solaris. Go server also requires  Oracle or Open JRE or JDK - version 7 or above - to be installed.</p>
+<p>The installer will create a user called <em>go</em> if one does not exist on the machine. The home directory will be set to <code>/var/go</code>. If you want to create your own <em>go</em> user, make sure you do it before you install the Go server.</p>
 <ol>
-<li>Uncompress the package with the command <em>gzip -d go-server-${version}-solaris.gz</em></li>
-<li>Install the package with the command <em>pkgadd -d go-server-${version}-solaris</em></li>
+<li>Uncompress the package with the command <code>gzip -d go-server-${version}-solaris.gz</code></li>
+<li>Install the package with the command <code>pkgadd -d go-server-${version}-solaris</code></li>
 </ol>
-<p>The following command could be used after installation:</p>
+<p>The following command cab be used after installation:</p>
 <ul>
-<li>Check Go server status with command <em>svcs go/server</em></li>
-<li>Start Go server with command <em>svcadm enable -s go/server</em></li>
-<li>Stop Go server with command <em>svcadm disable -s go/server</em></li>
+<li>Check Go server: <code>svcs go/server</code></li>
+<li>Start Go server:  <code>svcadm enable -s go/server</code></li>
+<li>Stop Go server: <code>svcadm disable -s go/server</code></li>
 </ul>
 <h3 id="copying-existing-config-to-a-new-go-server-instance"><a name="copying-existing-config-to-a-new-go-server-instance" class="plugin-anchor" href="#copying-existing-config-to-a-new-go-server-instance"><span class="fa fa-link"></span></a>Copying existing config to a new Go-Server instance</h3>
-<p>You can replicate a go-server with all the pipeline, stage, job, tasks &amp; materials definitions/configuration intact.</p>
-<p>To do this Administrator should copy cruise-config.xml to the new server and clear &apos;serverId&apos; attribute of server tag along with the license.</p>
+<p>You can replicate a go-server with all the pipeline, stage, job, tasks and materials definitions/configuration intact.</p>
+<p>To do this Administrator should copy <code>cruise-config.xml</code> to the new server and clear &apos;serverId&apos; attribute of server tag.</p>
 <h2 id="location-of-files-after-installation-of-go-server"><a name="location-of-files-after-installation-of-go-server" class="plugin-anchor" href="#location-of-files-after-installation-of-go-server"><span class="fa fa-link"></span></a>Location of files after installation of Go server</h2>
 <h3 id="windows"><a name="windows" class="plugin-anchor" href="#windows"><span class="fa fa-link"></span></a>Windows</h3>
-<p>All the files for the Go server are under the root installation path on Windows. The default location is C:\Program Files\Go Server.</p>
+<p>All the files for the Go server are under the root installation path on Windows. The default location is <code>C:\Program Files\Go Server</code>.</p>
 <h3 id="linux"><a name="linux" class="plugin-anchor" href="#linux"><span class="fa fa-link"></span></a>Linux</h3>
 <pre><code class="lang-{.code}">/var/lib/go-server       #contains the binaries and database
 /etc/go                  #contains the pipeline configuration files

@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="3.5" data-basepath=".." data-revision="1433522268060">
+    <div class="book" data-level="3.5" data-basepath=".." data-revision="1435048050147">
     
 
 <div class="book-summary">
@@ -2260,16 +2260,15 @@
                     <section class="normal" id="section-gitbook_106">
                     
                         <h1 id="upgrading-go"><a name="upgrading-go" class="plugin-anchor" href="#upgrading-go"><span class="fa fa-link"></span></a>Upgrading Go</h1>
-<h2 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><span class="fa fa-link"></span></a>Introduction</h2>
 <p>To upgrade from a previous version of Go, it is only necessary to upgrade the Server. It is not necessary to stop or backup the Go Agents. Agents will automatically update to the correct version of Go.</p>
 <h3 id="before-you-start"><a name="before-you-start" class="plugin-anchor" href="#before-you-start"><span class="fa fa-link"></span></a>Before you start</h3>
 <p>Since Cruise 1.1 (legacy version of Go), we do not include a bundled version of the Subversion version control system. This means that if you use Subversion for your projects the server and all agents need to have Subversion installed and available on the system path.</p>
-<p>Since Cruise 1.2 (legacy version of Go), we do not include a bundled version of ANT. This means that if you use ANT for your projects the server and all agents need to have ANT installed and available on the system path.</p>
+<p>Since Cruise 1.2 (legacy version of Go), we do not include a bundled version of <code>ant</code>. This means that if you use <code>ant</code> for your projects the server and all agents need to have <code>ant</code> installed and available on the system path.</p>
 <h3 id="backing-up-your-data"><a name="backing-up-your-data" class="plugin-anchor" href="#backing-up-your-data"><span class="fa fa-link"></span></a>Backing up your data</h3>
 <h4 id="configuration-backup"><a name="configuration-backup" class="plugin-anchor" href="#configuration-backup"><span class="fa fa-link"></span></a>Configuration Backup</h4>
 <p>As part of the configuration two files need to be backed up:</p>
 <ul>
-<li>Go&apos;s configuration is saved in the <strong>cruise-config.xml</strong> file</li>
+<li>Go&apos;s configuration is saved in the <code>cruise-config.xml</code> file</li>
 <li>Cipher file for password encryption.</li>
 </ul>
 <p>Based on the OS your Go server is running on, both these files can be found at:</p>
@@ -2283,15 +2282,15 @@
 <tbody>
 <tr>
 <td style="text-align:left">Linux</td>
-<td style="text-align:left">/etc/go</td>
+<td style="text-align:left"><code>/etc/go</code></td>
 </tr>
 <tr>
 <td style="text-align:left">Windows</td>
-<td style="text-align:left">[Go install directory]\config</td>
+<td style="text-align:left"><code>[Go install directory]\config</code></td>
 </tr>
 <tr>
 <td style="text-align:left">Mac OS X</td>
-<td style="text-align:left">&lt; user-home &gt;/Library/Application Support/Go Server</td>
+<td style="text-align:left"><code>~/Library/Application Support/Go Server</code></td>
 </tr>
 </tbody>
 </table>
@@ -2307,15 +2306,15 @@
 <tbody>
 <tr>
 <td style="text-align:left">Linux</td>
-<td style="text-align:left">/var/lib/go-server/db</td>
+<td style="text-align:left"><code>/var/lib/go-server/db</code></td>
 </tr>
 <tr>
 <td style="text-align:left">Windows</td>
-<td style="text-align:left">[Go install directory]\db</td>
+<td style="text-align:left"><code>[Go install directory]\db</code></td>
 </tr>
 <tr>
 <td style="text-align:left">Mac OS X</td>
-<td style="text-align:left">&lt; user-home &gt;/Library/Application Support/Go Server/db</td>
+<td style="text-align:left"><code>~/Library/Application Support/Go Server/db</code></td>
 </tr>
 </tbody>
 </table>
@@ -2326,21 +2325,21 @@
 <thead>
 <tr>
 <th style="text-align:left">Operating System</th>
-<th style="text-align:left">Location                                                </th>
+<th style="text-align:left">Location</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left">Linux</td>
-<td style="text-align:left">/var/lib/go-server/artifacts                                               </td>
+<td style="text-align:left"><code>/var/lib/go-server/artifacts</code></td>
 </tr>
 <tr>
 <td style="text-align:left">Windows</td>
-<td style="text-align:left">[Go install directory]\artifacts                          </td>
+<td style="text-align:left"><code>[Go install directory]\artifacts</code></td>
 </tr>
 <tr>
 <td style="text-align:left">Mac OS X</td>
-<td style="text-align:left">&lt; user-home &gt;/Library/Application Support/Go Server/artifacts     </td>
+<td style="text-align:left"><code>~/Library/Application Support/Go Server/artifacts</code></td>
 </tr>
 </tbody>
 </table>
@@ -2355,17 +2354,19 @@
 <p>The installer will automatically start the service. Once Go completes its internal data changes, you should be able to see the Go webpage. Any existing Agents should automatically reconnect. Any builds in progress should continue, or be rescheduled.</p>
 <h4 id="linux"><a name="linux" class="plugin-anchor" href="#linux"><span class="fa fa-link"></span></a>Linux</h4>
 <h4 id="debian-based-distributions-ie-ubuntu"><a name="debian-based-distributions-ie-ubuntu" class="plugin-anchor" href="#debian-based-distributions-ie-ubuntu"><span class="fa fa-link"></span></a>Debian based distributions (i.e. Ubuntu)</h4>
-<p>Run the Go installer as described &apos;sudo dpkg -i [go-server-package-name]&apos;.</p>
-<h4 id="rpm-based-distributions-ie-redhat"><a name="rpm-based-distributions-ie-redhat" class="plugin-anchor" href="#rpm-based-distributions-ie-redhat"><span class="fa fa-link"></span></a>RPM based distributions (i.e. RedHat)</h4>
-<p>Run the Go installer as described &apos;sudo rpm -U [go-server-package-name]&apos;.</p>
-<h4 id="macintosh-osx"><a name="macintosh-osx" class="plugin-anchor" href="#macintosh-osx"><span class="fa fa-link"></span></a>Macintosh OSX</h4>
+<p>Run the Go installer as described</p>
+<pre><code>sudo dpkg -i [go-server-package-name]
+</code></pre><h4 id="rpm-based-distributions-ie-redhat"><a name="rpm-based-distributions-ie-redhat" class="plugin-anchor" href="#rpm-based-distributions-ie-redhat"><span class="fa fa-link"></span></a>RPM based distributions (i.e. RedHat)</h4>
+<p>Run the Go installer as described</p>
+<pre><code>sudo rpm -U [go-server-package-name]
+</code></pre><h4 id="macintosh-osx"><a name="macintosh-osx" class="plugin-anchor" href="#macintosh-osx"><span class="fa fa-link"></span></a>Macintosh OSX</h4>
 <p>The Macintosh OSX edition of Go does not support upgrades. You should follow the steps above to backup your data, uninstall Go/Cruise (by dragging the application into trash), and then perform a fresh installation.</p>
 <h4 id="solaris"><a name="solaris" class="plugin-anchor" href="#solaris"><span class="fa fa-link"></span></a>Solaris</h4>
 <p>The Solaris edition of Go does not support upgrades. You should follow the steps above to backup your data, uninstall Go/Cruise, and then perform a fresh installation.</p>
 <h3 id="notes"><a name="notes" class="plugin-anchor" href="#notes"><span class="fa fa-link"></span></a>Notes</h3>
 <p>Use the notes from this section when upgrading to a particular version of Go.</p>
 <h4 id="version-23"><a name="version-23" class="plugin-anchor" href="#version-23"><span class="fa fa-link"></span></a>Version 2.3</h4>
-<p>As part of the 2.3 upgrade, the &quot;dest&quot; attribute of a material configured in a pipeline is case-insensitive. This would mean that if you have a pipeline P1 with two materials, say material M1 with dest = &quot;foo&quot; and material M2 with dest = &quot;Foo&quot;, after the upgrade the dest folders will be automatically changed to M1 (dest = &quot;foo_(random_string)&quot;) and M2 (dest = &quot;Foo_(random_string)&quot;)</p>
+<p>As part of the 2.3 upgrade, the <code>dest</code> attribute of a material configured in a pipeline is case-insensitive. This would mean that if you have a pipeline P1 with two materials, say material M1 with <code>dest = &quot;foo&quot;</code> and material M2 with <code>dest = &quot;Foo&quot;</code>, after the upgrade the dest folders will be automatically changed to M1 <code>dest = &quot;foo_[random_string]&quot;</code> and M2 <code>dest = &quot;Foo_[random_string]&quot;</code></p>
 
                     
                     </section>

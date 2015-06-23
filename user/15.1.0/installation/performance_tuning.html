@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="3.8" data-basepath=".." data-revision="1433522268060">
+    <div class="book" data-level="3.8" data-basepath=".." data-revision="1435048050147">
     
 
 <div class="book-summary">
@@ -2269,20 +2269,19 @@
 <p>If you have questions or have custom requirements, please contact support@thoughtworks.com to help with capacity planning for Go server</p>
 <h3 id="things-to-remember"><a name="things-to-remember" class="plugin-anchor" href="#things-to-remember"><span class="fa fa-link"></span></a>Things to Remember</h3>
 <p>Do not run any other CPU intensive applications on the same box as the Go Server.</p>
-<p>When the Go server is being scaled up to run with larger number of pipeline, agents and materials, ensure that the JVM has been allocated appropriate heap sizes. The default values for the Go server are -Xms512m (minimum) and -Xmx1024m (maximum). These values can be increased by setting the environment variables SERVER_MEM (for minimum) and SERVER_MAX_MEM (for maximum).</p>
+<p>When the Go server is being scaled up to run with larger number of pipeline, agents and materials, ensure that the JVM has been allocated appropriate heap sizes. The default values for the Go server are <code>-Xms512m</code> (minimum) and <code>-Xmx1024m</code> (maximum). These values can be increased by setting the environment variables <code>SERVER_MEM</code> (for minimum) and <code>SERVER_MAX_MEM</code> (for maximum).</p>
 <p>On linux, these can be added/updated in /etc/default/go-server. On Windows, copy the following lines in <em><a href="installing_go_server.html">wrapper-properties.conf</a></em> and change it to desired value.</p>
-<pre><code class="lang-{.code}">wrapper.java.additional.1=-Xms512m
+<pre><code>wrapper.java.additional.1=-Xms512m
 wrapper.java.additional.2=-Xmx1024m
-</code></pre>
-<p>For linux/unix users: If more than 100 agents are being used, an exception might be seen in go-server.log mentioning &quot;Too many open files&quot;. This may be an indication that there is a need to increase the number of file descriptors on the machine where Go Server is installed. On linux the command &apos;ulimit -n&apos; can be used to check the total number of file descriptors. To bump up the total number for file descriptors user and system, follow these steps:</p>
+</code></pre><p>For linux/unix users: If more than 100 agents are being used, an exception might be seen in <code>go-server.log</code> mentioning &quot;Too many open files&quot;. This may be an indication that there is a need to increase the number of file descriptors on the machine where Go Server is installed. On linux the command <code>ulimit -n</code> can be used to check the total number of file descriptors. To bump up the total number for file descriptors user and system, follow these steps:</p>
 <ol>
-<li>Edit /etc/security/limits.conf and add the lines: * soft nofile 1024 * hard nofile 65535</li>
-<li>Edit /etc/pam.d/login, adding the line: session required /lib/security/pam_limits.so</li>
-<li>The system file descriptor limit can be increased by setting &quot;fs.file-max&quot; in the file &quot;/etc/sysctl.conf&quot;. To set the limit to 65535 use echo &quot;fs.file-max = 65535&quot; &gt;&gt; /etc/sysctl.conf</li>
+<li>Edit <code>/etc/security/limits.conf</code> and add the lines:<code>soft nofile 1024 * hard nofile 65535</code></li>
+<li>Edit <code>/etc/pam.d/login</code>, adding the line: <code>session required /lib/security/pam_limits.so</code></li>
+<li>The system file descriptor limit can be increased by setting <code>fs.file-max</code> in the file <code>/etc/sysctl.conf</code>. To set the limit to <code>65535</code> use <code>echo &quot;fs.file-max = 65535&quot; &gt;&gt; /etc/sysctl.conf</code></li>
 </ol>
 <h3 id="tuning-your-jvm"><a name="tuning-your-jvm" class="plugin-anchor" href="#tuning-your-jvm"><span class="fa fa-link"></span></a>Tuning your JVM</h3>
 <p>Ensure that the latest JVM is used always, as there are major performance improvements with every release.</p>
-<p>The minimum and maximum JVM heap space allocated to the Go server affects its performance. Go uses default values of 512m and 1024m for minimum and maximum JVM heap sizes respectively. However, for production environments, we recommend setting the minimum and maximum values to an identical value.</p>
+<p>The minimum and maximum JVM heap space allocated to the Go server affects its performance. Go uses default values of <code>512m</code> and <code>1024m</code> for minimum and maximum JVM heap sizes respectively. However, for production environments, we recommend setting the minimum and maximum values to an identical value.</p>
 <p>The default heap settings mentioned above are for a 32-bit JVM. But if the Go server is facing performance issues we recommend doubling the values in the heap settings and measuring performance. If its seen that more than 3 GB of heap memory is needed, we recommend a switch to 64-bit JVM. Our tests show that Go server performs much better on a 64 bit JVM than a 32 bit JVM provided the heap memory has been increased appropriately. This is needed because 64-bit JVM makes use of 64-bit addresses instead of 32bits, allowing it to use more memory.</p>
 <p>Start with the default settings and increase the heap memory incrementally to suit your application.</p>
 <h3 id="storage"><a name="storage" class="plugin-anchor" href="#storage"><span class="fa fa-link"></span></a>Storage</h3>
@@ -2290,43 +2289,43 @@ wrapper.java.additional.2=-Xmx1024m
 <p>If using network storage is preferred, ensure that the speeds and throughput are good.</p>
 <p>Use RAID Configuration for higher throughput if the Go Server is expected to be an intensive setup. If you expect to have large artifacts you could use use different RAID configurations for Go database and artifacts. For example, 2 drives on RAID1 can be be used for the Go database (for redundancy), 3+ hard drives on RAID5 can be used for artifacts so that access to database and artifacts is optimized.</p>
 <h3 id="improving-server-startup-time"><a name="improving-server-startup-time" class="plugin-anchor" href="#improving-server-startup-time"><span class="fa fa-link"></span></a>Improving Server Startup Time</h3>
-<p>The start up time for a very large Go Server instance could be improved by delaying material polling and pipeline scheduling to a few seconds after the server starts up. This would allow the server to warm up and cache some of the data before it is bombarded with threads that poll for material updates and pipelines that need to be scheduled. Following are the JVM properties that enable such a delay:-</p>
+<p>The start up time for a very large Go Server instance could be improved by delaying material polling and pipeline scheduling to a few seconds after the server starts up. This would allow the server to warm up and cache some of the data before it is bombarded with threads that poll for material updates and pipelines that need to be scheduled. Following are the JVM properties that enable such a delay:</p>
 <ul>
-<li><p>cruise.material.update.delay - This value is specified in milliseconds. It has a default value of 10,000. This means that material polling would only start 10s after the server starts.</p>
+<li><p><code>cruise.material.update.delay</code> - This value is specified in milliseconds. It has a default value of 10,000. This means that material polling would only start 10s after the server starts.</p>
 </li>
-<li><p>cruise.produce.build.cause.delay - Likewise, this value is also specified in milliseconds. It again defaults to 10,000 meaning that scheduling of pipelines would take place only 10s after the server starts up.</p>
+<li><p><code>cruise.produce.build.cause.delay</code> - Likewise, this value is also specified in milliseconds. It again defaults to 10,000 meaning that scheduling of pipelines would take place only 10s after the server starts up.</p>
 </li>
 </ul>
 <p>The two values above do not affect the frequency of material polling or pipeline scheduling.</p>
 <h2 id="troubleshooting"><a name="troubleshooting" class="plugin-anchor" href="#troubleshooting"><span class="fa fa-link"></span></a>Troubleshooting</h2>
 <h3 id="enable-gc-logging"><a name="enable-gc-logging" class="plugin-anchor" href="#enable-gc-logging"><span class="fa fa-link"></span></a>Enable GC Logging</h3>
 <p>An easy way to check the memory usage, heap size (initial and over time) and GC metrics of the application is by turning on GC logging. GC logging can be enabled using the following JVM arguments while starting the application (Note: the log file specified as file is reset each time the VM starts.)</p>
-<p>-verbose:gc -Xloggc:file -XX:+PrintGCTimeStamps</p>
-<p>In case of the Go server, these arguments will have to be added in the script that starts the Go jar:</p>
+<pre><code>-verbose:gc -Xloggc:file -XX:+PrintGCTimeStamps
+</code></pre><p>In case of the Go server, these arguments will have to be added in the script that starts the Go jar:</p>
 <ul>
-<li>For linux : /usr/share/go-server/server.sh</li>
-<li>For Windows: {go_server_installion_dir}/server.cmd. In most cases Go is installed in C:\Program Files\Go Server</li>
+<li>For linux : <code>/usr/share/go-server/server.sh</code></li>
+<li>For Windows: <code>[go_server_installion_dir]/server.cmd</code> In most cases Go is installed in <code>C:\Program Files\Go Server</code></li>
 </ul>
 <h3 id="using-jconsole"><a name="using-jconsole" class="plugin-anchor" href="#using-jconsole"><span class="fa fa-link"></span></a>Using JConsole</h3>
 <p>JConsole is a graphical monitoring tool to monitor Java Virtual Machine (JVM) which comes as part of the JDK installation. It can be used to monitor the current state of a process without much overhead. If the Go server&apos;s performance is slow, some metrics can be immediately analysed using jconsole.</p>
-<p>Since jconsole is a graphical tool, make sure you have an access to display, when running the following command. That is, use &apos;ssh -X&apos; or VNC if Go is on linux. Use remote desktop if the Go server is on windows.</p>
+<p>Since jconsole is a graphical tool, make sure you have an access to display, when running the following command. That is, use <code>ssh -X</code> or VNC if Go is on linux. Use remote desktop if the Go server is on windows.</p>
 <pre><code class="lang-{.code}">$ jconsole
 </code></pre>
-<p>Select the local process &apos;go.jar&apos; when the jconsole GUI opens up. This shows the current heap memory usage, threads, cpu usage etc. Screenshots of the VM Summary and the overview page can be taken to be sent to the Go Support team, if required.</p>
+<p>Select the local process <code>go.jar</code> when the jconsole GUI opens up. This shows the current heap memory usage, threads, cpu usage etc. Screenshots of the VM Summary and the overview page can be taken to be sent to the Go Support team, if required.</p>
 <blockquote>
 <p>Please note that in case of linux, jconsole will have to be started as &apos;go&apos; user. In Windows, starting the process as administrator should suffice.</p>
 </blockquote>
 <p>More information about jconsole can be found <a href="http://download.oracle.com/javase/1.5.0/docs/guide/management/jconsole.html" target="_blank">here</a>.</p>
 <h3 id="cpu-and-memory-profiling"><a name="cpu-and-memory-profiling" class="plugin-anchor" href="#cpu-and-memory-profiling"><span class="fa fa-link"></span></a>CPU and memory profiling</h3>
 <p>Yourkit java profiler is a recommended tool for profiling the CPU and memory of the GO Server.</p>
-<p>To start using yourkit, download the latest version of the Yourkit java profiler from <a href="http://www.yourkit.com/download/index.jsp" target="_blank">http://www.yourkit.com/download/index.jsp</a>. Unpack to {yourkit_profiler_directory} The following steps will enable the Go server to pick up the yourkit profiler agent and enable us to take memory and cpu snapshots.</p>
+<p>To start using yourkit, download the latest version of the Yourkit java profiler from <a href="http://www.yourkit.com/download/index.jsp" target="_blank">http://www.yourkit.com/download/index.jsp</a>. Unpack to [yourkit_profiler_directory] The following steps will enable the Go server to pick up the yourkit profiler agent and enable us to take memory and cpu snapshots.</p>
 <p>For Linux</p>
 <ol>
-<li><p>Create a symlink for libyjpagent.so file to /usr/lib/yourkit folder. When the Go server starts up, it looks at this folder to see if it needs to start with profiling enabled or not. If you want to change the default path of the yourkit agent, you can edit server.sh at /usr/share/go-server/server.sh</p>
-<pre><code class="lang-{.code}">$ sudo ln -s {yourkit_profiler_directory}/bin/linux-x86-32/libyjpagent.so /usr/lib/yourkit/libyjpagent.so
+<li><p>Create a symlink for <code>libyjpagent.so</code> file to <code>/usr/lib/yourkit</code> folder. When the Go server starts up, it looks at this folder to see if it needs to start with profiling enabled or not. If you want to change the default path of the yourkit agent, you can edit <code>server.sh</code> at <code>/usr/share/go-server/server.sh</code></p>
+<pre><code class="lang-{.code}">$ sudo ln -s [yourkit_profiler_directory]/bin/linux-x86-32/libyjpagent.so /usr/lib/yourkit/libyjpagent.so
 </code></pre>
 <p>For 64-bit JVM, the command is:</p>
-<pre><code class="lang-{.code}">$ sudo ln -s {yourkit_profiler_directory}/bin/linux-x86-64/libyjpagent.so /usr/lib/yourkit/libyjpagent.so
+<pre><code class="lang-{.code}">$ sudo ln -s [yourkit_profiler_directory]/bin/linux-x86-64/libyjpagent.so /usr/lib/yourkit/libyjpagent.so
 </code></pre>
 </li>
 <li><p>Restart the server after this, and the yourkit agent should get picked up by the server VM. Let the server start up and agents get registered.</p>
@@ -2334,43 +2333,43 @@ wrapper.java.additional.2=-Xmx1024m
 </ol>
 <p>For Windows</p>
 <ol>
-<li>By default, Go server looks for the yourkit profiler agent yjpagent.dll in the location C:\yjpagent.dll. Therefore, copy the file yjpagent.dll (which is the yourkit profiler agent) from &apos;{yourkit_profiler_directory}\bin\win32&apos; to C:\yjpagent.dll. Copy the file from &apos;{yourkit_profiler_directory}\bin\win64&apos; if you are using 64 bit JVM.</li>
-<li>To change the above mentioned default location: define environment variable YOURKIT_PATH with value equal to location of yjpagent.dll.</li>
+<li>By default, Go server looks for the yourkit profiler agent yjpagent.dll in the location <code>C:\yjpagent.dll</code>. Therefore, copy the file <code>yjpagent.dll</code> (which is the yourkit profiler agent) from <code>[yourkit_profiler_directory]\bin\win32</code> to <code>C:\yjpagent.dll</code>. Copy the file from <code>[yourkit_profiler_directory}\bin\win64</code> if you are using 64 bit JVM.</li>
+<li>To change the above mentioned default location: define environment variable <code>YOURKIT_PATH</code> with value equal to location of <code>yjpagent.dll</code>.</li>
 <li><p>If you are running the Go server as a service, you will need to perform an additional step. In the config folder of the Go server installation, edit the <em><a href="installing_go_server.html">wrapper-properties.conf</a></em> file, and add an additional property with the following value</p>
-<pre><code class="lang-{.code}">&quot;-agentpath: &lt; Path to yjpagent.dll &gt;=port=6133,builtinprobes=none&quot;
+<pre><code class="lang-{.code}">&quot;-agentpath: [Path to yjpagent.dll]=port=6133,builtinprobes=none&quot;
 </code></pre>
 <p>For example, if there are 16 properties already defined, add this 17th property as shown below</p>
 <pre><code class="lang-{.code}">wrapper.java.additional.17=&quot;-agentpath:C:\yjpagent.dll=port=6133,builtinprobes=none&quot;
 </code></pre>
 </li>
 </ol>
-<p>Use the following steps to take profile the application and take snapshots. The {hostname} mentioned here is the hostname of the Go Server. In most cases, it would be &apos;localhost&apos;. The value of {port} is 6133, because Go starts the yjpagent on port 6133.</p>
+<p>Use the following steps to take profile the application and take snapshots. The <code>hostname</code> mentioned here is the hostname of the Go Server. In most cases, it would be &apos;localhost&apos;. The value of <code>port</code> is 6133, because Go starts the yjpagent on port 6133.</p>
 <ol>
 <li><p>To start profiling, run:</p>
-<pre><code class="lang-{.code}">$ java -jar {yourkit_profiler_directory}/lib/yjp-controller-api-redist.jar {hostname} {port}  start-cpu-sampling
+<pre><code class="lang-{.code}">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port  start-cpu-sampling
 </code></pre>
-<pre><code class="lang-{.code}">$ java -jar {yourkit_profiler_directory}/lib/yjp-controller-api-redist.jar {hostname} {port} start-monitor-profiling
+<pre><code class="lang-{.code}">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port start-monitor-profiling
 </code></pre>
 <p>If memory allocation profiling is also required:</p>
-<pre><code class="lang-{.code}">$ java -jar {yourkit_profiler_directory}/lib/yjp-controller-api-redist.jar {hostname} {port} start-alloc-recording-adaptive
+<pre><code class="lang-{.code}">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port start-alloc-recording-adaptive
 </code></pre>
 </li>
 <li><p>Let the server run for some time till you start seeing performance problems. 30 mins of snapshot should give us enough data.</p>
 </li>
 <li><p>To capture the snapshot - Run:</p>
-<pre><code class="lang-{.code}">$ java -jar {yourkit_profiler_directory}/lib/yjp-controller-api-redist.jar {hostname} {port} capture-performance-snapshot
+<pre><code class="lang-{.code}">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port capture-performance-snapshot
 </code></pre>
 <p>To capture memory snapshot</p>
-<pre><code class="lang-{.code}">$ java -jar {yourkit_profiler_directory}/lib/yjp-controller-api-redist.jar {hostname} {port} capture-memory-snapshot
+<pre><code class="lang-{.code}">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port capture-memory-snapshot
 </code></pre>
 </li>
 <li><p>To stop profiling, run:</p>
-<pre><code class="lang-{.code}">$ java -jar {yourkit_profiler_directory}/lib/yjp-controller-api-redist.jar {hostname} {port} stop-cpu-profiling
+<pre><code class="lang-{.code}">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port stop-cpu-profiling`
 </code></pre>
-<pre><code class="lang-{.code}">$ java -jar {yourkit_profiler_directory}/lib/yjp-controller-api-redist.jar {hostname} {port} stop-monitor-profiling
+<pre><code class="lang-{.code}">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port stop-monitor-profiling
 </code></pre>
 <p>If memory profiling was turned on,s top it using the following command</p>
-<pre><code class="lang-{.code}">$ java -jar {yourkit_profiler_directory}/lib/yjp-controller-api-redist.jar {hostname} {port} stop-alloc-recording
+<pre><code class="lang-{.code}">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port stop-alloc-recording
 </code></pre>
 </li>
 <li><p>Once you&apos;re done profiling, run the following so that on the next Go server restart, the agent is not loaded into the JVM.</p>
@@ -2379,22 +2378,22 @@ wrapper.java.additional.2=-Xmx1024m
 </code></pre>
 </li>
 </ol>
-<p>In case of windows, delete the file C:\yjpagent.dll. If you were using the variable YOURKIT_PATH, then remove the environment variable.</p>
+<p>In case of windows, delete the file <code>C:\yjpagent.dll</code>. If you were using the variable <code>YOURKIT_PATH</code>, then remove the environment variable.</p>
 <p>These snapshots will be saved in the yourkit configured snapshots folder. They can be sent to the Go Support so that they can be examined to help find the root cause of the performance.</p>
 <h3 id="contact-go-support"><a name="contact-go-support" class="plugin-anchor" href="#contact-go-support"><span class="fa fa-link"></span></a>Contact Go Support</h3>
 <p>If the Go server continues to behave poorly, send us the following data.</p>
 <ol>
-<li><p>Database file cruise.h2.db. Stop the server and take a backup of the database. Location:</p>
-<p>Linux: /var/lib/db/h2db/cruise.h2.db</p>
-<p>Windows: {go_installation_dir}\db\h2db\cruise.h2.db</p>
+<li><p>Database file <code>cruise.h2.db</code>. Stop the server and take a backup of the database. Location:</p>
+<p>Linux: <code>/var/lib/db/h2db/cruise.h2.db</code></p>
+<p>Windows: <code>[go_installation_dir]\db\h2db\cruise.h2.db</code></p>
 </li>
-<li><p>Log file go-server.log. Location:</p>
-<p>Linux: /var/log/go-server/go-server.log</p>
-<p>Windows: {go_installation_dir}\go-server.log</p>
+<li><p>Log file <code>go-server.log</code>. Location:</p>
+<p>Linux: <code>/var/log/go-server/go-server.log</code></p>
+<p>Windows: <code>[go_installation_dir]\go-server.log</code></p>
 </li>
-<li><p>Go config file cruise-config.xml. Location:</p>
-<p>Linux: /etc/go/cruise-config.xml</p>
-<p>Windows: {go_installation_dir}\config\cruise-config.xml</p>
+<li><p>Go config file <code>cruise-config.xml</code>. Location:</p>
+<p>Linux: <code>/etc/go/cruise-config.xml</code></p>
+<p>Windows: <code>[go_installation_dir]\config\cruise-config.xml</code></p>
 </li>
 <li><p>If any Yourkit and jconsole snapshots as mentioned in the previous points, its useful if that can be sent too.</p>
 </li>
