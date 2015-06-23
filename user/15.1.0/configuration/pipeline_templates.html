@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="4.16" data-basepath=".." data-revision="1435048050147">
+    <div class="book" data-level="4.16" data-basepath=".." data-revision="1435058783406">
     
 
 <div class="book-summary">
@@ -2276,8 +2276,35 @@
 <li>Create a new pipeline &quot;app-1.0-branch&quot; which defines SCM material with the branch url and uses the template &quot;my-app-build&quot;.</li>
 </ul>
 <h2 id="using-xml"><a name="using-xml" class="plugin-anchor" href="#using-xml"><span class="fa fa-link"></span></a>Using XML</h2>
+<p>Power users can configure the above as follows:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">&quot;my-app&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;app-trunk&quot;</span> <span class="hljs-attribute">template</span>=<span class="hljs-value">&quot;my-app-build&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://my-svn-url/trunk&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;app-1.0-branch&quot;</span> <span class="hljs-attribute">template</span>=<span class="hljs-value">&quot;my-app-build&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://my-svn-url/branches/1.0&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipelines</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">templates</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;my-app-build&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;build&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;compile&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;compile&quot;</span> /&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">templates</span>&gt;</span>
+</code></pre>
 <h3 id="editing-pipeline-templates"><a name="editing-pipeline-templates" class="plugin-anchor" href="#editing-pipeline-templates"><span class="fa fa-link"></span></a>Editing Pipeline Templates</h3>
-<p>Go Administrators can now enable any Go user to edit a template by <a href="dev_authorization.html#template-admin">making them a template administrator</a>.</p>
+<p>Go Administrators can now enable any Go user to edit a template by <a href="dev_authorization.html#specifying-permissions-for-templates">making them a template administrator</a>.</p>
 <p>Template administrators can view and edit the templates to which they have permissions, on the template tab of the admin page. Template Administrators, will however not be able to add, delete or change permissions for a template. They will also be able to see the number of pipelines in which the template is being used, but not the details of those pipelines.</p>
 <p><img src="../resources/images/template_admin_edit_template.png" alt=""></p>
 <h3 id="viewing-pipeline-templates"><a name="viewing-pipeline-templates" class="plugin-anchor" href="#viewing-pipeline-templates"><span class="fa fa-link"></span></a>Viewing Pipeline Templates</h3>

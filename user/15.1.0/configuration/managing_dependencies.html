@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="4.3" data-basepath=".." data-revision="1435048050147">
+    <div class="book" data-level="4.3" data-basepath=".." data-revision="1435058783406">
     
 
 <div class="book-summary">
@@ -2272,7 +2272,7 @@
 <li>Enter <strong>upstream_pipeline [AutoStage1]</strong> in the <strong>Pipeline [stage]</strong> field (it can also auto-complete)</li>
 </ul>
 <p><img src="../resources/images/pipeline_add_material.png" alt=""></p>
-<p>Power users can also configure this via the <strong>Config XML</strong> tab on the Admin section:</p>
+<p>Power users can also configure this via the <strong>Config XML</strong> tab on the Admin section (Configuration reference is <a href="configuration_reference.html">here</a>):</p>
 <pre><code class="lang-{.code}">&lt;pipeline name=&quot;downstream_pipeline&quot;&gt;  
   &lt;materials&gt;  
     &lt;pipeline pipelineName=&quot;upstream_pipeline&quot; stageName=&quot;AutoStage1&quot;/&gt;  
@@ -2294,7 +2294,7 @@
 <p><img src="../resources/images/task_fetch_artifact.png" alt=""></p>
 <p>A fetch task can also be instructed to retrieve (fetch) an artifact from an ancestor pipeline. For example, lets assume that the &quot;upstream_pipeline&quot; used in this example, depends on another pipeline &quot;topmost_pipeline&quot;. Then you can define a a &quot;Fetch Artifact&quot; task to fetch artifacts from &quot;topmost_pipeline&quot; by defining the hierarchy of these pipelines as follows. You have to specify the hierarchy by separting the pipelines with a /. For example: topmost_pipeline/upstream_pipeline.</p>
 <p><img src="../resources/images/task_fetch_artifact_ancestor.png" alt=""></p>
-<p>For power users, here&apos;s how you can configure this via Config XML:</p>
+<p>For power users, here&apos;s how you can configure this via the <strong>Config XML</strong> tab on the Admin section (Configuration reference is <a href="configuration_reference.html">here</a>):</p>
 <pre><code class="lang-{.code}">&lt;pipeline name=&quot;topmost_pipeline&quot;&gt;  
   &lt;materials&gt;  
     &lt;svn url=&quot;....&quot;/&gt;  

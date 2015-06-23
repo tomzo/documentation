@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="4.2" data-basepath=".." data-revision="1435048050147">
+    <div class="book" data-level="4.2" data-basepath=".." data-revision="1435058783406">
     
 
 <div class="book-summary">
@@ -2414,6 +2414,33 @@
 <li>Create a new pipeline &quot;app-1.0-branch&quot; which defines SCM material with the branch url and uses the template &quot;my-app-build&quot;.</li>
 </ul>
 <h4 id="using-xml"><a name="using-xml" class="plugin-anchor" href="#using-xml"><span class="fa fa-link"></span></a>Using XML</h4>
+<p>Power users can configure the above as follows:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">&quot;my-app&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;app-trunk&quot;</span> <span class="hljs-attribute">template</span>=<span class="hljs-value">&quot;my-app-build&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://my-svn-url/trunk&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;app-1.0-branch&quot;</span> <span class="hljs-attribute">template</span>=<span class="hljs-value">&quot;my-app-build&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://my-svn-url/branches/1.0&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipelines</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">templates</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;my-app-build&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;build&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;compile&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;compile&quot;</span> /&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">templates</span>&gt;</span>
+</code></pre>
 <h3 id="editing-pipeline-templates"><a name="editing-pipeline-templates" class="plugin-anchor" href="#editing-pipeline-templates"><span class="fa fa-link"></span></a>Editing Pipeline Templates</h3>
 <p>Go Administrators can now enable any Go user to edit a template by <a href="dev_authorization.html#specifying-permissions-for-templates">making them a template administrator</a>.</p>
 <p>Template administrators can view and edit the templates to which they have permissions, on the template tab of the admin page. Template Administrators, will however not be able to add, delete or change permissions for a template. They will also be able to see the number of pipelines in which the template is being used, but not the details of those pipelines.</p>
@@ -2437,9 +2464,9 @@
 <h2 id="stage-approvals-in-action"><a name="stage-approvals-in-action" class="plugin-anchor" href="#stage-approvals-in-action"><span class="fa fa-link"></span></a>Stage approvals in action</h2>
 <p>By default, when one stage completes successfully, the next stage is automatically triggered by Go. However sometimes you don&apos;t want the next stage to be triggered automatically. This might be the case if you have a stage that deploys your application to a testing, staging or production environment. Another case can be when you don&apos;t want your pipeline to be automatically triggered by changes in version control. In these situations, you want the stage triggered by manual intervention. This can be done through manual <a href="configuration_reference.html#approval">approvals</a>.</p>
 <p>If you add a manual approval to the first stage in a pipeline, it will prevent the pipeline from being triggered from version control. Instead, it will only pick up changes when you trigger the pipeline manually (this is sometimes known as &quot;forcing the build&quot;).</p>
-<p>From Cruise 1.1 (legacy version of Go), you can control who can trigger manual approvals. See the section on <a href="dev_authorization.html#adding-authorization-to-approvals">Adding authorization to approvals</a> for more details.</p>
+<p>You can control who can trigger manual approvals. See the section on <a href="dev_authorization.html#adding-authorization-to-approvals">Adding authorization to approvals</a> for more details.</p>
 <h2 id="managing-pipeline-groups"><a name="managing-pipeline-groups" class="plugin-anchor" href="#managing-pipeline-groups"><span class="fa fa-link"></span></a>Managing pipeline groups</h2>
-<p>Starting with Cruise 1.3 (legacy version of Go), there is support for collecting multiple pipelines into a single named group. See the section on <a href="dev_authorization.html#specifying-permissions-for-pipeline-groups">Specifying who can view and operate pipeline groups</a> for more details.</p>
+<p>There is support for collecting multiple pipelines into a single named group. See the section on <a href="dev_authorization.html#specifying-permissions-for-pipeline-groups">Specifying who can view and operate pipeline groups</a> for more details.</p>
 
                     
                     </section>

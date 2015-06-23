@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="4.8" data-basepath=".." data-revision="1435048050147">
+    <div class="book" data-level="4.8" data-basepath=".." data-revision="1435058783406">
     
 
 <div class="book-summary">
@@ -2265,7 +2265,7 @@
 <p>Edit the <strong>Parameters</strong> tab when defining a <strong>pipeline</strong> .</p>
 <p><img src="../resources/images/use_parameters_in_configuration.png" alt=""></p>
 <h2 id="defining-and-using-a-parameter"><a name="defining-and-using-a-parameter" class="plugin-anchor" href="#defining-and-using-a-parameter"><span class="fa fa-link"></span></a>Defining and using a parameter</h2>
-<p>Parameter values are defined in the &lt; params &gt; tag within a pipeline and can be used anywhere within that pipeline using #{param_name}. The following example defines a new parameter called &quot;myParam&quot; and uses it in a job.</p>
+<p>Parameter values are defined in the <code>&lt;params&gt;</code> tag within a pipeline and can be used anywhere within that pipeline using #{param_name}. The following example defines a new parameter called &quot;myParam&quot; and uses it in a job.</p>
 <pre><code class="lang-{.code}">&lt;pipeline name=&quot;my_pipeline&quot;&gt;
   &lt;params&gt;
     &lt;param name=&quot;myParam&quot;&gt;hello world&lt;/param&gt;
@@ -2307,7 +2307,7 @@
 </tbody>
 </table>
 <h2 id="using-parameters-in-pipeline-templates"><a name="using-parameters-in-pipeline-templates" class="plugin-anchor" href="#using-parameters-in-pipeline-templates"><span class="fa fa-link"></span></a>Using parameters in pipeline templates</h2>
-<p>Parameter usage within <a href="pipeline_templates.html">templates</a> is similar to usage within pipelines. The only difference being, you cannot define parameters in a template.</p>
+<p>Parameter usage within <a href="pipeline_templates.html">templates</a> is similar to usage within pipelines. The only difference is that you cannot <strong>define</strong> parameters in a template.</p>
 <pre><code class="lang-{.code}">&lt;pipeline name=&quot;trunk&quot; template=&quot;my_template&quot;&gt;
   &lt;params&gt;
     &lt;param name=&quot;WORKING_DIR&quot;&gt;trunk&lt;/param&gt;
@@ -2343,7 +2343,7 @@
 <li>Stage name</li>
 <li>Job name</li>
 <li>A Job&apos;s property name</li>
-<li>The \<runif\> configuration for a job&apos;s task</runif\></li>
+<li>The <code>&lt;runif&gt;</code> configuration for a job&apos;s task</li>
 <li>Another parameter (i.e. you cannot define a parameter using another paramter)</li>
 <li>Pipeline template name</li>
 <li>Material name</li>
