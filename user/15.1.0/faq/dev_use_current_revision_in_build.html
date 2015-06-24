@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="9.7" data-basepath=".." data-revision="1435066049527">
+    <div class="book" data-level="9.7" data-basepath=".." data-revision="1435138060128">
     
 
 <div class="book-summary">
@@ -2364,15 +2364,61 @@
 <p>For this example, we are going to assume we are using a single <a href="http://subversion.tigris.org/" target="_blank">Subversion</a> repository for our source control system and we have a job set up to call the ant target &quot;dist&quot;.</p>
 <ul>
 <li>Add the following target to your ant build.xml</li>
+</ul>
+<pre><code class="lang-{.code}">build.xml
+
+&lt;project name=&quot;test-build&quot;&gt;
+  &lt;property environment=&quot;env&quot; /&gt;
+  &lt;target name=&quot;dist&quot;&gt;
+    &lt;echo message=&quot;Building pipeline ${env.GO_PIPELINE_NAME}&quot;
+          file=&quot;deploy-${env.GO_REVISION}.txt&quot; /&gt;
+  &lt;/target&gt;
+&lt;/project&gt;
+</code></pre>
+<ul>
 <li>Now, when Go runs the &apos;my-app&apos; pipeline on revision 123, the file deploy-123.txt will be created, with the following content:</li>
 </ul>
+<pre><code class="lang-{.code}">deploy-123.txt
+
+Building pipeline my-app
+</code></pre>
 <h4 id="multiple-materials"><a name="multiple-materials" class="plugin-anchor" href="#multiple-materials"><span class="fa fa-link"></span></a>Multiple materials</h4>
 <p>For this example we are going to assume we are using a <a href="http://subversion.tigris.org/" target="_blank">Subversion</a> repository containing the code and a <a href="http://www.selenic.com/mercurial/wiki/" target="_blank">Mercurial</a> repository containing configuration scripts.</p>
 <ul>
 <li>Ensure the pipeline materials look like this</li>
+</ul>
+<pre><code class="lang-{.code}">&lt;pipeline name=&quot;multiple-materials&quot;&gt;
+  &lt;materials&gt;
+    &lt;svn url=&quot;...&quot; dest=&quot;code&quot; /&gt;
+    &lt;hg url=&quot;...&quot; dest=&quot;configuration/latest&quot; /&gt;
+  &lt;/materials&gt;
+  ...
+&lt;/pipeline&gt;
+</code></pre>
+<ul>
 <li>Add the following target to your ant build.xml</li>
+</ul>
+<pre><code class="lang-{.code}">build.xml
+
+&lt;project name=&quot;my-app&quot;&gt;
+  &lt;property environment=&quot;env&quot; /&gt;
+  &lt;target name=&quot;dist&quot;&gt;
+    &lt;echo message=&quot;Building pipeline ${env.GO_PIPELINE_NAME}&quot;
+          file=&quot;deploy-${env.GO_REVISION_CODE}.txt&quot; /&gt;
+    &lt;echo message=&quot;Configuration version: ${env.GO_REVISION_CONFIGURATION_LATEST}&quot;
+          file=&quot;deploy-${env.GO_REVISION_CODE}.txt&quot;
+          append=&quot;true&quot; /&gt;
+  &lt;/target&gt;
+&lt;/project&gt;
+</code></pre>
+<ul>
 <li>Now, when Go runs the &apos;my-app&apos; pipeline with the code at revision &apos;123&apos; and the configuration at revision &apos;59cab75ccf231b9e338c96cff0f4adad5cb7d335&apos;, the file deploy-123.txt will be created with the following content:</li>
 </ul>
+<pre><code class="lang-{.code}">deploy-123.txt
+
+Building pipeline my-app
+Configuration version: 59cab75ccf231b9e338c96cff0f4adad5cb7d335
+</code></pre>
 <h2 id="pass-environment-variables-to-a-job"><a name="pass-environment-variables-to-a-job" class="plugin-anchor" href="#pass-environment-variables-to-a-job"><span class="fa fa-link"></span></a>Pass environment variables to a job</h2>
 <p>You can specify variables for Environments, Pipelines, Stages and Jobs. If a variable is specified more than once, the most specific scope is used. For example if you specify variable FOO=&apos;foo&apos; for an environment, and FOO=&apos;bar&apos; for a Job, then the variable will have the value &apos;bar&apos; when the job runs.</p>
 <h2 id="setting-variables-on-an-environment"><a name="setting-variables-on-an-environment" class="plugin-anchor" href="#setting-variables-on-an-environment"><span class="fa fa-link"></span></a>Setting variables on an environment</h2>

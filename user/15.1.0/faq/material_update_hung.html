@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="9.18" data-basepath=".." data-revision="1435066049527">
+    <div class="book" data-level="9.18" data-basepath=".." data-revision="1435138060128">
     
 
 <div class="book-summary">
@@ -2270,11 +2270,22 @@
 <h2 id="what-can-i-do-with-the-information"><a name="what-can-i-do-with-the-information" class="plugin-anchor" href="#what-can-i-do-with-the-information"><span class="fa fa-link"></span></a>What can I do with the information</h2>
 <p>When you see warning messages like the one above</p>
 <ul>
-<li>Identify the processes running as children of Go Server</li>
-<li>Determine the process that&apos;s hung. The extra information like URL: &quot;<a href="https://test@bitbucket.org/test/git_repo.git" target="_blank">https://test@bitbucket.org/test/git_repo.git</a>&quot; in the warning information should help you with this.</li>
-<li>On linux system, you should see lines like these:</li>
+<li><p>Identify the processes running as children of Go Server</p>
+<blockquote>
+<p>On Windows, you can use tools like <strong>Process Explorer</strong> . On linux you could run &apos;ps waux | grep &apos;material-type&apos;&apos;</p>
+</blockquote>
+</li>
+<li>Determine the process that&apos;s hung. The extra information like URL:&quot;<a href="https://test@bitbucket.org/test/git_repo.git" target="_blank">https://test@bitbucket.org/test/git_repo.git</a>&quot; in the warning information should help you with this.</li>
+<li><p>On linux system, you should see lines like these:</p>
+<pre><code class="lang-{.code}">go 31201 1  0 Feb07 ?  00:00:00 git clone https://test@bitbucket.org/test/git_repo.git /var/lib/cruise-server/pipelines/flyweight/b9ec0885-eb32-458c-bd6b-eeefe3ef9816
+</code></pre>
+</li>
 <li>Kill the process and all its children (the whole process tree).</li>
-<li>Ensure that the warning message goes away from Server Health.</li>
+<li><p>Ensure that the warning message goes away from Server Health.</p>
+<blockquote>
+<p>Please note the folder name (of the form .../flyweight/b9ec0885-eb32-458c-bd6b-eeefe3ef9816 ) present in the OS process listing. This folder was being used by the polling command. Locate the folder in the Go installation and delete it if it exists. This ensures that the kill of the process tree has not left behind any inconsistent information.</p>
+</blockquote>
+</li>
 </ul>
 <h2 id="configuring-warning-time"><a name="configuring-warning-time" class="plugin-anchor" href="#configuring-warning-time"><span class="fa fa-link"></span></a>Configuring warning time</h2>
 <ul>

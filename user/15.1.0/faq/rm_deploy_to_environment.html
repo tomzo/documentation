@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="9.8" data-basepath=".." data-revision="1435066049527">
+    <div class="book" data-level="9.8" data-basepath=".." data-revision="1435138060128">
     
 
 <div class="book-summary">
@@ -2269,6 +2269,15 @@
 <li><a href="../configuration/dev_choose_when_stage_runs.html">Ensure that the <strong>UAT</strong> stage is manual</a></li>
 <li>Ensure the following task block is in the <strong>deploy</strong> job configuration</li>
 </ul>
+<pre><code class="lang-{.code}">&lt;tasks&gt;
+  &lt;fetchartifact stage=&quot;dist&quot; job=&quot;create-installers&quot; srcdir=&quot;pkg&quot; dest=&quot;installers&quot; /&gt;
+  &lt;ant target=&quot;deploy_to_uat&quot; /&gt;
+  &lt;ant target=&quot;verify_uat_works_correctly&quot; /&gt;
+  &lt;ant target=&quot;rollback_to_previous_install_in_uat&quot;&gt;
+    &lt;runif status=&quot;failed&quot; /&gt;
+  &lt;/ant&gt;
+&lt;/tasks&gt;
+</code></pre>
 <p>When you are ready to deploy something into the UAT environment...</p>
 <ul>
 <li>Navigate to the <a href="../navigation/pipeline_activity_page.html">pipeline activity</a> page</li>
@@ -2283,6 +2292,7 @@
 <ul>
 <li>When the deploy fails for some reason, the stage will be red and the UAT environment will contain the original check-in</li>
 </ul>
+<p><img src="../resources/images/3_failure_to_uat.png" alt=""></p>
 <h3 id="manually-deploy-to-production"><a name="manually-deploy-to-production" class="plugin-anchor" href="#manually-deploy-to-production"><span class="fa fa-link"></span></a>Manually deploy to production</h3>
 <p>For this example, we&apos;ll assume that there is a known way to rollback to a previous installation. We will also assume that earlier in the pipeline there is a <strong>dist</strong> stage with a <strong>create-installers</strong> job that will have already created the binary for us to use.</p>
 <ul>
@@ -2307,6 +2317,7 @@ environment...</p>
 <li>If there are issues, manually rollback to the last known good installation</li>
 <li>If everything seems to be working correctly, click on the manual transition into the <strong>production</strong> stage</li>
 </ul>
+<p><img src="../resources/images/6_click_manual_to_prod.png" alt=""></p>
 
                     
                     </section>

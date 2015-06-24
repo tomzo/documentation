@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="9.12" data-basepath=".." data-revision="1435066049527">
+    <div class="book" data-level="9.12" data-basepath=".." data-revision="1435138060128">
     
 
 <div class="book-summary">
@@ -2289,7 +2289,7 @@
 <h3 id="why-is-the-deploy-changes-button-disabled"><a name="why-is-the-deploy-changes-button-disabled" class="plugin-anchor" href="#why-is-the-deploy-changes-button-disabled"><span class="fa fa-link"></span></a>Why is the &apos;Deploy Changes&apos; button disabled?</h3>
 <p>There are 3 reasons this can happen</p>
 <ul>
-<li>There is a deployment is progress, so another one cannot be started</li>
+<li>There is a deployment in progress, so another one cannot be started</li>
 <li>Your deployment pipeline is operating in <a href="../configuration/admin_lock_pipelines.html">locked</a> mode</li>
 <li>You do not have sufficient permissions to operate on that pipeline</li>
 </ul>
@@ -2301,6 +2301,7 @@
 <li>This will pick up the latest available revision of your materials at
 the time the pipeline is scheduled</li>
 </ul>
+<p><img src="../resources/images/deploy_latest.png" alt=""></p>
 <h3 id="using-passwords-while-deploying"><a name="using-passwords-while-deploying" class="plugin-anchor" href="#using-passwords-while-deploying"><span class="fa fa-link"></span></a>Using passwords while deploying</h3>
 <ul>
 <li><p>You can set secure variables in Go that gets passed along as environment variables to the executing task. You can use this feature to pass passwords to deploy scripts. For e.g., you can define a secure variable named &apos;DB_DEPLOY_PASSWORD&apos; and the DB password as its value. This value will be encrypted by Go and passed along to the task.</p>
