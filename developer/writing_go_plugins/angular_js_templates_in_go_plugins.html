@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="6.4.1" data-basepath=".." data-revision="1436176746272">
+    <div class="book" data-level="6.4.1" data-basepath=".." data-revision="1436181286602">
     
 
 <div class="book-summary">
@@ -3214,7 +3214,7 @@
 <h3 id="importance-of-the-configuration-key"><a name="importance-of-the-configuration-key" class="plugin-anchor" href="#importance-of-the-configuration-key"><span class="fa fa-link"></span></a>Importance of the configuration key</h3>
 <p>When an Angular template is used in a Go plugin, to define the configuration UI, the configuration key which is stored in the configuration XML is used everywhere and is expected to be consistent. Since Angular works off of JSON, Go will make sure that the key in the JSON provided to the Angular template is the same as the key in the configuration XML.</p>
 <p>Suppose the key of the configuration property stored in the XML is &quot;foobar&quot;, with value, &quot;5&quot;, then Go will make sure that the value is available to the template as &quot;foobar&quot; when used in an Angular-specific HTML attribute like &quot;ng-model&quot;.</p>
-<p><img src="../../images/plugin_angular.png" alt=""></p>
+<p><img src="../images/plugin_angular.png" alt=""></p>
 <p>So, the name &quot;foobar&quot; needs to be the same across the configuration XML, the Angular template as well as in any code that the plugin has.</p>
 <h3 id="using-angular-expressions-in-the-template"><a name="using-angular-expressions-in-the-template" class="plugin-anchor" href="#using-angular-expressions-in-the-template"><span class="fa fa-link"></span></a>Using Angular expressions in the template</h3>
 <p>To use an Angular expression (of the form &quot;{{ expression }}&quot;) inside a template, you need to use this form:</p>
