@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="4.4" data-basepath=".." data-revision="1436173084247">
+    <div class="book" data-level="4.4" data-basepath=".." data-revision="1436176641242">
     
 
 <div class="book-summary">
@@ -2370,7 +2370,7 @@
 
     </div>
 
-    <!-- Actions Right -->
+    <a href="https://github.com/gocd/documentation/edit/master/user/configuration/managing_a_build_cloud.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit This Page</a><!-- Actions Right -->
     
     <div class="dropdown pull-right">
         <a href="#" class="btn toggle-dropdown" aria-label="Toggle share dropdown"><i class="fa fa-share-alt"></i>
@@ -2451,7 +2451,7 @@
 <p>If an agent is working on a job, it will turn orange, and display the name of the job it is working on. You can click on the job description to go to the job details page for that job:</p>
 <h2 id="removing-agents"><a name="removing-agents" class="plugin-anchor" href="#removing-agents"><span class="fa fa-link"></span></a>Removing agents</h2>
 <p>If you want to remove an agent from Go&apos;s build cloud, go to the agents tab, locate the agent you want to remove, and click on the button marked &quot;Disable&quot;. Go will record in its configuration that this agent should be excluded from the build cloud. If you restart Go server, the agent will continue to be disabled. Disabled agents do not count towards Go&apos;s licensed agents.</p>
-<p>To permanently remove an agent from Go&apos;s configuration, you can use the <a href="../api/agent_api.html">agent api</a> or delete from the agents tab. The agent must be disabled before it can be deleted</p>
+<p>To permanently remove an agent from Go&apos;s configuration, you can use the <a href="http://api.go.cd/#agents" target="_blank">agent api</a> or delete from the agents tab. The agent must be disabled before it can be deleted</p>
 <p>Following this procedure, if you restart the agent, Go server will see it as a new agent, and you can enable it again in the same way as described above.</p>
 <p><img src="../resources/images/delete_agent.png" alt=""></p>
 <h2 id="pausing-agents"><a name="pausing-agents" class="plugin-anchor" href="#pausing-agents"><span class="fa fa-link"></span></a>Pausing agents</h2>
@@ -2523,7 +2523,7 @@
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"ga":{"token":"UA-48357651-1","configuration":"auto"},"toc":{"addClass":true,"className":"toc"}};
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"ga":{"token":"UA-48357651-1","configuration":"auto"},"toc":{"addClass":true,"className":"toc"},"rtEditLinkBase":"https://github.com/gocd/documentation/edit/master/user","rtEditLinkLabel":"Edit This Page"};
     gitbook.start(config);
 });
 </script>
