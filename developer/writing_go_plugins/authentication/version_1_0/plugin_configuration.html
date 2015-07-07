@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="6.10.1.1" data-basepath="../../.." data-revision="1436261067223">
+    <div class="book" data-level="6.10.1.1" data-basepath="../../.." data-revision="1436261297351">
     
 
 <div class="book-summary">
@@ -3204,12 +3204,6 @@
                     
                         <h2 id="message-plugin-configuration"><a name="message-plugin-configuration" class="plugin-anchor" href="#message-plugin-configuration"><span class="fa fa-link"></span></a>Message: Plugin Configuration</h2>
 <p>This message is sent by the server, when it wants to know the plugin&apos;s configuration.</p>
-<ul>
-<li><code>display-name</code> - display name for plugin</li>
-<li><code>display-image-url</code> - provides url for image to be displayed on Go Server&apos;s login page.</li>
-<li><code>supports-web-based-authentication</code> - true if the plugin handles <code>&lt;go-server&gt;/go/plugin/interact/&lt;plugin-id&gt;/index</code> web request</li>
-<li><code>supports-password-based-authentication</code> - true if the plugin can authenticate an user given &quot;username&quot; &amp; &quot;password&quot;.</li>
-</ul>
 <h3 id="request---from-the-server"><a name="request---from-the-server" class="plugin-anchor" href="#request---from-the-server"><span class="fa fa-link"></span></a>Request - From the server</h3>
 <p><strong><em>Request name</em></strong>: <code>go.authentication.plugin-configuration</code></p>
 <p><strong><em>Request parameters</em></strong>: empty</p>
@@ -3220,9 +3214,8 @@
 <p><strong><em>Example response</em></strong>:</p>
 <pre><code class="lang-json">{
     &quot;<span class="hljs-attribute">display-name</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;LDAP&quot;</span></span>,
-    &quot;<span class="hljs-attribute">supports-web-based-authentication</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://www.somedomain.com/images/someimage.png&quot;</span></span>,
-    &quot;<span class="hljs-attribute">supports-web-based-authentication</span>&quot;: <span class="hljs-value"><span class="hljs-literal">false</span></span>,
-    &quot;<span class="hljs-attribute">supports-password-based-authentication</span>&quot;: <span class="hljs-value"><span class="hljs-literal">true</span>
+    &quot;<span class="hljs-attribute">supports-password-based-authentication</span>&quot;: <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    &quot;<span class="hljs-attribute">supports-user-search</span>&quot;: <span class="hljs-value"><span class="hljs-literal">true</span>
 </span>}
 </code></pre>
 <h3 id="schema-information"><a name="schema-information" class="plugin-anchor" href="#schema-information"><span class="fa fa-link"></span></a>Schema information</h3>
@@ -3237,18 +3230,13 @@
       &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;string&quot;</span></span>,
       &quot;<span class="hljs-attribute">required</span>&quot;: <span class="hljs-value"><span class="hljs-literal">true</span>
     </span>}</span>,
-    &quot;<span class="hljs-attribute">display-image-url</span>&quot;: <span class="hljs-value">{
-      &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;display-image-url&quot;</span></span>,
-      &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;string&quot;</span></span>,
-      &quot;<span class="hljs-attribute">required</span>&quot;: <span class="hljs-value"><span class="hljs-literal">false</span>
-    </span>}</span>,
-    &quot;<span class="hljs-attribute">supports-web-based-authentication</span>&quot;: <span class="hljs-value">{
-      &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;supports-web-based-authentication&quot;</span></span>,
+    &quot;<span class="hljs-attribute">supports-password-based-authentication</span>&quot;: <span class="hljs-value">{
+      &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;supports-password-based-authentication&quot;</span></span>,
       &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;boolean&quot;</span></span>,
       &quot;<span class="hljs-attribute">required</span>&quot;: <span class="hljs-value"><span class="hljs-literal">false</span>
     </span>}</span>,
-    &quot;<span class="hljs-attribute">supports-password-based-authentication</span>&quot;: <span class="hljs-value">{
-      &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;supports-password-based-authentication&quot;</span></span>,
+    &quot;<span class="hljs-attribute">supports-user-search</span>&quot;: <span class="hljs-value">{
+      &quot;<span class="hljs-attribute">id</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;supports-user-search&quot;</span></span>,
       &quot;<span class="hljs-attribute">type</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;boolean&quot;</span></span>,
       &quot;<span class="hljs-attribute">required</span>&quot;: <span class="hljs-value"><span class="hljs-literal">false</span>
     </span>}
