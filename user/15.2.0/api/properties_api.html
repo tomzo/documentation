@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="7.12" data-basepath=".." data-revision="1436370243666">
+    <div class="book" data-level="7.12" data-basepath=".." data-revision="1436501755407">
     
 
 <div class="book-summary">
@@ -2415,125 +2415,12 @@
                 
                     <section class="normal" id="section-gitbook_35">
                     
-                        <h1 id="properties-api"><a name="properties-api" class="plugin-anchor" href="#properties-api"><span class="fa fa-link"></span></a>Properties API</h1>
-<blockquote>
-<p>The Go API documented here is a work in progress. Future versions may change this API.</p>
-</blockquote>
-<p>You can get the list of properties or a property&apos;s value for a given job by using the properties API.</p>
-<p>There is no way to delete or update a property.</p>
-<blockquote>
-<p>StageCounter is a number which indicate how many times the stage has been run in the pipeline with the same pipeline label.</p>
-</blockquote>
-<h2 id="list--show"><a name="list--show" class="plugin-anchor" href="#list--show"><span class="fa fa-link"></span></a>List &amp; Show</h2>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>URL format</th>
-<th>HTTPVerb</th>
-<th>Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>List</td>
-<td><a href="http://[server]/go/properties/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job" target="_blank">http://[server]/go/properties/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job</a>]</td>
-<td>GET</td>
-<td>List all properties for the specific pipeline/stage/job in csv format.</td>
-</tr>
-<tr>
-<td>Show</td>
-<td><a href="http://[server]/go/properties/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job]/[property-name" target="_blank">http://[server]/go/properties/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job]/[property-name</a>]</td>
-<td>GET</td>
-<td>Get the value of the property [property-name] of the specific pipeline/stage/job with csv format.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="create"><a name="create" class="plugin-anchor" href="#create"><span class="fa fa-link"></span></a>Create</h2>
-<table>
-<thead>
-<tr>
-<th>URL format</th>
-<th>HTTPVerb</th>
-<th>Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://[server]:8153/go/properties/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job]/[property-name" target="_blank">http://[server]:8153/go/properties/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job]/[property-name</a>]</td>
-<td>POST</td>
-<td>Create a property with value to the specific pipeline/stage/job.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="search"><a name="search" class="plugin-anchor" href="#search"><span class="fa fa-link"></span></a>Search</h2>
-<table>
-<thead>
-<tr>
-<th>URL format</th>
-<th>HTTPVerb</th>
-<th>Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&quot;<a href="http://[server]:8153/go/properties/search?pipelineName=[pipeline]&amp;stageName=[stage]&amp;jobName=[job]&amp;limitPipeline=[pipeline-counter]&amp;limitCount=[number" target="_blank">http://[server]:8153/go/properties/search?pipelineName=[pipeline]&amp;stageName=[stage]&amp;jobName=[job]&amp;limitPipeline=[pipeline-counter]&amp;limitCount=[number</a>]&quot;</td>
-<td>GET</td>
-<td>List all historical properties for the pipeline/stage/job upto specified pipeline in csv format. The limitPipeline is optional, which is the last pipeline counter in the list and the default value is the latest pipeline instance. The limitCount is the number of pipeline instances that Go should return. ;limitCount is optional and its default value is 100.</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>You can use key word &apos;latest&apos; as a pipeline counter or a stage counter.</li>
-<li>RESTful urls are case sensitive.</li>
-<li>Go does not support JSON format for properties API.</li>
-</ul>
-<h2 id="examples"><a name="examples" class="plugin-anchor" href="#examples"><span class="fa fa-link"></span></a>Examples</h2>
-<ul>
-<li>We use curl, a command line tool for transferring files with URL syntax, in the following examples. Of course, you can use any HTTP client library.</li>
-<li>We assume that the url of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
-<li>We assume security has been switched on, and that there is a user named <strong>admin</strong> with the password <strong>badger</strong> .</li>
-</ul>
-<p>And the pipeline configuration looks like:</p>
-<pre><code class="lang-xml">      <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;foo&quot;</span> <span class="hljs-attribute">labeltemplete</span>=<span class="hljs-value">&quot;foo-1.0-${COUNT}&quot;</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-title">material</span>&gt;</span>
-               <span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;....&quot;</span>/&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-title">material</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;DEV&quot;</span>&gt;</span>
-           <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UnitTest&quot;</span>&gt;</span>
-           <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;ut&quot;</span>/&gt;</span>
-           <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span>  <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;coverage&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;coveragereport.html&quot;</span>/&gt;</span>         
-           <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UATest&quot;</span>&gt;</span>
-           <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UAT&quot;</span>&gt;</span>
-           <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;all-UAT&quot;</span>/&gt;</span>
-           <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span>  <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;report&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;UAreport.html&quot;</span>/&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span>  <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;pkg/foo.war&quot;</span>/&gt;</span>
-           <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
-</code></pre>
-<p>If you want to get the list of properties in csv for the job UnitTest with the pipeline counter &apos;1243&apos; and stage counter &apos;LATEST&apos;, the command is</p>
-<pre><code>curl -u admin:badger http://goserver.com:8153/go/properties/foo/1243/DEV/LATEST/UnitTest
-</code></pre><p>If you want to get the history of properties in csv for the job UnitTest, the command is</p>
-<pre><code>curl -u admin:badger &quot;http://goserver.com:8153/go/properties/search?pipelineName=foo&amp;stageName=DEV&amp;jobName=UnitTest&amp;limitCount=100&quot;
-</code></pre><blockquote>
-<p>The quotes are required.</p>
-</blockquote>
-<p>If you want to get a property &apos;cruise_agent&apos; for the job UnitTest with the pipeline counter 1243 and stage counter &apos;1&apos;, the command is</p>
-<pre><code>curl -u admin:badger http://goserver.com:8153/go/properties/foo/1243/DEV/1/UnitTest/cruise_agent
-</code></pre><p>If you want to define a property, named myproperty, for the job UnitTest with the pipeline counter &apos;1243&apos; and stage counter &apos;1&apos;, the command is</p>
-<pre><code>curl -u admin:badger -d &quot;value=Showcase_for_I29&quot; http://goserver.com:8153/go/properties/foo/1243/DEV/1/UnitTest/myproperty
-</code></pre>
+                        <p><link rel="canonical" href="http://api.go.cd/#properties"></p>
+<p><meta http-equiv="refresh" content="0; url=http://api.go.cd/#properties"></p>
+<p></p><h1><a name="undefined" class="plugin-anchor" href="#undefined"><span class="fa fa-link"></span></a>Redirecting...</h1>
+<a href="http://api.go.cd/#properties">Click here if you are not redirected.</a><p></p>
+<script>window.location.href="http://api.go.cd/#properties";</script>
+
                     
                     </section>
                 
