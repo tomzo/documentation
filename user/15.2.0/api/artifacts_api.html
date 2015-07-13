@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="7.9" data-basepath=".." data-revision="1436532909745">
+    <div class="book" data-level="7.9" data-basepath=".." data-revision="1436761905401">
     
 
 <div class="book-summary">
@@ -2415,153 +2415,12 @@
                 
                     <section class="normal" id="section-gitbook_30">
                     
-                        <h1 id="artifacts-api"><a name="artifacts-api" class="plugin-anchor" href="#artifacts-api"><span class="fa fa-link"></span></a>Artifacts API</h1>
-<blockquote>
-<p>The Go API documented here is a work in progress. Future versions may change this API.</p>
-</blockquote>
-<p>The Artifacts API is not as much an API as a way to list, download and upload artifacts through command-line.</p>
-<h2 id="list"><a name="list" class="plugin-anchor" href="#list"><span class="fa fa-link"></span></a>List</h2>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>URL format</th>
-<th>HTTP Verb</th>
-<th>Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>List</td>
-<td><a href="http://[server]/go/files/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job].json" target="_blank">http://[server]/go/files/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job].json</a></td>
-<td>GET</td>
-<td>List all files for the particular pipeline/stage/job in json format</td>
-</tr>
-</tbody>
-</table>
-<h2 id="show"><a name="show" class="plugin-anchor" href="#show"><span class="fa fa-link"></span></a>Show</h2>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>URL format</th>
-<th>HTTP Verb</th>
-<th>Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Show</td>
-<td><a href="http://[server]/go/files/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job]/[filename" target="_blank">http://[server]/go/files/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job]/[filename</a>]</td>
-<td>GET</td>
-<td>Get the file called [filename] in default artifact folder of the pipeline/stage/job with particular label.</td>
-</tr>
-<tr>
-<td>Show</td>
-<td><a href="http://[server]/go/files/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job]/[pathname]/[filename" target="_blank">http://[server]/go/files/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job]/[pathname]/[filename</a>]</td>
-<td>GET</td>
-<td>Get the file called [filename] in the sub-folder [pathname] of default artifact folder of the pipeline/stage/job with particular pipeline counter.</td>
-</tr>
-<tr>
-<td>Show</td>
-<td><a href="http://[server]/go/files/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job]/[pathname.zip" target="_blank">http://[server]/go/files/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job]/[pathname.zip</a>]</td>
-<td>GET</td>
-<td>Get a zipped output of all the files in the [pathname] of default artifact folder of the pipeline/stage/job with particular pipeline counter.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="create--append"><a name="create--append" class="plugin-anchor" href="#create--append"><span class="fa fa-link"></span></a>Create &amp; Append</h2>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>URL format</th>
-<th>HTTP Verb</th>
-<th>Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Create</td>
-<td><a href="http://[server]/go/files/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job]/[filename" target="_blank">http://[server]/go/files/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job]/[filename</a>]</td>
-<td>POST</td>
-<td>upload a file named [filename] to the default artifact folder of the particular pipeline/stage/job</td>
-</tr>
-<tr>
-<td>Append</td>
-<td><a href="http://[server]/go/files/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job]/[filename" target="_blank">http://[server]/go/files/[pipeline]/[pipeline-counter]/[stage]/[stage-counter]/[job]/[filename</a>]</td>
-<td>PUT</td>
-<td>appending a string to a file named &apos;filename&apos; in the default artifact folder of the pipeline/stage/job with particular pipeline counter</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>You can use key word &apos;latest&apos; as a pipeline counter or a stage counter.</li>
-<li><strong>pipeline-counter</strong> is a number which indicates how many times the pipeline has been triggerd.</li>
-<li><strong>stage-counter</strong> is a number which indicates how many times the stage has been re-run in the pipeline with the same pipeline counter.</li>
-<li>The name in the RESTful url is case-sensitive.</li>
-</ul>
-<h2 id="examples"><a name="examples" class="plugin-anchor" href="#examples"><span class="fa fa-link"></span></a>Examples</h2>
-<ul>
-<li>We use curl, a command line tool for transferring files with URL syntax, in the following examples. Of course, you can use any HTTP client library.</li>
-<li>We assume that the url of the Go server is <strong><a href="http://goserver.com:8153/" target="_blank">http://goserver.com:8153/</a></strong> .</li>
-<li>We assume security has been switched on, and that there is a user named <strong>admin</strong> with the password <strong>badger</strong>.</li>
-</ul>
-<p>And the pipeline configuration looks like:</p>
-<pre><code class="lang-xml">      <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;foo&quot;</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">&quot;foo-1.0-${COUNT}&quot;</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
-               <span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;....&quot;</span>/&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;DEV&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
-           <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UnitTest&quot;</span>&gt;</span>
-           <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;ut&quot;</span>/&gt;</span>
-           <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span>  <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;coverage&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;coveragereport.html&quot;</span>/&gt;</span>         
-            <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UATest&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
-           <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UAT&quot;</span>&gt;</span>
-           <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;all-UAT&quot;</span>/&gt;</span>
-           <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span>  <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;report&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;UAreport.html&quot;</span>/&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span>  <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;pkg/foo.war&quot;</span>/&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
-</code></pre>
-<p>If you want to get the list of files in json for the latest completed job UnitTest, the command is</p>
-<pre><code>curl -u admin:badger http://goserver.com:8153/go/files/foo/latest/DEV/1/UnitTest.json
-</code></pre><p>If you want to get the list of files in json for the job UnitTest with the pipeline counter 1243 and stage counter &apos;1&apos;, the command is</p>
-<pre><code>curl -u admin:badger http://goserver.com:8153/go/files/foo/1243/DEV/1/UnitTest.json
-</code></pre><p>If you want to get the file &apos;foo.war&apos; under the folder &apos;pkg&apos; for the job UAT with the pipeline counter 1243, the command is</p>
-<pre><code>curl -u admin:badger http://goserver.com:8153/go/files/foo/1243/UATest/1/UAT/pkg/foo.war
-</code></pre><p>If you want to get a zip file of the contents of &apos;binaries&apos; under the folder &apos;pkg&apos; for the job UAT with the pipeline counter 1243, the command is</p>
-<pre><code>curl -u admin:badger http://goserver.com:8153/go/files/foo/1243/UATest/1/UAT/pkg/binaries.zip
-</code></pre><blockquote>
-<p>The above command will return immediately with an HTTP status code of 202 to indicate that the request was accepted. The same command needs to be retried after a few seconds to actually retrieve the zip contents</p>
-</blockquote>
-<p>If you want to get the list in the folder &quot;pkg&quot; in json format for the job UAT with the pipeline counter 1243 with stage counter &apos;1&apos;, the command is</p>
-<pre><code>curl -u admin:badger http://goserver.com:8153/go/files/foo/1243/UATest/1/UAT/pkg.json
-</code></pre><p>If you want to upload a file abc.txt to the job UAT with the pipeline counter 1243 and stage counter &apos;1&apos;,and the target name is def.txt, the command is</p>
-<pre><code>curl -u admin:badger -F file=@abc.txt http://goserver.com:8153/go/files/foo/1243/UATest/1/UAT/def.txt
-</code></pre><p>If you want to upload a zip file abc.zip to the job UAT with the pipeline counter 1243 with stage counter &apos;1&apos;, and the target name is def.zip, the command is</p>
-<pre><code>curl -u admin:badger -F file=@abc.zip http://goserver.com:8153/go/files/foo/1243/UATest/1/UAT/def.zip
-</code></pre><p><strong>Notes:</strong></p>
-<p>In order to upload a folder, first zip it up. Next, assuming you want it to be associated with the job UAT, pipeline counter 1243, stage counter &apos;1&apos;, and the folder name &apos;def&apos;, the command is</p>
-<pre><code>curl -u admin:badger -F zipfile=@abc.zip http://goserver.com:8153/go/files/foo/1243/UATest/1/UAT/def
-</code></pre><p>If you want to append the content of a file, say abc.txt, to the end of a file &apos;def.txt&apos; to the job UnitTest with the pipeline counter 1243 and stage counter &apos;1&apos;, the command is</p>
-<pre><code>curl -u admin:badger -T abc.txt http://goserver.com:8153/go/files/foo/1243/DEV/1/UnitTest/def.txt
-</code></pre>
+                        <p><link rel="canonical" href="http://api.go.cd/#artifacts"></p>
+<p><meta http-equiv="refresh" content="0; url=http://api.go.cd/#artifacts"></p>
+<p></p><h1><a name="undefined" class="plugin-anchor" href="#undefined"><span class="fa fa-link"></span></a>Redirecting...</h1>
+<a href="http://api.go.cd/#artifacts">Click here if you are not redirected.</a><p></p>
+<script>window.location.href="http://api.go.cd/#artifacts";</script>
+
                     
                     </section>
                 
