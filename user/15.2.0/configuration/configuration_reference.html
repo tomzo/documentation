@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="4.32" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="4.32" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -3357,10 +3357,10 @@ pipeline group).</p>
 <p>A <code>&lt;param&gt;</code> defines the parameter name that will be substituted with the paramerter value that will be substituted in a pipeline or a pipeline
 template.</p>
 <h3 id="example"><a name="example" class="plugin-anchor" href="#example"><span class="fa fa-link"></span></a>Example:</h3>
-<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-title">params</span>&gt;</span>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">params</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">param</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;COMMAND&quot;</span>&gt;</span>echo<span class="hljs-tag">&lt;/<span class="hljs-title">param</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">param</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;WORKING_DIR&quot;</span>&gt;</span>/repo/branch<span class="hljs-tag">&lt;/<span class="hljs-title">param</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">params</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">params</span>&gt;</span>
 </code></pre>
 <p><a href="#top">top</a></p>
 <h2 id="trackingtool"><a name="trackingtool" class="plugin-anchor" href="#trackingtool"><span class="fa fa-link"></span></a><code>&lt;trackingtool&gt;</code></h2>
@@ -4289,23 +4289,23 @@ to Go Server.</p>
   <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
 </code></pre>
-<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;run-upgrade&quot;</span> <span class="hljs-attribute">runOnAllAgents</span>=<span class="hljs-value">&quot;true&quot;</span> <span class="hljs-attribute">timeout</span>=<span class="hljs-value">&apos;30&apos;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">resources</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">resource</span>&gt;</span>linux<span class="hljs-tag">&lt;/<span class="hljs-title">resource</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">resources</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;upgrade&quot;</span> /&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;run-upgrade&quot;</span> <span class="hljs-attribute">runOnAllAgents</span>=<span class="hljs-value">&quot;true&quot;</span> <span class="hljs-attribute">timeout</span>=<span class="hljs-value">&apos;30&apos;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">resources</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">resource</span>&gt;</span>linux<span class="hljs-tag">&lt;/<span class="hljs-title">resource</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">resources</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;upgrade&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
 </code></pre>
-<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;run-upgrade&quot;</span> <span class="hljs-attribute">runInstanceCount</span>=<span class="hljs-value">&quot;5&quot;</span> <span class="hljs-attribute">timeout</span>=<span class="hljs-value">&apos;30&apos;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">resources</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">resource</span>&gt;</span>linux<span class="hljs-tag">&lt;/<span class="hljs-title">resource</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">resources</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;upgrade&quot;</span> /&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;run-upgrade&quot;</span> <span class="hljs-attribute">runInstanceCount</span>=<span class="hljs-value">&quot;5&quot;</span> <span class="hljs-attribute">timeout</span>=<span class="hljs-value">&apos;30&apos;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">resources</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">resource</span>&gt;</span>linux<span class="hljs-tag">&lt;/<span class="hljs-title">resource</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">resources</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;upgrade&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
 </code></pre>
 <p><a href="#top">top</a></p>
 <h2 id="resources"><a name="resources" class="plugin-anchor" href="#resources"><span class="fa fa-link"></span></a><code>&lt;resources&gt;</code></h2>
@@ -4616,7 +4616,7 @@ introduced in 12.2. Stages after the upstream stage can not be fetched from, bec
 <tr>
 <td>srcfile</td>
 <td>One of srcdir/srcfile</td>
-<td>The path of the artifact file of a specific job. </td>
+<td>The path of the artifact file of a specific job.</td>
 </tr>
 </tbody>
 </table>
@@ -4858,10 +4858,10 @@ you to see the results of tests from both functional and unit tests even if they
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;unit&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/jcoverage&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;Jcoverage&quot;</span>/&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span> 
+  <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">tabs</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">tab</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;coverage&quot;</span> <span class="hljs-attribute">path</span>=<span class="hljs-value">&quot;Jcoverage/index.html&quot;</span>/&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">tabs</span>&gt;</span> 
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tabs</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
 </code></pre>
 <p><a href="#top">top</a></p>
@@ -4894,10 +4894,10 @@ you to see the results of tests from both functional and unit tests even if they
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;unit&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/jcoverage&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;Jcoverage&quot;</span>/&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span> 
+  <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">tabs</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">tab</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;coverage&quot;</span> <span class="hljs-attribute">path</span>=<span class="hljs-value">&quot;Jcoverage/index.html&quot;</span>/&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">tabs</span>&gt;</span> 
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tabs</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
 </code></pre>
 <h2 id="properties"><a name="properties" class="plugin-anchor" href="#properties"><span class="fa fa-link"></span></a><code>&lt;properties&gt;</code></h2>
@@ -4908,7 +4908,7 @@ improving or getting worse.</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;emma&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/emma&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;analysis&quot;</span> /&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span> 
+  <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;emma&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
@@ -4917,7 +4917,7 @@ improving or getting worse.</p>
     <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;coverage.method&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/emma/coverage.xml&quot;</span> <span class="hljs-attribute">xpath</span>=<span class="hljs-value">&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;method&apos;)]/@value, &apos;%&apos;)&quot;</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;coverage.block&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/emma/coverage.xml&quot;</span> <span class="hljs-attribute">xpath</span>=<span class="hljs-value">&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;block&apos;)]/@value, &apos;%&apos;)&quot;</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;coverage.line&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/emma/coverage.xml&quot;</span> <span class="hljs-attribute">xpath</span>=<span class="hljs-value">&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;line&apos;)]/@value, &apos;%&apos;)&quot;</span> /&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">properties</span>&gt;</span> 
+  <span class="hljs-tag">&lt;/<span class="hljs-title">properties</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
 </code></pre>
 <p><a href="#top">top</a></p>
@@ -4956,7 +4956,7 @@ improving or getting worse.</p>
   <span class="hljs-tag">&lt;<span class="hljs-title">properties</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;junit.errors&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/junit-reports/TEST-MainAppTest.xml&quot;</span> <span class="hljs-attribute">xpath</span>=<span class="hljs-value">&quot;string(/testsuite/@errors)&quot;</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;junit.failures&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/junit-reports/TEST-MainAppTest.xml&quot;</span> <span class="hljs-attribute">xpath</span>=<span class="hljs-value">&quot;string(/testsuite/@failures)&quot;</span> /&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">properties</span>&gt;</span> 
+  <span class="hljs-tag">&lt;/<span class="hljs-title">properties</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
 </code></pre>
 <p>Here&apos;s a more complex example. This will parse the class, method, block, and line coverage out of an <a href="http://emma.sourceforge.net/" target="_blank">EMMA</a>
@@ -4964,7 +4964,7 @@ coverage.xml file.</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;emma&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/emma&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;analysis&quot;</span> /&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span> 
+  <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;emma&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
@@ -4973,7 +4973,7 @@ coverage.xml file.</p>
     <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;coverage.method&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/emma/coverage.xml&quot;</span> <span class="hljs-attribute">xpath</span>=<span class="hljs-value">&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;method&apos;)]/@value, &apos;%&apos;)&quot;</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;coverage.block&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/emma/coverage.xml&quot;</span> <span class="hljs-attribute">xpath</span>=<span class="hljs-value">&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;block&apos;)]/@value, &apos;%&apos;)&quot;</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;coverage.line&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/emma/coverage.xml&quot;</span> <span class="hljs-attribute">xpath</span>=<span class="hljs-value">&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;line&apos;)]/@value, &apos;%&apos;)&quot;</span> /&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">properties</span>&gt;</span> 
+  <span class="hljs-tag">&lt;/<span class="hljs-title">properties</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
 </code></pre>
 <p><a href="#top">top</a></p>

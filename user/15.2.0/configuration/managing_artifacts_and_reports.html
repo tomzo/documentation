@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="4.26" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="4.26" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2429,9 +2429,9 @@
 </ul>
 <p><img src="../resources/images/job_artifacts.png" alt=""></p>
 <p>For power users, here&apos;s how you would configure this via Config XML:</p>
-<pre><code class="lang-{.code}">&lt;artifacts&gt;  
-  &lt;artifact src=&quot;target/commonlib.dll&quot; dest=&quot;pkg&quot; /&gt;  
-&lt;/artifacts&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/commonlib.dll&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;pkg&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
 </code></pre>
 <h2 id="using-tabs"><a name="using-tabs" class="plugin-anchor" href="#using-tabs"><span class="fa fa-link"></span></a>Using tabs</h2>
 <p>Once your artifacts are safely in Go server&apos;s artifact repository, you can have the dashboard display them in tabs.</p>
@@ -2443,9 +2443,9 @@
 <p>If you produce an html page with an embedded Flash file into your artifact repository:</p>
 <p><img src="../resources/images/select_artifact.png" alt=""></p>
 <p>You can use the following configuration to display it in a tab:</p>
-<pre><code class="lang-{.code}">&lt;tabs&gt;  
-  &lt;tab name=&quot;Recording&quot; path=&quot;deployment/drop/smoke/smoke-recording.html&quot; /&gt;  
-&lt;/tabs&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">tabs</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">tab</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;Recording&quot;</span> <span class="hljs-attribute">path</span>=<span class="hljs-value">&quot;deployment/drop/smoke/smoke-recording.html&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tabs</span>&gt;</span>
 </code></pre>
 <p>Go will create a tab called &quot;Recording&quot; and display the contents of the file in the tab when you click on it:</p>
 <p><img src="../resources/images/recording.png" alt=""></p>
@@ -2462,9 +2462,9 @@
 </ul>
 <p><img src="../resources/images/job_test_artifacts.png" alt=""></p>
 <p>For power users, here&apos;s how you would configure this via Config XML:</p>
-<pre><code class="lang-{.code}">&lt;artifacts&gt;  
-  &lt;test src=&quot;xstream/target/test-reports&quot; /&gt;  
-&lt;/artifacts&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">test</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;xstream/target/test-reports&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
 </code></pre>
 <p>Go will:</p>
 <ul>

@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="5.7" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="5.7" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2492,12 +2492,11 @@
 <h2 id="notes"><a name="notes" class="plugin-anchor" href="#notes"><span class="fa fa-link"></span></a>Notes</h2>
 <ul>
 <li><p>Fan-in as a feature is enabled by default. In case you need pipelines to trigger with every version regardless of ancestor versions you can disable fan-in. To disable fan-in you will need to add a system property and restart the Go server. On linux add the following line to /etc/default/go-server</p>
-<pre><code class="lang-{.code}">export GO_SERVER_SYSTEM_PROPERTIES=&apos;-Dresolve.fanin.revisions=N&apos;
+<pre><code class="lang-shell">export GO_SERVER_SYSTEM_PROPERTIES=&apos;-Dresolve.fanin.revisions=N&apos;
 </code></pre>
 <p>On windows, in the config folder of the Go server installation, edit the wrapper-server.conf file, and add an additional property with the value &apos;-Dresolve.fanin.revisions=N&apos;. For example:</p>
-<pre><code class="lang-{.code}">wrapper.java.additional.17=&apos;-Dresolve.fanin.revisions=N&apos;
-</code></pre>
-</li>
+<pre><code>wrapper.java.additional.17=&apos;-Dresolve.fanin.revisions=N&apos;
+</code></pre></li>
 <li><p>Go will apply fan-in dependency resolution for pipelines that have auto trigger type only.</p>
 </li>
 </ul>

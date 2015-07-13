@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="4.6" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="4.6" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2422,25 +2422,25 @@
 <p>You can create a custom label by setting the <strong>Label Template</strong> field on your pipeline. This will change the value that Go shows on its webpages. It will also change the value of the <strong>GO_PIPELINE_LABEL</strong> property that is passed to your build. You can refer to ${COUNT} or material names which are defined in the configuration of <a href="configuration_reference.html#svn">materials</a>.</p>
 <p><img src="../resources/images/pipeline_labelling.png" alt=""></p>
 <p>Power users can still edit the config xml to achieve the same. The xml snippet to configure <strong>labelTempalte</strong> is below.</p>
-<pre><code class="lang-{.code}">    &lt;pipeline name=&quot;my-pipeline&quot; labeltemplate=&quot;1.2.${COUNT}&quot;&gt;
-        ...
-    &lt;/pipeline&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;my-pipeline&quot;</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">&quot;1.2.${COUNT}&quot;</span>&gt;</span>
+  ...
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
 </code></pre>
 <p>Using a <strong>pipeline</strong> in the labeltemplate:</p>
-<pre><code class="lang-{.code}">    &lt;pipeline name=&quot;my-dependent-pipeline&quot; labeltemplate=&quot;${MY_PIPELINE}&quot;&gt;
-        &lt;materials&gt;
-            &lt;pipeline pipelineName=&quot;my-pipeline&quot; stageName=&quot;my-stage&quot;/&gt;
-        &lt;/materials&gt;
-        ...
-    &lt;/pipeline&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;my-dependent-pipeline&quot;</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">&quot;${MY_PIPELINE}&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">pipelineName</span>=<span class="hljs-value">&quot;my-pipeline&quot;</span> <span class="hljs-attribute">stageName</span>=<span class="hljs-value">&quot;my-stage&quot;</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
+  ...
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
 </code></pre>
 <p>Using a <strong>VCS material</strong> in the labeltemplate. In this example, the Subversion revision number will be used as the labeltemplate:</p>
-<pre><code class="lang-{.code}">    &lt;pipeline name=&quot;my-material-pipeline&quot; labeltemplate=&quot;1.2.${SVN_MATERIAL}&quot;&gt;
-        &lt;materials&gt;
-            &lt;svn url=&quot;http://svn.example.com/&quot; dest=&quot;svn&quot; materialName=&quot;SVN_MATERIAL&quot; /&gt;
-        &lt;/materials&gt;
-        ...
-    &lt;/pipeline&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;my-material-pipeline&quot;</span> <span class="hljs-attribute">labeltemplate</span>=<span class="hljs-value">&quot;1.2.${SVN_MATERIAL}&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://svn.example.com/&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;svn&quot;</span> <span class="hljs-attribute">materialName</span>=<span class="hljs-value">&quot;SVN_MATERIAL&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
 </code></pre>
 <p>In some instances - for example when using Git - the revision number can be long. In this case the revision number <a href="admin_use_custom_pipeline_label.html#using-truncated-material-revisions">can be truncated</a>.</p>
 

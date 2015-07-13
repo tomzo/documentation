@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="4.3" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="4.3" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2429,12 +2429,12 @@
 </ul>
 <p><img src="../resources/images/pipeline_add_material.png" alt=""></p>
 <p>Power users can also configure this via the <strong>Config XML</strong> tab on the Admin section (Configuration reference is <a href="configuration_reference.html">here</a>):</p>
-<pre><code class="lang-{.code}">&lt;pipeline name=&quot;downstream_pipeline&quot;&gt;  
-  &lt;materials&gt;  
-    &lt;pipeline pipelineName=&quot;upstream_pipeline&quot; stageName=&quot;AutoStage1&quot;/&gt;  
-  &lt;/materials&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;downstream_pipeline&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">pipelineName</span>=<span class="hljs-value">&quot;upstream_pipeline&quot;</span> <span class="hljs-attribute">stageName</span>=<span class="hljs-value">&quot;AutoStage1&quot;</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
   ...
-&lt;/pipeline&gt;
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
 </code></pre>
 <p>Now, when the stage &quot;AutoStage1&quot; of &quot;upstream_pipeline&quot; completes, the pipeline &quot;downstream_pipeline&quot; will start building. The Pipeline Dependency visualization shows you all the downstream instances that were triggered off the upstream instance (label 14) currently being viewed.</p>
 <p><img src="../resources/images/dependent_build.png" alt=""></p>
@@ -2451,63 +2451,63 @@
 <p>A fetch task can also be instructed to retrieve (fetch) an artifact from an ancestor pipeline. For example, lets assume that the &quot;upstream_pipeline&quot; used in this example, depends on another pipeline &quot;topmost_pipeline&quot;. Then you can define a a &quot;Fetch Artifact&quot; task to fetch artifacts from &quot;topmost_pipeline&quot; by defining the hierarchy of these pipelines as follows. You have to specify the hierarchy by separting the pipelines with a /. For example: topmost_pipeline/upstream_pipeline.</p>
 <p><img src="../resources/images/task_fetch_artifact_ancestor.png" alt=""></p>
 <p>For power users, here&apos;s how you can configure this via the <strong>Config XML</strong> tab on the Admin section (Configuration reference is <a href="configuration_reference.html">here</a>):</p>
-<pre><code class="lang-{.code}">&lt;pipeline name=&quot;topmost_pipeline&quot;&gt;  
-  &lt;materials&gt;  
-    &lt;svn url=&quot;....&quot;/&gt;  
-  &lt;/materials&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;topmost_pipeline&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;....&quot;</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
   ...
-  &lt;stage name=&quot;TopStage1&quot;&gt;  
-    &lt;jobs&gt;
-    &lt;job name=&quot;topJob&quot;&gt;  
-      &lt;tasks&gt;  
-        &lt;nant /&gt;  
-      &lt;/tasks&gt;
-      &lt;artifacts&gt;  
-        &lt;artifact src=&quot;target/mylib.dll&quot; dest=&quot;lib&quot;/&gt;  
-      &lt;/artifacts&gt;
-    &lt;/job&gt;
-   &lt;/jobs&gt;
-  &lt;/stage&gt;
-&lt;/pipeline&gt;
-&lt;pipeline name=&quot;upstream_pipeline&quot;&gt;  
-  &lt;materials&gt;  
-    &lt;svn url=&quot;....&quot;/&gt;  
-    &lt;pipeline pipelineName=&quot;topmost_pipeline&quot; stageName=&quot;TopStage1&quot;/&gt;  
-  &lt;/materials&gt;
+  <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;TopStage1&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;topJob&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">nant</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/mylib.dll&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;lib&quot;</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;upstream_pipeline&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;....&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">pipelineName</span>=<span class="hljs-value">&quot;topmost_pipeline&quot;</span> <span class="hljs-attribute">stageName</span>=<span class="hljs-value">&quot;TopStage1&quot;</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
   ...
-  &lt;stage name=&quot;AutoStage1&quot;&gt;  
-    &lt;jobs&gt;
-    &lt;job name=&quot;firstJob&quot;&gt;  
-      &lt;tasks&gt;  
-        &lt;nant /&gt;  
-      &lt;/tasks&gt;
-      &lt;artifacts&gt;  
-        &lt;artifact src=&quot;target/commonlib.dll&quot; dest=&quot;pkg&quot;/&gt;  
-      &lt;/artifacts&gt;
-    &lt;/job&gt;
-   &lt;/jobs&gt;
-  &lt;/stage&gt;
-&lt;/pipeline&gt;
-&lt;pipeline name=&quot;downstream_pipeline&quot;&gt;  
-  &lt;materials&gt;  
-    &lt;pipeline pipelineName=&quot;upstream_pipeline&quot; stageName=&quot;AutoStage1&quot;/&gt;  
-  &lt;/materials&gt;
-  &lt;stage name=&quot;Stage&quot;&gt;  
-    &lt;jobs&gt;
-    &lt;job name=&quot;fetchFromParentJob&quot;&gt;  
-      &lt;tasks&gt;  
-        &lt;fetchartifact pipeline=&quot;upstream_pipeline&quot; stage=&quot;AutoStage1&quot; job=&quot;firstJob&quot; srcfile=&quot;pkg/commonlib.dll&quot; dest=&quot;libs&quot;/&gt;  
-      &lt;/tasks&gt;
-    &lt;/job&gt;
-    &lt;job name=&quot;fetchFromAncestorJob&quot;&gt;  
-      &lt;tasks&gt;  
-        &lt;fetchartifact pipeline=&quot;topmost_pipeline/upstream_pipeline&quot; stage=&quot;TopStage1&quot; job=&quot;topJob&quot; srcfile=&quot;lib/mylib.dll&quot; dest=&quot;libs&quot;/&gt;  
-      &lt;/tasks&gt;
-    &lt;/job&gt;
-   &lt;jobs&gt;
-  &lt;/stage&gt;
+  <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;AutoStage1&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;firstJob&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">nant</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/commonlib.dll&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;pkg&quot;</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;downstream_pipeline&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">pipelineName</span>=<span class="hljs-value">&quot;upstream_pipeline&quot;</span> <span class="hljs-attribute">stageName</span>=<span class="hljs-value">&quot;AutoStage1&quot;</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;Stage&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;fetchFromParentJob&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">fetchartifact</span> <span class="hljs-attribute">pipeline</span>=<span class="hljs-value">&quot;upstream_pipeline&quot;</span> <span class="hljs-attribute">stage</span>=<span class="hljs-value">&quot;AutoStage1&quot;</span> <span class="hljs-attribute">job</span>=<span class="hljs-value">&quot;firstJob&quot;</span> <span class="hljs-attribute">srcfile</span>=<span class="hljs-value">&quot;pkg/commonlib.dll&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;libs&quot;</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;fetchFromAncestorJob&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">fetchartifact</span> <span class="hljs-attribute">pipeline</span>=<span class="hljs-value">&quot;topmost_pipeline/upstream_pipeline&quot;</span> <span class="hljs-attribute">stage</span>=<span class="hljs-value">&quot;TopStage1&quot;</span> <span class="hljs-attribute">job</span>=<span class="hljs-value">&quot;topJob&quot;</span> <span class="hljs-attribute">srcfile</span>=<span class="hljs-value">&quot;lib/mylib.dll&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;libs&quot;</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
   ...
-&lt;/pipeline&gt;
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
 </code></pre>
 
                     

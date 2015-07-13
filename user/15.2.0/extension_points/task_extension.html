@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="8.5" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="8.5" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2425,31 +2425,31 @@
 <p>When selected, the dialog box which allows you to configure details about the task looks like this:</p>
 <p><img src="../resources/images/3_Curl_Form.png" alt=""></p>
 <p>In the configuration XML, the information entered for this task looks like this:</p>
-<pre><code class="lang-{.code}">&lt;task&gt;
-  &lt;pluginConfiguration id=&quot;curl.task.plugin&quot; version=&quot;1&quot; /&gt;
-  &lt;configuration&gt;
-    &lt;property&gt;
-      &lt;key&gt;Url&lt;/key&gt;
-      &lt;value&gt;http://www.google.com&lt;/value&gt;
-    &lt;/property&gt;
-    &lt;property&gt;
-      &lt;key&gt;SecureConnection&lt;/key&gt;
-      &lt;value&gt;no&lt;/value&gt;
-    &lt;/property&gt;
-    &lt;property&gt;
-      &lt;key&gt;RequestType&lt;/key&gt;
-      &lt;value&gt;-G&lt;/value&gt;
-    &lt;/property&gt;
-    &lt;property&gt;
-      &lt;key&gt;AdditionalOptions&lt;/key&gt;
-      &lt;value /&gt;
-    &lt;/property&gt;
-  &lt;/configuration&gt;
-  &lt;runif status=&quot;passed&quot; /&gt;
-&lt;/task&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">task</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">pluginConfiguration</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;curl.task.plugin&quot;</span> <span class="hljs-attribute">version</span>=<span class="hljs-value">&quot;1&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">configuration</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">property</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">key</span>&gt;</span>Url<span class="hljs-tag">&lt;/<span class="hljs-title">key</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>http://www.google.com<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">property</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">key</span>&gt;</span>SecureConnection<span class="hljs-tag">&lt;/<span class="hljs-title">key</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>no<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">property</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">key</span>&gt;</span>RequestType<span class="hljs-tag">&lt;/<span class="hljs-title">key</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>-G<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">property</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">key</span>&gt;</span>AdditionalOptions<span class="hljs-tag">&lt;/<span class="hljs-title">key</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">value</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">property</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">configuration</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">runif</span> <span class="hljs-attribute">status</span>=<span class="hljs-value">&quot;passed&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">task</span>&gt;</span>
 </code></pre>
 <p>When a build which uses the plugin runs, the output of the build looks something like this:</p>
-<pre><code class="lang-{.code}">[go] Start to execute task: Plugin with ID: curl.task.plugin.
+<pre><code>[go] Start to execute task: Plugin with ID: curl.task.plugin.
 Launching command: [curl, -G, --insecure, -o, pipelines/up42/index.txt, http://www.google.com]
 Environment variables:
 Name= MAVEN_OPTS  Value= -Xms256m -Xmx512m
@@ -2465,8 +2465,7 @@ Dload  Upload   Total   Spent    Left  Speed
 0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
 0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0
 100   259  100   259    0     0    122      0  0:00:02  0:00:02 --:--:--   122
-</code></pre>
-<p>Go provides two ways of writing a task plugin:</p>
+</code></pre><p>Go provides two ways of writing a task plugin:</p>
 <ul>
 <li><a href="json_message_based_task_extension.html">JSON API - Message based</a></li>
 <li><a href="writing_go_task_plugins.html">Java API based (Deprecated)</a></li>

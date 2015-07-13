@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="9.7" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="9.7" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2519,124 +2519,118 @@
 <h3 id="one-material"><a name="one-material" class="plugin-anchor" href="#one-material"><span class="fa fa-link"></span></a>One material</h3>
 <p>For this example, we are going to assume we are using a single <a href="http://subversion.tigris.org/" target="_blank">Subversion</a> repository for our source control system and we have a job set up to call the ant target &quot;dist&quot;.</p>
 <ul>
-<li>Add the following target to your ant build.xml</li>
+<li>Add the following target to your ant <code>build.xml</code></li>
 </ul>
-<pre><code class="lang-{.code}">build.xml
-
-&lt;project name=&quot;test-build&quot;&gt;
-  &lt;property environment=&quot;env&quot; /&gt;
-  &lt;target name=&quot;dist&quot;&gt;
-    &lt;echo message=&quot;Building pipeline ${env.GO_PIPELINE_NAME}&quot;
-          file=&quot;deploy-${env.GO_REVISION}.txt&quot; /&gt;
-  &lt;/target&gt;
-&lt;/project&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">project</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;test-build&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">environment</span>=<span class="hljs-value">&quot;env&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">target</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;dist&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">echo</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">&quot;Building pipeline ${env.GO_PIPELINE_NAME}&quot;</span>
+          <span class="hljs-attribute">file</span>=<span class="hljs-value">&quot;deploy-${env.GO_REVISION}.txt&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">target</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">project</span>&gt;</span>
 </code></pre>
 <ul>
 <li>Now, when Go runs the &apos;my-app&apos; pipeline on revision 123, the file deploy-123.txt will be created, with the following content:</li>
 </ul>
-<pre><code class="lang-{.code}">deploy-123.txt
+<pre><code>deploy-123.txt
 
 Building pipeline my-app
-</code></pre>
-<h4 id="multiple-materials"><a name="multiple-materials" class="plugin-anchor" href="#multiple-materials"><span class="fa fa-link"></span></a>Multiple materials</h4>
+</code></pre><h4 id="multiple-materials"><a name="multiple-materials" class="plugin-anchor" href="#multiple-materials"><span class="fa fa-link"></span></a>Multiple materials</h4>
 <p>For this example we are going to assume we are using a <a href="http://subversion.tigris.org/" target="_blank">Subversion</a> repository containing the code and a <a href="http://www.selenic.com/mercurial/wiki/" target="_blank">Mercurial</a> repository containing configuration scripts.</p>
 <ul>
 <li>Ensure the pipeline materials look like this</li>
 </ul>
-<pre><code class="lang-{.code}">&lt;pipeline name=&quot;multiple-materials&quot;&gt;
-  &lt;materials&gt;
-    &lt;svn url=&quot;...&quot; dest=&quot;code&quot; /&gt;
-    &lt;hg url=&quot;...&quot; dest=&quot;configuration/latest&quot; /&gt;
-  &lt;/materials&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;multiple-materials&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;...&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;code&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">hg</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;...&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;configuration/latest&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
   ...
-&lt;/pipeline&gt;
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
 </code></pre>
 <ul>
-<li>Add the following target to your ant build.xml</li>
+<li>Add the following target to your ant <code>build.xml</code></li>
 </ul>
-<pre><code class="lang-{.code}">build.xml
-
-&lt;project name=&quot;my-app&quot;&gt;
-  &lt;property environment=&quot;env&quot; /&gt;
-  &lt;target name=&quot;dist&quot;&gt;
-    &lt;echo message=&quot;Building pipeline ${env.GO_PIPELINE_NAME}&quot;
-          file=&quot;deploy-${env.GO_REVISION_CODE}.txt&quot; /&gt;
-    &lt;echo message=&quot;Configuration version: ${env.GO_REVISION_CONFIGURATION_LATEST}&quot;
-          file=&quot;deploy-${env.GO_REVISION_CODE}.txt&quot;
-          append=&quot;true&quot; /&gt;
-  &lt;/target&gt;
-&lt;/project&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">project</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;my-app&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">environment</span>=<span class="hljs-value">&quot;env&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">target</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;dist&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">echo</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">&quot;Building pipeline ${env.GO_PIPELINE_NAME}&quot;</span>
+          <span class="hljs-attribute">file</span>=<span class="hljs-value">&quot;deploy-${env.GO_REVISION_CODE}.txt&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">echo</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">&quot;Configuration version: ${env.GO_REVISION_CONFIGURATION_LATEST}&quot;</span>
+          <span class="hljs-attribute">file</span>=<span class="hljs-value">&quot;deploy-${env.GO_REVISION_CODE}.txt&quot;</span>
+          <span class="hljs-attribute">append</span>=<span class="hljs-value">&quot;true&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">target</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">project</span>&gt;</span>
 </code></pre>
 <ul>
 <li>Now, when Go runs the &apos;my-app&apos; pipeline with the code at revision &apos;123&apos; and the configuration at revision &apos;59cab75ccf231b9e338c96cff0f4adad5cb7d335&apos;, the file deploy-123.txt will be created with the following content:</li>
 </ul>
-<pre><code class="lang-{.code}">deploy-123.txt
+<pre><code>deploy-123.txt
 
 Building pipeline my-app
 Configuration version: 59cab75ccf231b9e338c96cff0f4adad5cb7d335
-</code></pre>
-<h2 id="pass-environment-variables-to-a-job"><a name="pass-environment-variables-to-a-job" class="plugin-anchor" href="#pass-environment-variables-to-a-job"><span class="fa fa-link"></span></a>Pass environment variables to a job</h2>
+</code></pre><h2 id="pass-environment-variables-to-a-job"><a name="pass-environment-variables-to-a-job" class="plugin-anchor" href="#pass-environment-variables-to-a-job"><span class="fa fa-link"></span></a>Pass environment variables to a job</h2>
 <p>You can specify variables for Environments, Pipelines, Stages and Jobs. If a variable is specified more than once, the most specific scope is used. For example if you specify variable FOO=&apos;foo&apos; for an environment, and FOO=&apos;bar&apos; for a Job, then the variable will have the value &apos;bar&apos; when the job runs.</p>
 <h2 id="setting-variables-on-an-environment"><a name="setting-variables-on-an-environment" class="plugin-anchor" href="#setting-variables-on-an-environment"><span class="fa fa-link"></span></a>Setting variables on an environment</h2>
 <p>You can add variables to an environment by editing the configuration of the environment. Click on the name of the environment to edit configuration.</p>
 <p><img src="../resources/images/env_variables_environment.png" alt=""></p>
 <p>You specify variables on an environment in the Config XML by adding an <a href="../configuration/configuration_reference.html#environmentvariables">&lt; environmentvariables &gt;</a> section to the environment definition.</p>
-<pre><code class="lang-{.code}">&lt;environment name=&quot;UAT&quot;&gt;
-    &lt;environmentvariables&gt;
-        &lt;variable name=&quot;FOO&quot;&gt;
-            &lt;value&gt;bar&lt;/value&gt;
-        &lt;/variable&gt;
-        &lt;variable name=&quot;MULTIPLE_LINES&quot;&gt;
-            &lt;value&gt;Variable values can have
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">environment</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;UAT&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">environmentvariables</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">variable</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;FOO&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>bar<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">variable</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">variable</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;MULTIPLE_LINES&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>Variable values can have
             multiple lines (assuming that your operating system supports this correctly).
-            &lt;/value&gt;
-        &lt;/variable&gt;
-        &lt;variable name=&quot;COMPLEX&quot;&gt;
-            &lt;value&gt;&lt;![CDATA[&lt;complex
-            values&gt;]]&gt;
-            &lt;/value&gt;
-        &lt;/variable&gt;
-    &lt;/environmentvariables&gt;
-    &lt;agents /&gt;
-    &lt;pipelines /&gt;
-&lt;/environment&gt;
+            <span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">variable</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">variable</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;COMPLEX&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span><span class="hljs-cdata">&lt;![CDATA[&lt;complex
+            values&gt;]]&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">variable</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">environmentvariables</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">agents</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">environment</span>&gt;</span>
 </code></pre>
 <p>You can add variables for a job by editing the job configuration.</p>
 <p><img src="../resources/images/env_variables_job.png" alt=""></p>
 <p>You specify variables on an job in the Config XML by adding an <a href="../configuration/configuration_reference.html#environmentvariables">&lt; environmentvariables &gt;</a> section to the job definition.</p>
-<pre><code class="lang-{.code}">&lt;job name=&quot;my-job&quot;&gt;
-    &lt;environmentvariables&gt;
-       &lt;variable name=&quot;FOO&quot;&gt;
-            &lt;value&gt;bar&lt;/value&gt;
-        &lt;/variable&gt;
-        &lt;variable name=&quot;MULTIPLE_LINES&quot;&gt;
-            &lt;value&gt;Variable values can have
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;my-job&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">environmentvariables</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-title">variable</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;FOO&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>bar<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">variable</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">variable</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;MULTIPLE_LINES&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>Variable values can have
             multiple lines (assuming that your operating system supports this correctly).
-            &lt;/value&gt;
-        &lt;/variable&gt;
-        &lt;variable name=&quot;COMPLEX&quot;&gt;
-            &lt;value&gt;&lt;![CDATA[&lt;complex
-            values&gt;]]&gt;
-            &lt;/value&gt;
-        &lt;/variable&gt;
-    &lt;/environmentvariables&gt;
+            <span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">variable</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">variable</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;COMPLEX&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span><span class="hljs-cdata">&lt;![CDATA[&lt;complex
+            values&gt;]]&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">variable</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">environmentvariables</span>&gt;</span>
     ...
-&lt;/job&gt;
+<span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
 </code></pre>
 <h2 id="using-environment-variables-in-task"><a name="using-environment-variables-in-task" class="plugin-anchor" href="#using-environment-variables-in-task"><span class="fa fa-link"></span></a>Using environment variables in task</h2>
 <p>You can access these environment variables to construct versioned artifacts or to store properties on the current build. For example the following snippet of an ant file shows how to access Go variables:</p>
-<pre><code class="lang-{.code}">&lt;property environment=&quot;go&quot; /&gt;
-&lt;target name=&quot;all&quot;&gt;
-    &lt;echo message=&quot;Building all!&quot; /&gt;
-    &lt;echo message=&quot;GO_SERVER_URL: ${go.GO_SERVER_URL}&quot; /&gt;
-    &lt;echo message=&quot;GO_PIPELINE_NAME: ${go.GO_PIPELINE_NAME}&quot; /&gt;
-    &lt;echo message=&quot;GO_PIPELINE_COUNTER: ${go.GO_PIPELINE_COUNTER}&quot; /&gt;
-    &lt;echo message=&quot;GO_PIPELINE_LABEL: ${go.GO_PIPELINE_LABEL}&quot; /&gt;
-    &lt;echo message=&quot;GO_STAGE_NAME: ${go.GO_STAGE_NAME}&quot; /&gt;
-    &lt;echo message=&quot;GO_STAGE_COUNTER: ${go.GO_STAGE_COUNTER}&quot; /&gt;
-    &lt;echo message=&quot;GO_JOB_NAME: ${go.GO_JOB_NAME}&quot; /&gt;
-    &lt;echo message=&quot;GO_REVISION: ${go.GO_REVISION}&quot; /&gt;
-&lt;/target&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">environment</span>=<span class="hljs-value">&quot;go&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">target</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;all&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">echo</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">&quot;Building all!&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">echo</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">&quot;GO_SERVER_URL: ${go.GO_SERVER_URL}&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">echo</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">&quot;GO_PIPELINE_NAME: ${go.GO_PIPELINE_NAME}&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">echo</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">&quot;GO_PIPELINE_COUNTER: ${go.GO_PIPELINE_COUNTER}&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">echo</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">&quot;GO_PIPELINE_LABEL: ${go.GO_PIPELINE_LABEL}&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">echo</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">&quot;GO_STAGE_NAME: ${go.GO_STAGE_NAME}&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">echo</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">&quot;GO_STAGE_COUNTER: ${go.GO_STAGE_COUNTER}&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">echo</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">&quot;GO_JOB_NAME: ${go.GO_JOB_NAME}&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">echo</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">&quot;GO_REVISION: ${go.GO_REVISION}&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">target</span>&gt;</span>
 </code></pre>
 
                     

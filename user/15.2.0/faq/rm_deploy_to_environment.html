@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="9.8" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="9.8" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2425,14 +2425,14 @@
 <li><a href="../configuration/dev_choose_when_stage_runs.html">Ensure that the <strong>UAT</strong> stage is manual</a></li>
 <li>Ensure the following task block is in the <strong>deploy</strong> job configuration</li>
 </ul>
-<pre><code class="lang-{.code}">&lt;tasks&gt;
-  &lt;fetchartifact stage=&quot;dist&quot; job=&quot;create-installers&quot; srcdir=&quot;pkg&quot; dest=&quot;installers&quot; /&gt;
-  &lt;ant target=&quot;deploy_to_uat&quot; /&gt;
-  &lt;ant target=&quot;verify_uat_works_correctly&quot; /&gt;
-  &lt;ant target=&quot;rollback_to_previous_install_in_uat&quot;&gt;
-    &lt;runif status=&quot;failed&quot; /&gt;
-  &lt;/ant&gt;
-&lt;/tasks&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">fetchartifact</span> <span class="hljs-attribute">stage</span>=<span class="hljs-value">&quot;dist&quot;</span> <span class="hljs-attribute">job</span>=<span class="hljs-value">&quot;create-installers&quot;</span> <span class="hljs-attribute">srcdir</span>=<span class="hljs-value">&quot;pkg&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;installers&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;deploy_to_uat&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;verify_uat_works_correctly&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;rollback_to_previous_install_in_uat&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">runif</span> <span class="hljs-attribute">status</span>=<span class="hljs-value">&quot;failed&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">ant</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
 </code></pre>
 <p>When you are ready to deploy something into the UAT environment...</p>
 <ul>

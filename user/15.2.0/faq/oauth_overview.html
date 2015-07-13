@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="9.14" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="9.14" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2482,14 +2482,12 @@
 </tbody>
 </table>
 <p><strong>Example Request:</strong></p>
-<pre><code class="lang-{.code}">https://www.your-go-server.com:8154/oauth/authorize?redirect_uri=http://www.my_redirect_uri.com&amp;client_id=ac212ddea07c6ac009d26de8090f5918f73ae648dc3676b1f00aeeae4fca67e1&amp;response_type=code
-</code></pre>
-<p>If you type the above request on a browser, you should see a form asking you to authorize the client to access the host application on your behalf. Check the check box and submit.</p>
+<pre><code>https://www.your-go-server.com:8154/oauth/authorize?redirect_uri=http://www.my_redirect_uri.com&amp;client_id=ac212ddea07c6ac009d26de8090f5918f73ae648dc3676b1f00aeeae4fca67e1&amp;response_type=code
+</code></pre><p>If you type the above request on a browser, you should see a form asking you to authorize the client to access the host application on your behalf. Check the check box and submit.</p>
 <p>Your browser is redirected to your redirect URI and you should now see your authorization code as the &#x201C;code&#x201D; parameter. Save this code, you will need it for the next step.</p>
 <p><strong>Example Response:</strong></p>
-<pre><code class="lang-{.code}">http://www.my_redirect_uri.com?code=26a7dea5e7e121be5ad5832a4a5b09d505c234c7625de3f375971264688bdb51
-</code></pre>
-<h3 id="get-access-token"><a name="get-access-token" class="plugin-anchor" href="#get-access-token"><span class="fa fa-link"></span></a>Get access token</h3>
+<pre><code>http://www.my_redirect_uri.com?code=26a7dea5e7e121be5ad5832a4a5b09d505c234c7625de3f375971264688bdb51
+</code></pre><h3 id="get-access-token"><a name="get-access-token" class="plugin-anchor" href="#get-access-token"><span class="fa fa-link"></span></a>Get access token</h3>
 <p>For this step you&#x2019;ll need to send a POST request to /oauth/token with the following key/value pairs as form data:</p>
 <table>
 <thead>
@@ -2522,16 +2520,15 @@
 </tbody>
 </table>
 <p><strong>Example Request (in curl)</strong> :</p>
-<pre><code class="lang-{.code}">curl  https://www.your-go-server:8154/go/oauth/token -d  &quot;code=26a7dea5e7e121be5ad5832a4a5b09d505c234c7625de3f375971264688bdb51&amp;grant_type=authorization-code&amp;client_id=ac212ddea07c6ac009d26de8090f5918f73ae648dc3676b1f00aeeae4fca67e1&amp;client_secret=d1b54df502f162108a6136ec584dc637a7ad5578832a5db364e0d7b47657c718&amp;redirect_uri=www.my_redirect_uri.com&quot; -v
+<pre><code class="lang-shell">curl  https://www.your-go-server:8154/go/oauth/token -d  &quot;code=26a7dea5e7e121be5ad5832a4a5b09d505c234c7625de3f375971264688bdb51&amp;grant_type=authorization-code&amp;client_id=ac212ddea07c6ac009d26de8090f5918f73ae648dc3676b1f00aeeae4fca67e1&amp;client_secret=d1b54df502f162108a6136ec584dc637a7ad5578832a5db364e0d7b47657c718&amp;redirect_uri=www.my_redirect_uri.com&quot; -v
 </code></pre>
 <p>The response to the above POST request will be a JSON containing your access token, and its expiration time in seconds</p>
 <p><strong>Example Response:</strong></p>
-<pre><code class="lang-{.code}">{:access_token =&gt; f180f7bb68d38531aac2f49e5b0cac0c5ed5ced9b72842a429e783747e819664, :expires_in =&gt; 3529, :refresh_token =&gt; e1n54df802f162108a6336ec584dc637a7ad5578832a5db364e0d7b47657c875}
-</code></pre>
-<h3 id="use-the-access-token"><a name="use-the-access-token" class="plugin-anchor" href="#use-the-access-token"><span class="fa fa-link"></span></a>Use the access token</h3>
+<pre><code>{:access_token =&gt; f180f7bb68d38531aac2f49e5b0cac0c5ed5ced9b72842a429e783747e819664, :expires_in =&gt; 3529, :refresh_token =&gt; e1n54df802f162108a6336ec584dc637a7ad5578832a5db364e0d7b47657c875}
+</code></pre><h3 id="use-the-access-token"><a name="use-the-access-token" class="plugin-anchor" href="#use-the-access-token"><span class="fa fa-link"></span></a>Use the access token</h3>
 <p>Now you are ready to query data from the Go server.</p>
 <p><strong>Example Request:</strong></p>
-<pre><code class="lang-{.code}"> curl -H &apos;Authorization: Token token=&quot;f180f7bb68d38531aac2f49e5b0cac0c5ed5ced9b72842a429e783747e819664&quot;&apos; https://www.your-go-server.com:8154/go/gadgets
+<pre><code class="lang-shell">curl -H &apos;Authorization: Token token=&quot;f180f7bb68d38531aac2f49e5b0cac0c5ed5ced9b72842a429e783747e819664&quot;&apos; https://www.your-go-server.com:8154/go/gadgets
 </code></pre>
 
                     

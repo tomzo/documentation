@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="9.18" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="9.18" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2418,7 +2418,7 @@
                         <h1 id="go-unable-to-poll-for-changes"><a name="go-unable-to-poll-for-changes" class="plugin-anchor" href="#go-unable-to-poll-for-changes"><span class="fa fa-link"></span></a>Go unable to poll for changes</h1>
 <p>Go server polls for changes to all materials of &apos;Auto Triggered&apos; pipelines. By default, polling occurs every minute and ten materials at a time. The polling interval and the number of materials to be polled simultaneously are configurable.</p>
 <p>Go uses SCM commands to poll for changes. For example, to check for any new changes in SVN repository the following command is used:</p>
-<pre><code class="lang-{.code}">svn log --non-interactive --xml -v -r HEAD:&apos;revision&apos; &apos;repository-URL&apos;
+<pre><code class="lang-shell">svn log --non-interactive --xml -v -r HEAD:&apos;revision&apos; &apos;repository-URL&apos;
 </code></pre>
 <p>The SCM command used by Go server can hang with no output. Invalid configuration, network issues, console input block are some of the causes for such a situation. Such scenarios cause pipeline scheduling delays and also lead to performance degradation</p>
 <p>Such a scenario is notified to the users by a warning in Server Health; when clicked shows a message similar to the one below.</p>
@@ -2433,10 +2433,10 @@
 </li>
 <li>Determine the process that&apos;s hung. The extra information like URL:&quot;<a href="https://test@bitbucket.org/test/git_repo.git" target="_blank">https://test@bitbucket.org/test/git_repo.git</a>&quot; in the warning information should help you with this.</li>
 <li><p>On linux system, you should see lines like these:</p>
-<pre><code class="lang-{.code}">go 31201 1  0 Feb07 ?  00:00:00 git clone https://test@bitbucket.org/test/git_repo.git /var/lib/cruise-server/pipelines/flyweight/b9ec0885-eb32-458c-bd6b-eeefe3ef9816
-</code></pre>
+<pre><code>go 31201 1  0 Feb07 ?  00:00:00 git clone https://test@bitbucket.org/test/git_repo.git /var/lib/cruise-server/pipelines/flyweight/b9ec0885-eb32-458c-bd6b-eeefe3ef9816
+</code></pre></li>
+<li><p>Kill the process and all its children (the whole process tree).</p>
 </li>
-<li>Kill the process and all its children (the whole process tree).</li>
 <li><p>Ensure that the warning message goes away from Server Health.</p>
 <blockquote>
 <p>Please note the folder name (of the form .../flyweight/b9ec0885-eb32-458c-bd6b-eeefe3ef9816 ) present in the OS process listing. This folder was being used by the polling command. Locate the folder in the Go installation and delete it if it exists. This ensures that the kill of the process tree has not left behind any inconsistent information.</p>
@@ -2447,14 +2447,13 @@
 <ul>
 <li>Go server waits for 15 minutes (of no output) before it warns user about possible hung material update. User can modify this wait time using a System Property: &apos;material.update.inactive.timeout&apos;.</li>
 <li><p>On linux installations of Go server, add the following line to /etc/default/go-server.</p>
-<pre><code class="lang-{.code}">export GO_SERVER_SYSTEM_PROPERTIES=&apos;-Dmaterial.update.inactive.timeout=20&apos;
+<pre><code class="lang-shell">export GO_SERVER_SYSTEM_PROPERTIES=&apos;-Dmaterial.update.inactive.timeout=20&apos;
 </code></pre>
 <p>The above configuration sets the time that Go server uses to determine if a material update is possibly hung, to 20 minutes.</p>
 </li>
 <li><p>On Windows, add the following line in the <em><a href="../installation/installing_go_server.html">wrapper-properties.conf</a></em> file in the config folder of the Go server installation where <strong>x</strong> is 1 more than the highest number in <em>wrapper-server.conf</em> and <em>wrapper-properties.conf</em> combined.</p>
-<pre><code class="lang-{.code}">wrapper.java.additional.x=&apos;-Dmaterial.update.inactive.timeout=20&apos;
-</code></pre>
-<p>The above configuration sets the time that Go server uses to determine if a material update is possibly hung, to 20 minutes.</p>
+<pre><code>wrapper.java.additional.x=&apos;-Dmaterial.update.inactive.timeout=20&apos;
+</code></pre><p>The above configuration sets the time that Go server uses to determine if a material update is possibly hung, to 20 minutes.</p>
 </li>
 </ul>
 

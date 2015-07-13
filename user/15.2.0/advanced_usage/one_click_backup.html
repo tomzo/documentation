@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="5.12" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="5.12" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2453,7 +2453,7 @@
 <h4 id="strategy-to-backup-artifacts-and-test-reporting-data"><a name="strategy-to-backup-artifacts-and-test-reporting-data" class="plugin-anchor" href="#strategy-to-backup-artifacts-and-test-reporting-data"><span class="fa fa-link"></span></a>Strategy to backup Artifacts and Test Reporting Data</h4>
 <p>Artifacts and the Test Reporting Data keep getting new files and directories added to them. So, it is a good idea to use <strong>rsync</strong> to copy the contents of these two into a backup location.</p>
 <p><em>For Instance:</em> Lets say you have a copy of all the files till 12-02-2012 in a location. On 20-02-2012, you can do something like:</p>
-<pre><code class="lang-{.code}">rsync -avzP {ARTIFACT_LOCATION} {BACKUP_LOCATION}
+<pre><code class="lang-shell">rsync -avzP {ARTIFACT_LOCATION} {BACKUP_LOCATION}
 </code></pre>
 <p>This makes sure that only the files and directories that got newly added will be synced to the {BACKUP_LOCATION} and not the entire contents.</p>
 <h3 id="restoring-go-using-backup"><a name="restoring-go-using-backup" class="plugin-anchor" href="#restoring-go-using-backup"><span class="fa fa-link"></span></a>Restoring Go using backup</h3>

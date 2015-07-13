@@ -36,7 +36,7 @@
 
 
         
-    <div class="book" data-level="11.1" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="11.1" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2888,24 +2888,24 @@ For example: Let pipeline &apos;build&apos; have 3 stages named &apos;compile&ap
 <p>Cruise 1.2 offers many new features and enhancements in terms of usability and performance.</p>
 <h4 id="support-tracking-tools-to-integrate-with-other-management-tools"><a name="support-tracking-tools-to-integrate-with-other-management-tools" class="plugin-anchor" href="#support-tracking-tools-to-integrate-with-other-management-tools"><span class="fa fa-link"></span></a>Support tracking tools to integrate with other management tools.</h4>
 <p>Go now supports linking to a story / bug tracking tool like Mingle from commit messages in Go. Use the folloing syntax:</p>
-<pre><code class="lang-{.code}">&lt;pipeline name=&quot;cruise&quot;&gt;
-    &lt;trackingtool link=&quot;http://mingle/projects/cruise/cards/${ID}&quot; regex=&quot;#(\d+)&quot;/&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;cruise&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">trackingtool</span> <span class="hljs-attribute">link</span>=<span class="hljs-value">&quot;http://mingle/projects/cruise/cards/${ID}&quot;</span> <span class="hljs-attribute">regex</span>=<span class="hljs-value">&quot;#(\d+)&quot;</span>/&gt;</span>
     ...
-&lt;/pipeline&gt;
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
 </code></pre>
 <p><strong>Description:</strong> Using the regular expression above, if your commit messages contain messages of the form &apos;#2350&apos;, you could see the link wherever you can see the commit message.</p>
 <p><img src="../resources/images/pipeline_activity_tracking_tool.png" alt=""></p>
 <h4 id="set-properties-from-artifact-using-xpath-automatically"><a name="set-properties-from-artifact-using-xpath-automatically" class="plugin-anchor" href="#set-properties-from-artifact-using-xpath-automatically"><span class="fa fa-link"></span></a>Set properties from artifact using XPath automatically.</h4>
 <p>After a job has finished on an agent, Go can parse any XML files on the agent and set properties on the server. You can use this to harvest metrics like code coverage or cyclomatic complexity from your reports into Go, and then export the complete history of your properties from the job detail page to a spreadsheet for custom reporting and analysis. Use the following syntax to tell Go the XML files to parse, the XPath to get the property value, and the property name. The following example extracts useful coverage metrics from EMMA reports..</p>
-<pre><code class="lang-{.code}">&lt;job name=&quot;test_analysis&quot;&gt;
-    &lt;properties&gt;
-  &lt;property name=&quot;coverage.class&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;class&apos;)]/@value, &apos;%&apos;)&quot; /&gt;
-  &lt;property name=&quot;coverage.method&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;method&apos;)]/@value, &apos;%&apos;)&quot; /&gt;
-  &lt;property name=&quot;coverage.block&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;block&apos;)]/@value, &apos;%&apos;)&quot; /&gt;
-  &lt;property name=&quot;coverage.line&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;line&apos;)]/@value, &apos;%&apos;)&quot; /&gt;
-  &lt;/properties&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;test_analysis&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">properties</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;coverage.class&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/emma/coverage.xml&quot;</span> <span class="hljs-attribute">xpath</span>=<span class="hljs-value">&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;class&apos;)]/@value, &apos;%&apos;)&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;coverage.method&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/emma/coverage.xml&quot;</span> <span class="hljs-attribute">xpath</span>=<span class="hljs-value">&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;method&apos;)]/@value, &apos;%&apos;)&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;coverage.block&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/emma/coverage.xml&quot;</span> <span class="hljs-attribute">xpath</span>=<span class="hljs-value">&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;block&apos;)]/@value, &apos;%&apos;)&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;coverage.line&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/emma/coverage.xml&quot;</span> <span class="hljs-attribute">xpath</span>=<span class="hljs-value">&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;line&apos;)]/@value, &apos;%&apos;)&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">properties</span>&gt;</span>
   ...
-&lt;/job&gt;
+<span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
 </code></pre>
 <p><strong>Description:</strong> When you specify this configuration, you can see the properties in the sub-tab &apos;properties&apos; on job detail page, and export their history to a spreadsheet.</p>
 <p><img src="../resources/images/xpath_properties.png" alt=""></p>
@@ -2927,12 +2927,12 @@ For example: Let pipeline &apos;build&apos; have 3 stages named &apos;compile&ap
 <p><img src="../resources/images/stage_counter.png" alt=""></p>
 <h4 id="support-multiple-repositories-for-subversion"><a name="support-multiple-repositories-for-subversion" class="plugin-anchor" href="#support-multiple-repositories-for-subversion"><span class="fa fa-link"></span></a>Support multiple repositories for Subversion</h4>
 <p>Go lets you define multiple repositories in cruise-config.xml if you are using Subversion as you VCS. This means you can easily create pipelines for applications that rely on multiple repositories.</p>
-<pre><code class="lang-{.code}">&lt;pipeline name=&quot;main&quot;&gt;
-    &lt;materials&gt;
-  &lt;svn url=&quot;http://xxx.xxx.xxx/trunk&quot; username=&quot;yyyy&quot; password=&quot;xxx&quot; dest=&quot;client&quot; /&gt;
-  &lt;svn url=&quot;http://zzz.zzz.zzz/trunk&quot; username=&quot;yyyy&quot; password=&quot;xxx&quot; dest=&quot;server&quot; /&gt;
-    &lt;/materials&gt;
-&lt;/pipeline&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;main&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://xxx.xxx.xxx/trunk&quot;</span> <span class="hljs-attribute">username</span>=<span class="hljs-value">&quot;yyyy&quot;</span> <span class="hljs-attribute">password</span>=<span class="hljs-value">&quot;xxx&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;client&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://zzz.zzz.zzz/trunk&quot;</span> <span class="hljs-attribute">username</span>=<span class="hljs-value">&quot;yyyy&quot;</span> <span class="hljs-attribute">password</span>=<span class="hljs-value">&quot;xxx&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;server&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
 </code></pre>
 <p>You can see material revisions for each pipeline in the sub-tab &apos;materials&apos; on the job detail page and stage details page, and the tooltips as well. Note that this version of Go also treats upstream pipelines as materials, just like source control, which means you can see exactly which version of your upstream pipeline triggered this one (see the screenshot below). Use <a href="../configuration/configuration_reference.html#pipeline-dependency">this syntax</a> to define dependencies between pipelines.</p>
 <p><img src="../resources/images/multiple_materials.png" alt=""></p>
@@ -2944,11 +2944,11 @@ For example: Let pipeline &apos;build&apos; have 3 stages named &apos;compile&ap
 <p>The material and changes look like</p>
 <p><img src="../resources/images/ignore-example.png" alt=""></p>
 <p>If we want to ignore files under /trunk/lib/tmp, the configuration is:</p>
-<pre><code class="lang-{.code}">&lt;svn url=&quot;http://10.18.3.171:8080/svn/connect4/trunk/lib&quot; username=&quot;cce&quot; password=&quot;password&quot; dest=&quot;lib&quot;&gt;
-    &lt;filter&gt;
-        &lt;ignore pattern=&quot;trunk/lib/tmp/**/*.*&quot; /&gt;
-    &lt;/filter&gt;
-&lt;/svn&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">svn</span> <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://10.18.3.171:8080/svn/connect4/trunk/lib&quot;</span> <span class="hljs-attribute">username</span>=<span class="hljs-value">&quot;cce&quot;</span> <span class="hljs-attribute">password</span>=<span class="hljs-value">&quot;password&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;lib&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">filter</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">ignore</span> <span class="hljs-attribute">pattern</span>=<span class="hljs-value">&quot;trunk/lib/tmp/**/*.*&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">filter</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">svn</span>&gt;</span>
 </code></pre>
 <h4 id="fetching-artifacts"><a name="fetching-artifacts" class="plugin-anchor" href="#fetching-artifacts"><span class="fa fa-link"></span></a>Fetching artifacts</h4>
 <p>Go supports fetching artifacts from previous stage or upstream pipeline in a job by defination of \<fetchartifact\> in cruise-config.xml. Using this feature it&apos;s easy to have one job store artifacts like binaries, jars or installers, and then re-use them in a later stage. This supports best practices like only compiling your application once.<a href="../configuration/configuration_reference.html#fetchartifact">Here is an example</a>.</fetchartifact\></p>

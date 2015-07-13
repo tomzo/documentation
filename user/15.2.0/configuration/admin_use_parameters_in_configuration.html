@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="4.8" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="4.8" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2422,20 +2422,20 @@
 <p><img src="../resources/images/use_parameters_in_configuration.png" alt=""></p>
 <h2 id="defining-and-using-a-parameter"><a name="defining-and-using-a-parameter" class="plugin-anchor" href="#defining-and-using-a-parameter"><span class="fa fa-link"></span></a>Defining and using a parameter</h2>
 <p>Parameter values are defined in the <code>&lt;params&gt;</code> tag within a pipeline and can be used anywhere within that pipeline using #{param_name}. The following example defines a new parameter called &quot;myParam&quot; and uses it in a job.</p>
-<pre><code class="lang-{.code}">&lt;pipeline name=&quot;my_pipeline&quot;&gt;
-  &lt;params&gt;
-    &lt;param name=&quot;myParam&quot;&gt;hello world&lt;/param&gt;
-  &lt;/params&gt;
-  &lt;stage name=&quot;my_stage&quot;&gt;
-    &lt;jobs&gt;
-      &lt;job name=&quot;my_job&quot;&gt;
-        &lt;tasks&gt;
-          &lt;exec command=&quot;echo&quot; args=&quot;#{myParam}&quot;/&gt;
-        &lt;/tasks&gt;
-      &lt;/job&gt;
-    &lt;/jobs&gt;
-  &lt;/stage&gt;
-&lt;/pipeline&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;my_pipeline&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">params</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">param</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;myParam&quot;</span>&gt;</span>hello world<span class="hljs-tag">&lt;/<span class="hljs-title">param</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">params</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;my_stage&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;my_job&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">exec</span> <span class="hljs-attribute">command</span>=<span class="hljs-value">&quot;echo&quot;</span> <span class="hljs-attribute">args</span>=<span class="hljs-value">&quot;#{myParam}&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
 </code></pre>
 <blockquote>
 <p><strong>NOTE:</strong> If you want to use the <strong>#</strong> literal, you can escape it using another <strong>#</strong> literal. For example, if the parameter &quot;foo&quot; has the value &quot;one&quot;, then:</p>
@@ -2464,32 +2464,32 @@
 </table>
 <h2 id="using-parameters-in-pipeline-templates"><a name="using-parameters-in-pipeline-templates" class="plugin-anchor" href="#using-parameters-in-pipeline-templates"><span class="fa fa-link"></span></a>Using parameters in pipeline templates</h2>
 <p>Parameter usage within <a href="pipeline_templates.html">templates</a> is similar to usage within pipelines. The only difference is that you cannot <strong>define</strong> parameters in a template.</p>
-<pre><code class="lang-{.code}">&lt;pipeline name=&quot;trunk&quot; template=&quot;my_template&quot;&gt;
-  &lt;params&gt;
-    &lt;param name=&quot;WORKING_DIR&quot;&gt;trunk&lt;/param&gt;
-  &lt;/params&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;trunk&quot;</span> <span class="hljs-attribute">template</span>=<span class="hljs-value">&quot;my_template&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">params</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">param</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;WORKING_DIR&quot;</span>&gt;</span>trunk<span class="hljs-tag">&lt;/<span class="hljs-title">param</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">params</span>&gt;</span>
   ...
-&lt;/pipeline&gt;
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
 
-&lt;pipeline name=&quot;branch&quot; template=&quot;my_template&quot;&gt;
-  &lt;params&gt;
-    &lt;param name=&quot;WORKING_DIR&quot;&gt;branch&lt;/param&gt;
-  &lt;/params&gt;
+<span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;branch&quot;</span> <span class="hljs-attribute">template</span>=<span class="hljs-value">&quot;my_template&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">params</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">param</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;WORKING_DIR&quot;</span>&gt;</span>branch<span class="hljs-tag">&lt;/<span class="hljs-title">param</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">params</span>&gt;</span>
   ...
-&lt;/pipeline&gt;
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
 </code></pre>
 <p>The parameter defined above is used the template below.</p>
-<pre><code class="lang-{.code}">&lt;pipeline name=&quot;my_template&quot;&gt;
-  &lt;stage name=&quot;my_stage&quot;&gt;
-    &lt;jobs&gt;
-      &lt;job name=&quot;my_job&quot;&gt;
-        &lt;tasks&gt;
-          &lt;exec command=&quot;echo&quot; args=&quot;Updating code from svn repository svn://codebase/#{WORKING_DIR}&quot;/&gt;
-        &lt;/tasks&gt;
-      &lt;/job&gt;
-    &lt;/jobs&gt;
-  &lt;/stage&gt;
-&lt;/pipeline&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;my_template&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;my_stage&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;my_job&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">exec</span> <span class="hljs-attribute">command</span>=<span class="hljs-value">&quot;echo&quot;</span> <span class="hljs-attribute">args</span>=<span class="hljs-value">&quot;Updating code from svn repository svn://codebase/#{WORKING_DIR}&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
 </code></pre>
 <h2 id="rules-around-usage-of-parameters"><a name="rules-around-usage-of-parameters" class="plugin-anchor" href="#rules-around-usage-of-parameters"><span class="fa fa-link"></span></a>Rules around usage of parameters</h2>
 <p>While parameters are generally very flexible, there are some restrictions.</p>

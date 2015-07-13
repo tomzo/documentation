@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="3.7" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="3.7" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2465,7 +2465,7 @@ wrapper.java.additional.2=-Xmx1024m
 <h3 id="using-jconsole"><a name="using-jconsole" class="plugin-anchor" href="#using-jconsole"><span class="fa fa-link"></span></a>Using JConsole</h3>
 <p>JConsole is a graphical monitoring tool to monitor Java Virtual Machine (JVM) which comes as part of the JDK installation. It can be used to monitor the current state of a process without much overhead. If the Go server&apos;s performance is slow, some metrics can be immediately analysed using jconsole.</p>
 <p>Since jconsole is a graphical tool, make sure you have an access to display, when running the following command. That is, use <code>ssh -X</code> or VNC if Go is on linux. Use remote desktop if the Go server is on windows.</p>
-<pre><code class="lang-{.code}">$ jconsole
+<pre><code class="lang-shell">$ jconsole
 </code></pre>
 <p>Select the local process <code>go.jar</code> when the jconsole GUI opens up. This shows the current heap memory usage, threads, cpu usage etc. Screenshots of the VM Summary and the overview page can be taken to be sent to the Go Support team, if required.</p>
 <blockquote>
@@ -2478,10 +2478,10 @@ wrapper.java.additional.2=-Xmx1024m
 <p>For Linux</p>
 <ol>
 <li><p>Create a symlink for <code>libyjpagent.so</code> file to <code>/usr/lib/yourkit</code> folder. When the Go server starts up, it looks at this folder to see if it needs to start with profiling enabled or not. If you want to change the default path of the yourkit agent, you can edit <code>server.sh</code> at <code>/usr/share/go-server/server.sh</code></p>
-<pre><code class="lang-{.code}">$ sudo ln -s [yourkit_profiler_directory]/bin/linux-x86-32/libyjpagent.so /usr/lib/yourkit/libyjpagent.so
+<pre><code class="lang-shell">$ sudo ln -s [yourkit_profiler_directory]/bin/linux-x86-32/libyjpagent.so /usr/lib/yourkit/libyjpagent.so
 </code></pre>
 <p>For 64-bit JVM, the command is:</p>
-<pre><code class="lang-{.code}">$ sudo ln -s [yourkit_profiler_directory]/bin/linux-x86-64/libyjpagent.so /usr/lib/yourkit/libyjpagent.so
+<pre><code class="lang-shell">$ sudo ln -s [yourkit_profiler_directory]/bin/linux-x86-64/libyjpagent.so /usr/lib/yourkit/libyjpagent.so
 </code></pre>
 </li>
 <li><p>Restart the server after this, and the yourkit agent should get picked up by the server VM. Let the server start up and agents get registered.</p>
@@ -2492,47 +2492,40 @@ wrapper.java.additional.2=-Xmx1024m
 <li>By default, Go server looks for the yourkit profiler agent yjpagent.dll in the location <code>C:\yjpagent.dll</code>. Therefore, copy the file <code>yjpagent.dll</code> (which is the yourkit profiler agent) from <code>[yourkit_profiler_directory]\bin\win32</code> to <code>C:\yjpagent.dll</code>. Copy the file from <code>[yourkit_profiler_directory}\bin\win64</code> if you are using 64 bit JVM.</li>
 <li>To change the above mentioned default location: define environment variable <code>YOURKIT_PATH</code> with value equal to location of <code>yjpagent.dll</code>.</li>
 <li><p>If you are running the Go server as a service, you will need to perform an additional step. In the config folder of the Go server installation, edit the <em><a href="installing_go_server.html">wrapper-properties.conf</a></em> file, and add an additional property with the following value</p>
-<pre><code class="lang-{.code}">&quot;-agentpath: [Path to yjpagent.dll]=port=6133,builtinprobes=none&quot;
-</code></pre>
-<p>For example, if there are 16 properties already defined, add this 17th property as shown below</p>
-<pre><code class="lang-{.code}">wrapper.java.additional.17=&quot;-agentpath:C:\yjpagent.dll=port=6133,builtinprobes=none&quot;
-</code></pre>
-</li>
+<pre><code>&quot;-agentpath: [Path to yjpagent.dll]=port=6133,builtinprobes=none&quot;
+</code></pre><p>For example, if there are 16 properties already defined, add this 17th property as shown below</p>
+<pre><code>wrapper.java.additional.17=&quot;-agentpath:C:\yjpagent.dll=port=6133,builtinprobes=none&quot;
+</code></pre></li>
 </ol>
 <p>Use the following steps to take profile the application and take snapshots. The <code>hostname</code> mentioned here is the hostname of the Go Server. In most cases, it would be &apos;localhost&apos;. The value of <code>port</code> is 6133, because Go starts the yjpagent on port 6133.</p>
 <ol>
 <li><p>To start profiling, run:</p>
-<pre><code class="lang-{.code}">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port  start-cpu-sampling
+<pre><code class="lang-shell">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port  start-cpu-sampling
 </code></pre>
-<pre><code class="lang-{.code}">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port start-monitor-profiling
+<pre><code class="lang-shell">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port start-monitor-profiling
 </code></pre>
 <p>If memory allocation profiling is also required:</p>
-<pre><code class="lang-{.code}">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port start-alloc-recording-adaptive
+<pre><code class="lang-shell">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port start-alloc-recording-adaptive
 </code></pre>
 </li>
 <li><p>Let the server run for some time till you start seeing performance problems. 30 mins of snapshot should give us enough data.</p>
 </li>
 <li><p>To capture the snapshot - Run:</p>
-<pre><code class="lang-{.code}">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port capture-performance-snapshot
+<pre><code class="lang-shell">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port capture-performance-snapshot
 </code></pre>
 <p>To capture memory snapshot</p>
-<pre><code class="lang-{.code}">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port capture-memory-snapshot
-</code></pre>
-</li>
+<pre><code>$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port capture-memory-snapshot
+</code></pre></li>
 <li><p>To stop profiling, run:</p>
-<pre><code class="lang-{.code}">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port stop-cpu-profiling`
-</code></pre>
-<pre><code class="lang-{.code}">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port stop-monitor-profiling
-</code></pre>
-<p>If memory profiling was turned on,s top it using the following command</p>
-<pre><code class="lang-{.code}">$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port stop-alloc-recording
-</code></pre>
-</li>
+<pre><code>$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port stop-cpu-profiling`
+</code></pre><pre><code>$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port stop-monitor-profiling
+</code></pre><p>If memory profiling was turned on,s top it using the following command</p>
+<pre><code>$ java -jar [yourkit_profiler_directory]/lib/yjp-controller-api-redist.jar hostname port stop-alloc-recording
+</code></pre></li>
 <li><p>Once you&apos;re done profiling, run the following so that on the next Go server restart, the agent is not loaded into the JVM.</p>
 <p>In case of linux, run the following command:</p>
-<pre><code class="lang-{.code}">$ sudo rm /usr/lib/yourkit/libyjpagent.so
-</code></pre>
-</li>
+<pre><code>$ sudo rm /usr/lib/yourkit/libyjpagent.so
+</code></pre></li>
 </ol>
 <p>In case of windows, delete the file <code>C:\yjpagent.dll</code>. If you were using the variable <code>YOURKIT_PATH</code>, then remove the environment variable.</p>
 <p>These snapshots will be saved in the yourkit configured snapshots folder. They can be sent to the Go Support so that they can be examined to help find the root cause of the performance.</p>

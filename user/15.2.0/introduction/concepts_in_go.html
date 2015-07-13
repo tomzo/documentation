@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="1.1" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="1.1" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2438,31 +2438,31 @@
 <p>When all the tasks have been completed the agent will publish any artifacts defined in the Job. Again the artifact directories are relative to the pipeline sandbox directory.</p>
 <h3 id="full-example"><a name="full-example" class="plugin-anchor" href="#full-example"><span class="fa fa-link"></span></a>Full example</h3>
 <p>Consider the following configuration:</p>
-<pre><code class="lang-xml">          <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;my-product&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">svn</span>  <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://my-svn-server/tools&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;tools&quot;</span>/&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">svn</span>  <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://my-svn-server/my-project&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;my-project&quot;</span>/&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;compile&quot;</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;linux&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">environmentvariables</span>&gt;</span>
-                  <span class="hljs-tag">&lt;<span class="hljs-title">variable</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;FOO&quot;</span>&gt;</span>
-                     <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>bar<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
-                  <span class="hljs-tag">&lt;/<span class="hljs-title">variable</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-title">environmentvariables</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">resources</span>&gt;</span>
-                  <span class="hljs-tag">&lt;<span class="hljs-title">resource</span>&gt;</span>linux<span class="hljs-tag">&lt;/<span class="hljs-title">resource</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-title">resources</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
-                  <span class="hljs-tag">&lt;<span class="hljs-title">exec</span> <span class="hljs-attribute">command</span>=<span class="hljs-value">&quot;/usr/bin/make&quot;</span> <span class="hljs-attribute">args</span>=<span class="hljs-value">&quot;-f Makefile&quot;</span> <span class="hljs-attribute">workingdir</span>=<span class="hljs-value">&quot;tools/my-tool&quot;</span>/&gt;</span>
-                  <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;unit-test&quot;</span> <span class="hljs-attribute">workingdir</span>=<span class="hljs-value">&quot;my-project&quot;</span>/&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
-                  <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;my-project/target/deployable.jar&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;pkg&quot;</span>/&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
-              <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;my-product&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">svn</span>  <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://my-svn-server/tools&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;tools&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">svn</span>  <span class="hljs-attribute">url</span>=<span class="hljs-value">&quot;http://my-svn-server/my-project&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;my-project&quot;</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;compile&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;linux&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">environmentvariables</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">variable</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;FOO&quot;</span>&gt;</span>
+           <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>bar<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">variable</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">environmentvariables</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">resources</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">resource</span>&gt;</span>linux<span class="hljs-tag">&lt;/<span class="hljs-title">resource</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">resources</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">exec</span> <span class="hljs-attribute">command</span>=<span class="hljs-value">&quot;/usr/bin/make&quot;</span> <span class="hljs-attribute">args</span>=<span class="hljs-value">&quot;-f Makefile&quot;</span> <span class="hljs-attribute">workingdir</span>=<span class="hljs-value">&quot;tools/my-tool&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;unit-test&quot;</span> <span class="hljs-attribute">workingdir</span>=<span class="hljs-value">&quot;my-project&quot;</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">artifacts</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">artifact</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;my-project/target/deployable.jar&quot;</span> <span class="hljs-attribute">dest</span>=<span class="hljs-value">&quot;pkg&quot;</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">artifacts</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
 </code></pre>
 <p>The Go Agent will:</p>
 <ul>

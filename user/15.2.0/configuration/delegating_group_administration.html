@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="4.23" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="4.23" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2428,17 +2428,17 @@
 <p><img src="../resources/images/group_admin_permissions.png" alt=""></p>
 <p>In the above screenshot, the Go admin has delegated group admin privileges to a user &quot;jez&quot; and all users defined under the role &quot;groupAdminRole&quot;. The privileges of a Group Administrator have been described in the next section.</p>
 <p>For power users, here&apos;s how you&apos;d assign the same permissions via Config XML:</p>
-<pre><code class="lang-{.code}">&lt;pipelines group=&quot;studios&quot;&gt;  
-     &lt;authorization&gt; 
-         &lt;admins&gt; 
-            &lt;user&gt; jez &lt;/user&gt; 
-            &lt;role&gt; groupAdminRole &lt;/role&gt; 
-         &lt;/admins&gt;
-     &lt;/authorization&gt;
-     &lt;pipeline name=&quot;go_pipeline&quot;&gt;  
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">&quot;studios&quot;</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-title">authorization</span>&gt;</span> 
+         <span class="hljs-tag">&lt;<span class="hljs-title">admins</span>&gt;</span> 
+            <span class="hljs-tag">&lt;<span class="hljs-title">user</span>&gt;</span> jez <span class="hljs-tag">&lt;/<span class="hljs-title">user</span>&gt;</span> 
+            <span class="hljs-tag">&lt;<span class="hljs-title">role</span>&gt;</span> groupAdminRole <span class="hljs-tag">&lt;/<span class="hljs-title">role</span>&gt;</span> 
+         <span class="hljs-tag">&lt;/<span class="hljs-title">admins</span>&gt;</span>
+     <span class="hljs-tag">&lt;/<span class="hljs-title">authorization</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;go_pipeline&quot;</span>&gt;</span>
      ...
-     &lt;/pipeline&gt;
-&lt;/pipelines&gt;
+     <span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipelines</span>&gt;</span>
 </code></pre>
 <h2 id="privileges-of-a-group-administrator"><a name="privileges-of-a-group-administrator" class="plugin-anchor" href="#privileges-of-a-group-administrator"><span class="fa fa-link"></span></a>Privileges of a Group Administrator</h2>
 <p>As a group administrator of a pipeline group, a user is privileged to:</p>

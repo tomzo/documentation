@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="4.22" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="4.22" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2433,30 +2433,30 @@
 <p>You can define roles that can be used anywhere that authorization is required. A role is just a group of users. Administrators can add users to a new or existing role from the &quot;User Summary&quot; tab in the &quot;Admin&quot; section. Here, you can select any number of users and assign a new or existing role to them. In this example, user &quot;aantony&quot; is being added to the role &quot;analyst&quot;</p>
 <p><img src="../resources/images/user_summary_add_user_to_role.png" alt=""></p>
 <p>For power users, here&apos;s how you would configure roles via &quot;Config XML&quot;:</p>
-<pre><code class="lang-{.code}">&lt;cruise&gt;
-  &lt;server&gt;
-    &lt;license ... /&gt;
-    &lt;security&gt;
-      &lt;passwordFile path=&quot;/etc/go-server/passwords.properties&quot; /&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">cruise</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">server</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">license</span> <span class="hljs-attribute">...</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">security</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">passwordFile</span> <span class="hljs-attribute">path</span>=<span class="hljs-value">&quot;/etc/go-server/passwords.properties&quot;</span> /&gt;</span>
 
-      &lt;roles&gt;
-        &lt;role name=&quot;qa&quot;&gt;
-          &lt;user&gt;dyang&lt;/user&gt;
-          &lt;user&gt;pavan&lt;/user&gt;
-        &lt;/role&gt;
-        &lt;role name=&quot;go_admin&quot;&gt;
-          &lt;user&gt;jhumble&lt;/user&gt;
-          &lt;user&gt;qiao&lt;/user&gt;
-        &lt;/role&gt;
-      &lt;/roles&gt;
+      <span class="hljs-tag">&lt;<span class="hljs-title">roles</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">role</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;qa&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">user</span>&gt;</span>dyang<span class="hljs-tag">&lt;/<span class="hljs-title">user</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">user</span>&gt;</span>pavan<span class="hljs-tag">&lt;/<span class="hljs-title">user</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">role</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">role</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;go_admin&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">user</span>&gt;</span>jhumble<span class="hljs-tag">&lt;/<span class="hljs-title">user</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">user</span>&gt;</span>qiao<span class="hljs-tag">&lt;/<span class="hljs-title">user</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">role</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">roles</span>&gt;</span>
 
-      &lt;admins&gt;
-        &lt;role&gt;go_admin&lt;/role&gt;
-        &lt;user&gt;chris&lt;/user&gt;
-      &lt;/admins&gt;
-    &lt;/security&gt;
-  &lt;/server&gt;
-&lt;/cruise&gt;
+      <span class="hljs-tag">&lt;<span class="hljs-title">admins</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">role</span>&gt;</span>go_admin<span class="hljs-tag">&lt;/<span class="hljs-title">role</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">user</span>&gt;</span>chris<span class="hljs-tag">&lt;/<span class="hljs-title">user</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">admins</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">security</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">server</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">cruise</span>&gt;</span>
 </code></pre>
 <p>In this example, the &quot;qa&quot; role has two users: dyang and pavan. The &quot;go_admin&quot; role also has two users: jhumble and qiao.</p>
 <h2 id="specifying-permissions-for-pipeline-groups"><a name="specifying-permissions-for-pipeline-groups" class="plugin-anchor" href="#specifying-permissions-for-pipeline-groups"><span class="fa fa-link"></span></a>Specifying permissions for pipeline groups</h2>
@@ -2473,49 +2473,49 @@
 <p><img src="../resources/images/group_permission.png" alt=""></p>
 <p>If no authorization is defined for a pipeline group, all Go users will have view and operate permissions to that group.</p>
 <p>For power users, here&apos;s how you would configure permissions via &quot;Config XML&quot;:</p>
-<pre><code class="lang-{.code}">&lt;pipelines group=&quot;Shine&quot;&gt;
-  &lt;authorization&gt;
-    &lt;view&gt;
-      &lt;user&gt;aantony&lt;/user&gt;
-      &lt;user&gt;akrishna&lt;/user&gt;
-      &lt;role&gt;developer&lt;/role&gt;
-    &lt;/view&gt;
-    &lt;operate&gt;
-      &lt;user&gt;bot&lt;/user&gt;
-      &lt;role&gt;developer&lt;/role&gt;
-    &lt;/operate&gt;
-    &lt;admins&gt;
-      &lt;role&gt;admins&lt;/role&gt;
-    &lt;/admins&gt;
-  &lt;/authorization&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">&quot;Shine&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">authorization</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">view</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">user</span>&gt;</span>aantony<span class="hljs-tag">&lt;/<span class="hljs-title">user</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">user</span>&gt;</span>akrishna<span class="hljs-tag">&lt;/<span class="hljs-title">user</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">role</span>&gt;</span>developer<span class="hljs-tag">&lt;/<span class="hljs-title">role</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">operate</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">user</span>&gt;</span>bot<span class="hljs-tag">&lt;/<span class="hljs-title">user</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">role</span>&gt;</span>developer<span class="hljs-tag">&lt;/<span class="hljs-title">role</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">operate</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">admins</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">role</span>&gt;</span>admins<span class="hljs-tag">&lt;/<span class="hljs-title">role</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">admins</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">authorization</span>&gt;</span>
   ...
-&lt;/pipelines&gt;
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipelines</span>&gt;</span>
 </code></pre>
 <h2 id="adding-authorization-to-approvals"><a name="adding-authorization-to-approvals" class="plugin-anchor" href="#adding-authorization-to-approvals"><span class="fa fa-link"></span></a>Adding authorization to approvals</h2>
 <p>In Go, it is possible to specify <a href="managing_pipelines.html">manual approvals</a> between stages. You can also specify which user is allowed to trigger manual approvals.</p>
 <p>The authorization can be inherited from the pipeline group this pipeline belongs to. But defining specific permissions overrides this. In the example below, only members of the role &quot;admin&quot;, and the user &quot;goleys&quot;, can trigger the approval.</p>
 <p><img src="../resources/images/stage_permissions.png" alt=""></p>
 <p>For power users, here&apos;s how you would configure authorization for approvals for a stage via &quot;Config XML&quot;:</p>
-<pre><code class="lang-{.code}">&lt;stage name=&quot;defaultStage&quot;&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;defaultStage&quot;</span>&gt;</span>
 
-  &lt;approval type=&quot;manual&quot;&gt;
-    &lt;authorization&gt;
-      &lt;role&gt;admin&lt;/role&gt;
-      &lt;user&gt;goleys&lt;/user&gt;
-    &lt;/authorization&gt;
-  &lt;/approval&gt;
+  <span class="hljs-tag">&lt;<span class="hljs-title">approval</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;manual&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">authorization</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">role</span>&gt;</span>admin<span class="hljs-tag">&lt;/<span class="hljs-title">role</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">user</span>&gt;</span>goleys<span class="hljs-tag">&lt;/<span class="hljs-title">user</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">authorization</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">approval</span>&gt;</span>
 
-  &lt;jobs&gt;
-    &lt;job name=&quot;deploy&quot;&gt;
-      &lt;resources&gt;
-        &lt;resource&gt;uat&lt;/resource&gt;
-      &lt;/resources&gt;
-      &lt;tasks&gt;
-        &lt;ant target=&quot;deploy&quot; /&gt;
-      &lt;/tasks&gt;
-    &lt;/job&gt;
-  &lt;/jobs&gt;
-&lt;/stage&gt;
+  <span class="hljs-tag">&lt;<span class="hljs-title">jobs</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;deploy&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">resources</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">resource</span>&gt;</span>uat<span class="hljs-tag">&lt;/<span class="hljs-title">resource</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">resources</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">tasks</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">ant</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">&quot;deploy&quot;</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">tasks</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">jobs</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
 </code></pre>
 <h2 id="specifying-permissions-for-templates"><a name="specifying-permissions-for-templates" class="plugin-anchor" href="#specifying-permissions-for-templates"><span class="fa fa-link"></span></a>Specifying permissions for templates</h2>
 <p>A Go Administrator can make any user a template administrator for a specific template. As a template administrator, a user can now view and edit the template to which he has permissions.</p>
@@ -2524,16 +2524,16 @@
 <p>Then, click the &quot;Permissions&quot; link for the template you want to manage permissions for:</p>
 <p><img src="../resources/images/add_template_permissions.png" alt=""></p>
 <p>For power users, here&apos;s how you would configure permissions via &quot;Config XML&quot;:</p>
-<pre><code class="lang-{.code}">&lt;templates&gt;
-    &lt;pipeline name=&quot;app-1-template&quot;&gt;
-      &lt;authorization&gt;
-        &lt;admins&gt;
-          &lt;user&gt;operate&lt;/user&gt;
-        &lt;/admins&gt;
-      &lt;/authorization&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">templates</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;app-1-template&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">authorization</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">admins</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">user</span>&gt;</span>operate<span class="hljs-tag">&lt;/<span class="hljs-title">user</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">admins</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">authorization</span>&gt;</span>
       ...
-    &lt;/pipeline&gt;
-  &lt;/templates&gt;
+    <span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">templates</span>&gt;</span>
 </code></pre>
 <h3 id="also-see"><a name="also-see" class="plugin-anchor" href="#also-see"><span class="fa fa-link"></span></a>Also See</h3>
 <ul>

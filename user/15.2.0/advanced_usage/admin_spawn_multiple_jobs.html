@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="5.2" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="5.2" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2425,9 +2425,8 @@
 <p><img src="../resources/images/runonall_job.png" alt=""></p>
 <h3 id="configure-through-the-config-xml"><a name="configure-through-the-config-xml" class="plugin-anchor" href="#configure-through-the-config-xml"><span class="fa fa-link"></span></a>Configure through the Config XML</h3>
 <p>To specify that a job should run on all agents, add the attribute</p>
-<pre><code class="lang-{.code}">runOnAllAgents=&quot;true&quot;
-</code></pre>
-<p>to the job&apos;s definition (see configuration reference for <a href="../configuration/configuration_reference.html#job"><code>&lt;job&gt;</code></a>)</p>
+<pre><code>runOnAllAgents=&quot;true&quot;
+</code></pre><p>to the job&apos;s definition (see configuration reference for <a href="../configuration/configuration_reference.html#job"><code>&lt;job&gt;</code></a>)</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;deploy&quot;</span> <span class="hljs-attribute">runOnAllAgents</span>=<span class="hljs-value">&quot;true&quot;</span>&gt;</span>
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
@@ -2441,9 +2440,8 @@
 <p><img src="../resources/images/runxinstance_job.png" alt=""></p>
 <h3 id="configure-through-the-config-xml"><a name="configure-through-the-config-xml" class="plugin-anchor" href="#configure-through-the-config-xml"><span class="fa fa-link"></span></a>Configure through the Config XML</h3>
 <p>To specify that &apos;x&apos; instances of a job should run, add the attribute</p>
-<pre><code class="lang-{.code}">runInstanceCount=&quot;5&quot;
-</code></pre>
-<p>to the job&apos;s definition (see configuration reference for <a href="../configuration/configuration_reference.html#job"><code>&lt;job&gt;</code></a>)</p>
+<pre><code>runInstanceCount=&quot;5&quot;
+</code></pre><p>to the job&apos;s definition (see configuration reference for <a href="../configuration/configuration_reference.html#job"><code>&lt;job&gt;</code></a>)</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;test&quot;</span> <span class="hljs-attribute">runInstanceCount</span>=<span class="hljs-value">&quot;5&quot;</span>&gt;</span>
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>

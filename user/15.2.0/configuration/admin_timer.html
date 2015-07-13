@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="4.18" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="4.18" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2424,16 +2424,18 @@
 <p><img src="../resources/images/timer_ui.png" alt=""></p>
 <h2 id="configure-through-the-xml"><a name="configure-through-the-xml" class="plugin-anchor" href="#configure-through-the-xml"><span class="fa fa-link"></span></a>Configure through the XML</h2>
 <p>The following xml config corresponds to the UI example above.</p>
-<pre><code class="lang-{.code}">    &lt;pipeline name=&quot;nightly&quot;&gt;
-    &lt;timer onlyOnChanges=&quot;true&quot;&gt;0 0 22 ? * MON-FRI&lt;/timer&gt;
-    &lt;materials&gt;
-        ...
-    &lt;/materials&gt;
-    &lt;stages&gt;
-        &lt;stage name=&quot;compile&quot;&gt;
-            &lt;approval type=&quot;manual&quot;/&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;nightly&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">timer</span> <span class="hljs-attribute">onlyOnChanges</span>=<span class="hljs-value">&quot;true&quot;</span>&gt;</span>0 0 22 ? * MON-FRI<span class="hljs-tag">&lt;/<span class="hljs-title">timer</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+      ...
+  <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">stages</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">stage</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;compile&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">approval</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;manual&quot;</span>/&gt;</span>
     ...
-    &lt;/pipeline&gt;
+    <span class="hljs-tag">&lt;/<span class="hljs-title">stage</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">stages</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">pipeline</span>&gt;</span>
 </code></pre>
 <p>For more information see <a href="configuration_reference.html#timer">&lt; timer &gt;</a></p>
 

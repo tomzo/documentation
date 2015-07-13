@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="3.6" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="3.6" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2425,21 +2425,21 @@
 <li>The Apache server sits on the same machine as the Go server (localhost)</li>
 <li>You want to enforce SSL connections</li>
 </ul>
-<pre><code class="lang-{.code}">Listen nnn.nnn.nnn.nnn:80
-NameVirtualHost nnn.nnn.nnn.nnn:80
+<pre><code class="lang-apache"><span class="hljs-keyword"><span class="hljs-common">Listen</span></span> nnn.nnn.nnn.nnn:80
+<span class="hljs-keyword">NameVirtualHost</span> nnn.nnn.nnn.nnn:80
 
-&lt;VirtualHost nnn.nnn.nnn.nnn:80&gt;
-    ServerName go.yourdomain.com
-    DocumentRoot /var/www/html
-    SSLProxyEngine on
-    SSLEngine on
-    ProxyPass / https://localhost:8154/
-    ProxyPassReverse / https://localhost:8154/
-&lt;/VirtualHost&gt;
+<span class="hljs-tag">&lt;VirtualHost nnn.nnn.nnn.nnn:80&gt;</span>
+    <span class="hljs-keyword"><span class="hljs-common">ServerName</span></span> go.yourdomain.com
+    <span class="hljs-keyword"><span class="hljs-common">DocumentRoot</span></span> /var/www/html
+    <span class="hljs-keyword">SSLProxyEngine</span> <span class="hljs-literal">on</span>
+    <span class="hljs-keyword">SSLEngine</span> <span class="hljs-literal">on</span>
+    <span class="hljs-keyword">ProxyPass</span> / https://localhost:8154/
+    <span class="hljs-keyword">ProxyPassReverse</span> / https://localhost:8154/
+<span class="hljs-tag">&lt;/VirtualHost&gt;</span>
 </code></pre>
 <h2 id="oauth-20-with-apache"><a name="oauth-20-with-apache" class="plugin-anchor" href="#oauth-20-with-apache"><span class="fa fa-link"></span></a>OAuth 2.0 with Apache</h2>
 <p>If you have set up Go to use <a href="../integration/mingle_in_go.html">OAuth 2.0 gadgets</a> and Go is fronted with an Apache server, then you have to set X_FORWARDED_PROTO to &quot;https&quot; in the https virtual host configuration section.</p>
-<pre><code class="lang-{.code}">RequestHeader set X_FORWARDED_PROTO &apos;https&apos;
+<pre><code class="lang-apache"><span class="hljs-keyword">RequestHeader</span> set X_FORWARDED_PROTO &apos;https&apos;
 </code></pre>
 <p>This directive can replace HTTP request headers. The header is modified just before the content handler is run, allowing incoming headers to be changed to &apos;https&apos;.</p>
 <h2 id="also-see"><a name="also-see" class="plugin-anchor" href="#also-see"><span class="fa fa-link"></span></a>Also see...</h2>

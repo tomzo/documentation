@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="8.2" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="8.2" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2451,32 +2451,32 @@ Pipelines in Go can poll packages in repositories similar to how they poll versi
 Cannot save package or repo, found duplicate packages. [Repo Name: &apos;orchard&apos;, Package Name: &apos;apple&apos;], [Repo Name: &apos;orchard&apos;, Package Name: &apos;orange&apos;]</p>
 <h4 id="sample-xml-configuration"><a name="sample-xml-configuration" class="plugin-anchor" href="#sample-xml-configuration"><span class="fa fa-link"></span></a>Sample XML Configuration</h4>
 <p>Here is a XML view of an RPM package defintion. Note the relation between repository, package and pipeline material. Loosely typed property, key and value tags are used for repository and package configuration in order to accommodate different plugins. If you choose to configure via direct XML edit, note that it isn&apos;t necessary to provide repository and package IDs, Go server wil autogenerate them. However, not all validations that are performed while configuring via UI kick in while configuring via XML edit - the resulting failures will show up later in the server health message panel at the bottom right of the browser frame.</p>
-<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-title">repository</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;1ce5c205-977f-4c0e-ada4-882030580eed&quot;</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;ora&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">pluginConfiguration</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;yum&quot;</span> <span class="hljs-attribute">version</span>=<span class="hljs-value">&quot;1&quot;</span> /&gt;</span>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">repository</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;1ce5c205-977f-4c0e-ada4-882030580eed&quot;</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;ora&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">pluginConfiguration</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;yum&quot;</span> <span class="hljs-attribute">version</span>=<span class="hljs-value">&quot;1&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">configuration</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">property</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">key</span>&gt;</span>REPO_URL<span class="hljs-tag">&lt;/<span class="hljs-title">key</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>http://public-yum.oracle.com/repo/OracleLinux/OL6/latest/x86_64<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">property</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">configuration</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">packages</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">package</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;840b0b60-bd29-489d-b5ea-ccff5f6459a9&quot;</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;gcc&quot;</span> <span class="hljs-attribute">autoUpdate</span>=<span class="hljs-value">&quot;false&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-title">configuration</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">property</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">key</span>&gt;</span>REPO_URL<span class="hljs-tag">&lt;/<span class="hljs-title">key</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>http://public-yum.oracle.com/repo/OracleLinux/OL6/latest/x86_64<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">key</span>&gt;</span>PACKAGE_SPEC<span class="hljs-tag">&lt;/<span class="hljs-title">key</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>gcc-4.*<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">property</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">configuration</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">packages</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">package</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;840b0b60-bd29-489d-b5ea-ccff5f6459a9&quot;</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;gcc&quot;</span> <span class="hljs-attribute">autoUpdate</span>=<span class="hljs-value">&quot;false&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">configuration</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">property</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">key</span>&gt;</span>PACKAGE_SPEC<span class="hljs-tag">&lt;/<span class="hljs-title">key</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>gcc-4.*<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-title">property</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-title">configuration</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-title">package</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-title">packages</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">repository</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">package</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">packages</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">repository</span>&gt;</span>
+...
+<span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">&quot;showcase&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;dependsOnGcc&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">package</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">&quot;840b0b60-bd29-489d-b5ea-ccff5f6459a9&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
   ...
-  <span class="hljs-tag">&lt;<span class="hljs-title">pipelines</span> <span class="hljs-attribute">group</span>=<span class="hljs-value">&quot;showcase&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">pipeline</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;dependsOnGcc&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">materials</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">package</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">&quot;840b0b60-bd29-489d-b5ea-ccff5f6459a9&quot;</span> /&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-title">materials</span>&gt;</span>
-    ...
 </code></pre>
 <h3 id="value-stream-modeling-tip"><a name="value-stream-modeling-tip" class="plugin-anchor" href="#value-stream-modeling-tip"><span class="fa fa-link"></span></a>Value stream modeling tip</h3>
 <p>Depending on whether Go is also publishing the package or just consuming it, there are two options for modeling a value stream that includes packages.</p>
@@ -2514,28 +2514,26 @@ Cannot save package or repo, found duplicate packages. [Repo Name: &apos;orchard
 <li>GO_PACKAGE_&lt; REPO-NAME &gt;_&lt; PACKAGE-NAME &gt;_LOCATION</li>
 </ol>
 <p>Repository and package names are converted to all uppercase and hyphens are converted to underscores before inclusion in the environment variable names. For example, let&apos;s say we set up a repository named ORA pointing to <a href="http://public-yum.oracle.com/repo/OracleLinux/OL6/latest/x86_64" target="_blank">http://public-yum.oracle.com/repo/OracleLinux/OL6/latest/x86_64</a> and define a package gcc with a spec of gcc-4.* and set it up as material for a pipeline. To download the package locally on the agent, we could write a task like this:</p>
-<pre><code class="lang-{.code}">                [go] Start to execute task: &lt;exec command=&quot;/bin/bash&quot; &gt;
-                &lt;arg&gt;-c&lt;/arg&gt;
-                &lt;arg&gt;curl -o /tmp/gcc.rpm $GO_PACKAGE_ORA_GCC_LOCATION&lt;/arg&gt;
-                &lt;/exec&gt;
-</code></pre>
-<p>When the task executes on the agent, the environment variables get subsituted as below:</p>
-<pre><code class="lang-{.code}">            [go] Start to execute task: &lt;exec command=&quot;/bin/bash&quot; &gt;
-            &lt;arg&gt;-c&lt;/arg&gt;
-            &lt;arg&gt;curl -o /tmp/gcc.rpm $GO_PACKAGE_ORA_GCC_LOCATION&lt;/arg&gt;
-            &lt;/exec&gt;.
-            ...
-            [go] setting environment variable &apos;GO_PACKAGE_ORA_GCC_LABEL&apos; to value &apos;gcc-4.4.7-3.el6.x86_64&apos;
-            [go] setting environment variable &apos;GO_REPO_ORA_GCC_REPO_URL&apos; to value &apos;http://public-yum.oracle.com/repo/OracleLinux/OL6/latest/x86_64&apos;
-            [go] setting environment variable &apos;GO_PACKAGE_ORA_GCC_PACKAGE_SPEC&apos; to value &apos;gcc-4.*&apos;
-            [go] setting environment variable &apos;GO_PACKAGE_ORA_GCC_LOCATION&apos; to value &apos;http://public-yum.oracle.com/repo/OracleLinux/OL6/latest/x86_64/getPackage/gcc-4.4.7-3.el6.x86_64.rpm&apos;
-            ...
-</code></pre>
-<p>Or, to simply pass it as an argument to a deploy script on a remote server</p>
-<pre><code class="lang-{.code}">        &lt;exec command=&quot;/bin/bash&quot;&gt;
-            &lt;arg&gt;-c&lt;/arg&gt;
-            &lt;arg&gt;ssh server &quot;cd /to/dest/dir;deploy.sh $GO_PACKAGE_ORA_GCC_LOCATION&quot;&lt;/arg&gt;
-        &lt;/exec&gt;
+<pre><code>[go] Start to execute task: &lt;exec command=&quot;/bin/bash&quot; &gt;
+&lt;arg&gt;-c&lt;/arg&gt;
+&lt;arg&gt;curl -o /tmp/gcc.rpm $GO_PACKAGE_ORA_GCC_LOCATION&lt;/arg&gt;
+&lt;/exec&gt;
+</code></pre><p>When the task executes on the agent, the environment variables get subsituted as below:</p>
+<pre><code>[go] Start to execute task: &lt;exec command=&quot;/bin/bash&quot; &gt;
+&lt;arg&gt;-c&lt;/arg&gt;
+&lt;arg&gt;curl -o /tmp/gcc.rpm $GO_PACKAGE_ORA_GCC_LOCATION&lt;/arg&gt;
+&lt;/exec&gt;.
+...
+[go] setting environment variable &apos;GO_PACKAGE_ORA_GCC_LABEL&apos; to value &apos;gcc-4.4.7-3.el6.x86_64&apos;
+[go] setting environment variable &apos;GO_REPO_ORA_GCC_REPO_URL&apos; to value &apos;http://public-yum.oracle.com/repo/OracleLinux/OL6/latest/x86_64&apos;
+[go] setting environment variable &apos;GO_PACKAGE_ORA_GCC_PACKAGE_SPEC&apos; to value &apos;gcc-4.*&apos;
+[go] setting environment variable &apos;GO_PACKAGE_ORA_GCC_LOCATION&apos; to value &apos;http://public-yum.oracle.com/repo/OracleLinux/OL6/latest/x86_64/getPackage/gcc-4.4.7-3.el6.x86_64.rpm&apos;
+...
+</code></pre><p>Or, to simply pass it as an argument to a deploy script on a remote server</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">exec</span> <span class="hljs-attribute">command</span>=<span class="hljs-value">&quot;/bin/bash&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">arg</span>&gt;</span>-c<span class="hljs-tag">&lt;/<span class="hljs-title">arg</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">arg</span>&gt;</span>ssh server &quot;cd /to/dest/dir;deploy.sh $GO_PACKAGE_ORA_GCC_LOCATION&quot;<span class="hljs-tag">&lt;/<span class="hljs-title">arg</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">exec</span>&gt;</span>
 </code></pre>
 <p><strong>Also see <a href="yum_repository_poller.html#installing-rpms">Installing RPMs</a></strong></p>
 <blockquote>
@@ -2546,7 +2544,7 @@ Cannot save package or repo, found duplicate packages. [Repo Name: &apos;orchard
 <p>You could also explore the command repository on <a href="https://github.com/gocd/go-command-repo/tree/master/deploy" target="_blank">GitHub</a> for helpful commands. What is command repository? Please see <a href="../advanced_usage/command_repository.html">this</a>.</p>
 <h3 id="package-dependencies"><a name="package-dependencies" class="plugin-anchor" href="#package-dependencies"><span class="fa fa-link"></span></a>Package Dependencies</h3>
 <p>Please note that Go does not support any sort of automatic polling or other support for package dependencies. Each package dependency has to specified as a separate material if needed. Alternatively, just poll for the packages at the root of the dependency graph and let the package manager figure out the rest at the time of installation. e.g. if componentA-1.2.0-b234-noarch.rpm depends on componentB-2.3.0 or above, simply poll for componentA and let</p>
-<pre><code class="lang-{.code}">yum install componentA-1.2.0-b234-noarch
+<pre><code class="lang-shell">yum install componentA-1.2.0-b234-noarch
 </code></pre>
 <p>do the resolution of componentB for you.</p>
 

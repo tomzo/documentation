@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="5.8" data-basepath=".." data-revision="1436777785919">
+    <div class="book" data-level="5.8" data-basepath=".." data-revision="1436779755995">
     
 
 <div class="book-summary">
@@ -2450,14 +2450,14 @@
 <p>Go allows you to generate properties from XML artifacts that you create during the build. This can be used to harvest statistics produced by coverage tools etc. By storing them as properties it becomes very easy to show the history and trends over time of these values.</p>
 <p>Note that the properties are generated on the agent side, so the src path is relative to the working directory of the pipeline on the agent.</p>
 <p>For example, to add support for the coverage tool &quot;Emma&quot;, you might do this:</p>
-<pre><code class="lang-{.code}">&lt;job&gt;  
-  &lt;properties&gt;  
-    &lt;property name=&quot;coverage.class&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;class&apos;)]/@value, &apos;%&apos;)&quot; /&gt;  
-    &lt;property name=&quot;coverage.method&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;method&apos;)]/@value, &apos;%&apos;)&quot; /&gt;  
-    &lt;property name=&quot;coverage.block&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;block&apos;)]/@value, &apos;%&apos;)&quot; /&gt;  
-    &lt;property name=&quot;coverage.line&quot; src=&quot;target/emma/coverage.xml&quot; xpath=&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;line&apos;)]/@value, &apos;%&apos;)&quot; /&gt;  
-  &lt;/properties&gt;
-&lt;/job&gt;
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">job</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">properties</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;coverage.class&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/emma/coverage.xml&quot;</span> <span class="hljs-attribute">xpath</span>=<span class="hljs-value">&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;class&apos;)]/@value, &apos;%&apos;)&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;coverage.method&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/emma/coverage.xml&quot;</span> <span class="hljs-attribute">xpath</span>=<span class="hljs-value">&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;method&apos;)]/@value, &apos;%&apos;)&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;coverage.block&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/emma/coverage.xml&quot;</span> <span class="hljs-attribute">xpath</span>=<span class="hljs-value">&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;block&apos;)]/@value, &apos;%&apos;)&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">property</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;coverage.line&quot;</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;target/emma/coverage.xml&quot;</span> <span class="hljs-attribute">xpath</span>=<span class="hljs-value">&quot;substring-before(//report/data/all/coverage[starts-with(@type,&apos;line&apos;)]/@value, &apos;%&apos;)&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">properties</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">job</span>&gt;</span>
 </code></pre>
 <h3 id="tests"><a name="tests" class="plugin-anchor" href="#tests"><span class="fa fa-link"></span></a>Tests</h3>
 <p>If you define a tests artifact that contains the test reports, then Go will add some properties associated with the tests.</p>
