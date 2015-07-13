@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="4.31" data-basepath=".." data-revision="1436761905401">
+    <div class="book" data-level="4.31" data-basepath=".." data-revision="1436769754260">
     
 
 <div class="book-summary">
@@ -2420,13 +2420,14 @@
 <p>You will need to configure the following to add a TFS material:</p>
 <ul>
 <li>Material Name: An optional name for the material. This name can be used to set the TFS revision in the pipeline label.</li>
-<li>URL: Set the url for the TFS collection. Ex: <a href="http://41.42.43.44:8080/tfs/DefaultCollection" target="_blank">http://41.42.43.44:8080/tfs/DefaultCollection</a></li>
+<li>URL: Set the url for the TFS collection. Ex: <code>http://41.42.43.44:8080/tfs/DefaultCollection</code></li>
 <li>Domain: Domain name for TFS authentication credentials. Should be domain for the TFS account. Ex: corporate_thoughtworks</li>
 <li>Username: The user has to be a collection administrator for the TFS collection used in URL.</li>
 <li>Password: Provide the password for the TFS account</li>
 <li>Project Path: Enter the project path within the collection. You can specify paths of sub folders to create materials for each component. Ex: $/test/component or $/my_application</li>
 <li>Check connection: You can use check connection to verify the TFS material configuration</li>
 </ul>
+<p><img src="../resources/images/tfs_config.png" alt="tfs_config"></p>
 <h5 id="notes"><a name="notes" class="plugin-anchor" href="#notes"><span class="fa fa-link"></span></a>Notes:</h5>
 <ul>
 <li>Go will map TFS projects to destination folders within the Go agent installation directories. You can identify mappings by looking at the destination folders.</li>

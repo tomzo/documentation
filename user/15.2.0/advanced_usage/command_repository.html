@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="5.11" data-basepath=".." data-revision="1436761905401">
+    <div class="book" data-level="5.11" data-basepath=".." data-revision="1436769754260">
     
 
 <div class="book-summary">
@@ -2466,9 +2466,11 @@ git pull &gt;&gt;c:\pull-log.txt 2&gt;&amp;1
 <h3 id="private-repository"><a name="private-repository" class="plugin-anchor" href="#private-repository"><span class="fa fa-link"></span></a>Private Repository</h3>
 <p>If you want to add your own commands for look up, you should set up your own Git/Mercurial/Subversion/Perforce/TFS repository that your command authors can commit/check-in into.</p>
 <p>Make a clone/working copy available under <code>&lt;go-server-install-root&gt;/db/command_repository/&lt;your-repo-name&gt;</code>. Symbolic links are not supported. Then switch Go Server to this location. To do this, go to <strong>Command Repository Management</strong> section of <strong>Server Configuration</strong> in <strong>Admin</strong> tab and change the <strong>default</strong> value</p>
-<p><img src="../resources/images/cruise/cmd_repo_mgmt.png" alt=""></p>
+<p><img src="../resources/images/cmd_repo_mgmt.png" alt=""></p>
 <p>From the Go server&apos;s point of view, the command repository is just a directory under which it recursively looks for valid command.xml files. Note that directory names starting with a dot will be ignored.</p>
+<blockquote>
 <p>Go will not lookup from the bundled repository if you switch to your own repository. You could choose to manually seed your private command repository with Go&apos;s bundled set of commands if you want to have them in addition to your own commands.</p>
+</blockquote>
 <h3 id="recommended-process"><a name="recommended-process" class="plugin-anchor" href="#recommended-process"><span class="fa fa-link"></span></a>Recommended process</h3>
 <ol>
 <li>Command author pushes/checks-in command to corporate version control system</li>
