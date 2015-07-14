@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>Solaris | Go User Documentation</title>
+        <title>Configuring SSL/TLS | Go User Documentation</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.5.0">
@@ -13,16 +13,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
-        <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
         
         
     
     
-    <link rel="next" href="../../../installation/install/server/zip.html" />
+    <link rel="next" href="../installation/performance_tuning.html" />
     
     
-    <link rel="prev" href="../../../installation/install/server/osx.html" />
+    <link rel="prev" href="../installation/configure_proxy.html" />
     
 
         
@@ -30,15 +30,15 @@
     <body>
         
         
-<link rel="stylesheet" href="../../../gitbook/style.css">
+<link rel="stylesheet" href="../gitbook/style.css">
 
     
-    <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+    <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
     
 
 
         
-    <div class="book" data-level="3.2.4" data-basepath="../../.." data-revision="1436879353996">
+    <div class="book" data-level="3.7" data-basepath=".." data-revision="1436879353996">
     
 
 <div class="book-summary">
@@ -76,7 +76,7 @@
         <li class="chapter " data-level="0" data-path="index.html">
             
                 
-                    <a href="../../../index.html">
+                    <a href="../index.html">
                         <i class="fa fa-check"></i>
                         
                          Introduction
@@ -90,7 +90,7 @@
         <li class="chapter " data-level="1" data-path="introduction/index.html">
             
                 
-                    <a href="../../../introduction/index.html">
+                    <a href="../introduction/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>1.</b>
@@ -107,7 +107,7 @@
         <li class="chapter " data-level="1.1" data-path="introduction/concepts_in_go.html">
             
                 
-                    <a href="../../../introduction/concepts_in_go.html">
+                    <a href="../introduction/concepts_in_go.html">
                         <i class="fa fa-check"></i>
                         
                             <b>1.1.</b>
@@ -128,7 +128,7 @@
         <li class="chapter " data-level="2" data-path="navigation/index.html">
             
                 
-                    <a href="../../../navigation/index.html">
+                    <a href="../navigation/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.</b>
@@ -145,7 +145,7 @@
         <li class="chapter " data-level="2.1" data-path="navigation/pipelines_dashboard_page.html">
             
                 
-                    <a href="../../../navigation/pipelines_dashboard_page.html">
+                    <a href="../navigation/pipelines_dashboard_page.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.1.</b>
@@ -161,7 +161,7 @@
         <li class="chapter " data-level="2.2" data-path="navigation/agents_page.html">
             
                 
-                    <a href="../../../navigation/agents_page.html">
+                    <a href="../navigation/agents_page.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.2.</b>
@@ -177,7 +177,7 @@
         <li class="chapter " data-level="2.3" data-path="navigation/agent_details.html">
             
                 
-                    <a href="../../../navigation/agent_details.html">
+                    <a href="../navigation/agent_details.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.3.</b>
@@ -193,7 +193,7 @@
         <li class="chapter " data-level="2.4" data-path="navigation/pipeline_activity_page.html">
             
                 
-                    <a href="../../../navigation/pipeline_activity_page.html">
+                    <a href="../navigation/pipeline_activity_page.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.4.</b>
@@ -209,7 +209,7 @@
         <li class="chapter " data-level="2.5" data-path="navigation/stage_details_page.html">
             
                 
-                    <a href="../../../navigation/stage_details_page.html">
+                    <a href="../navigation/stage_details_page.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.5.</b>
@@ -225,7 +225,7 @@
         <li class="chapter " data-level="2.6" data-path="navigation/job_details_page.html">
             
                 
-                    <a href="../../../navigation/job_details_page.html">
+                    <a href="../navigation/job_details_page.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.6.</b>
@@ -241,7 +241,7 @@
         <li class="chapter " data-level="2.7" data-path="navigation/administration_page.html">
             
                 
-                    <a href="../../../navigation/administration_page.html">
+                    <a href="../navigation/administration_page.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.7.</b>
@@ -257,7 +257,7 @@
         <li class="chapter " data-level="2.8" data-path="navigation/server_details_page.html">
             
                 
-                    <a href="../../../navigation/server_details_page.html">
+                    <a href="../navigation/server_details_page.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.8.</b>
@@ -273,7 +273,7 @@
         <li class="chapter " data-level="2.9" data-path="navigation/environments_page.html">
             
                 
-                    <a href="../../../navigation/environments_page.html">
+                    <a href="../navigation/environments_page.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.9.</b>
@@ -289,7 +289,7 @@
         <li class="chapter " data-level="2.10" data-path="navigation/value_stream_map.html">
             
                 
-                    <a href="../../../navigation/value_stream_map.html">
+                    <a href="../navigation/value_stream_map.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.10.</b>
@@ -310,7 +310,7 @@
         <li class="chapter " data-level="3" data-path="installation/index.html">
             
                 
-                    <a href="../../../installation/index.html">
+                    <a href="../installation/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.</b>
@@ -327,7 +327,7 @@
         <li class="chapter " data-level="3.1" data-path="installation/system_requirements.html">
             
                 
-                    <a href="../../../installation/system_requirements.html">
+                    <a href="../installation/system_requirements.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.1.</b>
@@ -343,7 +343,7 @@
         <li class="chapter " data-level="3.2" data-path="installation/installing_go_server.html">
             
                 
-                    <a href="../../../installation/installing_go_server.html">
+                    <a href="../installation/installing_go_server.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.2.</b>
@@ -360,7 +360,7 @@
         <li class="chapter " data-level="3.2.1" data-path="installation/install/server/linux.html">
             
                 
-                    <a href="../../../installation/install/server/linux.html">
+                    <a href="../installation/install/server/linux.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.2.1.</b>
@@ -376,7 +376,7 @@
         <li class="chapter " data-level="3.2.2" data-path="installation/install/server/windows.html">
             
                 
-                    <a href="../../../installation/install/server/windows.html">
+                    <a href="../installation/install/server/windows.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.2.2.</b>
@@ -392,7 +392,7 @@
         <li class="chapter " data-level="3.2.3" data-path="installation/install/server/osx.html">
             
                 
-                    <a href="../../../installation/install/server/osx.html">
+                    <a href="../installation/install/server/osx.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.2.3.</b>
@@ -405,10 +405,10 @@
         </li>
     
         
-        <li class="chapter active" data-level="3.2.4" data-path="installation/install/server/solaris.html">
+        <li class="chapter " data-level="3.2.4" data-path="installation/install/server/solaris.html">
             
                 
-                    <a href="../../../installation/install/server/solaris.html">
+                    <a href="../installation/install/server/solaris.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.2.4.</b>
@@ -424,7 +424,7 @@
         <li class="chapter " data-level="3.2.5" data-path="installation/install/server/zip.html">
             
                 
-                    <a href="../../../installation/install/server/zip.html">
+                    <a href="../installation/install/server/zip.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.2.5.</b>
@@ -445,7 +445,7 @@
         <li class="chapter " data-level="3.3" data-path="installation/installing_go_agent.html">
             
                 
-                    <a href="../../../installation/installing_go_agent.html">
+                    <a href="../installation/installing_go_agent.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.3.</b>
@@ -462,7 +462,7 @@
         <li class="chapter " data-level="3.3.1" data-path="installation/install/agent/linux.html">
             
                 
-                    <a href="../../../installation/install/agent/linux.html">
+                    <a href="../installation/install/agent/linux.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.3.1.</b>
@@ -478,7 +478,7 @@
         <li class="chapter " data-level="3.3.2" data-path="installation/install/agent/windows.html">
             
                 
-                    <a href="../../../installation/install/agent/windows.html">
+                    <a href="../installation/install/agent/windows.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.3.2.</b>
@@ -494,7 +494,7 @@
         <li class="chapter " data-level="3.3.3" data-path="installation/install/agent/osx.html">
             
                 
-                    <a href="../../../installation/install/agent/osx.html">
+                    <a href="../installation/install/agent/osx.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.3.3.</b>
@@ -510,7 +510,7 @@
         <li class="chapter " data-level="3.3.4" data-path="installation/install/agent/solaris.html">
             
                 
-                    <a href="../../../installation/install/agent/solaris.html">
+                    <a href="../installation/install/agent/solaris.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.3.4.</b>
@@ -526,7 +526,7 @@
         <li class="chapter " data-level="3.3.5" data-path="installation/install/agent/zip.html">
             
                 
-                    <a href="../../../installation/install/agent/zip.html">
+                    <a href="../installation/install/agent/zip.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.3.5.</b>
@@ -547,7 +547,7 @@
         <li class="chapter " data-level="3.4" data-path="installation/upgrading_go.html">
             
                 
-                    <a href="../../../installation/upgrading_go.html">
+                    <a href="../installation/upgrading_go.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.4.</b>
@@ -563,7 +563,7 @@
         <li class="chapter " data-level="3.5" data-path="installation/configuring_server_details.html">
             
                 
-                    <a href="../../../installation/configuring_server_details.html">
+                    <a href="../installation/configuring_server_details.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.5.</b>
@@ -579,7 +579,7 @@
         <li class="chapter " data-level="3.6" data-path="installation/configure_proxy.html">
             
                 
-                    <a href="../../../installation/configure_proxy.html">
+                    <a href="../installation/configure_proxy.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.6.</b>
@@ -592,10 +592,10 @@
         </li>
     
         
-        <li class="chapter " data-level="3.7" data-path="installation/ssl_tls_config.html">
+        <li class="chapter active" data-level="3.7" data-path="installation/ssl_tls_config.html">
             
                 
-                    <a href="../../../installation/ssl_tls_config.html">
+                    <a href="../installation/ssl_tls_config.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.7.</b>
@@ -611,7 +611,7 @@
         <li class="chapter " data-level="3.8" data-path="installation/performance_tuning.html">
             
                 
-                    <a href="../../../installation/performance_tuning.html">
+                    <a href="../installation/performance_tuning.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.8.</b>
@@ -627,7 +627,7 @@
         <li class="chapter " data-level="3.9" data-path="installation/troubleshoot_installer.html">
             
                 
-                    <a href="../../../installation/troubleshoot_installer.html">
+                    <a href="../installation/troubleshoot_installer.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.9.</b>
@@ -648,7 +648,7 @@
         <li class="chapter " data-level="4" data-path="configuration/index.html">
             
                 
-                    <a href="../../../configuration/index.html">
+                    <a href="../configuration/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.</b>
@@ -665,7 +665,7 @@
         <li class="chapter " data-level="4.1" data-path="configuration/quick_pipeline_setup.html">
             
                 
-                    <a href="../../../configuration/quick_pipeline_setup.html">
+                    <a href="../configuration/quick_pipeline_setup.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.1.</b>
@@ -681,7 +681,7 @@
         <li class="chapter " data-level="4.2" data-path="configuration/managing_pipelines.html">
             
                 
-                    <a href="../../../configuration/managing_pipelines.html">
+                    <a href="../configuration/managing_pipelines.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.2.</b>
@@ -697,7 +697,7 @@
         <li class="chapter " data-level="4.3" data-path="configuration/managing_dependencies.html">
             
                 
-                    <a href="../../../configuration/managing_dependencies.html">
+                    <a href="../configuration/managing_dependencies.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.3.</b>
@@ -713,7 +713,7 @@
         <li class="chapter " data-level="4.4" data-path="configuration/managing_a_build_cloud.html">
             
                 
-                    <a href="../../../configuration/managing_a_build_cloud.html">
+                    <a href="../configuration/managing_a_build_cloud.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.4.</b>
@@ -729,7 +729,7 @@
         <li class="chapter " data-level="4.5" data-path="configuration/managing_environments.html">
             
                 
-                    <a href="../../../configuration/managing_environments.html">
+                    <a href="../configuration/managing_environments.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.5.</b>
@@ -745,7 +745,7 @@
         <li class="chapter " data-level="4.6" data-path="configuration/build_labelling.html">
             
                 
-                    <a href="../../../configuration/build_labelling.html">
+                    <a href="../configuration/build_labelling.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
@@ -761,7 +761,7 @@
         <li class="chapter " data-level="4.7" data-path="configuration/pipeline_scheduling.html">
             
                 
-                    <a href="../../../configuration/pipeline_scheduling.html">
+                    <a href="../configuration/pipeline_scheduling.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.7.</b>
@@ -777,7 +777,7 @@
         <li class="chapter " data-level="4.8" data-path="configuration/admin_use_parameters_in_configuration.html">
             
                 
-                    <a href="../../../configuration/admin_use_parameters_in_configuration.html">
+                    <a href="../configuration/admin_use_parameters_in_configuration.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.8.</b>
@@ -793,7 +793,7 @@
         <li class="chapter " data-level="4.9" data-path="configuration/admin_use_custom_pipeline_label.html">
             
                 
-                    <a href="../../../configuration/admin_use_custom_pipeline_label.html">
+                    <a href="../configuration/admin_use_custom_pipeline_label.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.9.</b>
@@ -809,7 +809,7 @@
         <li class="chapter " data-level="4.10" data-path="configuration/admin_clone_pipeline.html">
             
                 
-                    <a href="../../../configuration/admin_clone_pipeline.html">
+                    <a href="../configuration/admin_clone_pipeline.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.10.</b>
@@ -825,7 +825,7 @@
         <li class="chapter " data-level="4.11" data-path="configuration/admin_lock_pipelines.html">
             
                 
-                    <a href="../../../configuration/admin_lock_pipelines.html">
+                    <a href="../configuration/admin_lock_pipelines.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.11.</b>
@@ -841,7 +841,7 @@
         <li class="chapter " data-level="4.12" data-path="configuration/admin_add_material.html">
             
                 
-                    <a href="../../../configuration/admin_add_material.html">
+                    <a href="../configuration/admin_add_material.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.12.</b>
@@ -857,7 +857,7 @@
         <li class="chapter " data-level="4.13" data-path="configuration/admin_add_stage.html">
             
                 
-                    <a href="../../../configuration/admin_add_stage.html">
+                    <a href="../configuration/admin_add_stage.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.13.</b>
@@ -873,7 +873,7 @@
         <li class="chapter " data-level="4.14" data-path="configuration/admin_add_job.html">
             
                 
-                    <a href="../../../configuration/admin_add_job.html">
+                    <a href="../configuration/admin_add_job.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.14.</b>
@@ -889,7 +889,7 @@
         <li class="chapter " data-level="4.15" data-path="configuration/admin_add_task.html">
             
                 
-                    <a href="../../../configuration/admin_add_task.html">
+                    <a href="../configuration/admin_add_task.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.15.</b>
@@ -905,7 +905,7 @@
         <li class="chapter " data-level="4.16" data-path="configuration/pipeline_templates.html">
             
                 
-                    <a href="../../../configuration/pipeline_templates.html">
+                    <a href="../configuration/pipeline_templates.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.16.</b>
@@ -921,7 +921,7 @@
         <li class="chapter " data-level="4.17" data-path="configuration/dev_choose_when_stage_runs.html">
             
                 
-                    <a href="../../../configuration/dev_choose_when_stage_runs.html">
+                    <a href="../configuration/dev_choose_when_stage_runs.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.17.</b>
@@ -937,7 +937,7 @@
         <li class="chapter " data-level="4.18" data-path="configuration/admin_timer.html">
             
                 
-                    <a href="../../../configuration/admin_timer.html">
+                    <a href="../configuration/admin_timer.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.18.</b>
@@ -953,7 +953,7 @@
         <li class="chapter " data-level="4.19" data-path="configuration/job_timeout.html">
             
                 
-                    <a href="../../../configuration/job_timeout.html">
+                    <a href="../configuration/job_timeout.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.19.</b>
@@ -969,7 +969,7 @@
         <li class="chapter " data-level="4.20" data-path="configuration/managing_users.html">
             
                 
-                    <a href="../../../configuration/managing_users.html">
+                    <a href="../configuration/managing_users.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.20.</b>
@@ -985,7 +985,7 @@
         <li class="chapter " data-level="4.21" data-path="configuration/dev_authentication.html">
             
                 
-                    <a href="../../../configuration/dev_authentication.html">
+                    <a href="../configuration/dev_authentication.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.21.</b>
@@ -1001,7 +1001,7 @@
         <li class="chapter " data-level="4.22" data-path="configuration/dev_authorization.html">
             
                 
-                    <a href="../../../configuration/dev_authorization.html">
+                    <a href="../configuration/dev_authorization.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.22.</b>
@@ -1017,7 +1017,7 @@
         <li class="chapter " data-level="4.23" data-path="configuration/delegating_group_administration.html">
             
                 
-                    <a href="../../../configuration/delegating_group_administration.html">
+                    <a href="../configuration/delegating_group_administration.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.23.</b>
@@ -1033,7 +1033,7 @@
         <li class="chapter " data-level="4.24" data-path="configuration/pipeline_group_admin_config.html">
             
                 
-                    <a href="../../../configuration/pipeline_group_admin_config.html">
+                    <a href="../configuration/pipeline_group_admin_config.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.24.</b>
@@ -1049,7 +1049,7 @@
         <li class="chapter " data-level="4.25" data-path="configuration/dev_upload_test_report.html">
             
                 
-                    <a href="../../../configuration/dev_upload_test_report.html">
+                    <a href="../configuration/dev_upload_test_report.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.25.</b>
@@ -1065,7 +1065,7 @@
         <li class="chapter " data-level="4.26" data-path="configuration/managing_artifacts_and_reports.html">
             
                 
-                    <a href="../../../configuration/managing_artifacts_and_reports.html">
+                    <a href="../configuration/managing_artifacts_and_reports.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.26.</b>
@@ -1081,7 +1081,7 @@
         <li class="chapter " data-level="4.27" data-path="configuration/delete_artifacts.html">
             
                 
-                    <a href="../../../configuration/delete_artifacts.html">
+                    <a href="../configuration/delete_artifacts.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.27.</b>
@@ -1097,7 +1097,7 @@
         <li class="chapter " data-level="4.28" data-path="configuration/ui_testing.html">
             
                 
-                    <a href="../../../configuration/ui_testing.html">
+                    <a href="../configuration/ui_testing.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.28.</b>
@@ -1113,7 +1113,7 @@
         <li class="chapter " data-level="4.29" data-path="configuration/admin_mailhost_info.html">
             
                 
-                    <a href="../../../configuration/admin_mailhost_info.html">
+                    <a href="../configuration/admin_mailhost_info.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.29.</b>
@@ -1129,7 +1129,7 @@
         <li class="chapter " data-level="4.30" data-path="configuration/dev_notifications.html">
             
                 
-                    <a href="../../../configuration/dev_notifications.html">
+                    <a href="../configuration/dev_notifications.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.30.</b>
@@ -1145,7 +1145,7 @@
         <li class="chapter " data-level="4.31" data-path="configuration/tfs_config.html">
             
                 
-                    <a href="../../../configuration/tfs_config.html">
+                    <a href="../configuration/tfs_config.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.31.</b>
@@ -1161,7 +1161,7 @@
         <li class="chapter " data-level="4.32" data-path="configuration/configuration_reference.html">
             
                 
-                    <a href="../../../configuration/configuration_reference.html">
+                    <a href="../configuration/configuration_reference.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.32.</b>
@@ -1177,7 +1177,7 @@
         <li class="chapter " data-level="4.33" data-path="configuration/schema.html">
             
                 
-                    <a href="../../../configuration/schema.html">
+                    <a href="../configuration/schema.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.33.</b>
@@ -1198,7 +1198,7 @@
         <li class="chapter " data-level="5" data-path="advanced_usage/index.html">
             
                 
-                    <a href="../../../advanced_usage/index.html">
+                    <a href="../advanced_usage/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.</b>
@@ -1215,7 +1215,7 @@
         <li class="chapter " data-level="5.1" data-path="advanced_usage/agent_auto_register.html">
             
                 
-                    <a href="../../../advanced_usage/agent_auto_register.html">
+                    <a href="../advanced_usage/agent_auto_register.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.1.</b>
@@ -1231,7 +1231,7 @@
         <li class="chapter " data-level="5.2" data-path="advanced_usage/admin_spawn_multiple_jobs.html">
             
                 
-                    <a href="../../../advanced_usage/admin_spawn_multiple_jobs.html">
+                    <a href="../advanced_usage/admin_spawn_multiple_jobs.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.2.</b>
@@ -1247,7 +1247,7 @@
         <li class="chapter " data-level="5.3" data-path="advanced_usage/admin_install_multiple_agents.html">
             
                 
-                    <a href="../../../advanced_usage/admin_install_multiple_agents.html">
+                    <a href="../advanced_usage/admin_install_multiple_agents.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.3.</b>
@@ -1263,7 +1263,7 @@
         <li class="chapter " data-level="5.4" data-path="advanced_usage/dev_clean_up_when_cancel.html">
             
                 
-                    <a href="../../../advanced_usage/dev_clean_up_when_cancel.html">
+                    <a href="../advanced_usage/dev_clean_up_when_cancel.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.4.</b>
@@ -1279,7 +1279,7 @@
         <li class="chapter " data-level="5.5" data-path="advanced_usage/dev_conditional_task_execution.html">
             
                 
-                    <a href="../../../advanced_usage/dev_conditional_task_execution.html">
+                    <a href="../advanced_usage/dev_conditional_task_execution.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.5.</b>
@@ -1295,7 +1295,7 @@
         <li class="chapter " data-level="5.6" data-path="advanced_usage/trigger_with_options.html">
             
                 
-                    <a href="../../../advanced_usage/trigger_with_options.html">
+                    <a href="../advanced_usage/trigger_with_options.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.6.</b>
@@ -1311,7 +1311,7 @@
         <li class="chapter " data-level="5.7" data-path="advanced_usage/fan_in.html">
             
                 
-                    <a href="../../../advanced_usage/fan_in.html">
+                    <a href="../advanced_usage/fan_in.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.7.</b>
@@ -1327,7 +1327,7 @@
         <li class="chapter " data-level="5.8" data-path="advanced_usage/properties.html">
             
                 
-                    <a href="../../../advanced_usage/properties.html">
+                    <a href="../advanced_usage/properties.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.8.</b>
@@ -1343,7 +1343,7 @@
         <li class="chapter " data-level="5.9" data-path="advanced_usage/compare_pipelines.html">
             
                 
-                    <a href="../../../advanced_usage/compare_pipelines.html">
+                    <a href="../advanced_usage/compare_pipelines.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.9.</b>
@@ -1359,7 +1359,7 @@
         <li class="chapter " data-level="5.10" data-path="advanced_usage/stage_duration_chart.html">
             
                 
-                    <a href="../../../advanced_usage/stage_duration_chart.html">
+                    <a href="../advanced_usage/stage_duration_chart.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.10.</b>
@@ -1375,7 +1375,7 @@
         <li class="chapter " data-level="5.11" data-path="advanced_usage/command_repository.html">
             
                 
-                    <a href="../../../advanced_usage/command_repository.html">
+                    <a href="../advanced_usage/command_repository.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.11.</b>
@@ -1391,7 +1391,7 @@
         <li class="chapter " data-level="5.12" data-path="advanced_usage/one_click_backup.html">
             
                 
-                    <a href="../../../advanced_usage/one_click_backup.html">
+                    <a href="../advanced_usage/one_click_backup.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.12.</b>
@@ -1407,7 +1407,7 @@
         <li class="chapter " data-level="5.13" data-path="advanced_usage/other_config_options.html">
             
                 
-                    <a href="../../../advanced_usage/other_config_options.html">
+                    <a href="../advanced_usage/other_config_options.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.13.</b>
@@ -1428,7 +1428,7 @@
         <li class="chapter " data-level="6" data-path="integration/index.html">
             
                 
-                    <a href="../../../integration/index.html">
+                    <a href="../integration/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>6.</b>
@@ -1445,7 +1445,7 @@
         <li class="chapter " data-level="6.1" data-path="integration/go_integration.html">
             
                 
-                    <a href="../../../integration/go_integration.html">
+                    <a href="../integration/go_integration.html">
                         <i class="fa fa-check"></i>
                         
                             <b>6.1.</b>
@@ -1461,7 +1461,7 @@
         <li class="chapter " data-level="6.2" data-path="integration/gadgets.html">
             
                 
-                    <a href="../../../integration/gadgets.html">
+                    <a href="../integration/gadgets.html">
                         <i class="fa fa-check"></i>
                         
                             <b>6.2.</b>
@@ -1477,7 +1477,7 @@
         <li class="chapter " data-level="6.3" data-path="integration/mingle_integration.html">
             
                 
-                    <a href="../../../integration/mingle_integration.html">
+                    <a href="../integration/mingle_integration.html">
                         <i class="fa fa-check"></i>
                         
                             <b>6.3.</b>
@@ -1493,7 +1493,7 @@
         <li class="chapter " data-level="6.4" data-path="integration/mingle_in_go.html">
             
                 
-                    <a href="../../../integration/mingle_in_go.html">
+                    <a href="../integration/mingle_in_go.html">
                         <i class="fa fa-check"></i>
                         
                             <b>6.4.</b>
@@ -1509,7 +1509,7 @@
         <li class="chapter " data-level="6.5" data-path="integration/mingle_card_activity_gadget.html">
             
                 
-                    <a href="../../../integration/mingle_card_activity_gadget.html">
+                    <a href="../integration/mingle_card_activity_gadget.html">
                         <i class="fa fa-check"></i>
                         
                             <b>6.5.</b>
@@ -1530,7 +1530,7 @@
         <li class="chapter " data-level="7" data-path="api/index.html">
             
                 
-                    <a href="../../../api/index.html">
+                    <a href="../api/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>7.</b>
@@ -1547,7 +1547,7 @@
         <li class="chapter " data-level="7.1" data-path="api/go_api.html">
             
                 
-                    <a href="../../../api/go_api.html">
+                    <a href="../api/go_api.html">
                         <i class="fa fa-check"></i>
                         
                             <b>7.1.</b>
@@ -1563,7 +1563,7 @@
         <li class="chapter " data-level="7.2" data-path="api/pipeline_group_api.html">
             
                 
-                    <a href="../../../api/pipeline_group_api.html">
+                    <a href="../api/pipeline_group_api.html">
                         <i class="fa fa-check"></i>
                         
                             <b>7.2.</b>
@@ -1579,7 +1579,7 @@
         <li class="chapter " data-level="7.3" data-path="api/pipeline_api.html">
             
                 
-                    <a href="../../../api/pipeline_api.html">
+                    <a href="../api/pipeline_api.html">
                         <i class="fa fa-check"></i>
                         
                             <b>7.3.</b>
@@ -1595,7 +1595,7 @@
         <li class="chapter " data-level="7.4" data-path="api/stages_api.html">
             
                 
-                    <a href="../../../api/stages_api.html">
+                    <a href="../api/stages_api.html">
                         <i class="fa fa-check"></i>
                         
                             <b>7.4.</b>
@@ -1611,7 +1611,7 @@
         <li class="chapter " data-level="7.5" data-path="api/job_api.html">
             
                 
-                    <a href="../../../api/job_api.html">
+                    <a href="../api/job_api.html">
                         <i class="fa fa-check"></i>
                         
                             <b>7.5.</b>
@@ -1627,7 +1627,7 @@
         <li class="chapter " data-level="7.6" data-path="api/agent_api.html">
             
                 
-                    <a href="../../../api/agent_api.html">
+                    <a href="../api/agent_api.html">
                         <i class="fa fa-check"></i>
                         
                             <b>7.6.</b>
@@ -1643,7 +1643,7 @@
         <li class="chapter " data-level="7.7" data-path="api/materials_api.html">
             
                 
-                    <a href="../../../api/materials_api.html">
+                    <a href="../api/materials_api.html">
                         <i class="fa fa-check"></i>
                         
                             <b>7.7.</b>
@@ -1659,7 +1659,7 @@
         <li class="chapter " data-level="7.8" data-path="api/configuration_api.html">
             
                 
-                    <a href="../../../api/configuration_api.html">
+                    <a href="../api/configuration_api.html">
                         <i class="fa fa-check"></i>
                         
                             <b>7.8.</b>
@@ -1675,7 +1675,7 @@
         <li class="chapter " data-level="7.9" data-path="api/artifacts_api.html">
             
                 
-                    <a href="../../../api/artifacts_api.html">
+                    <a href="../api/artifacts_api.html">
                         <i class="fa fa-check"></i>
                         
                             <b>7.9.</b>
@@ -1691,7 +1691,7 @@
         <li class="chapter " data-level="7.10" data-path="api/users_api.html">
             
                 
-                    <a href="../../../api/users_api.html">
+                    <a href="../api/users_api.html">
                         <i class="fa fa-check"></i>
                         
                             <b>7.10.</b>
@@ -1707,7 +1707,7 @@
         <li class="chapter " data-level="7.11" data-path="api/backup_api.html">
             
                 
-                    <a href="../../../api/backup_api.html">
+                    <a href="../api/backup_api.html">
                         <i class="fa fa-check"></i>
                         
                             <b>7.11.</b>
@@ -1723,7 +1723,7 @@
         <li class="chapter " data-level="7.12" data-path="api/properties_api.html">
             
                 
-                    <a href="../../../api/properties_api.html">
+                    <a href="../api/properties_api.html">
                         <i class="fa fa-check"></i>
                         
                             <b>7.12.</b>
@@ -1739,7 +1739,7 @@
         <li class="chapter " data-level="7.13" data-path="api/feeds_api.html">
             
                 
-                    <a href="../../../api/feeds_api.html">
+                    <a href="../api/feeds_api.html">
                         <i class="fa fa-check"></i>
                         
                             <b>7.13.</b>
@@ -1755,7 +1755,7 @@
         <li class="chapter " data-level="7.14" data-path="api/command_repo_api.html">
             
                 
-                    <a href="../../../api/command_repo_api.html">
+                    <a href="../api/command_repo_api.html">
                         <i class="fa fa-check"></i>
                         
                             <b>7.14.</b>
@@ -1776,7 +1776,7 @@
         <li class="chapter " data-level="8" data-path="extension_points/index.html">
             
                 
-                    <a href="../../../extension_points/index.html">
+                    <a href="../extension_points/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>8.</b>
@@ -1793,7 +1793,7 @@
         <li class="chapter " data-level="8.1" data-path="extension_points/plugin_user_guide.html">
             
                 
-                    <a href="../../../extension_points/plugin_user_guide.html">
+                    <a href="../extension_points/plugin_user_guide.html">
                         <i class="fa fa-check"></i>
                         
                             <b>8.1.</b>
@@ -1809,7 +1809,7 @@
         <li class="chapter " data-level="8.2" data-path="extension_points/package_repository_extension.html">
             
                 
-                    <a href="../../../extension_points/package_repository_extension.html">
+                    <a href="../extension_points/package_repository_extension.html">
                         <i class="fa fa-check"></i>
                         
                             <b>8.2.</b>
@@ -1825,7 +1825,7 @@
         <li class="chapter " data-level="8.3" data-path="extension_points/yum_repository_poller.html">
             
                 
-                    <a href="../../../extension_points/yum_repository_poller.html">
+                    <a href="../extension_points/yum_repository_poller.html">
                         <i class="fa fa-check"></i>
                         
                             <b>8.3.</b>
@@ -1841,7 +1841,7 @@
         <li class="chapter " data-level="8.4" data-path="extension_points/scm_extension.html">
             
                 
-                    <a href="../../../extension_points/scm_extension.html">
+                    <a href="../extension_points/scm_extension.html">
                         <i class="fa fa-check"></i>
                         
                             <b>8.4.</b>
@@ -1857,7 +1857,7 @@
         <li class="chapter " data-level="8.5" data-path="extension_points/task_extension.html">
             
                 
-                    <a href="../../../extension_points/task_extension.html">
+                    <a href="../extension_points/task_extension.html">
                         <i class="fa fa-check"></i>
                         
                             <b>8.5.</b>
@@ -1873,7 +1873,7 @@
         <li class="chapter " data-level="8.6" data-path="extension_points/notification_extension.html">
             
                 
-                    <a href="../../../extension_points/notification_extension.html">
+                    <a href="../extension_points/notification_extension.html">
                         <i class="fa fa-check"></i>
                         
                             <b>8.6.</b>
@@ -1894,7 +1894,7 @@
         <li class="chapter " data-level="9" data-path="faq/index.html">
             
                 
-                    <a href="../../../faq/index.html">
+                    <a href="../faq/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.</b>
@@ -1911,7 +1911,7 @@
         <li class="chapter " data-level="9.1" data-path="faq/ordering_of_pipelines.html">
             
                 
-                    <a href="../../../faq/ordering_of_pipelines.html">
+                    <a href="../faq/ordering_of_pipelines.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.1.</b>
@@ -1927,7 +1927,7 @@
         <li class="chapter " data-level="9.2" data-path="faq/stage_old_config.html">
             
                 
-                    <a href="../../../faq/stage_old_config.html">
+                    <a href="../faq/stage_old_config.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.2.</b>
@@ -1943,7 +1943,7 @@
         <li class="chapter " data-level="9.3" data-path="faq/concurrent_config_modifications.html">
             
                 
-                    <a href="../../../faq/concurrent_config_modifications.html">
+                    <a href="../faq/concurrent_config_modifications.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.3.</b>
@@ -1959,7 +1959,7 @@
         <li class="chapter " data-level="9.4" data-path="faq/dev_understand_why_build_broken.html">
             
                 
-                    <a href="../../../faq/dev_understand_why_build_broken.html">
+                    <a href="../faq/dev_understand_why_build_broken.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.4.</b>
@@ -1975,7 +1975,7 @@
         <li class="chapter " data-level="9.5" data-path="faq/dev_see_artifact_as_tab.html">
             
                 
-                    <a href="../../../faq/dev_see_artifact_as_tab.html">
+                    <a href="../faq/dev_see_artifact_as_tab.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.5.</b>
@@ -1991,7 +1991,7 @@
         <li class="chapter " data-level="9.6" data-path="faq/dev_save_properties.html">
             
                 
-                    <a href="../../../faq/dev_save_properties.html">
+                    <a href="../faq/dev_save_properties.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.6.</b>
@@ -2007,7 +2007,7 @@
         <li class="chapter " data-level="9.7" data-path="faq/dev_use_current_revision_in_build.html">
             
                 
-                    <a href="../../../faq/dev_use_current_revision_in_build.html">
+                    <a href="../faq/dev_use_current_revision_in_build.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.7.</b>
@@ -2023,7 +2023,7 @@
         <li class="chapter " data-level="9.8" data-path="faq/rm_deploy_to_environment.html">
             
                 
-                    <a href="../../../faq/rm_deploy_to_environment.html">
+                    <a href="../faq/rm_deploy_to_environment.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.8.</b>
@@ -2039,7 +2039,7 @@
         <li class="chapter " data-level="9.9" data-path="faq/tester_what_has_changed.html">
             
                 
-                    <a href="../../../faq/tester_what_has_changed.html">
+                    <a href="../faq/tester_what_has_changed.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.9.</b>
@@ -2055,7 +2055,7 @@
         <li class="chapter " data-level="9.10" data-path="faq/dependency_management.html">
             
                 
-                    <a href="../../../faq/dependency_management.html">
+                    <a href="../faq/dependency_management.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.10.</b>
@@ -2071,7 +2071,7 @@
         <li class="chapter " data-level="9.11" data-path="faq/rm_what_is_deployed.html">
             
                 
-                    <a href="../../../faq/rm_what_is_deployed.html">
+                    <a href="../faq/rm_what_is_deployed.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.11.</b>
@@ -2087,7 +2087,7 @@
         <li class="chapter " data-level="9.12" data-path="faq/deploy_a_specific_build_to_an_environment.html">
             
                 
-                    <a href="../../../faq/deploy_a_specific_build_to_an_environment.html">
+                    <a href="../faq/deploy_a_specific_build_to_an_environment.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.12.</b>
@@ -2103,7 +2103,7 @@
         <li class="chapter " data-level="9.13" data-path="faq/agent_guid_issue.html">
             
                 
-                    <a href="../../../faq/agent_guid_issue.html">
+                    <a href="../faq/agent_guid_issue.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.13.</b>
@@ -2119,7 +2119,7 @@
         <li class="chapter " data-level="9.14" data-path="faq/oauth_overview.html">
             
                 
-                    <a href="../../../faq/oauth_overview.html">
+                    <a href="../faq/oauth_overview.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.14.</b>
@@ -2135,7 +2135,7 @@
         <li class="chapter " data-level="9.15" data-path="faq/what_is_oauth.html">
             
                 
-                    <a href="../../../faq/what_is_oauth.html">
+                    <a href="../faq/what_is_oauth.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.15.</b>
@@ -2151,7 +2151,7 @@
         <li class="chapter " data-level="9.16" data-path="faq/what_is_opensocial.html">
             
                 
-                    <a href="../../../faq/what_is_opensocial.html">
+                    <a href="../faq/what_is_opensocial.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.16.</b>
@@ -2167,7 +2167,7 @@
         <li class="chapter " data-level="9.17" data-path="faq/job_rerun.html">
             
                 
-                    <a href="../../../faq/job_rerun.html">
+                    <a href="../faq/job_rerun.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.17.</b>
@@ -2183,7 +2183,7 @@
         <li class="chapter " data-level="9.18" data-path="faq/material_update_hung.html">
             
                 
-                    <a href="../../../faq/material_update_hung.html">
+                    <a href="../faq/material_update_hung.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.18.</b>
@@ -2199,7 +2199,7 @@
         <li class="chapter " data-level="9.19" data-path="faq/artifact_integrity.html">
             
                 
-                    <a href="../../../faq/artifact_integrity.html">
+                    <a href="../faq/artifact_integrity.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.19.</b>
@@ -2215,7 +2215,7 @@
         <li class="chapter " data-level="9.20" data-path="faq/notifications_page.html">
             
                 
-                    <a href="../../../faq/notifications_page.html">
+                    <a href="../faq/notifications_page.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.20.</b>
@@ -2231,7 +2231,7 @@
         <li class="chapter " data-level="9.21" data-path="faq/admin_out_of_disk_space.html">
             
                 
-                    <a href="../../../faq/admin_out_of_disk_space.html">
+                    <a href="../faq/admin_out_of_disk_space.html">
                         <i class="fa fa-check"></i>
                         
                             <b>9.21.</b>
@@ -2252,7 +2252,7 @@
         <li class="chapter " data-level="10" data-path="beta/index.html">
             
                 
-                    <a href="../../../beta/index.html">
+                    <a href="../beta/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>10.</b>
@@ -2269,7 +2269,7 @@
         <li class="chapter " data-level="10.1" data-path="beta/comment_on_pipeline_run.html">
             
                 
-                    <a href="../../../beta/comment_on_pipeline_run.html">
+                    <a href="../beta/comment_on_pipeline_run.html">
                         <i class="fa fa-check"></i>
                         
                             <b>10.1.</b>
@@ -2285,7 +2285,7 @@
         <li class="chapter " data-level="10.2" data-path="beta/plugin_upload.html">
             
                 
-                    <a href="../../../beta/plugin_upload.html">
+                    <a href="../beta/plugin_upload.html">
                         <i class="fa fa-check"></i>
                         
                             <b>10.2.</b>
@@ -2306,7 +2306,7 @@
         <li class="chapter " data-level="11" data-path="release_history/index.html">
             
                 
-                    <a href="../../../release_history/index.html">
+                    <a href="../release_history/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>11.</b>
@@ -2323,7 +2323,7 @@
         <li class="chapter " data-level="11.1" data-path="release_history/whats_new_in_go.html">
             
                 
-                    <a href="../../../release_history/whats_new_in_go.html">
+                    <a href="../release_history/whats_new_in_go.html">
                         <i class="fa fa-check"></i>
                         
                             <b>11.1.</b>
@@ -2386,7 +2386,7 @@
 
     </div>
 
-    <a href="https://github.com/gocd/documentation/edit/master/user/installation/install/server/solaris.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit This Page</a><!-- Actions Right -->
+    <a href="https://github.com/gocd/documentation/edit/master/user/installation/ssl_tls_config.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit This Page</a><!-- Actions Right -->
     
     <div class="dropdown pull-right">
         <a href="#" class="btn toggle-dropdown" aria-label="Toggle share dropdown"><i class="fa fa-share-alt"></i>
@@ -2421,7 +2421,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../../" >Go User Documentation</a>
+        <a href="../" >Go User Documentation</a>
     </h1>
 </div>
 
@@ -2429,65 +2429,79 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_135">
+                    <section class="normal" id="section-gitbook_103">
                     
-                        <h1 id="installing-go-server-on-solaris"><a name="installing-go-server-on-solaris" class="plugin-anchor" href="#installing-go-server-on-solaris"><span class="fa fa-link"></span></a>Installing Go server on Solaris</h1>
-<!-- toc -->
+                        <h1 id="configuring-ssltls"><a name="configuring-ssltls" class="plugin-anchor" href="#configuring-ssltls"><span class="fa fa-link"></span></a>Configuring SSL/TLS</h1>
+<p>You can choose which ciphers and SSL/TLS protocols Go will use for communication with agents and users (and their browsers)</p>
+<h2 id="configuring-go-server"><a name="configuring-go-server" class="plugin-anchor" href="#configuring-go-server"><span class="fa fa-link"></span></a>Configuring Go server</h2>
+<p><strong>NOTE:</strong> These settings will not apply if you are running Go with Jetty 6.</p>
+<p>Following system properties are exposed to override the default SSL/TLS configuration for Go server: </p>
+<table>
+<thead>
+<tr>
+<th><em>Key</em></th>
+<th style="text-align:center"><em>Default value</em></th>
+<th><em>Description</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>go.ssl.ciphers.include</code></td>
+<td style="text-align:center">null</td>
+<td>A comma-separated list of cipher suite names (exact or regular expression) to be enabled</td>
+</tr>
+<tr>
+<td><code>go.ssl.ciphers.exclude</code></td>
+<td style="text-align:center">null</td>
+<td>A comma-separated list of cipher suite names (exact or regular expression) to be disabled</td>
+</tr>
+<tr>
+<td><code>go.ssl.protocols.include</code></td>
+<td style="text-align:center">null</td>
+<td>A comma-separated list of SSL/TLS protocols to be enabled</td>
+</tr>
+<tr>
+<td><code>go.ssl.protocols.exclude</code></td>
+<td style="text-align:center">null</td>
+<td>A comma-separated list of SSL/TLS protocols to be disabled</td>
+</tr>
+<tr>
+<td><code>go.ssl.renegotiation.allowed</code></td>
+<td style="text-align:center">Y</td>
+<td>Flag to allow/dis-allow TLS renegotiation, accepts - <code>Y</code> and <code>N</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="setting-it-up"><a name="setting-it-up" class="plugin-anchor" href="#setting-it-up"><span class="fa fa-link"></span></a>Setting it up:</h3>
 <ul>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#managing-the-go-server-service-on-solaris">Managing the go-server service on solaris</a></li>
-<li><a href="#configuring-the-go-server">Configuring the go-server</a></li>
-<li><a href="#location-of-go-server-files">Location of go server files</a></li>
-<li><a href="#location-of-go-server-files">Location of go server files</a></li>
-<li><a href="#copying-existing-config-to-a-new-go-server-instance">Copying existing config to a new Go-Server instance</a></li>
-</ul>
-<!-- toc stop -->
-<h2 id="installation"><a name="installation" class="plugin-anchor" href="#installation"><span class="fa fa-link"></span></a>Installation</h2>
-<p>You must be logged in as root, or use <code>sudo</code> or <code>pfexec</code>, to install Go on Solaris. Go server also requires that Oracle or Open JRE or JDK - version 7 or above - is installed.</p>
-<p>The installer will create a user called <code>go</code> if one does not exist on the machine. The home directory will be set to <code>/var/go</code>. If you want to create your own <code>go</code> user, make sure you do it before you install the Go server.</p>
-<p>After you have downloaded the go-server package, run the following commands -</p>
-<pre><code class="lang-bash">$ gzip <span class="hljs-operator">-d</span> go-server-<span class="hljs-variable">${version}</span>-solaris.gz
-$ pkgadd <span class="hljs-operator">-d</span> go-server-<span class="hljs-variable">${version}</span>-solaris
+<li><p>Linux</p>
+<p>  This can be configured through <code>/etc/default/go-server</code>, such as:</p>
+<pre><code class="lang-shell">export GO_SERVER_SYSTEM_PROPERTIES=&quot;-Dgo.ssl.ciphers.include=&apos;TLS_ECDHE.*&apos; -Dgo.ssl.ciphers.exclude=&apos;.*NULL.*,.*RC4.*&apos; -Dgo.ssl.protocols.include=&apos;TLSv1.2&apos; -Dgo.ssl.protocols.exclude=&apos;SSLv3&apos; -Dgo.ssl.renegotiation.allowed=&apos;N&apos;&quot;
 </code></pre>
-<h2 id="managing-the-go-server-service-on-solaris"><a name="managing-the-go-server-service-on-solaris" class="plugin-anchor" href="#managing-the-go-server-service-on-solaris"><span class="fa fa-link"></span></a>Managing the go-server service on solaris</h2>
-<p>To manage the go-server service, you may use the following commands -</p>
-<ul>
-<li>Check Go server&apos;: <code>svcs go/server</code></li>
-<li>Start Go server : <code>svcadm enable -s go/server</code></li>
-<li>Stop Go server : <code>svcadm disable -s go/server</code></li>
-</ul>
-<h2 id="configuring-the-go-server"><a name="configuring-the-go-server" class="plugin-anchor" href="#configuring-the-go-server"><span class="fa fa-link"></span></a>Configuring the go-server</h2>
-<p>After installing the go-server service, you must first configure the service with the hostname (or IP address) of your Go server, in order to do this -</p>
-<ol>
-<li>Open <code>/etc/default/go-server</code> in your favourite text editor.</li>
-<li>Change the line <code>GO_SERVER=127.0.0.1</code> to the hostname (or IP address) of your Go server.</li>
-<li>Save the file and exit your editor.</li>
-</ol>
-<h2 id="location-of-go-server-files"><a name="location-of-go-server-files" class="plugin-anchor" href="#location-of-go-server-files"><span class="fa fa-link"></span></a>Location of go server files</h2>
-<p>The go server installs the following files on your filesystem</p>
-<pre><code class="lang-bash">/var/lib/go-server    <span class="hljs-comment">#contains the binaries</span>
-/usr/share/go-server  <span class="hljs-comment">#contains the start script</span>
-/var/log/go-server    <span class="hljs-comment">#contains the server logs</span>
+</li>
+<li><p>Windows</p>
+<p>  Follow the <a href="http://www.go.cd/documentation/user/current/installation/install/server/windows.html#overriding-default-startup-arguments-and-environment" target="_blank">instructions</a> to add a new property for Go server setup on windows, such as:</p>
+<pre><code class="lang-shell">wrapper.java.additional.17=&quot;-Dgo.ssl.ciphers.include=&apos;TLS_ECDHE.*&apos; -Dgo.ssl.ciphers.exclude=&apos;.*NULL.*,.*RC4.*&apos; -Dgo.ssl.protocols.include=&apos;TLSv1.2&apos; -Dgo.ssl.protocols.exclude=&apos;SSLv3&apos; -Dgo.ssl.renegotiation.allowed=&apos;N&apos;&quot;
 </code></pre>
-<h2 id="location-of-go-server-files"><a name="location-of-go-server-files" class="plugin-anchor" href="#location-of-go-server-files"><span class="fa fa-link"></span></a>Location of go server files</h2>
-<p>The go server installs the following files on your filesystem</p>
-<pre><code>/var/lib/go-server   #contains the binaries and database
-/etc/go              #contains the configuration files
-/var/log/go-server   #contains the server logs
-/usr/share/go-server #contains the start script
-</code></pre><h2 id="copying-existing-config-to-a-new-go-server-instance"><a name="copying-existing-config-to-a-new-go-server-instance" class="plugin-anchor" href="#copying-existing-config-to-a-new-go-server-instance"><span class="fa fa-link"></span></a>Copying existing config to a new Go-Server instance</h2>
-<p>You can replicate a go-server with all the pipeline, stage, job, tasks and materials definitions/configuration intact.</p>
-<p>To do this Administrator should copy <code>cruise-config.xml</code> from the config directory to the new server and clear <code>serverId</code> attribute of <code>server</code> tag.</p>
-<blockquote>
-<p><strong>Note:</strong> Copying just the <code>cruise-config.xml</code> file will not migrate the historical pipeline data and artifacts. Please see <a href="../../../advanced_usage/one_click_backup.html">backup go server</a> to backup and restore an existing go server.</p>
-</blockquote>
-<p><strong>Also see...</strong></p>
-<ul>
-<li><a href="installing_go_agent.html">Installing Go agents</a></li>
-<li><a href="configuring_server_details.html">Configuring server details</a></li>
-<li><a href="configure_proxy.html">Configure Go to work with a proxy</a></li>
-<li><a href="../../../advanced_usage/one_click_backup.html">Backing up a go server</a></li>
+<p>  Restart server for the changes to take effect.</p>
+</li>
 </ul>
+<h2 id="configuring-go-agent"><a name="configuring-go-agent" class="plugin-anchor" href="#configuring-go-agent"><span class="fa fa-link"></span></a>Configuring Go agent</h2>
+<p>The default transport protocol that agent uses to communicate with Go server is <em>TLSv1.2</em>. This can be overridden by configuring property <code>go.ssl.agent.protocol</code> to a suitable value based on your requirements. If your JRE does not support TLSv1.2, set this property as follows:</p>
+<ul>
+<li><p>Linux</p>
+<p>  This can be configured through <code>/etc/default/go-agent</code>, such as:</p>
+<pre><code class="lang-shell">export GO_AGENT_SYSTEM_PROPERTIES=&quot;-Dgo.ssl.agent.protocol=&apos;SSL&apos;&quot;
+</code></pre>
+</li>
+<li><p>Windows</p>
+<p>  Follow the <a href="http://www.go.cd/documentation/user/current/installation/install/agent/windows.html#overriding-default-startup-arguments-and-environment" target="_blank">instructions</a> to add a new property for Go agents setup on windows, such as:</p>
+<pre><code class="lang-shell">wrapper.java.additional.17=&quot;-Dgo.ssl.agent.protocol=&apos;SSL&apos;&quot;
+</code></pre>
+<p>  Restart agent for the changes to take effect.</p>
+</li>
+</ul>
+<p>Read <a href="http://www.eclipse.org/jetty/documentation/current/configuring-ssl.html" target="_blank">jetty&apos;s documentation</a> to know more about SSL/TLS configuration.</p>
 
                     
                     </section>
@@ -2498,19 +2512,19 @@ $ pkgadd <span class="hljs-operator">-d</span> go-server-<span class="hljs-varia
         </div>
 
         
-        <a href="../../../installation/install/server/osx.html" class="navigation navigation-prev " aria-label="Previous page: Mac OS X"><i class="fa fa-angle-left"></i></a>
+        <a href="../installation/configure_proxy.html" class="navigation navigation-prev " aria-label="Previous page: Configure a Proxy"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../../installation/install/server/zip.html" class="navigation navigation-next " aria-label="Next page: Generic Zip"><i class="fa fa-angle-right"></i></a>
+        <a href="../installation/performance_tuning.html" class="navigation navigation-next " aria-label="Next page: Performance Tuning"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
 
         
-<script src="../../../gitbook/app.js"></script>
+<script src="../gitbook/app.js"></script>
 
     
-    <script src="../../../gitbook/plugins/gitbook-plugin-ga/plugin.js"></script>
+    <script src="../gitbook/plugins/gitbook-plugin-ga/plugin.js"></script>
     
 
     
@@ -2518,7 +2532,7 @@ $ pkgadd <span class="hljs-operator">-d</span> go-server-<span class="hljs-varia
     
 
     
-    <script src="../../../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
     
 
 <script>
