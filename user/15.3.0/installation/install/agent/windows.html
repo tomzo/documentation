@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="3.3.2" data-basepath="../../.." data-revision="1436892575341">
+    <div class="book" data-level="3.3.2" data-basepath="../../.." data-revision="1437404161813">
     
 
 <div class="book-summary">
@@ -2447,7 +2447,7 @@
 <p>You must be logged in as a user with Admin privileges to install the Go agent on Windows.</p>
 <ol>
 <li>Download a version of go-agent from the <a href="http://www.go.cd/download/" target="_blank">downloads page</a>.</li>
-<li>Double-click the <code>go-agent-${version}.exe</code> installer file and follow the prompts to install Go.</li>
+<li>Double-click the <code>go-agent-${version}-setup.exe</code> installer file and follow the prompts to install Go.</li>
 <li>During installation you will be asked to select a root path for your Go agent. In addition to being the agent installation directory, this directory will contain also contain a directory where your source code is checked out and built.</li>
 <li>You will next be prompted to choose the bundled JRE or specify the location of JRE (or JDK) installed on your system.</li>
 <li>After installing the files, the installer will prompt you for the hostname or IP address of the Go server. Leaving this blank it will default to <code>localhost</code>.</li>
@@ -2455,7 +2455,7 @@
 </ol>
 <h1 id="silent-headless-installation"><a name="silent-headless-installation" class="plugin-anchor" href="#silent-headless-installation"><span class="fa fa-link"></span></a>Silent (Headless) Installation</h1>
 <p>You may use this method if you would like to script the installation of the go agent.</p>
-<pre><code>go-agent-${version}.exe /S /SERVERIP=&lt;SERVERIP&gt; /GO_AGENT_JAVA_HOME=&lt;PATH_TO_JAVA_HOME&gt; /D=&lt;PATH_TO_AGENT_DIRECTORY&gt;
+<pre><code>go-agent-${version}-setup.exe /S /SERVERIP=&lt;SERVERIP&gt; /GO_AGENT_JAVA_HOME=&lt;PATH_TO_JAVA_HOME&gt; /D=&lt;PATH_TO_AGENT_DIRECTORY&gt;
 </code></pre><table>
 <thead>
 <tr>
@@ -2482,17 +2482,20 @@
 </tr>
 </tbody>
 </table>
-<p>For example, <code>C:\&gt; go-agent-12.3.0-2000-setup.exe /S/SERVERIP=10.12.20.47 /D=C:\go\agent</code></p>
-<p>If User Access Control feature is enabled on your Windows system, it needs to be turned off for silent installation to work</p>
+<p>For example:</p>
+<pre><code>C:\&gt; go-agent-12.3.0-2000-setup.exe /S /SERVERIP=10.12.20.47 /D=C:\go\agent
+</code></pre><p>If User Access Control feature is enabled on your Windows system, it needs to be turned off for silent installation to work</p>
 <p>If you are using the silent installation to upgrade an agent, you should not specify the Installation-Directory option.</p>
 <h2 id="overriding-default-startup-arguments-and-environment"><a name="overriding-default-startup-arguments-and-environment" class="plugin-anchor" href="#overriding-default-startup-arguments-and-environment"><span class="fa fa-link"></span></a>Overriding default startup arguments and environment</h2>
 <ul>
 <li>Create a file named <code>config/wrapper-properties.conf</code> where you installed the agent</li>
 <li>Copy any specific properties, or add new properties from <code>config/wrapper-agent.conf</code> into this file. Be sure to increment the property index if you&apos;re adding any new properties.</li>
-<li>For e.g. to override the loglevel to debug, override <code>wrapper.console.loglevel</code> -<pre><code># config/wrapper-properties.conf
+<li><p>For e.g. to override the loglevel to debug, override <code>wrapper.console.loglevel</code> -  </p>
+<pre><code># config/wrapper-properties.conf
 wrapper.console.loglevel=DEBUG
 </code></pre></li>
-<li>To append additional JVM args to the agent<pre><code># config/wrapper-properties.conf
+<li><p>To append additional JVM args to the agent  </p>
+<pre><code># config/wrapper-properties.conf
 # since the last &quot;wrapper.java.additional&quot; index is 2, we use the next available index.
 wrapper.java.additional.3=-Xmx512mb
 </code></pre></li>
