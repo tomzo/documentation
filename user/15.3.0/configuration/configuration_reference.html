@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="4.32" data-basepath=".." data-revision="1438841347157">
+    <div class="book" data-level="4.32" data-basepath=".." data-revision="1438841899878">
     
 
 <div class="book-summary">
@@ -4958,12 +4958,15 @@ improving or getting worse.</p>
 <tr>
 <td>src</td>
 <td>Yes</td>
-<td>The xml file containing the data that you want to use to create the property, and it isn&apos;t allowed to start from &apos;.&apos;</td>
+<td>The xml file containing the data that you want to use to create the property, and it isn&apos;t allowed to start from &apos;.&apos; Properties are set on the Agent at the end of the build and does not need to be an artifact that will be uploaded to the server.</td>
+</tr>
+<tr>
+<td>xpath</td>
+<td>Yes</td>
+<td>The XPath that will be used to create the property.</td>
 </tr>
 </tbody>
 </table>
-<p>Properties are set on the Agent at the end of the build and does not need to be an artifact that will be uploaded to the server. |
-| xpath | Yes | The XPath that will be used to create the property. |</p>
 <h3 id="example"><a name="example" class="plugin-anchor" href="#example"><span class="fa fa-link"></span></a>Example:</h3>
 <p>This is a simple example to parse the errors and failures count from a single junit file and turn them into properties.</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">job</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;junit&quot;</span>&gt;</span>
