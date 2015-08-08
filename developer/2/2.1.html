@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="2.1" data-basepath=".." data-revision="1438842241554">
+    <div class="book" data-level="2.1" data-basepath=".." data-revision="1439033141583">
     
 
 <div class="book-summary">
@@ -3327,7 +3327,43 @@ Use classpath of module: development-server-new-jruby
 Main Class: com.thoughtworks.go.agent.DevelopmentAgent
 Working directory: &lt;project-directory&gt;/agent
 Use classpath of module: development-agent
+</code></pre><h3 id="216-running-rspec-tests-via-intellij-idea"><a name="216-running-rspec-tests-via-intellij-idea" class="plugin-anchor" href="#216-running-rspec-tests-via-intellij-idea"><span class="fa fa-link"></span></a>2.1.6 Running rspec tests via IntelliJ IDEA</h3>
+<p>You need to make sure that IDEA knows about the classpath to run Go.</p>
+<ul>
+<li>Run the rake task to create system properties file for IDEA<pre><code class="lang-bash">~/projects/go $ rake --rakefile server/run_rspec_tests.rake <span class="hljs-keyword">export</span>-system-properties-file-for-idea
 </code></pre>
+</li>
+<li>Configure the project and set the JRuby SDK<ol>
+<li>Right-click the root of the project in the navigation bar and click <code>Open Module Settings</code></li>
+<li>Open the <code>Facets</code> tab</li>
+<li>Click the + sign and create a <code>JRuby</code> facet, select the <code>server</code> module as the target
+<img src="images/idea-create-jruby-facet.png" alt=""></li>
+<li>Click on your newly created <code>JRuby</code> facet and click on the <code>...</code> button next to SDK dropdown
+<img src="images/idea-create-jruby-facet-select-sdk.png" alt=""></li>
+<li>Click the + sign and select <code>JRuby SDK</code>, select <code>New local...</code> in the popup 
+<img src="images/idea-create-jruby-facet-create-sdk.png" alt=""></li>
+<li>Select the <code>jruby</code> executable <code>~/projects/go/tools/rails/bin/jruby</code> and click <code>OK</code>. </li>
+<li>The selection will close and it&apos;ll take a while for IDEA to create a new SDK in the sidebar. 
+Select it and click <code>OK</code>.</li>
+<li>With your new SDK configured it&apos;s time to add a <code>JRuby on Rails</code> facet,
+click on the + sign and select <code>JRuby on Rails</code> and choose the <code>JRuby</code>
+facet for <code>server</code> that you just finished configuring</li>
+<li>Click <code>OK</code> to exit the module settings configuration</li>
+</ol>
+</li>
+<li>Configure the default RSpec run configuration<ol>
+<li>Open <code>Run -&gt; Edit configurations...</code></li>
+<li>Open the <code>Defaults</code> section and select <code>RSpec</code> in the listing</li>
+<li>Check the <code>Use custom RSpec runner script</code> checkbox</li>
+<li>Select <code>go.rspec</code> from <code>~/projects/go/tools/bin/go.rspec</code></li>
+<li>Set the working directory to <code>~/projects/go/server/webapp/WEB-INF/rails.new</code>
+<img src="images/idea-configure-rspec.png" alt=""></li>
+<li>Click <code>Apply</code> to save</li>
+<li>Open a spec file and run it <code>Run -&gt; Run &apos;somefile_spec.rb&apos;</code>, or <code>Ctrl+Shift+F10</code></li>
+</ol>
+</li>
+</ul>
+
                     
                     </section>
                 

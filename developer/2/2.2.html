@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="2.2" data-basepath=".." data-revision="1438842241554">
+    <div class="book" data-level="2.2" data-basepath=".." data-revision="1439033141583">
     
 
 <div class="book-summary">
@@ -3271,11 +3271,16 @@ So that I can demonstrate how to make changes in Go.</p>
 </code></pre><ul>
 <li><p>Run spec to assert that it fails.</p>
 <ul>
-<li>Start spec server<pre><code class="lang-bash">~/projects/go $ RAILS_ENV=test b cruise:rails:spec_server test=no
+<li>Recompile without precompiling the assets, run this if you&apos;ve changed any Java files<pre><code class="lang-bash">~/projects/go $ SKIP_WAR=Y ./bn clean cruise:prepare
 </code></pre>
 </li>
-<li>Run spec<pre><code class="lang-bash">~/projects/go $ <span class="hljs-built_in">cd</span> server/webapp/WEB-INF/rails
-____INF/rails $ ~/projects/go/tools/jruby/bin/jruby script/spec ~/projects/go/server/webapp/WEB-INF/rails/spec/views/shared/_application_nav_html_spec.rb -X
+<li>Run the spec file<pre><code class="lang-bash">~/projects/go $ rake --rakefile server/run_rspec_tests.rake <span class="hljs-string">&apos;spec_file[spec/views/shared/_application_nav_html_spec.rb]&apos;</span>
+</code></pre>
+</li>
+<li>To run all the spec files do:<pre><code class="lang-bash">~/projects/go $ rake --rakefile server/run_rspec_tests.rake spec
+</code></pre>
+</li>
+<li>To run a specific module/folder of files do:<pre><code class="lang-bash">~/projects/go $ spec_module=<span class="hljs-string">&apos;**/views/shared&apos;</span> rake --rakefile server/run_rspec_tests.rake spec
 </code></pre>
 </li>
 </ul>
