@@ -1,0 +1,1 @@
+var restParam=require("../function/restParam"),unzip=require("./unzip"),zip=restParam(unzip);module.exports=zip;

@@ -1,0 +1,1 @@
+var createFlow=require("../internal/createFlow"),flowRight=createFlow(!0);module.exports=flowRight;

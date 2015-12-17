@@ -1,0 +1,1 @@
+var createPadDir=require("../internal/createPadDir"),padLeft=createPadDir();module.exports=padLeft;

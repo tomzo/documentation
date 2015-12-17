@@ -1,0 +1,1 @@
+var baseForOwnRight=require("../internal/baseForOwnRight"),createFindKey=require("../internal/createFindKey"),findLastKey=createFindKey(baseForOwnRight);module.exports=findLastKey;

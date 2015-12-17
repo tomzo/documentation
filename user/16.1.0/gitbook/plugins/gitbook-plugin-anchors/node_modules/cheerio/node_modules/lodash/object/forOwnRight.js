@@ -1,0 +1,1 @@
+var baseForOwnRight=require("../internal/baseForOwnRight"),createForOwn=require("../internal/createForOwn"),forOwnRight=createForOwn(baseForOwnRight);module.exports=forOwnRight;

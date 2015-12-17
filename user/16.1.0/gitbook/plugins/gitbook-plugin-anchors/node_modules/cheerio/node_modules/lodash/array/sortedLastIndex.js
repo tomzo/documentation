@@ -1,0 +1,1 @@
+var createSortedIndex=require("../internal/createSortedIndex"),sortedLastIndex=createSortedIndex(!0);module.exports=sortedLastIndex;

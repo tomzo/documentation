@@ -1,0 +1,1 @@
+function wrapperValue(){return baseWrapperValue(this.__wrapped__,this.__actions__)}var baseWrapperValue=require("../internal/baseWrapperValue");module.exports=wrapperValue;

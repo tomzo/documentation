@@ -1,0 +1,1 @@
+var createPartial=require("../internal/createPartial"),PARTIAL_RIGHT_FLAG=64,partialRight=createPartial(PARTIAL_RIGHT_FLAG);partialRight.placeholder={},module.exports=partialRight;

@@ -1,0 +1,1 @@
+var arrayReduceRight=require("../internal/arrayReduceRight"),baseEachRight=require("../internal/baseEachRight"),createReduce=require("../internal/createReduce"),reduceRight=createReduce(arrayReduceRight,baseEachRight);module.exports=reduceRight;

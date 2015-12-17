@@ -1,0 +1,1 @@
+var createCurry=require("../internal/createCurry"),CURRY_RIGHT_FLAG=16,curryRight=createCurry(CURRY_RIGHT_FLAG);curryRight.placeholder={},module.exports=curryRight;

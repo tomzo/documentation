@@ -1,0 +1,1 @@
+var createBaseFor=require("./createBaseFor"),baseForRight=createBaseFor(!0);module.exports=baseForRight;
