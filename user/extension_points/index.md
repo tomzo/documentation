@@ -22,6 +22,11 @@ See [this](task_extension.md) for details about the task extension point. Go doe
 
 See [this](notification_extension.md) for details about the notification extension point. Go does not have a bundled notification extension. You can see [Email notification extension](https://github.com/srinivasupadhya/email-notifier) for reference.
 
+# Configuration repository Extension
+
+See [this](configrepo_extension.md) for details about the configuration repository extension point. You can see [JSON config plugin](https://github.com/tomzo/gocd-json-config-example) for reference.
+Using extension point is not necessary to have pipeline configuration stored in version control. Go supports configuration repository content written in format which follows XML server configuration.
+
 # Note
 
 - You can find more extensions in the community [plugins listing page](http://www.go.cd/community/plugins.html).
