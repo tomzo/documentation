@@ -21,7 +21,11 @@ There are certain limits involved when using configuration repository:
 Go server polls all materials from pipelines and user-defined configuration repositories.
 The final server configuration is merged from all elements defined via UI and remote elements in repositories.
 It is important to pay attention to errors introduced in repositories. Go behavior changes once there are errors in at least one of the repositories. It is **highly recommended** to remove any errors as soon as Go reports them. For configuration repositories the only way to so is by pushing changes to faulty repository.
-All configuration errors are displayed
+All configuration errors are displayed in server health messages.
+
+#### Merging configurations - conflicts
+
+TODO: Merging environments, groups, environment var. behavior and conflicts
 
 ## References:
 

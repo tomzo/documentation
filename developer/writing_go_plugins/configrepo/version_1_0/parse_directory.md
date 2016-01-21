@@ -30,6 +30,8 @@ This message is sent by the server, when it has completed a checkout of configur
 
 ***Expected response body***: The plugin is expected to send a response, which contains partial configuration of pipelines and environments defined in the requested directory. Plugin may also return error in response as needed.
 
+For reference on allowed pipelines and environment objects please see [config objects](config_objects.md)
+
 Note: If plugin responds with errors Go Server shows those in "server health messages" and treats configuration repository as invalid until plugin returns no errors.
 
 ***Example response***:
@@ -45,6 +47,7 @@ Note: If plugin responds with errors Go Server shows those in "server health mes
     ],
     "pipelines" : [
       {
+        "location" : "docexample.gopipeline.json",
         "label_template": "${COUNT}",
         "enable_pipeline_locking": false,
         "name": "my_pipeline",
@@ -134,9 +137,29 @@ Note: If plugin responds with errors Go Server shows those in "server health mes
     ],
     "environments" : [
       {
+          "location" : "dev.goenvironment.json",
           "name" : "dev",
           "pipelines" : [ "pipeline1" ]  
       }
     ]
 }
 ```
+
+# Parse directory response content
+
+The root object in response message contains 4 members:
+```json
+{
+  "target_version" : 1,
+  "errors": [],
+  "pipelines" : [],
+  "environments" : []
+}
+```
+
+ * `target_version` is used by Go to migrate older plugin responses
+ * `errors` can contain plugin's complaints about invalidity of configuration repository.
+ * `pipelines` is an array of pipeline objects to be defined in Go server
+ * `environments` is an array of environments to be defined in Go server
+
+ For reference on allowed pipelines and environment objects please see [config objects](config_objects.md)

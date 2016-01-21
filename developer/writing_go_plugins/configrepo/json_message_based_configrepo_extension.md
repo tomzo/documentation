@@ -20,7 +20,8 @@ If configuration object returned by plugin is invalid, Go server will treat rela
 
 ## Messages to be handled by the plugin - ***version 1.0***
 
-[Parse directory](version_1_0/parse_directory.md)
+[Parse directory](version_1_0/parse_directory.md) - a small request made by server to parse contents of configuration repository checkout. Then response from plugin contains ALL configuration objects defined in that repository. Since configuration domain is quite big, there is a [dedicated page](version_1_0/config_objects.md) to all object that can be included in response.
+
 
 ## Other information
 
