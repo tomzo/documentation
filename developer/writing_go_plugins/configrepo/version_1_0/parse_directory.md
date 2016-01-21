@@ -36,6 +36,7 @@ Note: If plugin responds with errors Go Server shows those in "server health mes
 
 ```json
 {
+    "target_version" : 1,
     "errors": [
         {
           "location" : "mypipeline.json",
@@ -47,6 +48,7 @@ Note: If plugin responds with errors Go Server shows those in "server health mes
         "label_template": "${COUNT}",
         "enable_pipeline_locking": false,
         "name": "my_pipeline",
+        "group" : "configrepo-example",
         "tracking_tool": null,
         "timer": null,
         "environment_variables": [],
@@ -75,10 +77,8 @@ Note: If plugin responds with errors Go Server shows those in "server health mes
             "never_cleanup_artifacts": false,
             "approval": {
               "type": "success",
-              "authorization": {
-                "roles": [],
-                "users": []
-              }
+              "roles": [],
+              "users": []
             },
             "environment_variables": [],
             "jobs": [
@@ -94,15 +94,11 @@ Note: If plugin responds with errors Go Server shows those in "server health mes
                 "tasks": [
                   {
                     "type": "exec",
-                    "run_if": [
-                      "passed"
-                    ],
+                    "run_if": "passed",
                     "on_cancel": {
                       "type": "exec",
-                      "attributes": {
-                        "command": "ls",
-                        "working_directory": null
-                      }
+                      "command": "ls",
+                      "working_directory": null
                     },
                     "command": "sleep",
                     "arguments": [
