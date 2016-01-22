@@ -14,7 +14,8 @@ This message is sent by the server, when it has completed a checkout of configur
 
 ```json
 {
-  "directory" : "<full path to checkout>"
+  "directory" : "<full path to checkout>",
+  "configuration": []
 }
 ```
 
@@ -22,7 +23,13 @@ This message is sent by the server, when it has completed a checkout of configur
 
 ```json
 {
-  "directory" : "/var/lib/go-server/pipelines/flyweight/145cefce-a972-46a6-ab40-954b08b75cf2"
+  "directory" : "/var/lib/go-server/pipelines/flyweight/145cefce-a972-46a6-ab40-954b08b75cf2",
+  "configuration": [
+    {
+      "key": "pipeline-pattern",
+      "value": "**/*.gopipeline.json"
+    }
+],
 }
 ```
 

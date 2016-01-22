@@ -142,5 +142,16 @@ which usually makes more sense considering that value is stored in SCM.
 ## Pluggable SCM
 
 ```json
-
+{
+  "scm_id": "someScmGitRepositoryId",
+  "destination": "destinationDir",
+  "filter": {
+    "ignore": [
+      "dir1",
+      "dir2"
+    ]
+  },
+  "name": "myPluggableGit",
+  "type": "plugin"
+}
 ```

@@ -18,9 +18,10 @@ But beware that this is a different model, some of the differences are:
 
 ### Index
 
-1. [Environment](#Environment)
-1. [Pipeline](#Pipeline)
-    * [Mingle](#Mingle)
+1. [Environment](#environment)
+1. [Environment variables](#environment-variables)
+1. [Pipeline](#pipeline)
+    * [Mingle](#mingle)
     * [Tracking tool](#tracking tool)
     * [Timer](#timer)
 1. [Stage](#stage)
@@ -33,7 +34,8 @@ But beware that this is a different model, some of the differences are:
     * [ant](tasks.md#ant)
     * [nant](tasks.md#nant)
     * [exec](tasks.md#exec)
-    * [pluggabletask](tasks.md#pluggable)
+    * [fetch](tasks.md#fetch)
+    * [pluggabletask](tasks.md#plugin)
 1. [Materials](materials.md)
     * [dependency](materials.md#dependency)
     * [package](materials.md#package)
@@ -63,6 +65,27 @@ Configures a [Go environment](http://www.go.cd/documentation/user/current/config
   ],
   "pipelines": [
     "mypipeline1"
+  ]
+}
+```
+
+# Environment variables
+
+Environment variables is a JSON array that can be declared in Environments, Pipelines, Stages and Jobs.
+
+Any variable must contain `name` and `value` or `encrypted_value`.
+
+```json
+{
+  "environment_variables": [
+    {
+      "name": "key1",
+      "value": "value1"
+    },
+    {
+      "name": "keyd",
+      "encrypted_value": "v12@SDfwez"
+    }
   ]
 }
 ```
