@@ -43,6 +43,43 @@
         <a href="#repository">&lt;/repository&gt;</a>
     <a href="#repositories">&lt;/repositories&gt;</a>
 
+    <a href="#config-repos">&lt;config-repos&gt;</a>
+        <a href="#config-repo">&lt;config-repo&gt;</a>
+          <a href="#svn">&lt;svn&gt;</a>
+              <a href="#filter">&lt;filter&gt;</a>
+                  <a href="#ignore">&lt;ignore/&gt;</a>
+              <a href="#filter">&lt;/filter&gt;</a>
+          <a href="#svn">&lt;/svn&gt;</a>
+          <a href="#hg">&lt;hg&gt;</a>
+              <a href="#filter">&lt;filter&gt;</a>
+                  <a href="#ignore">&lt;ignore/&gt;</a>
+              <a href="#filter">&lt;/filter&gt;</a>
+          <a href="#hg">&lt;/hg&gt;</a>
+          <a href="#p4">&lt;p4&gt;</a>
+              &lt;view/&gt;
+              <a href="#filter">&lt;filter&gt;</a>
+                  <a href="#ignore">&lt;ignore/&gt;</a>
+              <a href="#filter">&lt;/filter&gt;</a>
+          <a href="#p4">&lt;/p4&gt;</a>
+          <a href="#git">&lt;git&gt;</a>
+              <a href="#filter">&lt;filter&gt;</a>
+                  <a href="#ignore">&lt;ignore/&gt;</a>
+              <a href="#filter">&lt;/filter&gt;</a>
+          <a href="#git">&lt;/git&gt;</a>
+          <a href="#tfs">&lt;tfs&gt;</a>
+              <a href="#filter">&lt;filter&gt;</a>
+                  <a href="#ignore">&lt;ignore/&gt;</a>
+              <a href="#filter">&lt;/filter&gt;</a>
+          <a href="#tfs">&lt;/tfs&gt;</a>
+          <a href="#config-repo-configuration">&lt;configuration&gt;</a>
+              <a href="#config-repo-property">&lt;property&gt;</a>
+                  <a href="#config-repo-property-key">&lt;key/&gt;</a>
+                  <a href="#config-repo-property-value">&lt;value/&gt;</a>
+              <a href="#config-repo-property">&lt;/property&gt;</a>
+          <a href="#config-repo-configuration">&lt;/configuration&gt;</a>
+        <a href="#config-repo">&lt;/config-repo&gt;</a>
+    <a href="#config-repos">&lt;/config-repos&gt;</a>
+
     <a href="#pipelines">&lt;pipelines&gt;</a>
         <a href="#group_authorization">&lt;authorization&gt;</a>
             <a href="#group_admins">&lt;admins&gt;</a>
@@ -511,6 +548,74 @@ Two users would be administrators, they are **Jez** and **lqiao**.
    <user>lqiao<user>
    <role>_readonly_member<role>
 </view>
+```
+
+
+[top](#top)
+
+## &lt;configuration repositories&gt; {#config-repos}
+
+The `<config-repos>` element is a container of package config-repos.
+
+### Example
+
+```xml
+<cruise>
+  ...
+  <config-repos>
+    <config-repo>
+      <git url="https://github.com/tomzo/gocd-indep-config-part.git" />
+    </config-repo>
+    <config-repo plugin="gocd-xml">
+      <git url="https://github.com/tomzo/gocd-refmain-config-part.git" />
+    </config-repo>
+    <config-repo plugin="gocd-xml">
+      <git url="https://github.com/tomzo/gocd-refpart-config-part.git" />
+      <configuration>
+        <property>
+          <key>pattern</key>
+          <value>*.gocd.xml</value>
+        </property>
+      </configuration>
+    </config-repo>
+    <config-repo plugin="json.config.plugin">
+      <git url="https://github.com/tomzo/gocd-json-config-example.git" />
+    </config-repo>
+  </config-repos>
+</cruise>
+```
+
+[top](#top)
+
+## &lt;configuration repository&gt; {#config-repo}
+
+The `<config-repo>` element specifies a single configuration repository. It must contain exactly one SCM material and may contain additional configuration section.
+
+### Attributes
+
+| Attribute | Required | Description |
+|-----------|----------|-------------|
+| plugin | No | The ID of configuration repository plugin. E.g. `json.config.plugin`. When not set, default Go XML format is used. |
+
+### Example
+
+```xml
+<cruise>
+  ...
+  <cruise>
+    ...
+    <config-repos>
+      <config-repo plugin="gocd-xml">
+        <git url="https://github.com/tomzo/gocd-refpart-config-part.git" />
+        <configuration>
+          <property>
+            <key>pattern</key>
+            <value>*.gocd.xml</value>
+          </property>
+        </configuration>
+      </config-repo>
+  </cruise>
+</cruise>
 ```
 
 [top](#top)
